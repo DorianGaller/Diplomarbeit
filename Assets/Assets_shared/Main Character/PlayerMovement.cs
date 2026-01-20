@@ -3,46 +3,39 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float movementSpeed = 5f;
-    public Vector2 direction;
-
     public float bounds = 5f;
+
+    private Vector2 direction;
+    private float currentSpeed;
+
+    public Vector2 Direction => direction;
+
+    void Start()
+    {
+        currentSpeed = movementSpeed;
+    }
 
     void Update()
     {
-        float inputX = Input.GetAxis("Horizontal");
-        float inputY = Input.GetAxis("Vertical");
+        float inputX = Input.GetAxisRaw("Horizontal");
+        float inputY = Input.GetAxisRaw("Vertical");
 
-        if (inputX != 0 || inputY != 0)
-        {
-            direction = new Vector2(inputX, inputY).normalized;
-        }
+        direction = new Vector2(inputX, inputY).normalized;
 
-        Vector3 newPos = transform.position + (Vector3)(direction * movementSpeed * Time.deltaTime);
+        if (direction != Vector2.zero)
+        {
+            Vector3 newPos = transform.position + (Vector3)(direction * currentSpeed * Time.deltaTime);
 
-        // 🔹 X-Bounds
-        if (newPos.x > bounds)
-        {
-            newPos.x = bounds;
-            direction.x *= -1;
-        }
-        else if (newPos.x < -bounds)
-        {
-            newPos.x = -bounds;
-            direction.x *= -1;
-        }
+            newPos.x = Mathf.Clamp(newPos.x, -bounds, bounds);
+            newPos.y = Mathf.Clamp(newPos.y, -bounds, bounds);
 
-        // 🔹 Y-Bounds
-        if (newPos.y > bounds)
-        {
-            newPos.y = bounds;
-            direction.y *= -1;
+            transform.position = newPos;
         }
-        else if (newPos.y < -bounds)
-        {
-            newPos.y = -bounds;
-            direction.y *= -1;
-        }
+    }
 
-        transform.position = newPos;
+    // 🔹 Wird vom Dash-Skript gesteuert
+    public void SetDashState(bool dashing, float dashSpeed)
+    {
+        currentSpeed = dashing ? dashSpeed : movementSpeed;
     }
 }
