@@ -4,7 +4,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float movementSpeed = 5f;
-    public float bounds = 5f;
 
     private Vector2 direction;
     private float currentSpeed;
@@ -26,9 +25,6 @@ public class PlayerMovement : MonoBehaviour
         if (direction != Vector2.zero)
         {
             Vector3 newPos = transform.position + (Vector3)(direction * currentSpeed * Time.deltaTime);
-
-            newPos.x = Mathf.Clamp(newPos.x, -bounds, bounds);
-            newPos.y = Mathf.Clamp(newPos.y, -bounds, bounds);
 
             transform.position = newPos;
         }
