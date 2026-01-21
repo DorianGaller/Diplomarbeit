@@ -683,11 +683,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 125f1b6c-ee74-4348-b49c-0ffdc0579ba6
+  cloudProjectId: 424f4527-e432-46d2-bec3-c9493f0ceb4c
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Diplomarbeit
-  organizationId: mopsandi
+  projectName: My project (1)
+  organizationId: dorian-galler
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
