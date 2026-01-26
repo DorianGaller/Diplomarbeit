@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -7,12 +6,14 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 direction;
     private float currentSpeed;
+    private Rigidbody2D rb;
 
     public Vector2 Direction => direction;
 
     void Start()
     {
         currentSpeed = movementSpeed;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -21,12 +22,14 @@ public class PlayerMovement : MonoBehaviour
         float inputY = Input.GetAxisRaw("Vertical");
 
         direction = new Vector2(inputX, inputY).normalized;
+    }
 
+    void FixedUpdate()
+    {
         if (direction != Vector2.zero)
         {
-            Vector3 newPos = transform.position + (Vector3)(direction * currentSpeed * Time.deltaTime);
-
-            transform.position = newPos;
+            Vector2 newPos = rb.position + direction * currentSpeed * Time.fixedDeltaTime;
+            rb.MovePosition(newPos);
         }
     }
 
