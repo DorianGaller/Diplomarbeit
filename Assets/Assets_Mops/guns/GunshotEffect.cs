@@ -6,14 +6,17 @@ public class GunshotEffect : MonoBehaviour
     [Header("Movement")]
     public float speed = 14f;
 
+    [Header("Damage")]
+    public int damage = 25;
+
     [Header("Lifetime & Fade")]
     public float lifeTime = 0.25f;
     public float fadeSpeed = 6f;
 
-    private Vector2 direction = Vector2.up;   // 🔥 Fallback-Richtung
+    private Vector2 direction = Vector2.up;
     private SpriteRenderer sr;
+    private bool hasHit = false;
 
-    // Wird DIREKT nach Instantiate aufgerufen
     public void Init(Vector2 dir)
     {
         if (dir == Vector2.zero)
@@ -25,8 +28,6 @@ public class GunshotEffect : MonoBehaviour
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
-
-        
         Color c = sr.color;
         c.a = 1f;
         sr.color = c;
@@ -34,19 +35,27 @@ public class GunshotEffect : MonoBehaviour
 
     void Update()
     {
-        // Bewegung
-        transform.position += (Vector3)(direction * speed * Time.deltaTime);
+        if (hasHit) return;
 
-        transform.position = new Vector3(
-            transform.position.x,
-            transform.position.y,
-            -1f
-        );
+        transform.position += (Vector3)(direction * speed * Time.deltaTime);
+        transform.position = new Vector3(transform.position.x, transform.position.y, -1f);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (hasHit) return;
+
+        EnemyLife enemy = collision.GetComponent<EnemyLife>();
+        if (enemy != null)
+        {
+            enemy.TakeDamage(damage);
+            hasHit = true;
+            Destroy(gameObject);
+        }
     }
 
     IEnumerator Start()
     {
-        // Erst fliegen lassen, dann faden
         yield return new WaitForSeconds(lifeTime);
 
         Color c = sr.color;
