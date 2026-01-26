@@ -409,3 +409,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b0c30321ec50b47934adc38e10f041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainCamerFreeze
+  player: {fileID: 8771287510499454700}
+  followDelay: 1
+  minX: -9.55
+  maxX: 9.46
+  minY: -4.45
+  maxY: 4.73
+  fixedZ: -7.31
