@@ -10,6 +10,13 @@ public class EnemyShoot : MonoBehaviour
     public float shootInterval = 2f; //timer wann schießen
     private float shootTimer;
 
+
+void Start()
+{
+    if (player == null)
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+}
+
     void Update()
     {
         shootTimer += Time.deltaTime;
