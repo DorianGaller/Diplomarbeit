@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &674783972 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2043248121099713614, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+  m_PrefabInstance: {fileID: 8485997101824644012}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &692348348
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +220,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8771287510499454700, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
   m_PrefabInstance: {fileID: 8485997101824644012}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1378427754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674783972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b48e5490b6e92449c26c9ca3a576c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerLife
+  maxHP: 100
 --- !u!1 &1853628931
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,7 +478,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2043248121099713614, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 1378427754}
   m_SourcePrefab: {fileID: 100100000, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

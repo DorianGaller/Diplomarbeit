@@ -42,17 +42,28 @@ public class GunshotEffect : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (hasHit) return;
+{
+    if (hasHit) return;
 
-        EnemyLife enemy = collision.GetComponent<EnemyLife>();
-        if (enemy != null)
-        {
-            enemy.TakeDamage(damage);
-            hasHit = true;
-            Destroy(gameObject);
-        }
+    // Enemy treffen
+    EnemyLife enemy = collision.GetComponent<EnemyLife>();
+    if (enemy != null)
+    {
+        enemy.TakeDamage(damage);
+        hasHit = true;
+        Destroy(gameObject);
+        return;
     }
+
+    
+    PlayerLife player = collision.GetComponent<PlayerLife>();
+    if (player != null)
+    {
+        player.TakeDamage(damage);
+        hasHit = true;
+        Destroy(gameObject);
+    }
+}
 
     IEnumerator Start()
     {

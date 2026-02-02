@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/1. Scene Character design.unity
     guid: 115fc818d5dbf484087c0d6b8dfa1599
+  - enabled: 1
+    path: Assets/Assets_Doggy/Base_v1/Base_v1.unity
+    guid: 1a8bdb25b27000648a2c31552a7e1eac
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: c316465bbc005c14fa8dac270a9c61a4, type: 2}
