@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4242395614401709344}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,12 +42,13 @@ GameObject:
   - component: {fileID: 8771287510499454700}
   - component: {fileID: 8837913861182243650}
   - component: {fileID: 7797527906175133109}
+  - component: {fileID: 3075491398782624749}
   - component: {fileID: 231275581467408925}
   - component: {fileID: 6879230591946879207}
   - component: {fileID: 3724297195519675326}
   - component: {fileID: 2491717262034581619}
   - component: {fileID: 8849326908181201497}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Main Character
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -143,6 +144,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   movementSpeed: 5
+--- !u!114 &3075491398782624749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043248121099713614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b48e5490b6e92449c26c9ca3a576c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerLife
+  maxHP: 100
 --- !u!114 &231275581467408925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,7 +290,7 @@ GameObject:
   - component: {fileID: 6916843806648570811}
   - component: {fileID: 8841008144763316199}
   - component: {fileID: 6285697397662036717}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}

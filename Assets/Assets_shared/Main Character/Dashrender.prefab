@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 295515641081558452}
   - component: {fileID: 33614074340425956}
   - component: {fileID: 6583811569040534071}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Dashrender
   m_TagString: Untagged
   m_Icon: {fileID: 0}

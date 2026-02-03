@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class EnemySpawn : MonoBehaviour
 {
@@ -19,6 +20,14 @@ public class EnemySpawn : MonoBehaviour
     public int maxWaves = 5;
     public bool endlessWaves = false;
 
+    [Header("Exit Tile")]
+    public Tilemap exitTilemap;
+    public Transform exitWorldPosition;
+
+[Header("Exit Area Size")]
+public int exitWidth = 3;
+public int exitHeight = 2;
+
 
     private int enemiesAlive;
     private int enemiesSpawned;
@@ -28,6 +37,7 @@ public class EnemySpawn : MonoBehaviour
 
     void Start()
     {
+        OnAllWavesCompleted += RemoveExitTile;
         StartCoroutine(WaveLoop());
     }
 
@@ -82,6 +92,7 @@ public class EnemySpawn : MonoBehaviour
    void EnemyDied()
 {
     enemiesAlive = Mathf.Max(0, enemiesAlive - 1);
+
 }
 
     void OnDrawGizmosSelected()
@@ -95,7 +106,46 @@ public class EnemySpawn : MonoBehaviour
     enemiesAlive = 0;
     enemiesSpawned = 0;
     wave = 1;
+    exitOpened = false;
     StartCoroutine(WaveLoop());
 }
+
+private bool exitOpened = false;
+
+void RemoveExitTile()
+{
+    if (exitOpened) return;
+
+    if (exitTilemap == null || exitWorldPosition == null)
+    {
+        Debug.LogWarning("Exit Tilemap oder Exit Position nicht gesetzt!");
+        return;
+    }
+
+    Vector3Int centerCell = exitTilemap.WorldToCell(exitWorldPosition.position);
+
+    int halfW = exitWidth / 2;
+    int halfH = exitHeight / 2;
+
+    for (int x = 0; x < exitWidth; x++)
+{
+    for (int y = 0; y < exitHeight; y++)
+    {
+        Vector3Int cellPos = new Vector3Int(
+            centerCell.x + x,
+            centerCell.y + y,
+            centerCell.z
+        );
+
+        exitTilemap.SetTile(cellPos, null);
+    }
+}
+
+
+    exitOpened = true;
+}
+
+
+
 
 }
