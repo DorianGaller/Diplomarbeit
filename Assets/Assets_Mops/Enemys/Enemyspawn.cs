@@ -24,9 +24,18 @@ public class EnemySpawn : MonoBehaviour
     public Tilemap exitTilemap;
     public Transform exitWorldPosition;
 
-[Header("Exit Area Size")]
-public int exitWidth = 3;
-public int exitHeight = 2;
+    [Header("Exit Area Size")]
+    public int exitWidth = 3;
+    public int exitHeight = 2;
+
+    [Header("Exit Camera Pan")]
+    public Camera mainCamera;
+    public float cameraPanDuration = 2f;
+    public float exitZoomSize = 4f;
+    public bool returnCameraAfterPan = true;
+
+    [Header("Player Freeze")]
+    public PlayerMovement playerMovement;
 
 
     private int enemiesAlive;
@@ -38,6 +47,7 @@ public int exitHeight = 2;
     void Start()
     {
         OnAllWavesCompleted += RemoveExitTile;
+        OnAllWavesCompleted += StartExitCameraPan;
         StartCoroutine(WaveLoop());
     }
 
@@ -145,7 +155,61 @@ void RemoveExitTile()
     exitOpened = true;
 }
 
+void StartExitCameraPan()
+{
+    if (mainCamera == null || exitWorldPosition == null)
+    {
+        Debug.LogWarning("Kamera oder ExitWorldPosition nicht gesetzt!");
+        return;
+    }
 
+    StartCoroutine(PanCameraToExit());
+}
 
+IEnumerator PanCameraToExit()
+{
+    if (playerMovement != null)
+        playerMovement.enabled = false;
+
+    Transform camTransform = mainCamera.transform;
+
+    Vector3 startPos = camTransform.position;
+    Vector3 targetPos = new Vector3(
+        exitWorldPosition.position.x,
+        exitWorldPosition.position.y,
+        camTransform.position.z // Z beibehalten!
+    );
+
+    float startSize = mainCamera.orthographicSize;
+
+    float t = 0f;
+    while (t < 1f)
+    {
+        t += Time.deltaTime / cameraPanDuration;
+
+        camTransform.position = Vector3.Lerp(startPos, targetPos, t);
+
+        if (mainCamera.orthographic)
+            mainCamera.orthographicSize = Mathf.Lerp(startSize, exitZoomSize, t);
+
+        yield return null;
+    }
+
+    // Optional: kurze Pause
+    yield return new WaitForSeconds(1f);
+
+    // Optional: Kamera wieder zurück zum Spieler
+    if (returnCameraAfterPan)
+    {
+        camTransform.position = startPos;
+
+        if (mainCamera.orthographic)
+            mainCamera.orthographicSize = startSize;
+    }
+    yield return new WaitForSeconds(1f);
+
+    if (playerMovement != null)
+        playerMovement.enabled = true;
+}
 
 }
