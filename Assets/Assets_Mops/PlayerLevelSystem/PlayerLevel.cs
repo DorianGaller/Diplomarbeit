@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI; // wichtig!
 
 public class PlayerLevel : MonoBehaviour
 {
@@ -8,7 +9,10 @@ public class PlayerLevel : MonoBehaviour
     public int xpToNextLevel = 100;
 
     [Header("Scaling")]
-    public float xpMultiplier = 1.5f; // wie stark XP pro Level steigt
+    public float xpMultiplier = 1.5f;
+
+    [Header("UI")]
+    public Image xpBar; // <- deine LevelProgress Image hier reinziehen
 
     public void AddXP(int amount)
     {
@@ -18,6 +22,8 @@ public class PlayerLevel : MonoBehaviour
         {
             LevelUp();
         }
+
+        UpdateXPBar(); // <- Bar aktualisieren
     }
 
     void LevelUp()
@@ -28,10 +34,10 @@ public class PlayerLevel : MonoBehaviour
         xpToNextLevel = Mathf.RoundToInt(xpToNextLevel * xpMultiplier);
 
         Debug.Log("LEVEL UP! Neues Level: " + level);
+    }
 
-        // Optional:
-        // Mehr Leben
-        // Mehr Schaden
-        // Effekt abspielen
+    void UpdateXPBar()
+    {
+        xpBar.fillAmount = (float)currentXP / xpToNextLevel;
     }
 }
