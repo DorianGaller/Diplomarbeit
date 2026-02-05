@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class EnemyLife : MonoBehaviour
@@ -6,6 +7,9 @@ public class EnemyLife : MonoBehaviour
     [Header("Health Settings")]
     public int maxHP = 100;
     private int currentHP;
+
+    [Header("Health Bar")]
+    public Image healthFill;   // das grüne Fill-Image
 
     [Header("XP Drop")]
     public GameObject xpPrefab;
@@ -18,27 +22,38 @@ public class EnemyLife : MonoBehaviour
     void Start()
     {
         currentHP = maxHP;
+        UpdateHealthBar();
     }
 
     public void TakeDamage(int damage)
     {
+        Debug.Log("Treffer! Schaden: " + damage);
         currentHP -= damage;
+        currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+
+        UpdateHealthBar();
 
         if (currentHP <= 0)
             Die();
+    }
+
+    void UpdateHealthBar()
+    {
+        if (healthFill != null)
+        {
+            healthFill.fillAmount = (float)currentHP / maxHP;
+        }
     }
 
     void Die()
     {
         OnDeath?.Invoke();
 
-        // ✅ FIX 1
         int totalXP = UnityEngine.Random.Range(minXP, maxXP + 1);
         int xpPerOrb = Mathf.Max(1, totalXP / xpOrbCount);
 
         for (int i = 0; i < xpOrbCount; i++)
         {
-            // ✅ FIX 2 (SEHR WICHTIG)
             Vector2 offset = UnityEngine.Random.insideUnitCircle * 0.5f;
 
             Vector3 spawnPos = transform.position;
