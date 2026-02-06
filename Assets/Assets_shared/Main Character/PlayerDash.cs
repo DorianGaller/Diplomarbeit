@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI; // 👈 für Image
 
 public class PlayerDash : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class PlayerDash : MonoBehaviour
     public GameObject dashGhostPrefab;
     public float ghostSpawnRate = 0.05f;
 
+    // 🔹 UI
+    public Image dashCooldownImage; // Fill-Image im UI (z.B. Kreis/Balken)
+
     private bool isDashing = false;
     private bool canDash = true;
 
@@ -19,6 +23,10 @@ public class PlayerDash : MonoBehaviour
     void Start()
     {
         movement = GetComponent<PlayerMovement>();
+
+        // Startzustand: Dash bereit = voll
+        if (dashCooldownImage != null)
+            dashCooldownImage.fillAmount = 1f;
     }
 
     void Update()
@@ -34,6 +42,10 @@ public class PlayerDash : MonoBehaviour
         canDash = false;
         isDashing = true;
 
+        // UI sofort leeren
+        if (dashCooldownImage != null)
+            dashCooldownImage.fillAmount = 0f;
+
         movement.SetDashState(true, dashSpeed);
 
         StartCoroutine(SpawnGhosts());
@@ -43,7 +55,22 @@ public class PlayerDash : MonoBehaviour
         isDashing = false;
         movement.SetDashState(false, 0f);
 
-        yield return new WaitForSeconds(dashCooldown);
+        // Cooldown visuell auffüllen
+        float timer = 0f;
+        while (timer < dashCooldown)
+        {
+            timer += Time.deltaTime;
+
+            if (dashCooldownImage != null)
+                dashCooldownImage.fillAmount = timer / dashCooldown;
+
+            yield return null;
+        }
+
+        // Sicherheitshalber auf voll setzen
+        if (dashCooldownImage != null)
+            dashCooldownImage.fillAmount = 1f;
+
         canDash = true;
     }
 
@@ -57,28 +84,27 @@ public class PlayerDash : MonoBehaviour
     }
 
     void SpawnGhost()
-{
-    if (dashGhostPrefab == null) return; // 🔥 verhindert Crash
-
-    GameObject ghost = Instantiate(
-        dashGhostPrefab,
-        transform.position,
-        transform.rotation
-    );
-
-    SpriteRenderer ghostSR = ghost.GetComponent<SpriteRenderer>();
-    SpriteRenderer playerSR = GetComponent<SpriteRenderer>();
-
-    if (ghostSR && playerSR)
     {
-        ghostSR.sprite = playerSR.sprite;
-        ghostSR.flipX = playerSR.flipX;
-        ghostSR.flipY = playerSR.flipY;
+        if (dashGhostPrefab == null) return;
 
-        Color c = ghostSR.color;
-        c.a = 0.5f;
-        ghostSR.color = c;
+        GameObject ghost = Instantiate(
+            dashGhostPrefab,
+            transform.position,
+            transform.rotation
+        );
+
+        SpriteRenderer ghostSR = ghost.GetComponent<SpriteRenderer>();
+        SpriteRenderer playerSR = GetComponent<SpriteRenderer>();
+
+        if (ghostSR && playerSR)
+        {
+            ghostSR.sprite = playerSR.sprite;
+            ghostSR.flipX = playerSR.flipX;
+            ghostSR.flipY = playerSR.flipY;
+
+            Color c = ghostSR.color;
+            c.a = 0.5f;
+            ghostSR.color = c;
+        }
     }
-}
-
 }

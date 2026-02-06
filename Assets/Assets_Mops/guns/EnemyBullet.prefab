@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GunshotEffect
   speed: 14
-  damage: 25
+  damage: 10
   lifeTime: 0.25
   fadeSpeed: 6
 --- !u!58 &5682988704005110378
