@@ -1,5 +1,6 @@
 using UnityEngine;
-using UnityEngine.UI; // wichtig!
+using UnityEngine.UI;
+using TMPro; // <-- TextMeshPro
 
 public class PlayerLevel : MonoBehaviour
 {
@@ -12,7 +13,8 @@ public class PlayerLevel : MonoBehaviour
     public float xpMultiplier = 1.5f;
 
     [Header("UI")]
-    public Image xpBar; // <- deine LevelProgress Image hier reinziehen
+    public Image xpBar;                 // Progress-Bar (Image mit Fill)
+    public TMP_Text currentXPText;      // Aktuelle XP (TMP Text)         // Optional: Level-Anzeige
 
     public void AddXP(int amount)
     {
@@ -23,7 +25,7 @@ public class PlayerLevel : MonoBehaviour
             LevelUp();
         }
 
-        UpdateXPBar(); // <- Bar aktualisieren
+        UpdateUI();
     }
 
     void LevelUp()
@@ -36,8 +38,27 @@ public class PlayerLevel : MonoBehaviour
         Debug.Log("LEVEL UP! Neues Level: " + level);
     }
 
+    void UpdateUI()
+    {
+        UpdateXPBar();
+        UpdateXPText();
+    }
+
     void UpdateXPBar()
     {
-        xpBar.fillAmount = (float)currentXP / xpToNextLevel;
+        if (xpBar != null)
+            xpBar.fillAmount = (float)currentXP / xpToNextLevel;
+    }
+
+    void UpdateXPText()
+    {
+        if (currentXPText != null)
+            currentXPText.text = $"{currentXP} / {xpToNextLevel} XP";
+    }
+
+    // Optional: Beim Start direkt UI korrekt setzen
+    void Start()
+    {
+        UpdateUI();
     }
 }
