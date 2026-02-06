@@ -235,9 +235,11 @@ MonoBehaviour:
   exitHeight: 2
   mainCamera: {fileID: 1192055698}
   cameraPanDuration: 2
-  exitZoomSize: 4
+  exitZoomSize: 6
   returnCameraAfterPan: 1
+  cameraPanTarget: {fileID: 533392363}
   playerMovement: {fileID: 2074344031}
+  uiRoot: {fileID: 1904724472}
 --- !u!4 &436433688
 Transform:
   m_ObjectHideFlags: 0
@@ -248,6 +250,37 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.08, y: 0.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &533392362
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 533392363}
+  m_Layer: 0
+  m_Name: ExitCam
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &533392363
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533392362}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.05, y: -12.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -302,29 +335,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 764652330238966742, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.695913
-      objectReference: {fileID: 0}
-    - target: {fileID: 764652330238966742, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.425
-      objectReference: {fileID: 0}
-    - target: {fileID: 764652330238966742, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2043248121099713614, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
       propertyPath: m_Name
       value: Main Character
       objectReference: {fileID: 0}
-    - target: {fileID: 3761451024735819301, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
-      propertyPath: m_Color.b
-      value: 0.08794361
+    - target: {fileID: 5227340035619329863, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.007755357
       objectReference: {fileID: 0}
-    - target: {fileID: 3761451024735819301, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
-      propertyPath: m_Color.r
-      value: 0.9433962
+    - target: {fileID: 5227340035619329863, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000000059605
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227340035619329863, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8771287510499454700, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
       propertyPath: m_LocalPosition.x
@@ -371,6 +396,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+--- !u!1 &1904724472 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2726128727073624368, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+  m_PrefabInstance: {fileID: 1417035322}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2074344031 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7797527906175133109, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
@@ -435,6 +465,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3496692794261659118, guid: e131fd76e9a1f4b40918c6504b36f597, type: 3}
+      propertyPath: m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7656452531477321610, guid: e131fd76e9a1f4b40918c6504b36f597, type: 3}
       propertyPath: m_Name
       value: Layout Fight Room
@@ -453,3 +487,4 @@ SceneRoots:
   - {fileID: 3820336805860347681}
   - {fileID: 436433688}
   - {fileID: 672627708}
+  - {fileID: 533392363}

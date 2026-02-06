@@ -33,9 +33,14 @@ public class EnemySpawn : MonoBehaviour
     public float cameraPanDuration = 2f;
     public float exitZoomSize = 4f;
     public bool returnCameraAfterPan = true;
+    public Transform cameraPanTarget;
 
     [Header("Player Freeze")]
     public PlayerMovement playerMovement;
+
+    [Header("UI")]
+    public GameObject uiRoot;
+
 
 
     private int enemiesAlive;
@@ -168,17 +173,23 @@ void StartExitCameraPan()
 
 IEnumerator PanCameraToExit()
 {
+    if (uiRoot != null)
+    uiRoot.SetActive(false);
+
     if (playerMovement != null)
         playerMovement.enabled = false;
 
     Transform camTransform = mainCamera.transform;
 
     Vector3 startPos = camTransform.position;
-    Vector3 targetPos = new Vector3(
-        exitWorldPosition.position.x,
-        exitWorldPosition.position.y,
-        camTransform.position.z // Z beibehalten!
-    );
+    Transform target = cameraPanTarget != null ? cameraPanTarget : exitWorldPosition;
+
+Vector3 targetPos = new Vector3(
+    target.position.x,
+    target.position.y,
+    camTransform.position.z
+);
+
 
     float startSize = mainCamera.orthographicSize;
 
@@ -207,6 +218,9 @@ IEnumerator PanCameraToExit()
             mainCamera.orthographicSize = startSize;
     }
     yield return new WaitForSeconds(1f);
+    
+    if (uiRoot != null)
+    uiRoot.SetActive(true);
 
     if (playerMovement != null)
         playerMovement.enabled = true;

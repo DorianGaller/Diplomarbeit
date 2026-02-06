@@ -109,7 +109,7 @@ MonoBehaviour:
   speed: 14
   damage: 10
   lifeTime: 0.25
-  fadeSpeed: 6
+  fadeSpeed: 3
 --- !u!58 &5682988704005110378
 CircleCollider2D:
   m_ObjectHideFlags: 0
