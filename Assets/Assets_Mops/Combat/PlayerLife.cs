@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using System;
 using System.Collections;
 
@@ -10,8 +9,8 @@ public class PlayerLife : MonoBehaviour
     public int maxHP = 100;
     private int currentHP;
 
-    [Header("UI Hearts")]
-    public Image[] hearts;         // Herz-Images aus dem Canvas (links → rechts)
+    [Header("Heart Sprites")]
+    public SpriteRenderer[] hearts;   // SpriteRenderer statt Image
     public float fadeDuration = 0.25f;
 
     public Action OnDeath;
@@ -39,7 +38,7 @@ public class PlayerLife : MonoBehaviour
     {
         int maxHearts = hearts.Length;
 
-        // Berechnet wie viele Herzen noch voll sind
+        // Berechnet wie viele Herzen sichtbar bleiben
         int heartsToShow = Mathf.CeilToInt((float)currentHP / maxHP * maxHearts);
 
         for (int i = 0; i < hearts.Length; i++)
@@ -57,50 +56,47 @@ public class PlayerLife : MonoBehaviour
                 {
                     StartCoroutine(FadeOut(hearts[i]));
                 }
-
-                hearts[i].gameObject.SetActive(false);
             }
         }
     }
 
-    IEnumerator FadeOut(Image img)
+    IEnumerator FadeOut(SpriteRenderer sprite)
     {
         float t = 0f;
-        Color c = img.color;
+        Color c = sprite.color;
 
         while (t < fadeDuration)
         {
             t += Time.deltaTime;
             c.a = Mathf.Lerp(1f, 0f, t / fadeDuration);
-            img.color = c;
+            sprite.color = c;
             yield return null;
         }
+
+        sprite.gameObject.SetActive(false);
     }
 
-    void SetAlpha(Image img, float a)
+    void SetAlpha(SpriteRenderer sprite, float a)
     {
-        Color c = img.color;
+        Color c = sprite.color;
         c.a = a;
-        img.color = c;
+        sprite.color = c;
     }
 
     void Die()
-{
-    OnDeath?.Invoke();
-    StartCoroutine(RespawnAfterDelay());
-}
+    {
+        OnDeath?.Invoke();
+        StartCoroutine(RespawnAfterDelay());
+    }
 
-IEnumerator RespawnAfterDelay()
-{
-    Time.timeScale = 0f;
+    IEnumerator RespawnAfterDelay()
+    {
+        Time.timeScale = 0f;
 
-    // Optional: UI Effekt oder Deathscreen aktivieren
-    // z.B. canvasGameOver.SetActive(true);
+        yield return new WaitForSecondsRealtime(4f);
 
-    yield return new WaitForSecondsRealtime(4f);
+        Time.timeScale = 1f;
 
-    Time.timeScale = 1f;
-
-    SceneManager.LoadScene("Base_v1");
-}
+        SceneManager.LoadScene("Base_v1");
+    }
 }
