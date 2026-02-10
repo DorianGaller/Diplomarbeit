@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
 
 public class InteractKeys : MonoBehaviour
 {
@@ -8,6 +9,14 @@ public class InteractKeys : MonoBehaviour
 
     public GameObject gunshotPrefab;
     public Transform shootPoint;
+
+    [Header("Tilemap Interaction")]
+    public float interactDistance = 1f;
+
+    [Tooltip("Zieh hier das Empty-Object rein, das alle Tilemaps enthält")]
+    public Transform tilemapRoot;
+
+    private Tilemap[] interactTilemaps;
 
     void Awake()
     {
@@ -22,6 +31,19 @@ public class InteractKeys : MonoBehaviour
             type: InputActionType.Button,
             binding: "<Keyboard>/e"
         );
+
+        CacheTilemaps();
+    }
+
+    void CacheTilemaps()
+    {
+        if (tilemapRoot == null)
+        {
+            Debug.LogError("Tilemap-Root ist nicht gesetzt! Zieh dein Empty-Object mit den Tilemaps in den Inspector.");
+            return;
+        }
+
+        interactTilemaps = tilemapRoot.GetComponentsInChildren<Tilemap>();
     }
 
     void OnEnable()
@@ -53,26 +75,39 @@ public class InteractKeys : MonoBehaviour
     {
         if (!gunshotPrefab || !shootPoint) return;
 
-        
         Vector3 mouseScreenPos = Mouse.current.position.ReadValue();
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
         mouseWorldPos.z = 0f;
 
-        
         Vector2 shootDir = (mouseWorldPos - shootPoint.position).normalized;
 
-        
-        GameObject shot = Instantiate(
-            gunshotPrefab,
-            shootPoint.position,
-            Quaternion.identity
-        );
-
+        GameObject shot = Instantiate(gunshotPrefab, shootPoint.position, Quaternion.identity);
         shot.GetComponent<GunshotEffect>()?.Init(shootDir);
     }
 
     private void OnInteract()
     {
-        Debug.Log("Interact!");
+        if (interactTilemaps == null || interactTilemaps.Length == 0)
+        {
+            Debug.LogWarning("Keine Tilemaps gefunden!");
+            return;
+        }
+
+        Vector3 direction = Vector3.right; // TODO: später dynamisch
+        Vector3 worldPos = transform.position + direction * interactDistance;
+
+        foreach (var tilemap in interactTilemaps)
+        {
+            Vector3Int cellPos = tilemap.WorldToCell(worldPos);
+            TileBase tile = tilemap.GetTile(cellPos);
+
+            if (tile is InteractableTile interactableTile)
+            {
+                interactableTile.OnInteract(cellPos, tilemap, gameObject);
+                return;
+            }
+        }
+
+        Debug.Log("Kein interagierbares Tile gefunden.");
     }
 }
