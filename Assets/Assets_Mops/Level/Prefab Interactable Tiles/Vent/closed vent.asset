@@ -34,7 +34,7 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 1
-  tileId: vent
+  tileId: ventclosed
   closedVentTile: {fileID: 11400000}
   openVentTile: {fileID: 11400000, guid: 7ab5de034cae7d249a4674ddd5f42d40, type: 2}
   sceneToLoad: FightRoomSample
