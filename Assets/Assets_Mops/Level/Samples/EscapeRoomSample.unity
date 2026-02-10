@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: tilemapRoot
       value: 
       objectReference: {fileID: 1111236299}
+    - target: {fileID: 6879230591946879207, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: interactDistance
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8771287510499454700, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -86,28 +86,44 @@ public class InteractKeys : MonoBehaviour
     }
 
     private void OnInteract()
+{
+    if (interactTilemaps == null || interactTilemaps.Length == 0)
     {
-        if (interactTilemaps == null || interactTilemaps.Length == 0)
+        Debug.LogWarning("Keine Tilemaps gefunden!");
+        return;
+    }
+
+    Vector3 playerPos = transform.position;
+
+    foreach (var tilemap in interactTilemaps)
+    {
+        // Player Position in Cell umrechnen
+        Vector3Int playerCell = tilemap.WorldToCell(playerPos);
+
+        // Radius in Tiles (1 = direkt angrenzende Tiles)
+        int radius = Mathf.CeilToInt(interactDistance);
+
+        for (int x = -radius; x <= radius; x++)
         {
-            Debug.LogWarning("Keine Tilemaps gefunden!");
-            return;
-        }
-
-        Vector3 direction = Vector3.right; // TODO: später dynamisch
-        Vector3 worldPos = transform.position + direction * interactDistance;
-
-        foreach (var tilemap in interactTilemaps)
-        {
-            Vector3Int cellPos = tilemap.WorldToCell(worldPos);
-            TileBase tile = tilemap.GetTile(cellPos);
-
-            if (tile is InteractableTile interactableTile)
+            for (int y = -radius; y <= radius; y++)
             {
-                interactableTile.OnInteract(cellPos, tilemap, gameObject);
-                return;
+                Vector3Int checkCell = new Vector3Int(
+                    playerCell.x + x,
+                    playerCell.y + y,
+                    playerCell.z
+                );
+
+                TileBase tile = tilemap.GetTile(checkCell);
+
+                if (tile is InteractableTile interactableTile)
+                {
+                    interactableTile.OnInteract(checkCell, tilemap, gameObject);
+                    return;
+                }
             }
         }
-
-        Debug.Log("Kein interagierbares Tile gefunden.");
     }
+
+    Debug.Log("Kein interagierbares Tile gefunden.");
+}
 }
