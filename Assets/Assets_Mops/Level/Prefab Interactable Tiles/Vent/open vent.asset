@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b277a770aa3e3341b6229f7fe51bd05, type: 3}
-  m_Name: Vent
+  m_Name: open vent
   m_EditorClassIdentifier: Assembly-CSharp::InteractableVentTile
-  m_Sprite: {fileID: 21300000, guid: ac550a7312aa54c40912b7fe6631f1f7, type: 3}
+  m_Sprite: {fileID: -617347710890835231, guid: e6da3d179f40ac84a879146be8ff44e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -34,7 +34,7 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 1
-  tileId: vent
-  closedVentTile: {fileID: 11400000}
-  openVentTile: {fileID: 11400000, guid: d39b531ed67a47e42b28226425f88da4, type: 2}
-  sceneToLoad: Base_v 1
+  tileId: ventopen
+  closedVentTile: {fileID: 11400000, guid: ec8a64923b6c80340be1ce7121936206, type: 2}
+  openVentTile: {fileID: 11400000}
+  sceneToLoad: FightRoomSample

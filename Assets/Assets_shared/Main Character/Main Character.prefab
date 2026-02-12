@@ -316,6 +316,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InteractKeys
   gunshotPrefab: {fileID: 8388209518827460252, guid: bd78c33b5bc7b56438281d0eab6e9958, type: 3}
   shootPoint: {fileID: 4242395614401709344}
+  interactDistance: 1
+  tilemapRoot: {fileID: 0}
 --- !u!114 &8849326908181201497
 MonoBehaviour:
   m_ObjectHideFlags: 0
