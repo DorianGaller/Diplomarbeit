@@ -269,7 +269,6 @@ GameObject:
   - component: {fileID: 772951978}
   - component: {fileID: 772951977}
   - component: {fileID: 772951981}
-  - component: {fileID: 772951982}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -372,19 +371,6 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
---- !u!114 &772951982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 772951976}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe2cff938ddad5445a15768c07b17a3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FadeManager
-  canvasGroup: {fileID: 772951981}
 --- !u!1 &790835765
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,8 +405,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 100, y: 100}
   m_AnchorMax: {x: 100, y: 100}
-  m_AnchoredPosition: {x: -88396, y: -41650}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -254720, y: -143778}
+  m_SizeDelta: {x: 491.2386, y: 444.5236}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &790835767
 MonoBehaviour:
