@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.SceneManagement; // Wichtig für Scene wechseln
 
 [CreateAssetMenu(menuName = "Tiles/Interactable Vent Tile")]
 public class InteractableVentTile : InteractableTile
@@ -9,8 +8,9 @@ public class InteractableVentTile : InteractableTile
     public TileBase closedVentTile;
     public TileBase openVentTile;
 
-    [Header("Scene Settings")]
-    public string sceneToLoad; // Name der Szene, in die der Spieler geht
+    [Header("Canvas Settings")]
+    public GameObject canvasToDisable;
+    public GameObject canvasToEnable;
 
     public override void OnInteract(Vector3Int cellPos, Tilemap tilemap, GameObject player)
     {
@@ -31,14 +31,19 @@ public class InteractableVentTile : InteractableTile
     }
 
     private void EnterVent()
-    {
-        if (string.IsNullOrEmpty(sceneToLoad))
-        {
-            Debug.LogWarning("Keine Szene zum Laden angegeben!");
-            return;
-        }
+{
+    VentCanvasManager manager =
+        GameObject.FindWithTag("VentCanvasManager")
+        .GetComponent<VentCanvasManager>();
 
-        // Szene wechseln
-        SceneManager.LoadScene(sceneToLoad);
+    if (manager != null)
+    {
+        manager.SwitchCanvas();
     }
+    else
+    {
+        Debug.LogWarning("VentCanvasManager nicht gefunden!");
+    }
+}
+
 }
