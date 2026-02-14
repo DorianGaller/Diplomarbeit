@@ -5,84 +5,96 @@ using System.Collections;
 public class SceneTransition : MonoBehaviour
 {
     [Header("Fade Settings")]
-    [SerializeField] private CanvasGroup fadeCanvasGroup;
-    [SerializeField] private float fadeDuration = 1f;
+    [SerializeField] private float fadeDuration = 0.5f;
+    [SerializeField] private float blackScreenDuration = 0.2f;
     
     [Header("Scene Settings")]
     [SerializeField] private string sceneToLoad;
     
     private bool isTransitioning = false;
+    private CanvasGroup fadeCanvasGroup;
 
     private void Start()
     {
-        Debug.Log("SceneTransition Script gestartet!");
-        
-        if (fadeCanvasGroup != null)
+        // Hole die CanvasGroup vom FadeManager
+        if (FadeManager.Instance != null)
         {
-            fadeCanvasGroup.alpha = 0f;
-            Debug.Log("CanvasGroup gefunden und Alpha auf 0 gesetzt");
+            fadeCanvasGroup = FadeManager.Instance.GetCanvasGroup();
+            
+            if (fadeCanvasGroup != null)
+            {
+                fadeCanvasGroup.alpha = 0f;
+                fadeCanvasGroup.blocksRaycasts = false;
+                Debug.Log("CanvasGroup vom FadeManager erhalten");
+            }
+            else
+            {
+                Debug.LogError("CanvasGroup ist null!");
+            }
         }
         else
         {
-            Debug.LogError("FEHLER: CanvasGroup ist nicht zugewiesen!");
+            Debug.LogError("FadeManager nicht gefunden! Stelle sicher, dass das Canvas das FadeManager Script hat.");
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Trigger betreten von: " + other.gameObject.name + " mit Tag: " + other.tag);
-        
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !isTransitioning)
         {
-            Debug.Log("Player erkannt! Starte Transition...");
+            if (string.IsNullOrEmpty(sceneToLoad))
+            {
+                Debug.LogError("Kein Scene-Name angegeben!");
+                return;
+            }
             
-            if (!isTransitioning)
-            {
-                if (string.IsNullOrEmpty(sceneToLoad))
-                {
-                    Debug.LogError("FEHLER: Kein Scene-Name angegeben!");
-                    return;
-                }
-                
-                StartCoroutine(TransitionToScene());
-            }
-            else
-            {
-                Debug.Log("Transition läuft bereits...");
-            }
-        }
-        else
-        {
-            Debug.Log("Kein Player - Tag stimmt nicht überein!");
+            StartCoroutine(TransitionToScene());
         }
     }
 
     private IEnumerator TransitionToScene()
     {
         isTransitioning = true;
-        Debug.Log("Fade to Black startet...");
+        
+        // Blockiere Inputs während der Transition
+        if (fadeCanvasGroup != null)
+        {
+            fadeCanvasGroup.blocksRaycasts = true;
+        }
 
         // Fade to Black
         yield return StartCoroutine(Fade(1f));
         
-        Debug.Log("Lade Szene: " + sceneToLoad);
-
+        // Halte den schwarzen Screen
+        yield return new WaitForSeconds(blackScreenDuration);
+        
         // Lade die neue Szene
         SceneManager.LoadScene(sceneToLoad);
+        
+        // Warte einen Frame
+        yield return null;
+        
+        // Hole CanvasGroup wieder (wichtig nach Scene Load!)
+        if (FadeManager.Instance != null)
+        {
+            fadeCanvasGroup = FadeManager.Instance.GetCanvasGroup();
+        }
 
-        // Fade from Black (wird in der neuen Szene ausgeführt)
+        // Fade from Black
         yield return StartCoroutine(Fade(0f));
+        
+        // Erlaube wieder Inputs
+        if (fadeCanvasGroup != null)
+        {
+            fadeCanvasGroup.blocksRaycasts = false;
+        }
 
         isTransitioning = false;
     }
 
     private IEnumerator Fade(float targetAlpha)
     {
-        if (fadeCanvasGroup == null)
-        {
-            Debug.LogError("FEHLER: fadeCanvasGroup ist null!");
-            yield break;
-        }
+        if (fadeCanvasGroup == null) yield break;
 
         float startAlpha = fadeCanvasGroup.alpha;
         float elapsedTime = 0f;
@@ -90,13 +102,15 @@ public class SceneTransition : MonoBehaviour
         while (elapsedTime < fadeDuration)
         {
             elapsedTime += Time.deltaTime;
-            fadeCanvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, elapsedTime / fadeDuration);
+            float t = elapsedTime / fadeDuration;
+            
+            // Smoothstep für weicheren Fade
+            t = t * t * (3f - 2f * t);
+            
+            fadeCanvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, t);
             yield return null;
         }
 
         fadeCanvasGroup.alpha = targetAlpha;
-        Debug.Log("Fade abgeschlossen. Alpha ist jetzt: " + targetAlpha);
     }
 }
-
-
