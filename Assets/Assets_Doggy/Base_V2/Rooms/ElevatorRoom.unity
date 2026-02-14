@@ -242,7 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransition
   fadeDuration: 0.3
   blackScreenDuration: 0.2
-  sceneToLoad: BottomRoom
+  sceneToLoad: ComputerRoom
 --- !u!61 &268945186
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -336,7 +336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransition
   fadeDuration: 0.3
   blackScreenDuration: 0.2
-  sceneToLoad: BottomRoom
+  sceneToLoad: CraftingRoom
 --- !u!61 &402630868
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1226,7 +1226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransition
   fadeDuration: 0.3
   blackScreenDuration: 0.2
-  sceneToLoad: BottomRoom
+  sceneToLoad: BedRoom
 --- !u!61 &1322782134
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1399,7 +1399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransition
   fadeDuration: 0.3
   blackScreenDuration: 0.2
-  sceneToLoad: BottomRoom
+  sceneToLoad: StorageRoom
 --- !u!61 &1676996600
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1493,7 +1493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransition
   fadeDuration: 0.3
   blackScreenDuration: 0.2
-  sceneToLoad: BottomRoom
+  sceneToLoad: ChillRoom
 --- !u!61 &1694257811
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1587,7 +1587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransition
   fadeDuration: 0.3
   blackScreenDuration: 0.2
-  sceneToLoad: BottomRoom
+  sceneToLoad: MedicalRoom
 --- !u!61 &1720282370
 BoxCollider2D:
   m_ObjectHideFlags: 0

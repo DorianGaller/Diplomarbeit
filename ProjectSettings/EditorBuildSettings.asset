@@ -24,8 +24,23 @@ EditorBuildSettings:
     path: Assets/Assets_Doggy/Base_V2/Rooms/ElevatorRoom.unity
     guid: 97322a263cf92834492165ea52f37793
   - enabled: 1
-    path: Assets/Assets_Doggy/Base_V2/Rooms/BottomRoom.unity
+    path: Assets/Assets_Doggy/Base_V2/Rooms/ChillRoom.unity
     guid: 122e849e53f141e49b55cf3d172a8436
+  - enabled: 1
+    path: Assets/Assets_Doggy/Base_V2/Rooms/BedRoom.unity
+    guid: 3150ec36acf4b0845bd36ce365506172
+  - enabled: 1
+    path: Assets/Assets_Doggy/Base_V2/Rooms/ComputerRoom.unity
+    guid: 41a7106e93706854eb905bf21e55cf7c
+  - enabled: 1
+    path: Assets/Assets_Doggy/Base_V2/Rooms/CraftingRoom.unity
+    guid: dfad86e57c80e6747907cdf0f73b95e7
+  - enabled: 1
+    path: Assets/Assets_Doggy/Base_V2/Rooms/MedicalRoom.unity
+    guid: 2b37b0f90cc581246b0f03bf667411c2
+  - enabled: 1
+    path: Assets/Assets_Doggy/Base_V2/Rooms/StorageRoom.unity
+    guid: b69d27776dd01ec40824159d2ab48b62
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: c316465bbc005c14fa8dac270a9c61a4, type: 2}
