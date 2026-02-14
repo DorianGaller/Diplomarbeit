@@ -37,4 +37,5 @@ MonoBehaviour:
   tileId: ventopen
   closedVentTile: {fileID: 11400000, guid: ec8a64923b6c80340be1ce7121936206, type: 2}
   openVentTile: {fileID: 11400000}
-  sceneToLoad: FightRoomSample
+  canvasToDisable: {fileID: 97607615688482888, guid: b4a620ad3b1f8af4da5ab440a083b990, type: 3}
+  canvasToEnable: {fileID: 5256169390699063532, guid: 5a84024d742a5154583fafc3bee7a1b4, type: 3}
