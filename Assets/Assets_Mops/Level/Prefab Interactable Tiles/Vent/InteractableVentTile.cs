@@ -1,49 +1,60 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System.Collections.Generic;
 
 [CreateAssetMenu(menuName = "Tiles/Interactable Vent Tile")]
 public class InteractableVentTile : InteractableTile
 {
-    [Header("Vent States")]
-    public TileBase closedVentTile;
-    public TileBase openVentTile;
+    [Header("Tile Swap")]
+    public TileBase defaultTile;
+    public TileBase openedTile;
 
     [Header("Canvas Settings")]
-    public GameObject canvasToDisable;
     public GameObject canvasToEnable;
+    public GameObject canvasToDisable;
+
+    // Zustand pro Tile Position speichern
+    private static Dictionary<Vector3Int, int> ventStates = new();
 
     public override void OnInteract(Vector3Int cellPos, Tilemap tilemap, GameObject player)
     {
-        TileBase currentTile = tilemap.GetTile(cellPos);
+        int state = ventStates.ContainsKey(cellPos) ? ventStates[cellPos] : 0;
 
-        // Vent ist geschlossen → öffnen
-        if (currentTile == closedVentTile)
+        if (state == 0)
         {
             Debug.Log("Vent wird geöffnet");
-            tilemap.SetTile(cellPos, openVentTile);
+
+            if (openedTile != null)
+                tilemap.SetTile(cellPos, openedTile);
+
+            ventStates[cellPos] = 1;
         }
-        // Vent ist offen → Spieler geht rein
-        else if (currentTile == openVentTile)
-        {
-            Debug.Log("Spieler geht in den Vent");
-            EnterVent();
-        }
+        else
+{
+    Debug.Log("Spieler geht in Vent");
+
+    EnterVent();
+
+    if (defaultTile != null)
+        tilemap.SetTile(cellPos, defaultTile);
+
+    ventStates[cellPos] = 0;
+}
     }
 
     private void EnterVent()
 {
-    VentCanvasManager manager =
-        GameObject.FindWithTag("VentCanvasManager")
-        .GetComponent<VentCanvasManager>();
+    VentManager manager = Object.FindFirstObjectByType<VentManager>();
 
     if (manager != null)
     {
-        manager.SwitchCanvas();
+        manager.ToggleVent();
     }
     else
     {
-        Debug.LogWarning("VentCanvasManager nicht gefunden!");
+        Debug.LogWarning("VentManager nicht gefunden!");
     }
 }
+
 
 }

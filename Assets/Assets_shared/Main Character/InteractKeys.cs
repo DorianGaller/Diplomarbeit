@@ -12,25 +12,14 @@ public class InteractKeys : MonoBehaviour
 
     [Header("Tilemap Interaction")]
     public float interactDistance = 1f;
-
-    [Tooltip("Zieh hier das Empty-Object rein, das alle Tilemaps enthält")]
     public Transform tilemapRoot;
 
     private Tilemap[] interactTilemaps;
 
     void Awake()
     {
-        gunshotAction = new InputAction(
-            name: "Gunshot",
-            type: InputActionType.Button,
-            binding: "<Mouse>/leftButton"
-        );
-
-        interactAction = new InputAction(
-            name: "Interact",
-            type: InputActionType.Button,
-            binding: "<Keyboard>/e"
-        );
+        gunshotAction = new InputAction("Gunshot", InputActionType.Button, "<Mouse>/leftButton");
+        interactAction = new InputAction("Interact", InputActionType.Button, "<Keyboard>/e");
 
         CacheTilemaps();
     }
@@ -39,11 +28,11 @@ public class InteractKeys : MonoBehaviour
     {
         if (tilemapRoot == null)
         {
-            Debug.LogError("Tilemap-Root ist nicht gesetzt! Zieh dein Empty-Object mit den Tilemaps in den Inspector.");
+            Debug.LogError("Tilemap-Root fehlt!");
             return;
         }
 
-        interactTilemaps = tilemapRoot.GetComponentsInChildren<Tilemap>();
+        interactTilemaps = tilemapRoot.GetComponentsInChildren<Tilemap>(true);
     }
 
     void OnEnable()
@@ -61,14 +50,10 @@ public class InteractKeys : MonoBehaviour
     void Update()
     {
         if (gunshotAction.WasPressedThisFrame())
-        {
             OnGunshot();
-        }
 
         if (interactAction.WasPressedThisFrame())
-        {
             OnInteract();
-        }
     }
 
     private void OnGunshot()
@@ -86,44 +71,31 @@ public class InteractKeys : MonoBehaviour
     }
 
     private void OnInteract()
-{
-    if (interactTilemaps == null || interactTilemaps.Length == 0)
     {
-        Debug.LogWarning("Keine Tilemaps gefunden!");
-        return;
-    }
+        if (interactTilemaps == null) return;
 
-    Vector3 playerPos = transform.position;
+        Vector3 playerPos = transform.position;
 
-    foreach (var tilemap in interactTilemaps)
-    {
-        // Player Position in Cell umrechnen
-        Vector3Int playerCell = tilemap.WorldToCell(playerPos);
-
-        // Radius in Tiles (1 = direkt angrenzende Tiles)
-        int radius = Mathf.CeilToInt(interactDistance);
-
-        for (int x = -radius; x <= radius; x++)
+        foreach (var tilemap in interactTilemaps)
         {
-            for (int y = -radius; y <= radius; y++)
+            Vector3Int playerCell = tilemap.WorldToCell(playerPos);
+            int radius = Mathf.CeilToInt(interactDistance);
+
+            for (int x = -radius; x <= radius; x++)
             {
-                Vector3Int checkCell = new Vector3Int(
-                    playerCell.x + x,
-                    playerCell.y + y,
-                    playerCell.z
-                );
-
-                TileBase tile = tilemap.GetTile(checkCell);
-
-                if (tile is InteractableTile interactableTile)
+                for (int y = -radius; y <= radius; y++)
                 {
-                    interactableTile.OnInteract(checkCell, tilemap, gameObject);
-                    return;
+                    Vector3Int checkCell = new Vector3Int(playerCell.x + x, playerCell.y + y, playerCell.z);
+
+                    TileBase tile = tilemap.GetTile(checkCell);
+
+                    if (tile is InteractableTile interactableTile)
+                    {
+                        interactableTile.OnInteract(checkCell, tilemap, gameObject);
+                        return;
+                    }
                 }
             }
         }
     }
-
-    Debug.Log("Kein interagierbares Tile gefunden.");
-}
 }

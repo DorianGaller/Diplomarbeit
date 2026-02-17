@@ -1328,12 +1328,12 @@ TextureImporter:
       name: Vent_tilemap_52
       rect:
         serializedVersion: 2
-        x: 539
-        y: 653
-        width: 34
-        height: 34
+        x: 513
+        y: 658
+        width: 23
+        height: 18
       alignment: 9
-      pivot: {x: 0.50550574, y: 0.45254338}
+      pivot: {x: 0.56025696, y: 0.4791486}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1636,8 +1636,8 @@ TextureImporter:
       name: Vent_tilemap_66
       rect:
         serializedVersion: 2
-        x: 492
-        y: 621
+        x: 491
+        y: 612
         width: 32
         height: 32
       alignment: 0

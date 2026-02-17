@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b277a770aa3e3341b6229f7fe51bd05, type: 3}
-  m_Name: open vent
+  m_Name: open oben
   m_EditorClassIdentifier: Assembly-CSharp::InteractableVentTile
   m_Sprite: {fileID: -617347710890835231, guid: e6da3d179f40ac84a879146be8ff44e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -35,7 +35,7 @@ MonoBehaviour:
   m_Flags: 1
   m_ColliderType: 1
   tileId: ventopen
-  closedVentTile: {fileID: 11400000, guid: ec8a64923b6c80340be1ce7121936206, type: 2}
-  openVentTile: {fileID: 11400000}
-  canvasToDisable: {fileID: 97607615688482888, guid: b4a620ad3b1f8af4da5ab440a083b990, type: 3}
-  canvasToEnable: {fileID: 5256169390699063532, guid: 5a84024d742a5154583fafc3bee7a1b4, type: 3}
+  defaultTile: {fileID: 11400000}
+  openedTile: {fileID: 11400000}
+  canvasToEnable: {fileID: 4513823067064600789, guid: c3395eb2790b19e48a86aad2bae90737, type: 3}
+  canvasToDisable: {fileID: 8015741519148838757, guid: eb9818a5c01c07b418fdbb41fa4a8a2d, type: 3}
