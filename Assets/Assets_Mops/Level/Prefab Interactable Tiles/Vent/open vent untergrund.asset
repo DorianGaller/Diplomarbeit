@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b277a770aa3e3341b6229f7fe51bd05, type: 3}
   m_Name: open vent untergrund
   m_EditorClassIdentifier: Assembly-CSharp::InteractableVentTile
-  m_Sprite: {fileID: -617347710890835231, guid: e6da3d179f40ac84a879146be8ff44e6, type: 3}
+  m_Sprite: {fileID: 1101604868, guid: 08c37d63197182b4cb0f2de739223455, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

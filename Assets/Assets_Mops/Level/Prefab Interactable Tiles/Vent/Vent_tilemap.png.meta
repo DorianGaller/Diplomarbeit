@@ -1,0 +1,5010 @@
+fileFormatVersion: 2
+guid: 08c37d63197182b4cb0f2de739223455
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7374317690858998028
+    second: Vent_tilemap_0
+  - first:
+      213: -2111035965809851070
+    second: Vent_tilemap_1
+  - first:
+      213: 8131001526064250455
+    second: Vent_tilemap_2
+  - first:
+      213: -4699905405988695723
+    second: Vent_tilemap_3
+  - first:
+      213: 3272768284389689678
+    second: Vent_tilemap_4
+  - first:
+      213: -3967828787804588442
+    second: Vent_tilemap_5
+  - first:
+      213: 1786481002977885505
+    second: Vent_tilemap_6
+  - first:
+      213: 107962140096497150
+    second: Vent_tilemap_7
+  - first:
+      213: 19770670688907358
+    second: Vent_tilemap_8
+  - first:
+      213: -1922186375494403073
+    second: Vent_tilemap_9
+  - first:
+      213: -2850744507115618380
+    second: Vent_tilemap_10
+  - first:
+      213: 2576957740817375687
+    second: Vent_tilemap_11
+  - first:
+      213: -3710939754699795052
+    second: Vent_tilemap_12
+  - first:
+      213: 8799017673410962597
+    second: Vent_tilemap_13
+  - first:
+      213: -3818588075809777151
+    second: Vent_tilemap_14
+  - first:
+      213: -3937931998111484681
+    second: Vent_tilemap_15
+  - first:
+      213: -6987542148490910873
+    second: Vent_tilemap_16
+  - first:
+      213: -8689170456792294898
+    second: Vent_tilemap_17
+  - first:
+      213: 3085711040058464633
+    second: Vent_tilemap_18
+  - first:
+      213: -9149189499466350205
+    second: Vent_tilemap_19
+  - first:
+      213: -8298489743382833377
+    second: Vent_tilemap_20
+  - first:
+      213: -687443898127530462
+    second: Vent_tilemap_21
+  - first:
+      213: -7916975565895769913
+    second: Vent_tilemap_22
+  - first:
+      213: -3043217216775876240
+    second: Vent_tilemap_23
+  - first:
+      213: -7129651500471132
+    second: Vent_tilemap_24
+  - first:
+      213: 795762889931921383
+    second: Vent_tilemap_25
+  - first:
+      213: 4907408654121002877
+    second: Vent_tilemap_26
+  - first:
+      213: -7932716162468819711
+    second: Vent_tilemap_27
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 31
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Vent_tilemap_0
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 845
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f67877812929a990800000000000000
+      internalID: -7374317690858998028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_1
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 845
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24584dd49f714b2e0800000000000000
+      internalID: -2111035965809851070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_2
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 845
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75ef73ddece17d070800000000000000
+      internalID: 8131001526064250455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_3
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 845
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5511b163fe496ceb0800000000000000
+      internalID: -4699905405988695723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_4
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 845
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e49463f2a653b6d20800000000000000
+      internalID: 3272768284389689678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_5
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 845
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 666b65d6db07fe8c0800000000000000
+      internalID: -3967828787804588442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_6
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 845
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14dfa7cc10bdac810800000000000000
+      internalID: 1786481002977885505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_7
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 845
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef584a19efe8f7100800000000000000
+      internalID: 107962140096497150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_8
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 845
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e50326bf15d364000800000000000000
+      internalID: 19770670688907358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_9
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 813
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffb7f88fca50355e0800000000000000
+      internalID: -1922186375494403073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_10
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 813
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bf3af389fe1078d0800000000000000
+      internalID: -2850744507115618380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_11
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 813
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c1ec96796133c320800000000000000
+      internalID: 2576957740817375687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_12
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 813
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4955e3a54f7108cc0800000000000000
+      internalID: -3710939754699795052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_13
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 813
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a46b0c64f36c1a70800000000000000
+      internalID: 8799017673410962597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_14
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 813
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10ad0d57066a10bc0800000000000000
+      internalID: -3818588075809777151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_15
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 813
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f4bbe636b7a959c0800000000000000
+      internalID: -3937931998111484681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_16
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 813
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76321220073470f90800000000000000
+      internalID: -6987542148490910873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_17
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 813
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0a931ab18dd96780800000000000000
+      internalID: -8689170456792294898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_18
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 781
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9799f2697d5a2da20800000000000000
+      internalID: 3085711040058464633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_19
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 781
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 381039def9c870180800000000000000
+      internalID: -9149189499466350205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_20
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 781
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f179171bb87d5dc80800000000000000
+      internalID: -8298489743382833377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_21
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 781
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2264919ba65b576f0800000000000000
+      internalID: -687443898127530462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_22
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 781
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c0e5533ba0412290800000000000000
+      internalID: -7916975565895769913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_23
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 781
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07198b3a01254c5d0800000000000000
+      internalID: -3043217216775876240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_24
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 781
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ac21f6ae9ba6eff0800000000000000
+      internalID: -7129651500471132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_25
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 781
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e794dbd12e1b0b00800000000000000
+      internalID: 795762889931921383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_26
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 781
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d776f8c9b2e9a1440800000000000000
+      internalID: 4907408654121002877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_27
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 749
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10dcb08fda459e190800000000000000
+      internalID: -7932716162468819711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_28
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 749
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d7c74c7fdd297d4ebd84ba55d59fa4e
+      internalID: -1560654772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_29
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 749
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 799310d33fe86ad49bcb5e4e1c8edeb1
+      internalID: -1738787060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_30
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 749
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db5e8064779b8964b86a59952207e1e9
+      internalID: -1824695333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_31
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 749
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32d0ee05feca96845a60d94dfae2369a
+      internalID: 1657589862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_32
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 749
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7f2e98fe39c29f4ab5381b1d6c31579
+      internalID: 1939738295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_33
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 749
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc1a351d037286642ba94d1359df5e0b
+      internalID: -2128027170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_34
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 717
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f5b143d8b62e4b41a6be26db08cc838
+      internalID: -2115515742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_35
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 717
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c3f9106046b7344f9dc99dde069bfe0
+      internalID: 196802033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_36
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 717
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4b1927b328ec1e4b91f52c6a4c14a5f
+      internalID: -943781502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_37
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 717
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a6d8b94a2a1dfa40926a04e1aa2514a
+      internalID: -692830497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_38
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 717
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49867a6c014b55c48b5dd380bcda2203
+      internalID: 1813544391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_39
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 717
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 543158d253cd5924f883a53f7ac33229
+      internalID: 986252296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_40
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 717
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cc9fc5b6d7359241ac4a59e5a81a0f5
+      internalID: 509062467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_41
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 685
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b298b9f5c6b54e64f87df7a38f420c21
+      internalID: 967500848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_42
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 685
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c79a5e9764511540a9ee6f826ef3f93
+      internalID: -1687285792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_43
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 685
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd57e4629f6ac994da7ebd69459db8a8
+      internalID: 678672024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_44
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 685
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cda03c1b75275a4793b5929ff35a2ae
+      internalID: -100073454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_45
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 685
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f53b381d12d62440ba16406e6cb7ef3
+      internalID: 1177130674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_46
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 685
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 647a2714e4fa20447b9b50f93b9d687f
+      internalID: 1704810808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_47
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 653
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb59c7009af14ac4d83e200a85006098
+      internalID: 1852079268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_48
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 653
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb6763eb40f8a2b4abc6fe7fe839214d
+      internalID: 229908687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_49
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 653
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e64742cb780bee64bbec4011a69d7e61
+      internalID: 2100839364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_50
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 653
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 541bbe69e323c154e9810512b136e7a8
+      internalID: 1249597394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_51
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 653
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 993b15010d9ac1d4c8e0a8fa59c2bd2b
+      internalID: 1320531436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_52
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 653
+        width: 34
+        height: 34
+      alignment: 9
+      pivot: {x: 0.50550574, y: 0.45254338}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cc6ad33b7812454a8f18ea0b303d0b1
+      internalID: 1101604868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_53
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 653
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 108169999be7cd445a709b1b30282b9b
+      internalID: -1026687090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_54
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 653
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87105d545e7e23c4da89957ce815a88e
+      internalID: -93013014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_55
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 653
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bb95c22968376a47adaa2949b1e0f3d
+      internalID: -1824907569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_56
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 621
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5acb17372b45c12489966b76ce3fb806
+      internalID: -183449329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_57
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 621
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb29be276b94fbc4597ab11b8fe018bb
+      internalID: -1188786365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_58
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 621
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a96393264e38d2f41b4570b04298fe43
+      internalID: -1103783833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_59
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 621
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7daa65fc1aeb0c04a8ea62ef71ba9d89
+      internalID: 2032461119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_60
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 621
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 106eb742e0ad0cd40be1027c2ecf0c49
+      internalID: 963533001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_61
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 621
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67dbd2898eff77f4cae84d690214b308
+      internalID: -646921942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_62
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 621
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6065a7260ad062f448f7d60631789fe5
+      internalID: 1716984185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_63
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 621
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba8377b2b4c954744853e4a8af9ad099
+      internalID: -1758394966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_64
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 621
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72234abbbf85e0249b12c98c6e394c52
+      internalID: -442011005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_65
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 621
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dd0bbf85ee1e8642aa004c8fd5d7ee6
+      internalID: 1060830391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_66
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 621
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4085abbc0a56a894fb46775de586164a
+      internalID: 656413473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_67
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 621
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f9d1a1d50520f8429bf2a37f46f65d5
+      internalID: 1112599345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_68
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 621
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22dceea401419384c97fe1214bd8e33f
+      internalID: -1170677102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_69
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 621
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48d1f9026131b574ea6c0fa5670d4fa0
+      internalID: -608491278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_70
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 621
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a63d5ac68af564a40ae2e935f18c6723
+      internalID: 1493044581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_71
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 621
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12c3ddeb10b69ac48afb0c0c3cb08168
+      internalID: -790676665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_72
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 621
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8c9902827e3d474fbdf6395a8adf94a
+      internalID: -1255369430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_73
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 610
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53413ad12626ce04a84edb1f33619296
+      internalID: -1041692502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_74
+      rect:
+        serializedVersion: 2
+        x: 748
+        y: 621
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7248ffc9745af46428ea206c1dbc8b83
+      internalID: 104699879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_75
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 589
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 692c5b80890507646bf405c1c8facc58
+      internalID: -1662377196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_76
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 589
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 965ec1cab0b43b44a835581abf6de81c
+      internalID: -361667161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_77
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 589
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e428dbedf87757c4b927e41621e0390d
+      internalID: -1507084236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_78
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 589
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99c74ff8e41f396498236999065c1a86
+      internalID: 1747590062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_79
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 589
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92b33f283a821aa44995d8183272e146
+      internalID: -1406079487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_80
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 589
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd88fac1c29e506479c8a562bc16b57e
+      internalID: -1889364641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_81
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 589
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62b26842573f2df4eb9dfe7ca715a247
+      internalID: -104338793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_82
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 589
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e58a5d44d44f2348bf609ce698e9efa
+      internalID: 1067071866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_83
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 589
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f1ff5a750d3ae143a9761669fdc8274
+      internalID: -1557306993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_84
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 589
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 521ccd5569eaf3b479abde471fbcebf3
+      internalID: 1182744861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_85
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 589
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f351143fccf7b88409ac77f8118635ea
+      internalID: -952435562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_86
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 589
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6da11455ecac00541836cbdc2f0b03e3
+      internalID: 407563631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_87
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 589
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a059280345db8cb48879526113be222f
+      internalID: 171956079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_88
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 589
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2793f86a55f0f6d4e8798292434eba07
+      internalID: 1397365709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_89
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 589
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1496b0f1e504c241b4817c0f196fbd4
+      internalID: 143038314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_90
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 589
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfb27fb0c93013d4487c089371182fc8
+      internalID: 1083470038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_91
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 589
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af631c9fecd0ba04daa7ac92d1d954b4
+      internalID: 1297520624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_92
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 589
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b51f91f4664bbd349a03921b93d6ee6b
+      internalID: -156663131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_93
+      rect:
+        serializedVersion: 2
+        x: 748
+        y: 589
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ea023499e98f5b48816ef1f17c37aaf
+      internalID: -1403889717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_94
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 557
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e475b0d59e2fee64191b7313381f643d
+      internalID: 685548569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_95
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 557
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6aea9ca30a9304844baae5514a01f8df
+      internalID: -1868001410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_96
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 557
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56cb9cc0d58024f42a15b83919d8447a
+      internalID: -197478393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_97
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 557
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ca82237c90aed149a09f566dafb28ea
+      internalID: -998688921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_98
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 557
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec684413eb937f148815a035a8d10872
+      internalID: 1022728874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_99
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 557
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa1f66a6d0310c64e916845a2148ec05
+      internalID: 2072240971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_100
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 557
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ee9053ec8ac5874b9f21cae14f7c1a9
+      internalID: 1692849221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_101
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 557
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d95e1e6e91ae337439f496ac15f5c93e
+      internalID: -901268474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_102
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 557
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bf719804683715468277e40031e9211
+      internalID: -2008260558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_103
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 557
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e1d216a7daabec459044aac85f234b9
+      internalID: 794738585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_104
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 543
+        width: 32
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cd34e380e0f0944b906e02c4adc7b24
+      internalID: -627697650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_105
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 557
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a2be7b00f0002a4dad341411fbaaf09
+      internalID: -782292416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_106
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 557
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88e17a1bfaa60dd45bb862f1da864182
+      internalID: -2144596869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_107
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 557
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 708ea28541d51274389464beabb0354f
+      internalID: 284566586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_108
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 557
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04f461a62e8647f4696c0679ff94b90c
+      internalID: 50224195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_109
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 557
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf6e98a1ed7e88f45b6c3d35504703e6
+      internalID: -499170691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_110
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 557
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 134eea91da30deb429dfffe871f73328
+      internalID: -1240472179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_111
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 557
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee6b5d3e0ee483f49a948619c7f4b2d8
+      internalID: 1330830103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_112
+      rect:
+        serializedVersion: 2
+        x: 748
+        y: 557
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d8fe8bcd3cc8b4448fc9ef755561a7c
+      internalID: -982901127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_113
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 525
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38a39c7706031804299aee31fd34b55f
+      internalID: -1027524182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_114
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 525
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cc95374536c8bb4a8648ad7455a6902
+      internalID: -559179646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_115
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 525
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0ec65a598bab004bab7fecf8497e8ac
+      internalID: -1926972230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_116
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 525
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2954d8d0dbec47a4398add793e07474e
+      internalID: 346969723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_117
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 525
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0740b8365396fc7408a7e494a7e86321
+      internalID: 1775896887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_118
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 525
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cc47d5933e517e42b7ae8b988828db5
+      internalID: 534432641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_119
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 525
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9ab8bae2615dfd4ea6cffd0169a9963
+      internalID: -1058267114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_120
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 525
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98e67df1b8a5fbf4ebb6ebf38d3defb8
+      internalID: 1809195424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_121
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 493
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b62fc4f7e97a7641b4653852bb67138
+      internalID: -1876410085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_122
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 493
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c88bccfbce4487d469c4e208458f4226
+      internalID: -1798705606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_123
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 493
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 895a20b2131e59f4f944343078e54359
+      internalID: 472363365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_124
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 461
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa2c9b71e9ad23e409e20ddfdd459f9e
+      internalID: 474669160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_125
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 461
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5014b86e54a09cc4e91684e3000522cf
+      internalID: -1485060062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_126
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 461
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13c7f0fee3168bd41a8385a472d46b4c
+      internalID: 1844574761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_127
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 461
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2f82c4eaaa7dc14e98f9133dd41833c
+      internalID: -623676430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_128
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 461
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cf32e5156cedce4cb1cc0acbd0d7c8c
+      internalID: 268269267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_129
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 449
+        width: 40
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db39050f8e535e84dabe0732af9759d3
+      internalID: -262177750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_130
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 461
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2526c76b0164854aa5e3d5a4aa4c747
+      internalID: -653825982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_131
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 429
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c81eed14dbf4e3843b952d2d9e28b8be
+      internalID: -2117403793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_132
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 429
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d3f607eabfe353408a00334c8de1de9
+      internalID: -1038231761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_133
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 429
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4706c18d9e375a04ea70821cd5f1eff1
+      internalID: 1676687110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_134
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 429
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4996c196af31db141afdaf9ab0b4ab20
+      internalID: 877937808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_135
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 429
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d881255281384314b9afe5433a33ed81
+      internalID: 1301202445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_136
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 429
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 901fd921f3498bd40a2bff0f4ab7ff50
+      internalID: 910474462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_137
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 429
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd110c07fc2fdf94fa73bdccaaa8565e
+      internalID: 524591001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_138
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 429
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 095a23d4a47cb2f41af7297d34976639
+      internalID: 1552268692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_139
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 429
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6a9c7022f614b047813080a9b72625b
+      internalID: 714373089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_140
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 397
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef9472e2b85d56349a1e54c020767a3a
+      internalID: -1540556254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_141
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 397
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 936f28e4dae15094ea7e52103041444d
+      internalID: -283664179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_142
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 397
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60aff1c7ea4567b42b6d4a5cea9606e2
+      internalID: -1515576316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_143
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 397
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dee065d0d2f205d4f9c9396141d7d83e
+      internalID: 1596709851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_144
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 397
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9426e3304d0d6ed4eaaa5fba34051a26
+      internalID: 1856861348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_145
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 397
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87996a2b8c1513241bad0270cdb788cb
+      internalID: -700287247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_146
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 397
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32d9770579c899249a3ccda8389dc440
+      internalID: 84263910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_147
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 397
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d52cc66d3c434a41b5045ad4d5b9beb
+      internalID: -658958842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_148
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 397
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2efd62770f01414abee84d21aebf4cb
+      internalID: -1797200608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_149
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 365
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3512c98611a3df419fad25df9e7de8a
+      internalID: 709561391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_150
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 365
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 765b17333bd83f141b87935f9ab619a0
+      internalID: 38601260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_151
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 365
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6740b4353c6f18848a25b4fe3059042a
+      internalID: 1023448830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_152
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 365
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a776caed60926e547a20aac95da97657
+      internalID: -1324073614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_153
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 365
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fac3b3314555c5448ba2febbff5f9c36
+      internalID: 1067782184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_154
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 365
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e718514c0cdecb04a8f8ea5cb1367028
+      internalID: -2039443057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_155
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 365
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dafcfdf6728b4114b8aaa4594a57cec9
+      internalID: -1651733923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_156
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 365
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6c1e3a25adf9c14b8e80b3030234de2
+      internalID: -154258616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_157
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 365
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3631cfe91f17fc449c91fc0df3202e6
+      internalID: 140709570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_158
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 301
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0306f518a8bde0e44b08888f517324e6
+      internalID: -1355743653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_159
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 301
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 638777ac26fa3c147b5e05875b45229a
+      internalID: -1421018902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_160
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 301
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27b8e4433b4873f41b7430f46882b78f
+      internalID: 478630018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_161
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 301
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a40e5d8c86e99f49baca94ec6d8c2a8
+      internalID: 1533292704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_162
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 301
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00817af9b9738fb46bf9a991e49495f0
+      internalID: 995585051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_163
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 269
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 524e653f196cc9c4cbdbd17dd8f30b57
+      internalID: -1469792111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_164
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 269
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ffdcf7e4b922e445896324739dba3ad
+      internalID: -1342662365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_165
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 269
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 968ce58e17ed67c46958a37000a5f3fc
+      internalID: 842391002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_166
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 269
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58ca59285a4d9ae4ebec1e5b2dd5d82b
+      internalID: 1942473712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_167
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 269
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75dfed5d12e0406418b07a818b553e2a
+      internalID: 718418655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_168
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 237
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e4dcf62b27b0d241b185f8b676f3b6b
+      internalID: -2142958267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_169
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 237
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a883496aac1cb08489cabee6fb65865f
+      internalID: -600615089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_170
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 237
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1530ba0ea091a3f4297da38886ad5504
+      internalID: 624146573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_171
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 237
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c5872fcc57a0a34387b52324af2a103
+      internalID: -17758872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_172
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 237
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc516e4932bbd87478b974094c544d6d
+      internalID: -256773953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_173
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 205
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61e419e4f97de0a4b8eebd935416ad2c
+      internalID: -705801845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_174
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 205
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a0c4c7dff3006745bf6aa0e8f25dd51
+      internalID: 1977878001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_175
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 205
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 891530fd5f61ec84c8401d4541a58f9a
+      internalID: -946449867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_176
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 173
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c117b0dd20c4144a8550df95e23e2ae
+      internalID: -1917213759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_177
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 173
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c96003fb657bcf488a4f3e15296244c
+      internalID: 1192586758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_178
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 173
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80471328e3b09fb4eb8f005cac61fc0e
+      internalID: 1713336746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_179
+      rect:
+        serializedVersion: 2
+        x: 748
+        y: 173
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02c1f2892adb30f43bacbabb139f8ded
+      internalID: 767042084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_180
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 173
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1b5e5a1485a0964f8b82d096fe2f3a2
+      internalID: 523116456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_181
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 173
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb76b820f3778d442b974ce75b1f1afe
+      internalID: 1454840803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_182
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 173
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 619f0c5933dee0d41905bbe2c53c9f45
+      internalID: 1450020900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_183
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 173
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a31566200334a740bc9a42f74c0f5af
+      internalID: -74864286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_184
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 141
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 949051b2fa6942948b69797c8ce58b10
+      internalID: 526570154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_185
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 141
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f552579435e88e46b3e50426049b0d6
+      internalID: -559951263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_186
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 141
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95f72ea608290ac41ae0a59e7da1f4eb
+      internalID: -1992469321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_187
+      rect:
+        serializedVersion: 2
+        x: 748
+        y: 141
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 812233153c29120478bd92d8c6242786
+      internalID: 1784155188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_188
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 141
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3062a66b07c87b3459ecae86e66d5a74
+      internalID: -508709752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_189
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 141
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e12fa68867852cf43bcf241599efa80d
+      internalID: -1628279362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_190
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 141
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cff0826eae15cbf4083f0dbfd75096a7
+      internalID: 515125995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_191
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 141
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ad9a5d3c05af334c9fa91d43dd95f1d
+      internalID: 613107527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_192
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 109
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a728f2366f38285489e53f2c9c26dcd9
+      internalID: 34771637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_193
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 109
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 366f5bc8239261b4c914f44175ce720e
+      internalID: -702688098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_194
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 109
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d10b14e2a980f04190c0b7157314930
+      internalID: -1531562507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_195
+      rect:
+        serializedVersion: 2
+        x: 748
+        y: 109
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a1ca71601aac3f47ad4d27694c8cf5a
+      internalID: 1419440388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_196
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 109
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9d6370f452d18c4687f15902f6a16f6
+      internalID: -2017609337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_197
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 109
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b10997122106fb44c9113a938704fa66
+      internalID: 436038665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_198
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 109
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3a9c18445d287248a98481be71e2ab8
+      internalID: 1796935918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_199
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 109
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33043a427795bfe4696c00a48fe885c1
+      internalID: 297030662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_200
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 77
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1fd7b893b0b23948832e994e9bbf4f5
+      internalID: 1949573626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_201
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 77
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42bdcf30f9576a849b03582d73246607
+      internalID: 2007748169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_202
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 77
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8199f5cc5b3ece042b263d5b45753e4c
+      internalID: -1736661621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_203
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 45
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: feee128d70f4bce4a8743ac639d5f863
+      internalID: -2031828011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_204
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 45
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e33e12ec417579f40bd75addab6e9372
+      internalID: -88670392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_205
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 45
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b2ed441ff9c9be48a87b86d9578d268
+      internalID: -1655477486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_206
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 13
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af4a26576c2e62a4694c88e7521100ce
+      internalID: 1400586735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_207
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 13
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a56d63735c8a3f4f9b0a9209279c299
+      internalID: 459505899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vent_tilemap_208
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 13
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de5ff3bb40cc9ac4491302c1ac7c11a7
+      internalID: 1554161235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 694454fe7caa9c7448211e67ff6921bf
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":12.0,"y":19.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Vent_tilemap_0: -7374317690858998028
+      Vent_tilemap_1: -2111035965809851070
+      Vent_tilemap_10: -2850744507115618380
+      Vent_tilemap_100: 1692849221
+      Vent_tilemap_101: -901268474
+      Vent_tilemap_102: -2008260558
+      Vent_tilemap_103: 794738585
+      Vent_tilemap_104: -627697650
+      Vent_tilemap_105: -782292416
+      Vent_tilemap_106: -2144596869
+      Vent_tilemap_107: 284566586
+      Vent_tilemap_108: 50224195
+      Vent_tilemap_109: -499170691
+      Vent_tilemap_11: 2576957740817375687
+      Vent_tilemap_110: -1240472179
+      Vent_tilemap_111: 1330830103
+      Vent_tilemap_112: -982901127
+      Vent_tilemap_113: -1027524182
+      Vent_tilemap_114: -559179646
+      Vent_tilemap_115: -1926972230
+      Vent_tilemap_116: 346969723
+      Vent_tilemap_117: 1775896887
+      Vent_tilemap_118: 534432641
+      Vent_tilemap_119: -1058267114
+      Vent_tilemap_12: -3710939754699795052
+      Vent_tilemap_120: 1809195424
+      Vent_tilemap_121: -1876410085
+      Vent_tilemap_122: -1798705606
+      Vent_tilemap_123: 472363365
+      Vent_tilemap_124: 474669160
+      Vent_tilemap_125: -1485060062
+      Vent_tilemap_126: 1844574761
+      Vent_tilemap_127: -623676430
+      Vent_tilemap_128: 268269267
+      Vent_tilemap_129: -262177750
+      Vent_tilemap_13: 8799017673410962597
+      Vent_tilemap_130: -653825982
+      Vent_tilemap_131: -2117403793
+      Vent_tilemap_132: -1038231761
+      Vent_tilemap_133: 1676687110
+      Vent_tilemap_134: 877937808
+      Vent_tilemap_135: 1301202445
+      Vent_tilemap_136: 910474462
+      Vent_tilemap_137: 524591001
+      Vent_tilemap_138: 1552268692
+      Vent_tilemap_139: 714373089
+      Vent_tilemap_14: -3818588075809777151
+      Vent_tilemap_140: -1540556254
+      Vent_tilemap_141: -283664179
+      Vent_tilemap_142: -1515576316
+      Vent_tilemap_143: 1596709851
+      Vent_tilemap_144: 1856861348
+      Vent_tilemap_145: -700287247
+      Vent_tilemap_146: 84263910
+      Vent_tilemap_147: -658958842
+      Vent_tilemap_148: -1797200608
+      Vent_tilemap_149: 709561391
+      Vent_tilemap_15: -3937931998111484681
+      Vent_tilemap_150: 38601260
+      Vent_tilemap_151: 1023448830
+      Vent_tilemap_152: -1324073614
+      Vent_tilemap_153: 1067782184
+      Vent_tilemap_154: -2039443057
+      Vent_tilemap_155: -1651733923
+      Vent_tilemap_156: -154258616
+      Vent_tilemap_157: 140709570
+      Vent_tilemap_158: -1355743653
+      Vent_tilemap_159: -1421018902
+      Vent_tilemap_16: -6987542148490910873
+      Vent_tilemap_160: 478630018
+      Vent_tilemap_161: 1533292704
+      Vent_tilemap_162: 995585051
+      Vent_tilemap_163: -1469792111
+      Vent_tilemap_164: -1342662365
+      Vent_tilemap_165: 842391002
+      Vent_tilemap_166: 1942473712
+      Vent_tilemap_167: 718418655
+      Vent_tilemap_168: -2142958267
+      Vent_tilemap_169: -600615089
+      Vent_tilemap_17: -8689170456792294898
+      Vent_tilemap_170: 624146573
+      Vent_tilemap_171: -17758872
+      Vent_tilemap_172: -256773953
+      Vent_tilemap_173: -705801845
+      Vent_tilemap_174: 1977878001
+      Vent_tilemap_175: -946449867
+      Vent_tilemap_176: -1917213759
+      Vent_tilemap_177: 1192586758
+      Vent_tilemap_178: 1713336746
+      Vent_tilemap_179: 767042084
+      Vent_tilemap_18: 3085711040058464633
+      Vent_tilemap_180: 523116456
+      Vent_tilemap_181: 1454840803
+      Vent_tilemap_182: 1450020900
+      Vent_tilemap_183: -74864286
+      Vent_tilemap_184: 526570154
+      Vent_tilemap_185: -559951263
+      Vent_tilemap_186: -1992469321
+      Vent_tilemap_187: 1784155188
+      Vent_tilemap_188: -508709752
+      Vent_tilemap_189: -1628279362
+      Vent_tilemap_19: -9149189499466350205
+      Vent_tilemap_190: 515125995
+      Vent_tilemap_191: 613107527
+      Vent_tilemap_192: 34771637
+      Vent_tilemap_193: -702688098
+      Vent_tilemap_194: -1531562507
+      Vent_tilemap_195: 1419440388
+      Vent_tilemap_196: -2017609337
+      Vent_tilemap_197: 436038665
+      Vent_tilemap_198: 1796935918
+      Vent_tilemap_199: 297030662
+      Vent_tilemap_2: 8131001526064250455
+      Vent_tilemap_20: -8298489743382833377
+      Vent_tilemap_200: 1949573626
+      Vent_tilemap_201: 2007748169
+      Vent_tilemap_202: -1736661621
+      Vent_tilemap_203: -2031828011
+      Vent_tilemap_204: -88670392
+      Vent_tilemap_205: -1655477486
+      Vent_tilemap_206: 1400586735
+      Vent_tilemap_207: 459505899
+      Vent_tilemap_208: 1554161235
+      Vent_tilemap_21: -687443898127530462
+      Vent_tilemap_22: -7916975565895769913
+      Vent_tilemap_23: -3043217216775876240
+      Vent_tilemap_24: -7129651500471132
+      Vent_tilemap_25: 795762889931921383
+      Vent_tilemap_26: 4907408654121002877
+      Vent_tilemap_27: -7932716162468819711
+      Vent_tilemap_28: -1560654772
+      Vent_tilemap_29: -1738787060
+      Vent_tilemap_3: -4699905405988695723
+      Vent_tilemap_30: -1824695333
+      Vent_tilemap_31: 1657589862
+      Vent_tilemap_32: 1939738295
+      Vent_tilemap_33: -2128027170
+      Vent_tilemap_34: -2115515742
+      Vent_tilemap_35: 196802033
+      Vent_tilemap_36: -943781502
+      Vent_tilemap_37: -692830497
+      Vent_tilemap_38: 1813544391
+      Vent_tilemap_39: 986252296
+      Vent_tilemap_4: 3272768284389689678
+      Vent_tilemap_40: 509062467
+      Vent_tilemap_41: 967500848
+      Vent_tilemap_42: -1687285792
+      Vent_tilemap_43: 678672024
+      Vent_tilemap_44: -100073454
+      Vent_tilemap_45: 1177130674
+      Vent_tilemap_46: 1704810808
+      Vent_tilemap_47: 1852079268
+      Vent_tilemap_48: 229908687
+      Vent_tilemap_49: 2100839364
+      Vent_tilemap_5: -3967828787804588442
+      Vent_tilemap_50: 1249597394
+      Vent_tilemap_51: 1320531436
+      Vent_tilemap_52: 1101604868
+      Vent_tilemap_53: -1026687090
+      Vent_tilemap_54: -93013014
+      Vent_tilemap_55: -1824907569
+      Vent_tilemap_56: -183449329
+      Vent_tilemap_57: -1188786365
+      Vent_tilemap_58: -1103783833
+      Vent_tilemap_59: 2032461119
+      Vent_tilemap_6: 1786481002977885505
+      Vent_tilemap_60: 963533001
+      Vent_tilemap_61: -646921942
+      Vent_tilemap_62: 1716984185
+      Vent_tilemap_63: -1758394966
+      Vent_tilemap_64: -442011005
+      Vent_tilemap_65: 1060830391
+      Vent_tilemap_66: 656413473
+      Vent_tilemap_67: 1112599345
+      Vent_tilemap_68: -1170677102
+      Vent_tilemap_69: -608491278
+      Vent_tilemap_7: 107962140096497150
+      Vent_tilemap_70: 1493044581
+      Vent_tilemap_71: -790676665
+      Vent_tilemap_72: -1255369430
+      Vent_tilemap_73: -1041692502
+      Vent_tilemap_74: 104699879
+      Vent_tilemap_75: -1662377196
+      Vent_tilemap_76: -361667161
+      Vent_tilemap_77: -1507084236
+      Vent_tilemap_78: 1747590062
+      Vent_tilemap_79: -1406079487
+      Vent_tilemap_8: 19770670688907358
+      Vent_tilemap_80: -1889364641
+      Vent_tilemap_81: -104338793
+      Vent_tilemap_82: 1067071866
+      Vent_tilemap_83: -1557306993
+      Vent_tilemap_84: 1182744861
+      Vent_tilemap_85: -952435562
+      Vent_tilemap_86: 407563631
+      Vent_tilemap_87: 171956079
+      Vent_tilemap_88: 1397365709
+      Vent_tilemap_89: 143038314
+      Vent_tilemap_9: -1922186375494403073
+      Vent_tilemap_90: 1083470038
+      Vent_tilemap_91: 1297520624
+      Vent_tilemap_92: -156663131
+      Vent_tilemap_93: -1403889717
+      Vent_tilemap_94: 685548569
+      Vent_tilemap_95: -1868001410
+      Vent_tilemap_96: -197478393
+      Vent_tilemap_97: -998688921
+      Vent_tilemap_98: 1022728874
+      Vent_tilemap_99: 2072240971
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
