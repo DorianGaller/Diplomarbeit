@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b277a770aa3e3341b6229f7fe51bd05, type: 3}
   m_Name: closed vent
   m_EditorClassIdentifier: Assembly-CSharp::InteractableVentTile
-  m_Sprite: {fileID: -2531409990896325441, guid: ac550a7312aa54c40912b7fe6631f1f7, type: 3}
+  m_Sprite: {fileID: -1136041955732498063, guid: 7f11364ad8e4998419b41df6a1133067, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

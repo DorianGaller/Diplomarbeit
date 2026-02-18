@@ -14,6 +14,7 @@ public class InteractKeys : MonoBehaviour
     public float interactDistance = 1f;
     public Transform tilemapRoot;
 
+
     private Tilemap[] interactTilemaps;
 
     void Awake()
@@ -70,32 +71,50 @@ public class InteractKeys : MonoBehaviour
         shot.GetComponent<GunshotEffect>()?.Init(shootDir);
     }
 
-    private void OnInteract()
+    public LayerMask interactLayer; // im Inspector setzen
+
+private void OnInteract()
+{
+    // 🔹 1. Zuerst GameObjects prüfen
+    Collider2D hit = Physics2D.OverlapCircle(transform.position, interactDistance, interactLayer);
+
+    if (hit != null)
     {
-        if (interactTilemaps == null) return;
+        IInteractable interactable = hit.GetComponent<IInteractable>();
 
-        Vector3 playerPos = transform.position;
-
-        foreach (var tilemap in interactTilemaps)
+        if (interactable != null)
         {
-            Vector3Int playerCell = tilemap.WorldToCell(playerPos);
-            int radius = Mathf.CeilToInt(interactDistance);
+            interactable.Interact(gameObject);
+            return; // Wichtig! Tilemap nicht zusätzlich triggern
+        }
+    }
 
-            for (int x = -radius; x <= radius; x++)
+    // 🔹 2. Danach deine bestehende Tilemap-Logik
+    if (interactTilemaps == null) return;
+
+    Vector3 playerPos = transform.position;
+
+    foreach (var tilemap in interactTilemaps)
+    {
+        Vector3Int playerCell = tilemap.WorldToCell(playerPos);
+        int radius = Mathf.CeilToInt(interactDistance);
+
+        for (int x = -radius; x <= radius; x++)
+        {
+            for (int y = -radius; y <= radius; y++)
             {
-                for (int y = -radius; y <= radius; y++)
+                Vector3Int checkCell = new Vector3Int(playerCell.x + x, playerCell.y + y, playerCell.z);
+
+                TileBase tile = tilemap.GetTile(checkCell);
+
+                if (tile is InteractableTile interactableTile)
                 {
-                    Vector3Int checkCell = new Vector3Int(playerCell.x + x, playerCell.y + y, playerCell.z);
-
-                    TileBase tile = tilemap.GetTile(checkCell);
-
-                    if (tile is InteractableTile interactableTile)
-                    {
-                        interactableTile.OnInteract(checkCell, tilemap, gameObject);
-                        return;
-                    }
+                    interactableTile.OnInteract(checkCell, tilemap, gameObject);
+                    return;
                 }
             }
         }
     }
+}
+
 }
