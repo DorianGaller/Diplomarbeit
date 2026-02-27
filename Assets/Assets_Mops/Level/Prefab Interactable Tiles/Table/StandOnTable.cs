@@ -6,13 +6,15 @@ public class StandOnTable : MonoBehaviour
     public Rigidbody2D playerRb;
     public BoxCollider2D playerCollider;
 
-    public Collider2D tableCollider;   // 👈 NEU
+    public Collider2D tableCollider;
 
     public Transform tablePosition;
     public Transform groundPosition;
 
     public GameObject uiOnTable;
     public GameObject uiOnGround;
+
+    public GameObject extraObject;   // Empty GameObject
 
     private bool isOnTable = false;
 
@@ -33,15 +35,18 @@ public class StandOnTable : MonoBehaviour
 
         playerRb.position = targetPos;
 
-        yield return null; // 1 Frame warten
+        yield return null;
 
         playerCollider.enabled = true;
 
         isOnTable = onTable;
 
-        // 👇 Tisch Collider steuern
         if (tableCollider != null)
             tableCollider.enabled = !isOnTable;
+
+        // 👇 Jetzt wird es aktiviert wenn der Spieler auf dem Tisch ist
+        if (extraObject != null)
+            extraObject.SetActive(isOnTable);
 
         UpdateUI();
     }
