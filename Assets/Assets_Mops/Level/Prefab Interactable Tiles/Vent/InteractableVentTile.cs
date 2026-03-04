@@ -9,11 +9,6 @@ public class InteractableVentTile : InteractableTile
     public TileBase defaultTile;
     public TileBase openedTile;
 
-    [Header("Canvas Settings")]
-    public GameObject canvasToEnable;
-    public GameObject canvasToDisable;
-
-    // Zustand pro Tile Position speichern
     private static Dictionary<Vector3Int, int> ventStates = new();
 
     public override void OnInteract(Vector3Int cellPos, Tilemap tilemap, GameObject player)
@@ -30,31 +25,29 @@ public class InteractableVentTile : InteractableTile
             ventStates[cellPos] = 1;
         }
         else
-{
-    Debug.Log("Spieler geht in Vent");
+        {
+            Debug.Log("Spieler geht in Vent");
 
-    EnterVent();
+            EnterVent();
 
-    if (defaultTile != null)
-        tilemap.SetTile(cellPos, defaultTile);
+            if (defaultTile != null)
+                tilemap.SetTile(cellPos, defaultTile);
 
-    ventStates[cellPos] = 0;
-}
+            ventStates[cellPos] = 0;
+        }
     }
 
     private void EnterVent()
-{
-    VentManager manager = Object.FindFirstObjectByType<VentManager>();
-
-    if (manager != null)
     {
-        manager.ToggleVent();
-    }
-    else
-    {
-        Debug.LogWarning("VentManager nicht gefunden!");
-    }
-}
+        VentManager manager = Object.FindFirstObjectByType<VentManager>();
 
-
+        if (manager != null)
+        {
+            manager.ToggleVent();
+        }
+        else
+        {
+            Debug.LogWarning("VentManager nicht gefunden!");
+        }
+    }
 }

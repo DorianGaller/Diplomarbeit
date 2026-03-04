@@ -10,11 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 97607615688482888, guid: b4a620ad3b1f8af4da5ab440a083b990, type: 3}
       propertyPath: m_Name
-      value: Layout Fight Room Variant
+      value: Layout Escape Room
       objectReference: {fileID: 0}
     - target: {fileID: 97607615688482888, guid: b4a620ad3b1f8af4da5ab440a083b990, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1520657678629928621, guid: b4a620ad3b1f8af4da5ab440a083b990, type: 3}
+      propertyPath: m_Size.x
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 1697004629706155442, guid: b4a620ad3b1f8af4da5ab440a083b990, type: 3}
       propertyPath: m_Tiles.Array.size
@@ -1741,6 +1745,14 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1697004629706155442, guid: b4a620ad3b1f8af4da5ab440a083b990, type: 3}
+      propertyPath: m_TileAssetArray.Array.data[22].m_Data
+      value: 
+      objectReference: {fileID: 11400000, guid: 36d24c819e3ea25449127ab94c58ae86, type: 2}
+    - target: {fileID: 1697004629706155442, guid: b4a620ad3b1f8af4da5ab440a083b990, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[22].m_Data
+      value: 
+      objectReference: {fileID: -1136041955732498063, guid: 7f11364ad8e4998419b41df6a1133067, type: 3}
+    - target: {fileID: 1697004629706155442, guid: b4a620ad3b1f8af4da5ab440a083b990, type: 3}
       propertyPath: m_TileColorArray.Array.data[0].m_RefCount
       value: 952
       objectReference: {fileID: 0}
@@ -1774,11 +1786,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6554815318157563930, guid: b4a620ad3b1f8af4da5ab440a083b990, type: 3}
       propertyPath: m_ChunkCullingBounds.x
-      value: 0.05764073
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6554815318157563930, guid: b4a620ad3b1f8af4da5ab440a083b990, type: 3}
       propertyPath: m_ChunkCullingBounds.y
-      value: 0.036193013
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6571765138536020114, guid: b4a620ad3b1f8af4da5ab440a083b990, type: 3}
+      propertyPath: sceneToLoad
+      value: Base_v2
       objectReference: {fileID: 0}
     - target: {fileID: 8671330837960284257, guid: b4a620ad3b1f8af4da5ab440a083b990, type: 3}
       propertyPath: m_LocalPosition.x

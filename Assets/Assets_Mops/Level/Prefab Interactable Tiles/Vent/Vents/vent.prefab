@@ -11050,9 +11050,9 @@ Tilemap:
   - first: {x: 9, y: -5, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 3
-      m_TileSpriteIndex: 3
-      m_TileMatrixIndex: 0
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 2
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
@@ -11241,23 +11241,23 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 20
     m_Data: {fileID: 11400000, guid: 67a121e9c3201a94293fb21bbf5f8b82, type: 2}
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: d431361d40669a347af2f11ab4b80c08, type: 2}
   - m_RefCount: 9
     m_Data: {fileID: 11400000, guid: c237295131b42f2418869656ca8edf53, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: b7f30e3530f8c8b4abf0815fa8e7cb26, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 20
     m_Data: {fileID: 1796935918, guid: 08c37d63197182b4cb0f2de739223455, type: 3}
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: -2531409990896325441, guid: ac550a7312aa54c40912b7fe6631f1f7, type: 3}
   - m_RefCount: 9
     m_Data: {fileID: -88670392, guid: 08c37d63197182b4cb0f2de739223455, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 1101604868, guid: 08c37d63197182b4cb0f2de739223455, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
-  - m_RefCount: 30
+  - m_RefCount: 29
     m_Data:
       e00: 1
       e01: 0
@@ -11283,6 +11283,24 @@ Tilemap:
       e03: 0
       e10: -1
       e11: 0
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - m_RefCount: 1
+    m_Data:
+      e00: -1
+      e01: 0.00000008742278
+      e02: 0
+      e03: 0
+      e10: -0.00000008742278
+      e11: -1
       e12: 0
       e13: 0
       e20: 0
@@ -15090,7 +15108,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7475967306775050699
 Transform:
   m_ObjectHideFlags: 0
@@ -15099,7 +15117,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8015741519148838757}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.14452, y: -6.35183, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

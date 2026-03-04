@@ -17,6 +17,7 @@ public class StandOnTable : MonoBehaviour
     public GameObject extraObject;   // Empty GameObject
 
     private bool isOnTable = false;
+    private bool lastTableState = false;   // Wichtig für B-Lösung
 
     public void MovePlayerToTable()
     {
@@ -44,9 +45,15 @@ public class StandOnTable : MonoBehaviour
         if (tableCollider != null)
             tableCollider.enabled = !isOnTable;
 
-        // 👇 Jetzt wird es aktiviert wenn der Spieler auf dem Tisch ist
-        if (extraObject != null)
-            extraObject.SetActive(isOnTable);
+        // ✅ Nur beim Zustandswechsel reagieren
+        if (extraObject != null && isOnTable != lastTableState)
+        {
+            if (isOnTable)
+                extraObject.SetActive(true);
+            // Beim Runtergehen NICHT automatisch deaktivieren
+
+            lastTableState = isOnTable;
+        }
 
         UpdateUI();
     }

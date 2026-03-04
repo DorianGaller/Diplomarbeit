@@ -1,16 +1,19 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class VentManager : MonoBehaviour
 {
-    [Header("Canvas On Enter Vent")]
-    public GameObject canvasToEnableOnEnter;
-    public GameObject canvasToDisableOnEnter;
+    [Header("ON ENTER VENT")]
+    public List<GameObject> enableOnEnter = new List<GameObject>();
+    public List<GameObject> disableOnEnter = new List<GameObject>();
 
-    [Header("Canvas On Exit Vent")]
-    public GameObject canvasToEnableOnExit;
-    public GameObject canvasToDisableOnExit;
+    [Header("ON EXIT VENT")]
+    public List<GameObject> enableOnExit = new List<GameObject>();
+    public List<GameObject> disableOnExit = new List<GameObject>();
 
     private bool isInVent = false;
+
+    public bool IsInVent => isInVent;
 
     public void ToggleVent()
     {
@@ -28,24 +31,29 @@ public class VentManager : MonoBehaviour
 
     private void EnterVent()
     {
-        if (canvasToDisableOnEnter != null)
-            canvasToDisableOnEnter.SetActive(false);
-
-        if (canvasToEnableOnEnter != null)
-            canvasToEnableOnEnter.SetActive(true);
-
+        ToggleObjects(enableOnEnter, disableOnEnter);
         ClearUIFocus();
     }
 
     private void ExitVent()
     {
-        if (canvasToDisableOnExit != null)
-            canvasToDisableOnExit.SetActive(false);
-
-        if (canvasToEnableOnExit != null)
-            canvasToEnableOnExit.SetActive(true);
-
+        ToggleObjects(enableOnExit, disableOnExit);
         ClearUIFocus();
+    }
+
+    private void ToggleObjects(List<GameObject> enableList, List<GameObject> disableList)
+    {
+        foreach (GameObject obj in enableList)
+        {
+            if (obj != null)
+                obj.SetActive(true);
+        }
+
+        foreach (GameObject obj in disableList)
+        {
+            if (obj != null)
+                obj.SetActive(false);
+        }
     }
 
     private void ClearUIFocus()
