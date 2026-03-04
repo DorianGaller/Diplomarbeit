@@ -37,5 +37,3 @@ MonoBehaviour:
   tileId: ventclosed
   defaultTile: {fileID: 11400000}
   openedTile: {fileID: 11400000, guid: a6bde444975fa9e4e8600fcb8eda5088, type: 2}
-  canvasToEnable: {fileID: 5256169390699063532, guid: 5a84024d742a5154583fafc3bee7a1b4, type: 3}
-  canvasToDisable: {fileID: 4513823067064600789, guid: c3395eb2790b19e48a86aad2bae90737, type: 3}

@@ -37,5 +37,3 @@ MonoBehaviour:
   tileId: ventopen
   defaultTile: {fileID: 11400000}
   openedTile: {fileID: 11400000}
-  canvasToEnable: {fileID: 4513823067064600789, guid: c3395eb2790b19e48a86aad2bae90737, type: 3}
-  canvasToDisable: {fileID: 8015741519148838757, guid: eb9818a5c01c07b418fdbb41fa4a8a2d, type: 3}
