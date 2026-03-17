@@ -14,10 +14,13 @@ public class StandOnTable : MonoBehaviour
     public GameObject uiOnTable;
     public GameObject uiOnGround;
 
-    public GameObject extraObject;   // Empty GameObject
+    //public GameObject extraObject;
+
+    // 🔹 Movement Script hier reinziehen (z.B. PlayerMove)
+    public MonoBehaviour movementScript;
 
     private bool isOnTable = false;
-    private bool lastTableState = false;   // Wichtig für B-Lösung
+    private bool lastTableState = false;
 
     public void MovePlayerToTable()
     {
@@ -31,9 +34,11 @@ public class StandOnTable : MonoBehaviour
 
     private IEnumerator MovePlayer(Vector2 targetPos, bool onTable)
     {
+        // Bewegung stoppen
         playerRb.linearVelocity = Vector2.zero;
         playerCollider.enabled = false;
 
+        // Position setzen
         playerRb.position = targetPos;
 
         yield return null;
@@ -42,18 +47,22 @@ public class StandOnTable : MonoBehaviour
 
         isOnTable = onTable;
 
+        // 🔹 Movement deaktivieren/aktivieren
+        if (movementScript != null)
+            movementScript.enabled = !isOnTable;
+
+        // 🔹 Tisch-Kollision deaktivieren wenn drauf
         if (tableCollider != null)
             tableCollider.enabled = !isOnTable;
 
-        // ✅ Nur beim Zustandswechsel reagieren
-        if (extraObject != null && isOnTable != lastTableState)
-        {
-            if (isOnTable)
-                extraObject.SetActive(true);
-            // Beim Runtergehen NICHT automatisch deaktivieren
+        // 🔹 Extra-Objekt nur beim Zustandswechsel aktivieren
+        //if (extraObject != null && isOnTable != lastTableState)
+        //{
+            //if (isOnTable)
+                //extraObject.SetActive(true);
 
-            lastTableState = isOnTable;
-        }
+            //lastTableState = isOnTable;
+        //}
 
         UpdateUI();
     }

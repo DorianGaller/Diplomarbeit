@@ -44,13 +44,18 @@ public class MakePushable : MonoBehaviour
 
     // Optional: Loslassen
     public void DropObject()
+{
+    if (isPickedUp && targetObject != null)
     {
-        if (isPickedUp && targetObject != null)
-        {
-            targetObject.transform.SetParent(null);
-            rb.bodyType = RigidbodyType2D.Dynamic; // wieder physisch korrekt
-            isPickedUp = false;
-            Debug.Log(targetObject.name + " wurde losgelassen!");
-        }
+        targetObject.transform.SetParent(null);
+
+        // 🔹 Tisch bleibt kinematic!
+        rb.bodyType = RigidbodyType2D.Kinematic;
+        rb.linearVelocity = Vector2.zero;
+        rb.angularVelocity = 0f;
+
+        isPickedUp = false;
+        Debug.Log(targetObject.name + " wurde losgelassen!");
     }
+}
 }
