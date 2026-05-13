@@ -25,7 +25,7 @@ public class InteractKeys : MonoBehaviour
     void Awake()
     {
         gunshotAction = new InputAction("Gunshot", InputActionType.Button, "<Mouse>/leftButton");
-        interactAction = new InputAction("Interact", InputActionType.Button, "<Keyboard>/e");
+        interactAction = new InputAction("Interact", InputActionType.Button, "<Keyboard>/f");
 
         CacheTilemaps();
     }
