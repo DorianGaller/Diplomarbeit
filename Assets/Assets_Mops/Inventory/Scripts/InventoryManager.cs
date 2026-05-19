@@ -5,7 +5,9 @@ public class InventoryManager : MonoBehaviour
     public GameObject InventoryMenu;
     private bool menuActivated;
     public ItemSlot[] itemSlot;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    public ItemSO[] itemSOs;
+
     void Start()
     {
        
@@ -30,17 +32,46 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription)
+    public void UseItem(string itemName)
     {
-        for (int i = 0; i < itemSlot.Length; i++)
+        for (int i = 0; i < itemSOs.Length; i++)
         {
-            if(itemSlot[i].isFull == false)
+            if (itemSOs[i].itemName == itemName)
             {
-                itemSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription);
-                return;
+                itemSOs[i].UseItem();
             }
         }
     }
+
+
+    public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription)
+{
+    // Erst vorhandene Slots mit gleichem Item befüllen (Stacking)
+    for (int i = 0; i < itemSlot.Length; i++)
+    {
+        if (!itemSlot[i].isFull && itemSlot[i].itemName == itemName)
+        {
+            int leftOverItems = itemSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription);
+            if (leftOverItems > 0)
+                leftOverItems = AddItem(itemName, leftOverItems, itemSprite, itemDescription);
+            return leftOverItems;
+        }
+    }
+
+    // Dann leere Slots suchen
+    for (int i = 0; i < itemSlot.Length; i++)
+    {
+        if (itemSlot[i].quantity == 0)
+        {
+            int leftOverItems = itemSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription);
+            if (leftOverItems > 0)
+                leftOverItems = AddItem(itemName, leftOverItems, itemSprite, itemDescription);
+            return leftOverItems;
+        }
+    }
+
+    return quantity;
+}
 
 
     public void DeselectAllSlots()
