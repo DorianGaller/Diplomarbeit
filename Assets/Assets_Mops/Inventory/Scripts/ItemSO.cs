@@ -11,12 +11,14 @@ public class ItemSO : ScriptableObject
     public AttributeToChange attributeToChange = new AttributeToChange();
     public int amountToChangeAttribute;
 
-    public void UseItem()
+    public bool UseItem()
     {
         if(statToChange == StatToChange.health)
         {
+
             Debug.Log("Health um " + amountToChangeStat + " erhöhen");
         }
+        return true;
     }
 
 

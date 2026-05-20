@@ -92,8 +92,20 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     {
         if (thisItemSelected)
         {
-            inventoryManager.UseItem(itemName);
+            bool usable = inventoryManager.UseItem(itemName);
+            if (usable)
+            {
+            this.quantity -= 1;
+            quantityText.text = this.quantity.ToString();
+            if (this.quantity <= 0)
+            {
+                EmptySlot();
+            } 
+            }
         }
+
+
+        else{
         inventoryManager.DeselectAllSlots();
         selectedShader.SetActive(true);
         thisItemSelected = true;
@@ -101,11 +113,46 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         ItemDescriptionText.text = itemDescription;
         itemDescriptionImage.sprite = itemSprite;
         if (itemDescriptionImage.sprite == null)
+        {
             itemDescriptionImage.sprite = emptySprite;
+        }
+        }
+    }
+
+    private void EmptySlot()
+    {
+        quantityText.enabled = false;
+        itemImage.sprite = emptySprite;
+
+        ItemDescriptionNameText.text = "";
+        ItemDescriptionText.text = "";
+        itemDescriptionImage.sprite = emptySprite;
     }
 
     public void OnRightClick()
     {
-    
+        GameObject itemToDrop = new GameObject(itemName);
+        Item newItem = itemToDrop.AddComponent<Item>();
+        newItem.quantity = 1;
+        newItem.itemName = itemName;
+        newItem.sprite = itemSprite;
+        newItem.itemDescription = itemDescription;
+
+        SpriteRenderer sr = itemToDrop.AddComponent<SpriteRenderer>();
+        sr.sprite = itemSprite;
+        sr.sortingOrder = 5;
+        
+
+        itemToDrop.AddComponent<BoxCollider2D>();
+
+        itemToDrop.transform.position = GameObject.FindWithTag("Player").transform.position + new Vector3(2, 0, 0);
+        itemToDrop.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+
+        this.quantity -= 1;
+            quantityText.text = this.quantity.ToString();
+            if (this.quantity <= 0)
+            {
+                EmptySlot();
+            } 
     }
 }
