@@ -2,79 +2,113 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    [Header("Inventory UI")]
     public GameObject InventoryMenu;
-    private bool menuActivated;
     public ItemSlot[] itemSlot;
-
     public ItemSO[] itemSOs;
 
-    void Start()
-    {
-       
-    }
+    [Header("Panels")]
+    public GameObject chestPanel;           // Chest_Panel – nur bei Truhe
+    public GameObject inventoryDescription; // InventoryDescription – nur bei E
 
-    // Update is called once per frame
+    private bool menuActivated;
+    public bool chestOpen;
+
     void Update()
     {
-         if (Input.GetButtonDown("Inventory") && menuActivated)
+        if (Input.GetButtonDown("Inventory") && !chestOpen)
         {
-            Time.timeScale = 1;
-            InventoryMenu.SetActive(false);
-            menuActivated = false;
-            DeselectAllSlots();
+            if (menuActivated)
+                CloseInventoryOnly();
+            else
+                OpenInventoryOnly();
         }
-        
-        else if (Input.GetButtonDown("Inventory") && !menuActivated)
+
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Time.timeScale = 0;
-            InventoryMenu.SetActive(true);
-            menuActivated = true;
+            if (chestOpen)
+                CloseChestView();
+            else if (menuActivated)
+                CloseInventoryOnly();
         }
     }
+
+    // ── NUR INVENTAR (Taste E) ────────────────────────────
+
+    private void OpenInventoryOnly()
+    {
+        menuActivated = true;
+        Time.timeScale = 0f;
+        InventoryMenu.SetActive(true);
+        if (chestPanel != null)           chestPanel.SetActive(false);
+        if (inventoryDescription != null) inventoryDescription.SetActive(true);
+    }
+
+    private void CloseInventoryOnly()
+    {
+        menuActivated = false;
+        Time.timeScale = 1f;
+        InventoryMenu.SetActive(false);
+        DeselectAllSlots();
+    }
+
+    // ── TRUHE + INVENTAR (Shelf-Button) ──────────────────
+
+    public void OpenChestView()
+    {
+        chestOpen     = true;
+        menuActivated = true;
+        Time.timeScale = 0f;
+        InventoryMenu.SetActive(true);
+        if (chestPanel != null)           chestPanel.SetActive(true);
+        if (inventoryDescription != null) inventoryDescription.SetActive(false);
+    }
+
+    public void CloseChestView()
+    {
+        chestOpen     = false;
+        menuActivated = false;
+        Time.timeScale = 1f;
+        InventoryMenu.SetActive(false);
+        if (chestPanel != null)           chestPanel.SetActive(false);
+        if (inventoryDescription != null) inventoryDescription.SetActive(false);
+        DeselectAllSlots();
+    }
+
+    // ── BESTEHENDE METHODEN ───────────────────────────────
 
     public bool UseItem(string itemName)
     {
         for (int i = 0; i < itemSOs.Length; i++)
         {
             if (itemSOs[i].itemName == itemName)
-            {
-                bool usable = itemSOs[i].UseItem();
-                return usable;
-            }
+                return itemSOs[i].UseItem();
         }
         return false;
     }
 
-
     public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription)
-{
-    // Erst vorhandene Slots mit gleichem Item befüllen (Stacking)
-    for (int i = 0; i < itemSlot.Length; i++)
     {
-        if (!itemSlot[i].isFull && itemSlot[i].itemName == itemName)
+        for (int i = 0; i < itemSlot.Length; i++)
         {
-            int leftOverItems = itemSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription);
-            if (leftOverItems > 0)
-                leftOverItems = AddItem(itemName, leftOverItems, itemSprite, itemDescription);
-            return leftOverItems;
+            if (!itemSlot[i].isFull && itemSlot[i].itemName == itemName)
+            {
+                int left = itemSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription);
+                if (left > 0) left = AddItem(itemName, left, itemSprite, itemDescription);
+                return left;
+            }
         }
-    }
-
-    // Dann leere Slots suchen
-    for (int i = 0; i < itemSlot.Length; i++)
-    {
-        if (itemSlot[i].quantity == 0)
+        for (int i = 0; i < itemSlot.Length; i++)
         {
-            int leftOverItems = itemSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription);
-            if (leftOverItems > 0)
-                leftOverItems = AddItem(itemName, leftOverItems, itemSprite, itemDescription);
-            return leftOverItems;
+            if (itemSlot[i].quantity == 0)
+            {
+                int left = itemSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription);
+                if (left > 0) left = AddItem(itemName, left, itemSprite, itemDescription);
+                return left;
+            }
         }
+        return quantity;
     }
-
-    return quantity;
-}
-
 
     public void DeselectAllSlots()
     {

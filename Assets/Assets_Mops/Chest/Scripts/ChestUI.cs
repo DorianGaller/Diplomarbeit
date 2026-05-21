@@ -4,8 +4,12 @@ using TMPro;
 
 public class ChestUI : MonoBehaviour
 {
-    public ChestSlot[] chestSlots;          // Alle Slot-GameObjects im ChestCanvas
-    public Button closeButton;              // Schliessen-Button im Canvas
+    [Header("Chest Slots")]
+    public ChestSlot[] chestSlots;
+
+    [Header("Buttons")]
+    public Button closeButton;
+    public Button takeAllButton;
 
     private Chest currentChest;
     private InventoryManager inventoryManager;
@@ -13,32 +17,38 @@ public class ChestUI : MonoBehaviour
     void Awake()
     {
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
+
+        // Slots automatisch aus Kindobjekten holen falls nicht manuell zugewiesen
+        if (chestSlots == null || chestSlots.Length == 0)
+            chestSlots = GetComponentsInChildren<ChestSlot>(true);
     }
 
     void Start()
     {
-        if (closeButton != null)
-            closeButton.onClick.AddListener(Close);
+        if (closeButton   != null) closeButton.onClick.AddListener(Close);
+        if (takeAllButton != null) takeAllButton.onClick.AddListener(TakeAll);
     }
 
-    public void LoadChest(Chest chest)
+    public void LoadAndOpen(Chest chest)
     {
         currentChest = chest;
 
-        // Alle Slots leeren
         for (int i = 0; i < chestSlots.Length; i++)
             chestSlots[i].ClearSlot();
 
-        // Truhen-Items in Slots laden
         Chest.ChestItem[] items = chest.chestItems;
+        if (items == null) return;
+
         for (int i = 0; i < items.Length && i < chestSlots.Length; i++)
         {
-            if (items[i].quantity > 0)
+            if (items[i] != null && items[i].quantity > 0)
                 chestSlots[i].SetItem(items[i], i, this);
         }
+
+        inventoryManager.OpenChestView();
     }
 
-    // Wird von ChestSlot aufgerufen wenn der Spieler ein Item nimmt
+    // Rechtsklick: ganzen Stack nehmen
     public void TakeItem(int slotIndex)
     {
         if (currentChest == null) return;
@@ -46,7 +56,8 @@ public class ChestUI : MonoBehaviour
         Chest.ChestItem item = currentChest.chestItems[slotIndex];
         if (item.quantity <= 0) return;
 
-        int leftOver = inventoryManager.AddItem(item.itemName, item.quantity, item.itemSprite, item.itemDescription);
+        int leftOver = inventoryManager.AddItem(
+            item.itemName, item.quantity, item.itemSprite, item.itemDescription);
 
         if (leftOver <= 0)
         {
@@ -55,15 +66,40 @@ public class ChestUI : MonoBehaviour
         }
         else
         {
-            // Nur teilweise ins Inventar gepasst
             currentChest.chestItems[slotIndex].quantity = leftOver;
             chestSlots[slotIndex].UpdateQuantity(leftOver);
         }
     }
 
-    // "Alles nehmen"-Button
+    // Linksklick: 1 Stück nehmen
+    public void TakeOneItem(int slotIndex)
+    {
+        if (currentChest == null) return;
+
+        Chest.ChestItem item = currentChest.chestItems[slotIndex];
+        if (item.quantity <= 0) return;
+
+        int leftOver = inventoryManager.AddItem(
+            item.itemName, 1, item.itemSprite, item.itemDescription);
+
+        if (leftOver <= 0)
+        {
+            item.quantity -= 1;
+            if (item.quantity <= 0)
+            {
+                currentChest.RemoveItem(slotIndex);
+                chestSlots[slotIndex].ClearSlot();
+            }
+            else
+            {
+                chestSlots[slotIndex].UpdateQuantity(item.quantity);
+            }
+        }
+    }
+
     public void TakeAll()
     {
+        if (currentChest == null) return;
         for (int i = 0; i < currentChest.chestItems.Length; i++)
             TakeItem(i);
     }

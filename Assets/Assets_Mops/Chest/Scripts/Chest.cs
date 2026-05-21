@@ -11,36 +11,52 @@ public class Chest : MonoBehaviour
         [TextArea] public string itemDescription;
     }
 
+    [Header("Items manuell befüllen")]
     public ChestItem[] chestItems;
-    public GameObject chestCanvas;       // Das ChestCanvas GameObject
-    private ChestUI chestUI;
+
+    [Header("ODER: ItemSO Assets reinziehen")]
+    public ItemSO[] itemSOs;          // ItemSO direkt reinziehen
+    public int[] itemSOQuantities;    // Menge pro ItemSO
+
+    public ChestUI chestUI;
     private bool isOpen = false;
 
-    void Start()
+    private void Start()
     {
-        chestUI = chestCanvas.GetComponent<ChestUI>();
-        chestCanvas.SetActive(false);
+        // ItemSOs automatisch in chestItems umwandeln
+        if (itemSOs != null && itemSOs.Length > 0)
+        {
+            chestItems = new ChestItem[itemSOs.Length];
+            for (int i = 0; i < itemSOs.Length; i++)
+            {
+                if (itemSOs[i] == null) continue;
+                chestItems[i] = new ChestItem
+                {
+                    itemName        = itemSOs[i].itemName,
+                    quantity        = (itemSOQuantities != null && i < itemSOQuantities.Length)
+                                        ? itemSOQuantities[i] : 1,
+                    itemSprite      = itemSOs[i].itemSprite,
+                    itemDescription = itemSOs[i].itemDescription
+                };
+            }
+        }
     }
 
-    // Wird vom Button "Pick up" / "Shelf" etc. aufgerufen
     public void OpenChest()
     {
         if (isOpen) return;
-
         isOpen = true;
-        Time.timeScale = 0f;
-        chestCanvas.SetActive(true);
-        chestUI.LoadChest(this);
+        chestUI.LoadAndOpen(this);
     }
 
     public void CloseChest()
     {
         isOpen = false;
-        Time.timeScale = 1f;
-        chestCanvas.SetActive(false);
+        GameObject.Find("InventoryCanvas")
+            .GetComponent<InventoryManager>()
+            .CloseChestView();
     }
 
-    // Entfernt ein Item aus der Truhe nachdem es ins Inventar übertragen wurde
     public void RemoveItem(int index)
     {
         if (index < 0 || index >= chestItems.Length) return;

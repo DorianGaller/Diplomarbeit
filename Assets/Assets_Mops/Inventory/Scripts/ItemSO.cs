@@ -1,10 +1,12 @@
 using UnityEngine;
 
-
 [CreateAssetMenu]
 public class ItemSO : ScriptableObject
 {
     public string itemName;
+    public Sprite itemSprite;
+    [TextArea] public string itemDescription;
+
     public StatToChange statToChange = new StatToChange();
     public int amountToChangeStat;
 
@@ -15,15 +17,10 @@ public class ItemSO : ScriptableObject
     {
         if(statToChange == StatToChange.health)
         {
-
             Debug.Log("Health um " + amountToChangeStat + " erhöhen");
         }
         return true;
     }
-
-
-
-
 
     public enum StatToChange
     {
