@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class Chest : MonoBehaviour
 {
     [System.Serializable]
@@ -9,22 +8,22 @@ public class Chest : MonoBehaviour
         public int quantity;
         public Sprite itemSprite;
         [TextArea] public string itemDescription;
+        public ItemSO itemSO;
     }
 
     [Header("Items manuell befüllen")]
     public ChestItem[] chestItems;
-
     [Header("ODER: ItemSO Assets reinziehen")]
-    public ItemSO[] itemSOs;          // ItemSO direkt reinziehen
-    public int[] itemSOQuantities;    // Menge pro ItemSO
-
+    public ItemSO[] itemSOs;
+    public int[] itemSOQuantities;
     public ChestUI chestUI;
+
     private bool isOpen = false;
 
-    private void Start()
+    private void Awake()
     {
-        // ItemSOs automatisch in chestItems umwandeln
-        if (itemSOs != null && itemSOs.Length > 0)
+        if (itemSOs != null && itemSOs.Length > 0
+        && (chestItems == null || chestItems.Length == 0))
         {
             chestItems = new ChestItem[itemSOs.Length];
             for (int i = 0; i < itemSOs.Length; i++)
@@ -34,9 +33,10 @@ public class Chest : MonoBehaviour
                 {
                     itemName        = itemSOs[i].itemName,
                     quantity        = (itemSOQuantities != null && i < itemSOQuantities.Length)
-                                        ? itemSOQuantities[i] : 1,
+                                      ? itemSOQuantities[i] : 1,
                     itemSprite      = itemSOs[i].itemSprite,
-                    itemDescription = itemSOs[i].itemDescription
+                    itemDescription = itemSOs[i].itemDescription,
+                    itemSO          = itemSOs[i]
                 };
             }
         }
