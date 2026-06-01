@@ -297,6 +297,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1148621983508724109, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148621983508724109, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_ReferencePixelsPerUnit
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2043248121099713614, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
       propertyPath: m_Name
       value: Main Character
@@ -2927,6 +2935,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
