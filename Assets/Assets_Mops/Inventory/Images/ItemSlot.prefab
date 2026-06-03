@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 197049220734475866}
   - component: {fileID: 1585436808241935554}
   - component: {fileID: 7760246515614460853}
+  - component: {fileID: 9088125169108263097}
   m_Layer: 5
   m_Name: ItemSlot
   m_TagString: Untagged
@@ -179,6 +180,27 @@ MonoBehaviour:
   ItemDescriptionNameText: {fileID: 0}
   ItemDescriptionText: {fileID: 0}
   selectedShader: {fileID: 3920637299752612913}
+  thisItemSelected: 0
+--- !u!114 &9088125169108263097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5611422177665675146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12a33080bf808418a85b4145549560d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChestSlot
+  itemName: 
+  quantity: 0
+  itemSprite: {fileID: 0}
+  itemDescription: 
+  emptySprite: {fileID: 0}
+  itemImage: {fileID: 0}
+  quantityText: {fileID: 0}
+  selectedShader: {fileID: 0}
   thisItemSelected: 0
 --- !u!1 &6342012836326615315
 GameObject:
@@ -322,7 +344,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b4ea4ad6f984943d280a7ac6ca87b5c9, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -389,6 +411,6 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 5.6, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
