@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Schere
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemName: Stahlschere
-  statToChange: 1
-  amountToChangeStat: 3
-  attributeToChange: 3
+  itemSprite: {fileID: -794509159284225636, guid: b034807b4a62d424ea9a840f9405f636, type: 3}
+  itemDescription: 
+  statToChange: 0
+  amountToChangeStat: 0
+  attributeToChange: 1
   amountToChangeAttribute: 2
+  itemType: 6

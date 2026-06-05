@@ -17,12 +17,16 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Update()
-    {
-        float inputX = Input.GetAxisRaw("Horizontal");
-        float inputY = Input.GetAxisRaw("Vertical");
+{
+    float inputX = Input.GetAxisRaw("Horizontal");
+    float inputY = Input.GetAxisRaw("Vertical");
 
-        direction = new Vector2(inputX, inputY).normalized;
-    }
+    direction = new Vector2(inputX, inputY).normalized;
+
+    // Sicherheit: explizit auf zero wenn keine Eingabe
+    if (inputX == 0 && inputY == 0)
+        direction = Vector2.zero;
+}
 
     void FixedUpdate()
     {

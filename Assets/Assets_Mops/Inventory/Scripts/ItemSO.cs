@@ -13,6 +13,8 @@ public class ItemSO : ScriptableObject
     public AttributeToChange attributeToChange = new AttributeToChange();
     public int amountToChangeAttribute;
 
+    public ItemType itemType;
+
     public bool UseItem()
     {
         if(statToChange == StatToChange.health)

@@ -14,6 +14,8 @@ public class ChestUI : MonoBehaviour
     private Chest currentChest;
     private InventoryManager inventoryManager;
 
+    public ItemType itemType;
+
     void Awake()
     {
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
@@ -57,7 +59,7 @@ public class ChestUI : MonoBehaviour
         if (item.quantity <= 0) return;
 
         int leftOver = inventoryManager.AddItem(
-            item.itemName, item.quantity, item.itemSprite, item.itemDescription);
+            item.itemName, item.quantity, item.itemSprite, item.itemDescription, item.itemType);
 
         if (leftOver <= 0)
         {
@@ -80,7 +82,7 @@ public class ChestUI : MonoBehaviour
         if (item.quantity <= 0) return;
 
         int leftOver = inventoryManager.AddItem(
-            item.itemName, 1, item.itemSprite, item.itemDescription);
+            item.itemName, 1, item.itemSprite, item.itemDescription, item.itemType);
 
         if (leftOver <= 0)
         {

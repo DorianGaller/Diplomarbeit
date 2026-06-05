@@ -9,6 +9,7 @@ public class Chest : MonoBehaviour
         public Sprite itemSprite;
         [TextArea] public string itemDescription;
         public ItemSO itemSO;
+        public ItemType itemType;
     }
 
     [Header("Items manuell befüllen")]
@@ -36,7 +37,8 @@ public class Chest : MonoBehaviour
                                       ? itemSOQuantities[i] : 1,
                     itemSprite      = itemSOs[i].itemSprite,
                     itemDescription = itemSOs[i].itemDescription,
-                    itemSO          = itemSOs[i]
+                    itemSO          = itemSOs[i],
+                    itemType        = itemSOs[i].itemType
                 };
             }
         }

@@ -17,6 +17,8 @@ public class Item : MonoBehaviour
 
     private InventoryManager inventoryManager;
 
+    public ItemType itemType;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
 {
@@ -30,7 +32,7 @@ public class Item : MonoBehaviour
 {
     if(collision.gameObject.tag == "Player")
     {
-        int leftOverItems = inventoryManager.AddItem(itemName, quantity, sprite, itemDescription);
+        int leftOverItems = inventoryManager.AddItem(itemName, quantity, sprite, itemDescription, itemType);
         if (leftOverItems <= 0)
             Destroy(gameObject);
         else
