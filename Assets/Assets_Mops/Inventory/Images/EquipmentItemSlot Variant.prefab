@@ -74,11 +74,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7467687884236381575, guid: d1b4bb0b8834bb84b91c0851c2954764, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -203.80371
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7467687884236381575, guid: d1b4bb0b8834bb84b91c0851c2954764, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 261.67346
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7467687884236381575, guid: d1b4bb0b8834bb84b91c0851c2954764, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -98,5 +98,59 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 8557179569938997321, guid: d1b4bb0b8834bb84b91c0851c2954764, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5611422177665675146, guid: d1b4bb0b8834bb84b91c0851c2954764, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8323201450422284429}
   m_SourcePrefab: {fileID: 100100000, guid: d1b4bb0b8834bb84b91c0851c2954764, type: 3}
+--- !u!1 &3702087897804376447 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5611422177665675146, guid: d1b4bb0b8834bb84b91c0851c2954764, type: 3}
+  m_PrefabInstance: {fileID: 9133216384441247477}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8323201450422284429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3702087897804376447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66961c7501d70bf4bbfe9e07415ccce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EquipmentSlot
+  itemName: 
+  quantity: 0
+  itemSprite: {fileID: 0}
+  isFull: 0
+  itemDescription: 
+  emptySprite: {fileID: -2584541018943888324, guid: d1f5673ae2c42454cb3f3d26c20ff763, type: 3}
+  itemType: 0
+  itemImage: {fileID: 5845107709241893646}
+  headSlot: {fileID: 0}
+  armsSlot: {fileID: 0}
+  bodySlot: {fileID: 0}
+  legsSlot: {fileID: 0}
+  mainHandSlot: {fileID: 0}
+  offHandSlot: {fileID: 0}
+  relicSlot: {fileID: 0}
+  feetSlot: {fileID: 0}
+  selectedShader: {fileID: 5248757569924846276}
+  thisItemSelected: 0
+--- !u!1 &5248757569924846276 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3920637299752612913, guid: d1b4bb0b8834bb84b91c0851c2954764, type: 3}
+  m_PrefabInstance: {fileID: 9133216384441247477}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5845107709241893646 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3432391178021455355, guid: d1b4bb0b8834bb84b91c0851c2954764, type: 3}
+  m_PrefabInstance: {fileID: 9133216384441247477}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image

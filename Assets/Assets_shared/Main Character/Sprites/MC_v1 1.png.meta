@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4b4007485c43655418432cf3f41cd840
+guid: f8b42a639fcff1e44a65d97401d76060
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -96,19 +96,32 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MC_v1_0
+      name: Mc_Hoodie
       rect:
         serializedVersion: 2
         x: 271
-        y: 79
-        width: 482
-        height: 866
+        y: 603
+        width: 484
+        height: 340
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c67d7c03fdb406348b334edebf10190a
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      MC_v1_0: -3736725999292283911
+      Mc_Hoodie: -3736725999292283911
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
