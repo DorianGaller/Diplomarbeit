@@ -624,9 +624,9 @@ RectTransform:
   - {fileID: 2581517188329646778}
   - {fileID: 6845456088082934402}
   - {fileID: 3601065402357031406}
-  - {fileID: 223266914837480730}
   - {fileID: 5672891721125393009}
   - {fileID: 8794927763175513804}
+  - {fileID: 223266914837480730}
   m_Father: {fileID: 5041464404965156794}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1956,6 +1956,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -2162,7 +2163,7 @@ MonoBehaviour:
   groundPosition: {fileID: 121086644162619330}
   uiOnTable: {fileID: 0}
   uiOnGround: {fileID: 0}
-  extraObject: {fileID: 1409166565620152504}
+  movementScript: {fileID: 0}
 --- !u!1 &8415794672105718338
 GameObject:
   m_ObjectHideFlags: 0
