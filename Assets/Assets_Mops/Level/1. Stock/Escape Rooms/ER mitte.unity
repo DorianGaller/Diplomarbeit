@@ -2763,9 +2763,21 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 28302092}
+    - target: {fileID: 8476670172117773284, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 7635e772c561eb640ac010fe476e72f5, type: 3}
+    - target: {fileID: 8476670172117773284, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9172255874949554188, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: m_Name
       value: Chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 9172255874949554188, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
