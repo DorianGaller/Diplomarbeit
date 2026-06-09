@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ec57e6961c643e4e8452dd00ddf118f, type: 3}
   m_Name: Schere
   m_EditorClassIdentifier: Assembly-CSharp::EquipmentSO
-  itemName: 
-  attack: 0
+  itemName: Stahlschere
+  attack: 2
   defense: 0
   agility: 0
+  itemSprite: {fileID: -794509159284225636, guid: b034807b4a62d424ea9a840f9405f636, type: 3}
