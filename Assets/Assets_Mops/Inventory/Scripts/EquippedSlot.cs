@@ -24,10 +24,12 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
     private string itemDescription;
 
     private InventoryManager inventoryManager;
+    private EquipmentSOLibary equipmentSOLibary;
 
     private void Start()
     {
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
+        equipmentSOLibary = GameObject.Find("InventoryCanvas").GetComponent<EquipmentSOLibary>();
     }
 
     //OTHER VARIABLES//
@@ -61,8 +63,15 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
             inventoryManager.DeselectAllSlots();
             selectedShader.SetActive(true);
             thisItemSelected = true;
+            for (int i = 0; i < equipmentSOLibary.equipmentSO.Length; i++)
+            {
+                if (equipmentSOLibary.equipmentSO[i].itemName == itemName)
+                    equipmentSOLibary.equipmentSO[i].PreviewEquipment();
+            }
         }
     }
+
+
 
     void OnRightClick()
     {
@@ -88,6 +97,13 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
         //Update the Display Image//
         playerDisplayImage.sprite = this.itemSprite;
 
+        //Update the Player Stats//
+        for (int i = 0; i < equipmentSOLibary.equipmentSO.Length; i++)
+        {
+            if (equipmentSOLibary.equipmentSO[i].itemName == itemName)
+                equipmentSOLibary.equipmentSO[i].EquipItem();
+        }
+
         slotInUse = true;
 
     }
@@ -109,6 +125,15 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
 
         //Reset the Display Image//
         playerDisplayImage.sprite = emptySprite;
+
+        //Update the Player Stats//
+        for (int i = 0; i < equipmentSOLibary.equipmentSO.Length; i++)
+        {
+            if (equipmentSOLibary.equipmentSO[i].itemName == itemName)
+                equipmentSOLibary.equipmentSO[i].UnequipItem();
+        }
+
+        GameObject.Find("StatManager").GetComponent<PlayerStats>().TurnOffPreviewStats();
 
         slotInUse = false;
     }

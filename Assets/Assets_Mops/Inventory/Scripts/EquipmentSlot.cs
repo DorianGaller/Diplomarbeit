@@ -28,10 +28,12 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
     public bool thisItemSelected;
 
     private InventoryManager inventoryManager;
+    private EquipmentSOLibary equipmentSOLibary;
 
     private void Start()
     {
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
+        equipmentSOLibary = GameObject.Find("InventoryCanvas").GetComponent<EquipmentSOLibary>();
     }
 
     public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType)
@@ -62,6 +64,8 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
 
     public void OnLeftClick()
     {
+
+
         // Im Truhen-Modus: nur auswählen, kein Benutzen, keine Description
         if (inventoryManager.chestOpen)
         {
@@ -71,24 +75,39 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
             return;
         }
 
-        if (thisItemSelected)
+        if (isFull)
         {
-            EquipGear();
+            if (thisItemSelected)
+            {
+                EquipGear();
+            }
+            else
+            {
+                inventoryManager.DeselectAllSlots();
+                selectedShader.SetActive(true);
+                thisItemSelected = true;
+                for (int i = 0; i < equipmentSOLibary.equipmentSO.Length; i++)
+                {
+                    if (equipmentSOLibary.equipmentSO[i].itemName == itemName)
+                        equipmentSOLibary.equipmentSO[i].PreviewEquipment();
+                }
+
+            }
         }
         else
         {
+            GameObject.Find("StatManager").GetComponent<PlayerStats>().TurnOffPreviewStats();
             inventoryManager.DeselectAllSlots();
             selectedShader.SetActive(true);
             thisItemSelected = true;
-
-            // Description nur setzen wenn sie aktiv ist
-            
         }
+
+
     }
 
     private void EquipGear()
     {
-        if(itemType == ItemType.head)
+        if (itemType == ItemType.head)
             headSlot.EquipGear(itemSprite, itemName, itemDescription);
         else if (itemType == ItemType.arms)
             armsSlot.EquipGear(itemSprite, itemName, itemDescription);
@@ -109,12 +128,12 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
     }
 
     private void EmptySlot()
-{
-    itemImage.sprite = emptySprite;
-    isFull = false;
-    itemName = "";
-    quantity = 0; // ✅ jetzt wird der Slot wieder als leer erkannt
-}
+    {
+        itemImage.sprite = emptySprite;
+        isFull = false;
+        itemName = "";
+        quantity = 0; // ✅ jetzt wird der Slot wieder als leer erkannt
+    }
 
     public void OnRightClick()
     {
