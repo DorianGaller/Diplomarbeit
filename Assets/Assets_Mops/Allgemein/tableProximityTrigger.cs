@@ -3,49 +3,43 @@ using UnityEngine;
 public class TableProximityTrigger : MonoBehaviour
 {
     [Header("References")]
-    [Tooltip("Das InfoText GameObject (child des Table)")]
     public GameObject infoText;
 
     [Header("Canvas References")]
-    [Tooltip("Canvas der geschlossen wird, wenn der Spieler weit genug weg ist")]
     public GameObject canvasToClose;
-
-    [Tooltip("Canvas der geöffnet wird, wenn der Spieler weit genug weg ist (optional)")]
     public GameObject canvasToOpen;
 
     [Header("Settings")]
-    [Tooltip("Radius, ab dem der InfoText eingeblendet wird")]
     public float activationRadius = 2f;
 
     private Transform playerTransform;
+    private Rigidbody2D rb;
     private bool isInRange = false;
 
     void Start()
     {
-        // Player über Tag finden
+        rb = GetComponent<Rigidbody2D>(); // Rigidbody holen
+
         GameObject player = GameObject.FindWithTag("Player");
         if (player != null)
-        {
             playerTransform = player.transform;
-        }
         else
-        {
-            Debug.LogWarning("TableProximityTrigger: Kein GameObject mit Tag 'Player' gefunden!");
-        }
+            Debug.LogWarning("TableProximityTrigger: Kein Player gefunden!");
 
-        // InfoText zu Beginn deaktivieren
         if (infoText != null)
             infoText.SetActive(false);
     }
 
-    void Update()
+    void FixedUpdate() // ← FixedUpdate statt Update
     {
         if (playerTransform == null || infoText == null) return;
 
-        float distance = Vector3.Distance(transform.position, playerTransform.position);
+        // Rigidbody-Position statt transform.position
+        Vector2 tablePos = rb != null ? rb.position : (Vector2)transform.position;
+        float distance = Vector2.Distance(tablePos, (Vector2)playerTransform.position);
+
         bool playerNearby = distance <= activationRadius;
 
-        // Nur bei Zustandsänderung reagieren (Performance-Optimierung)
         if (playerNearby && !isInRange)
         {
             isInRange = true;
@@ -69,16 +63,13 @@ public class TableProximityTrigger : MonoBehaviour
         if (infoText != null)
             infoText.SetActive(false);
 
-        // Canvas schließen
         if (canvasToClose != null)
             canvasToClose.SetActive(false);
 
-        // Canvas öffnen (optional)
         if (canvasToOpen != null)
             canvasToOpen.SetActive(true);
     }
 
-    // Radius im Scene-View visualisieren
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;

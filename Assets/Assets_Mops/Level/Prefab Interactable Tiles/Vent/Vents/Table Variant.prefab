@@ -645,10 +645,31 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7316072328002598049, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6056658273053375405}
-    - targetCorrespondingSourceObject: {fileID: 7316072328002598049, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 4410033723477352629, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7351045752209008798}
+      addedObject: {fileID: 6487826611082082531}
   m_SourcePrefab: {fileID: 100100000, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
+--- !u!1 &3472534333601701561 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4410033723477352629, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
+  m_PrefabInstance: {fileID: 937731524289183244}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6487826611082082531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3472534333601701561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fb6726c3edde41caadb81851c02c7b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TableProximityTrigger
+  infoText: {fileID: 1953355575541026925}
+  canvasToClose: {fileID: 6988281496541430586}
+  canvasToOpen: {fileID: 0}
+  activationRadius: 3
 --- !u!1 &6988281496541430586 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7924119985012129078, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
@@ -682,22 +703,6 @@ MonoBehaviour:
   itemSOs: []
   itemSOQuantities: 
   chestUI: {fileID: 0}
---- !u!114 &7351045752209008798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7531308164421634733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fb6726c3edde41caadb81851c02c7b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TableProximityTrigger
-  infoText: {fileID: 1953355575541026925}
-  canvasToClose: {fileID: 6988281496541430586}
-  canvasToOpen: {fileID: 0}
-  activationRadius: 3
 --- !u!4 &9022401514757602837 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8085508917970567193, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}

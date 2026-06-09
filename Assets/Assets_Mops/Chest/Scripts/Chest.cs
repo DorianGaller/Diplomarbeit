@@ -1,4 +1,5 @@
 using UnityEngine;
+
 public class Chest : MonoBehaviour
 {
     [System.Serializable]
@@ -14,31 +15,36 @@ public class Chest : MonoBehaviour
 
     [Header("Items manuell befüllen")]
     public ChestItem[] chestItems;
-    [Header("ODER: ItemSO Assets reinziehen")]
-    public ItemSO[] itemSOs;
-    public int[] itemSOQuantities;
-    public ChestUI chestUI;
 
+    [Header("GameObjects reinziehen")]
+    public GameObject[] itemObjects;        // ← GameObjects statt ItemSOs
+    public int[] itemObjectQuantities;
+
+    public ChestUI chestUI;
     private bool isOpen = false;
 
     private void Awake()
     {
-        if (itemSOs != null && itemSOs.Length > 0
-        && (chestItems == null || chestItems.Length == 0))
+        if (itemObjects != null && itemObjects.Length > 0
+            && (chestItems == null || chestItems.Length == 0))
         {
-            chestItems = new ChestItem[itemSOs.Length];
-            for (int i = 0; i < itemSOs.Length; i++)
+            chestItems = new ChestItem[itemObjects.Length];
+            for (int i = 0; i < itemObjects.Length; i++)
             {
-                if (itemSOs[i] == null) continue;
+                if (itemObjects[i] == null) continue;
+
+                // ItemSO vom GameObject holen (falls vorhanden)
+                ItemSO so = itemObjects[i].GetComponent<ItemSO>();
+
                 chestItems[i] = new ChestItem
                 {
-                    itemName        = itemSOs[i].itemName,
-                    quantity        = (itemSOQuantities != null && i < itemSOQuantities.Length)
-                                      ? itemSOQuantities[i] : 1,
-                    itemSprite      = itemSOs[i].itemSprite,
-                    itemDescription = itemSOs[i].itemDescription,
-                    itemSO          = itemSOs[i],
-                    itemType        = itemSOs[i].itemType
+                    itemName        = so != null ? so.itemName : itemObjects[i].name,
+                    quantity        = (itemObjectQuantities != null && i < itemObjectQuantities.Length)
+                                      ? itemObjectQuantities[i] : 1,
+                    itemSprite      = so != null ? so.itemSprite : null,
+                    itemDescription = so != null ? so.itemDescription : "",
+                    itemSO          = so,
+                    itemType        = so != null ? so.itemType : default
                 };
             }
         }
