@@ -17,7 +17,7 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
 
     //SLOT DATA//
     [SerializeField]
-    private  ItemType itemType = new ItemType();
+    private ItemType itemType = new ItemType();
 
     private Sprite itemSprite;
     private string itemName;
@@ -56,7 +56,7 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
     void OnLeftClick()
     {
         if (thisItemSelected && slotInUse)
-           UnEquipGear();
+            UnEquipGear();
 
         else
         {
@@ -80,24 +80,20 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
 
     public void EquipGear(Sprite itemSprite, string itemName, string itemDescription)
     {
-
         if (slotInUse)
             UnEquipGear();
-        
 
-        //Update Image//
         this.itemSprite = itemSprite;
         slotImage.sprite = this.itemSprite;
         slotName.enabled = false;
 
-        //Update Data//
         this.itemName = itemName;
         this.itemDescription = itemDescription;
 
-        //Update the Display Image//
-        playerDisplayImage.sprite = this.itemSprite;
+        // ← Null-Check damit es nicht crasht wenn nicht zugewiesen
+        if (playerDisplayImage != null)
+            playerDisplayImage.sprite = this.itemSprite;
 
-        //Update the Player Stats//
         for (int i = 0; i < equipmentSOLibary.equipmentSO.Length; i++)
         {
             if (equipmentSOLibary.equipmentSO[i].itemName == itemName)
@@ -105,38 +101,36 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
         }
 
         slotInUse = true;
-
     }
 
     public void UnEquipGear()
-    {
-        inventoryManager.DeselectAllSlots();
+{
+    inventoryManager.DeselectAllSlots();
+    inventoryManager.AddItem(itemName, 1, itemSprite, itemDescription, itemType);
 
-        inventoryManager.AddItem(itemName, 1, itemSprite, itemDescription, itemType);
+    //Update Image//
+    this.itemSprite = emptySprite;
+    slotImage.sprite = this.itemSprite;
+    slotName.enabled = true;
 
-        //Update Image//
-        this.itemSprite = emptySprite;
-        slotImage.sprite = this.itemSprite;
-        slotName.enabled = true;
-
-        //Reset Data//
-        this.itemName = null;
-        this.itemDescription = null;
-
-        //Reset the Display Image//
+    //Reset the Display Image//
+    if (playerDisplayImage != null)
         playerDisplayImage.sprite = emptySprite;
 
-        //Update the Player Stats//
-        for (int i = 0; i < equipmentSOLibary.equipmentSO.Length; i++)
-        {
-            if (equipmentSOLibary.equipmentSO[i].itemName == itemName)
-                equipmentSOLibary.equipmentSO[i].UnequipItem();
-        }
-
-        GameObject.Find("StatManager").GetComponent<PlayerStats>().TurnOffPreviewStats();
-
-        slotInUse = false;
+    //Update the Player Stats//  ← ERST Stats abziehen (itemName noch gesetzt)
+    for (int i = 0; i < equipmentSOLibary.equipmentSO.Length; i++)
+    {
+        if (equipmentSOLibary.equipmentSO[i].itemName == itemName)
+            equipmentSOLibary.equipmentSO[i].UnequipItem();
     }
+
+    //Reset Data//  ← DANN erst nullen
+    this.itemName = null;
+    this.itemDescription = null;
+
+    GameObject.Find("StatManager").GetComponent<PlayerStats>().TurnOffPreviewStats();
+    slotInUse = false;
+}
 
 
 }
