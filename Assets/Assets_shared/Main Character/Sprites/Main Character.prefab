@@ -1136,6 +1136,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2af8db872787e86478df5b365ba24c84, type: 2}
   chestPanel: {fileID: 4952699836058817185}
   inventoryDescription: {fileID: 2317773029957226909}
+  menuTabs: {fileID: 0}
+  inventoryTabSelected: {fileID: 0}
+  equipmentTabSelected: {fileID: 0}
   chestOpen: 0
 --- !u!114 &2057089784905418344
 MonoBehaviour:
@@ -2797,6 +2800,7 @@ MonoBehaviour:
   xpMultiplier: 1.5
   xpBar: {fileID: 4467264713225187696}
   currentXPText: {fileID: 7970588256194440168}
+  levelText: {fileID: 0}
 --- !u!114 &3200699827105705918
 MonoBehaviour:
   m_ObjectHideFlags: 0

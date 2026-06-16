@@ -907,10 +907,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87813601db34cb742a8401652fea5194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorInteraction
-  targetSceneName: FightRoomSample
+  targetSceneName: MaterialRoomSample
   interactionRange: 2
   requiredItemName: Key
-  mainHandSlot: {fileID: 101211084}
+  mainHandSlot: {fileID: 774474784}
   interactionHint: {fileID: 905516568}
 --- !u!212 &609686003
 SpriteRenderer:
@@ -1033,6 +1033,17 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 4980458342398326995, guid: 6aec6fb2591dadd4597ea0f7db8a7958, type: 3}
   m_PrefabInstance: {fileID: 4097954470319217889}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &774474784 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1109867598249203757, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+  m_PrefabInstance: {fileID: 70555078}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b76c1c3e2c078ab418c4423d85d2227d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EquippedSlot
 --- !u!1 &905516568
 GameObject:
   m_ObjectHideFlags: 0
@@ -1118,7 +1129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WireInteraction
   requiredItemName: Scissors
   interactionRange: 2
-  mainHandSlot: {fileID: 101211084}
+  mainHandSlot: {fileID: 0}
   interactionHint: {fileID: 25956073}
 --- !u!61 &951240173
 BoxCollider2D:
@@ -8928,6 +8939,30 @@ PrefabInstance:
       propertyPath: chestUI
       value: 
       objectReference: {fileID: 423660089}
+    - target: {fileID: 6056658273053375405, guid: 83f749c745fd3d64ea15b0e39ca19fbe, type: 3}
+      propertyPath: chestItems.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6056658273053375405, guid: 83f749c745fd3d64ea15b0e39ca19fbe, type: 3}
+      propertyPath: chestItems.Array.data[0].itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 2af8db872787e86478df5b365ba24c84, type: 2}
+    - target: {fileID: 6056658273053375405, guid: 83f749c745fd3d64ea15b0e39ca19fbe, type: 3}
+      propertyPath: chestItems.Array.data[0].itemName
+      value: Key
+      objectReference: {fileID: 0}
+    - target: {fileID: 6056658273053375405, guid: 83f749c745fd3d64ea15b0e39ca19fbe, type: 3}
+      propertyPath: chestItems.Array.data[0].itemType
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6056658273053375405, guid: 83f749c745fd3d64ea15b0e39ca19fbe, type: 3}
+      propertyPath: chestItems.Array.data[0].quantity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6056658273053375405, guid: 83f749c745fd3d64ea15b0e39ca19fbe, type: 3}
+      propertyPath: chestItems.Array.data[0].itemSprite
+      value: 
+      objectReference: {fileID: 3080884697315639671, guid: 0fd681eeb6d0e69449d56c0d3bc2e930, type: 3}
     - target: {fileID: 6153216381495971113, guid: 83f749c745fd3d64ea15b0e39ca19fbe, type: 3}
       propertyPath: playerRb
       value: 
@@ -9095,4 +9130,3 @@ SceneRoots:
   - {fileID: 420075640}
   - {fileID: 1936391535}
   - {fileID: 1828594666}
-
