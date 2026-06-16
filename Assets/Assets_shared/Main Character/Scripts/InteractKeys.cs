@@ -7,7 +7,7 @@ public class InteractKeys : MonoBehaviour
     private InputAction gunshotAction;
     private InputAction interactAction;
 
-    public GameObject gunshotPrefab;
+    // gunshotPrefab entfernt — kommt jetzt vom WeaponHolder
     public Transform shootPoint;
 
     [Header("Tilemap Interaction")]
@@ -15,17 +15,24 @@ public class InteractKeys : MonoBehaviour
     public Transform tilemapRoot;
 
     private Tilemap[] interactTilemaps;
-
-    public LayerMask interactLayer; // im Inspector setzen
+    public LayerMask interactLayer;
 
     // 🔹 Flags für zusätzliche Kontrolle
     public bool canShoot = true;
     public bool canInteract = true;
 
+    // 🔹 Schussrate-Tracking
+    private float nextFireTime = 0f;
+
+    // 🔹 Referenz auf WeaponHolder (selbes GameObject)
+    private WeaponHolder weaponHolder;
+
     void Awake()
     {
         gunshotAction = new InputAction("Gunshot", InputActionType.Button, "<Mouse>/leftButton");
         interactAction = new InputAction("Interact", InputActionType.Button, "<Keyboard>/f");
+
+        weaponHolder = GetComponent<WeaponHolder>();
 
         CacheTilemaps();
     }
@@ -37,7 +44,6 @@ public class InteractKeys : MonoBehaviour
             Debug.LogError("Tilemap-Root fehlt!");
             return;
         }
-
         interactTilemaps = tilemapRoot.GetComponentsInChildren<Tilemap>(true);
     }
 
@@ -53,27 +59,31 @@ public class InteractKeys : MonoBehaviour
         EnableInteraction(false);
     }
 
-    // 🔹 Separate Steuerung
     public void EnableShooting(bool enable)
     {
-        if (enable)
-            gunshotAction.Enable();
-        else
-            gunshotAction.Disable();
+        if (enable) gunshotAction.Enable();
+        else gunshotAction.Disable();
     }
 
     public void EnableInteraction(bool enable)
     {
-        if (enable)
-            interactAction.Enable();
-        else
-            interactAction.Disable();
+        if (enable) interactAction.Enable();
+        else interactAction.Disable();
     }
 
     void Update()
     {
-        if (canShoot && gunshotAction.WasPressedThisFrame())
-            OnGunshot();
+        if (canShoot)
+        {
+            WeaponSO weapon = weaponHolder?.CurrentWeapon;
+
+            bool shouldShoot = weapon != null && weapon.firingMode == FiringMode.FullAuto
+                ? gunshotAction.IsPressed()           // FullAuto: Halten
+                : gunshotAction.WasPressedThisFrame(); // SemiAuto: einmal pro Klick
+
+            if (shouldShoot)
+                OnGunshot();
+        }
 
         if (canInteract && interactAction.WasPressedThisFrame())
             OnInteract();
@@ -81,16 +91,41 @@ public class InteractKeys : MonoBehaviour
 
     private void OnGunshot()
     {
-        if (!gunshotPrefab || !shootPoint) return;
+        if (!shootPoint) return;
 
+        // 🔹 Waffe vom WeaponHolder holen
+        WeaponSO weapon = weaponHolder?.CurrentWeapon;
+        if (weapon == null || weapon.bulletPrefab == null) return;
+
+        // 🔹 Schussrate prüfen
+        if (Time.time < nextFireTime) return;
+        nextFireTime = Time.time + weapon.fireRate;
+
+        // Richtung berechnen
         Vector3 mouseScreenPos = Mouse.current.position.ReadValue();
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
         mouseWorldPos.z = 0f;
+        Vector2 baseDir = (mouseWorldPos - shootPoint.position).normalized;
 
-        Vector2 shootDir = (mouseWorldPos - shootPoint.position).normalized;
+        // 🔹 Mehrere Bullets (Shotgun etc.) mit optionalem Spread
+        for (int i = 0; i < weapon.bulletsPerShot; i++)
+        {
+            Vector2 shootDir = baseDir;
 
-        GameObject shot = Instantiate(gunshotPrefab, shootPoint.position, Quaternion.identity);
-        shot.GetComponent<GunshotEffect>()?.Init(shootDir);
+            if (weapon.spreadAngle > 0f)
+            {
+                float halfSpread = weapon.spreadAngle / 2f;
+                // Bullets gleichmäßig verteilen wenn bulletsPerShot > 1, sonst random
+                float angle = weapon.bulletsPerShot > 1
+                    ? Mathf.Lerp(-halfSpread, halfSpread, (float)i / (weapon.bulletsPerShot - 1))
+                    : Random.Range(-halfSpread, halfSpread);
+
+                shootDir = Quaternion.Euler(0, 0, angle) * baseDir;
+            }
+
+            GameObject shot = Instantiate(weapon.bulletPrefab, shootPoint.position, Quaternion.identity);
+            shot.GetComponent<GunshotEffect>()?.Init(shootDir);
+        }
     }
 
     private void OnInteract()
@@ -101,11 +136,10 @@ public class InteractKeys : MonoBehaviour
         if (hit != null)
         {
             IInteractable interactable = hit.GetComponent<IInteractable>();
-
             if (interactable != null)
             {
                 interactable.Interact(gameObject);
-                return; // Wichtig! Tilemap nicht zusätzlich triggern
+                return;
             }
         }
 
@@ -124,7 +158,6 @@ public class InteractKeys : MonoBehaviour
                 for (int y = -radius; y <= radius; y++)
                 {
                     Vector3Int checkCell = new Vector3Int(playerCell.x + x, playerCell.y + y, playerCell.z);
-
                     TileBase tile = tilemap.GetTile(checkCell);
 
                     if (tile is InteractableTile interactableTile)

@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1881864760225552263}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.04, y: 0, z: 0}
+  m_LocalPosition: {x: 3.97, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -307,6 +307,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 199270873518465768, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4304404675832404231, guid: 2310b637ba271974da4614bafb4759f8, type: 3}
     - target: {fileID: 223266914837480730, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -52.8
@@ -544,9 +548,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1362203160682870004, guid: b4ea4ad6f984943d280a7ac6ca87b5c9, type: 2}
     - target: {fileID: 7292713176438164489, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
+      propertyPath: m_Size.x
+      value: 6.9890757
+      objectReference: {fileID: 0}
+    - target: {fileID: 7292713176438164489, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
+      propertyPath: m_Size.y
+      value: 4.884803
+      objectReference: {fileID: 0}
+    - target: {fileID: 7292713176438164489, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 558d151a34afd47ca987bf35028f0d1c, type: 2}
+    - target: {fileID: 7292713176438164489, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.08093405
+      objectReference: {fileID: 0}
+    - target: {fileID: 7292713176438164489, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.16186678
+      objectReference: {fileID: 0}
+    - target: {fileID: 7292713176438164489, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 6.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 7292713176438164489, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 4.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7316072328002598049, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
       propertyPath: m_Name
       value: Table Variant
@@ -608,6 +636,14 @@ PrefabInstance:
     - target: {fileID: 8006284371630833236, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: Chest, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8085508917970567193, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8085508917970567193, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8101120016844112036, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
       propertyPath: m_Layer
@@ -692,16 +728,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d42fb4903da84428803b4978da33581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Chest
-  chestItems:
-  - itemName: Stahlschere
-    quantity: 1
-    itemSprite: {fileID: -794509159284225636, guid: b034807b4a62d424ea9a840f9405f636, type: 3}
-    itemDescription: Sieht zwar ein wenig veraltet aus jedoch ist sie immer noch
-      eine sehr starke Schere die selbst Eisen durchschneiden kann!
-    itemSO: {fileID: 11400000, guid: eddd477e0893dcd4384a394341de6989, type: 2}
-    itemType: 6
-  itemSOs: []
-  itemSOQuantities: 
+  chestItems: []
+  itemObjects: []
+  itemObjectQuantities: 
   chestUI: {fileID: 0}
 --- !u!4 &9022401514757602837 stripped
 Transform:
