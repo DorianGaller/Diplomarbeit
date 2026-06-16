@@ -15,6 +15,11 @@ public class InventoryManager : MonoBehaviour
     public GameObject chestPanel;
     public GameObject inventoryDescription;
 
+    [Header("Menu Tabs")]
+    public GameObject menuTabs;                  // Das Tab-Bar-GameObject (immer sichtbar wenn ein Menü offen)
+    public GameObject inventoryTabSelected;      // SelectedPanel auf dem Inventory-Tab-Button
+    public GameObject equipmentTabSelected;      // SelectedPanel auf dem Equipment-Tab-Button
+
     private bool menuActivated;
     public bool chestOpen;
 
@@ -27,7 +32,25 @@ public class InventoryManager : MonoBehaviour
             Equipment();
     }
 
-    void Inventory()
+    // ── TAB HELPER ────────────────────────────────────────
+
+    private void SetTabState(bool inventoryActive, bool equipmentActive)
+    {
+        bool anyOpen = inventoryActive || equipmentActive;
+
+        if (menuTabs != null)
+            menuTabs.SetActive(anyOpen);
+
+        if (inventoryTabSelected != null)
+            inventoryTabSelected.SetActive(inventoryActive);
+
+        if (equipmentTabSelected != null)
+            equipmentTabSelected.SetActive(equipmentActive);
+    }
+
+    // ── INPUT HANDLER ─────────────────────────────────────
+
+    public void Inventory()
     {
         if (Input.GetButtonDown("Inventory") && !chestOpen)
         {
@@ -56,7 +79,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    void Equipment()
+    public void Equipment()
     {
         if (Input.GetButtonDown("EquipmentMenu") && !chestOpen)
         {
@@ -70,6 +93,7 @@ public class InventoryManager : MonoBehaviour
                 Time.timeScale = 0f;
                 EquipmentMenu.SetActive(true);
                 InventoryMenu.SetActive(false);
+                SetTabState(false, true);
             }
         }
 
@@ -88,29 +112,42 @@ public class InventoryManager : MonoBehaviour
 
     // ── NUR INVENTAR (Taste E) ────────────────────────────
 
-    private void OpenInventoryOnly()
+    public void OpenInventoryOnly()
     {
         menuActivated = true;
         Time.timeScale = 0f;
         InventoryMenu.SetActive(true);
+        EquipmentMenu.SetActive(false);
         if (chestPanel != null) chestPanel.SetActive(false);
         if (inventoryDescription != null) inventoryDescription.SetActive(true);
+        SetTabState(true, false);
     }
 
-    private void CloseInventoryOnly()
+    public void CloseInventoryOnly()
     {
         menuActivated = false;
         Time.timeScale = 1f;
         InventoryMenu.SetActive(false);
         DeselectAllSlots();
+        SetTabState(false, false);
     }
 
-    private void CloseEquipmentOnly()
+    public void CloseEquipmentOnly()
     {
         menuActivated = false;
         Time.timeScale = 1f;
         EquipmentMenu.SetActive(false);
         DeselectAllSlots();
+        SetTabState(false, false);
+    }
+
+    public void OpenEquipmentOnly()
+    {
+        menuActivated = true;
+        Time.timeScale = 0f;
+        EquipmentMenu.SetActive(true);
+        InventoryMenu.SetActive(false);
+        SetTabState(false, true);
     }
 
     // ── TRUHE + INVENTAR (Shelf-Button) ──────────────────
@@ -123,6 +160,7 @@ public class InventoryManager : MonoBehaviour
         InventoryMenu.SetActive(true);
         if (chestPanel != null) chestPanel.SetActive(true);
         if (inventoryDescription != null) inventoryDescription.SetActive(false);
+        SetTabState(true, false);
     }
 
     public void CloseChestView()
@@ -134,6 +172,7 @@ public class InventoryManager : MonoBehaviour
         if (chestPanel != null) chestPanel.SetActive(false);
         if (inventoryDescription != null) inventoryDescription.SetActive(false);
         DeselectAllSlots();
+        SetTabState(false, false);
     }
 
     // ── BESTEHENDE METHODEN ───────────────────────────────
@@ -163,7 +202,6 @@ public class InventoryManager : MonoBehaviour
             }
             return quantity;
         }
-
         else
         {
             for (int i = 0; i < equipmentSlot.Length; i++)
@@ -177,10 +215,6 @@ public class InventoryManager : MonoBehaviour
             }
             return quantity;
         }
-
-
-
-
     }
 
     public void DeselectAllSlots()
@@ -191,7 +225,6 @@ public class InventoryManager : MonoBehaviour
             itemSlot[i].thisItemSelected = false;
         }
 
-        // Equipment Slots auch deselektieren
         for (int i = 0; i < equipmentSlot.Length; i++)
         {
             equipmentSlot[i].selectedShader.SetActive(false);
@@ -204,7 +237,6 @@ public class InventoryManager : MonoBehaviour
             equippedSlot[i].thisItemSelected = false;
         }
     }
-
 }
 
 public enum ItemType

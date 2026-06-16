@@ -492,17 +492,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
---- !u!114 &101211084 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1109867598249203757, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
-  m_PrefabInstance: {fileID: 70555078}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b76c1c3e2c078ab418c4423d85d2227d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EquippedSlot
 --- !u!1 &162195292 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4513823067064600789, guid: c3395eb2790b19e48a86aad2bae90737, type: 3}
@@ -9106,3 +9095,4 @@ SceneRoots:
   - {fileID: 420075640}
   - {fileID: 1936391535}
   - {fileID: 1828594666}
+
