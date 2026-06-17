@@ -1133,7 +1133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WireInteraction
   requiredItemName: Scissors
   interactionRange: 2
-  mainHandSlot: {fileID: 0}
+  mainHandSlot: {fileID: 774474784}
   interactionHint: {fileID: 25956073}
 --- !u!61 &951240173
 BoxCollider2D:
@@ -1730,6 +1730,10 @@ PrefabInstance:
     - target: {fileID: 8729137991380365691, guid: 6aec6fb2591dadd4597ea0f7db8a7958, type: 3}
       propertyPath: chestItems.Array.data[0].itemName
       value: Pistol
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729137991380365691, guid: 6aec6fb2591dadd4597ea0f7db8a7958, type: 3}
+      propertyPath: chestItems.Array.data[0].itemType
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8729137991380365691, guid: 6aec6fb2591dadd4597ea0f7db8a7958, type: 3}
       propertyPath: chestItems.Array.data[0].quantity
