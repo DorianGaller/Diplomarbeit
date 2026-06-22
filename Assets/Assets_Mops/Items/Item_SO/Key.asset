@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Key
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemName: Key
-  itemSprite: {fileID: 3080884697315639671, guid: 0fd681eeb6d0e69449d56c0d3bc2e930, type: 3}
+  itemSprite: {fileID: -4458500022245972414, guid: fa5224f2394c94544a4afda1ff46789e, type: 3}
   itemDescription: A Key that could fit a door
   statToChange: 0
   amountToChangeStat: 0

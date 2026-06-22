@@ -12,7 +12,7 @@ public class InteractKeys : MonoBehaviour
 
     [Header("Tilemap Interaction")]
     public float interactDistance = 1f;
-    public Transform tilemapRoot;
+    //public Transform tilemapRoot;
 
     private Tilemap[] interactTilemaps;
     public LayerMask interactLayer;
@@ -38,14 +38,25 @@ public class InteractKeys : MonoBehaviour
     }
 
     void CacheTilemaps()
+{
+    GameObject[] tilemapObjects = GameObject.FindGameObjectsWithTag("Tilemap");
+
+    if (tilemapObjects.Length == 0)
     {
-        if (tilemapRoot == null)
-        {
-            Debug.LogError("Tilemap-Root fehlt!");
-            return;
-        }
-        interactTilemaps = tilemapRoot.GetComponentsInChildren<Tilemap>(true);
+        Debug.LogWarning("Keine GameObjects mit Tag 'Tilemap' gefunden!");
+        return;
     }
+
+    var tilemapList = new System.Collections.Generic.List<Tilemap>();
+
+    foreach (var go in tilemapObjects)
+    {
+        // Tilemap auf dem GameObject selbst oder in Kindern suchen
+        tilemapList.AddRange(go.GetComponentsInChildren<Tilemap>(true));
+    }
+
+    interactTilemaps = tilemapList.ToArray();
+}
 
     void OnEnable()
     {

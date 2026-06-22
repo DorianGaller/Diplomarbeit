@@ -2840,7 +2840,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InteractKeys
   shootPoint: {fileID: 4242395614401709344}
   interactDistance: 2
-  tilemapRoot: {fileID: 0}
   interactLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -5682,7 +5681,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Lvl 100
+  m_text: 'Lvl: 1'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b4ea4ad6f984943d280a7ac6ca87b5c9, type: 2}
   m_sharedMaterial: {fileID: -1362203160682870004, guid: b4ea4ad6f984943d280a7ac6ca87b5c9, type: 2}
@@ -6566,7 +6565,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0/100
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b4ea4ad6f984943d280a7ac6ca87b5c9, type: 2}
   m_sharedMaterial: {fileID: -1362203160682870004, guid: b4ea4ad6f984943d280a7ac6ca87b5c9, type: 2}

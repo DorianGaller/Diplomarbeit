@@ -16,4 +16,4 @@ MonoBehaviour:
   attack: 0
   defense: 0
   agility: 0
-  itemSprite: {fileID: 3080884697315639671, guid: 0fd681eeb6d0e69449d56c0d3bc2e930, type: 3}
+  itemSprite: {fileID: -4458500022245972414, guid: fa5224f2394c94544a4afda1ff46789e, type: 3}

@@ -327,10 +327,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3962857957983281837, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
-      propertyPath: m_text
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4280072793956631689, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -345,14 +341,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4280072793956631689, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4293849516927386753, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4759400720460500399, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5083929939709167806, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
@@ -387,10 +375,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6879230591946879207, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
-      propertyPath: tilemapRoot
-      value: 
-      objectReference: {fileID: 420075640}
     - target: {fileID: 6898874285924036903, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -691,7 +675,7 @@ GameObject:
   - component: {fileID: 420075640}
   m_Layer: 0
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: Tilemap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -899,14 +883,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609686000}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -20.55, y: 1.3400002, z: -2}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -20.87, y: 1.3400002, z: -2}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 905516569}
   m_Father: {fileID: 1111236299}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &609686002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1766,7 +1750,7 @@ PrefabInstance:
     - target: {fileID: 8729137991380365691, guid: 6aec6fb2591dadd4597ea0f7db8a7958, type: 3}
       propertyPath: chestItems.Array.data[1].itemSprite
       value: 
-      objectReference: {fileID: 3080884697315639671, guid: 0fd681eeb6d0e69449d56c0d3bc2e930, type: 3}
+      objectReference: {fileID: -4458500022245972414, guid: fa5224f2394c94544a4afda1ff46789e, type: 3}
     - target: {fileID: 8729137991380365691, guid: 6aec6fb2591dadd4597ea0f7db8a7958, type: 3}
       propertyPath: chestItems.Array.data[0].itemDescription
       value: Nice Gun but is a bit old!
