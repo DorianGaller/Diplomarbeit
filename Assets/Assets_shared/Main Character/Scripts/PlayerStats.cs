@@ -1,55 +1,63 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
 public class PlayerStats : MonoBehaviour
 {
-    public int attack, defense, agility;
-
+public int attack, defense, agility;
+public int coins;
     [SerializeField]
-    private TMP_Text attackText, defenseText, agilityText;
-
+private TMP_Text attackText, defenseText, agilityText;
     [SerializeField]
-    private TMP_Text attackPreText, defensePreText, agilityPreText;
-
+private TMP_Text coinsText;
     [SerializeField]
-    private Image previewImage;
-
+private TMP_Text attackPreText, defensePreText, agilityPreText;
     [SerializeField]
-    private GameObject selectedItemStats;
-
+private Image previewImage;
     [SerializeField]
-    private GameObject selcteedItemImage;
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+private GameObject selectedItemStats;
+    [SerializeField]
+private GameObject selcteedItemImage;
+// Start is called once before the first execution of Update after the MonoBehaviour is created
+void Start()
     {
-        UpdateEquipmentStats();
+UpdateEquipmentStats();
+UpdateCoinsDisplay();
     }
-
-    public void UpdateEquipmentStats()
+public void UpdateEquipmentStats()
     {
-        attackText.text = attack.ToString();
-        defenseText.text = defense.ToString();
-        agilityText.text = agility.ToString();
+attackText.text = attack.ToString();
+defenseText.text = defense.ToString();
+agilityText.text = agility.ToString();
     }
-
-    public void PreviewStats(int attack, int defense, int agility, Sprite itemSprite)
+public void UpdateCoinsDisplay()
     {
-        attackPreText.text = attack.ToString();
-        defensePreText.text = defense.ToString();
-        agilityPreText.text = agility.ToString();
-
-        previewImage.sprite = itemSprite;
-
-        selectedItemStats.SetActive(true);
-        selcteedItemImage.SetActive(true);
+if (coinsText != null)
+coinsText.text = coins.ToString();
     }
-
-    public void TurnOffPreviewStats()
+public void AddCoins(int amount)
     {
-        selectedItemStats.SetActive(false);
-        selcteedItemImage.SetActive(false);
+coins += amount;
+UpdateCoinsDisplay();
+    }
+public bool SpendCoins(int amount)
+    {
+if (coins < amount) return false;
+coins -= amount;
+UpdateCoinsDisplay();
+return true;
+    }
+public void PreviewStats(int attack, int defense, int agility, Sprite itemSprite)
+    {
+attackPreText.text = attack.ToString();
+defensePreText.text = defense.ToString();
+agilityPreText.text = agility.ToString();
+previewImage.sprite = itemSprite;
+selectedItemStats.SetActive(true);
+selcteedItemImage.SetActive(true);
+    }
+public void TurnOffPreviewStats()
+    {
+selectedItemStats.SetActive(false);
+selcteedItemImage.SetActive(false);
     }
 }

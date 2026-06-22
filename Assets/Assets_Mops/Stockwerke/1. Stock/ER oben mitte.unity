@@ -8904,6 +8904,10 @@ PrefabInstance:
       propertyPath: playerCollider
       value: 
       objectReference: {fileID: 1467794629}
+    - target: {fileID: 6988281496541430586, guid: 83f749c745fd3d64ea15b0e39ca19fbe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7070498504910569560, guid: 83f749c745fd3d64ea15b0e39ca19fbe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
