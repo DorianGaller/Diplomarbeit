@@ -14,7 +14,9 @@ public class PlayerLevel : MonoBehaviour
 
     [Header("UI")]
     public Image xpBar;                 // Progress-Bar (Image mit Fill)
-    public TMP_Text currentXPText;      // Aktuelle XP (TMP Text)         // Optional: Level-Anzeige
+    public TMP_Text currentXPText;
+    
+    public TMP_Text levelText;      // Aktuelle XP (TMP Text)         // Optional: Level-Anzeige
 
     public void AddXP(int amount)
     {
@@ -29,14 +31,15 @@ public class PlayerLevel : MonoBehaviour
     }
 
     void LevelUp()
-    {
-        currentXP -= xpToNextLevel;
-        level++;
+{
+    currentXP -= xpToNextLevel;
+    level++;
+    xpToNextLevel = Mathf.RoundToInt(xpToNextLevel * xpMultiplier);
+    Debug.Log("LEVEL UP! Neues Level: " + level);
 
-        xpToNextLevel = Mathf.RoundToInt(xpToNextLevel * xpMultiplier);
-
-        Debug.Log("LEVEL UP! Neues Level: " + level);
-    }
+    if (levelText != null)
+        levelText.text = "Lvl: " + level;
+}
 
     void UpdateUI()
     {

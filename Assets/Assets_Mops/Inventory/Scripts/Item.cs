@@ -3,19 +3,21 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     [SerializeField]
-    private string itemName;
+    public string itemName;
 
     [SerializeField]
-    private int quantity;
+    public int quantity;
 
     [SerializeField]
-    private Sprite sprite;
+    public Sprite sprite;
 
     [TextArea]
     [SerializeField]
-    private string itemDescription;
+    public string itemDescription;
 
     private InventoryManager inventoryManager;
+
+    public ItemType itemType;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,11 +30,13 @@ public class Item : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
 {
-    Debug.Log("COLLISION FIRED: " + collision.gameObject.tag);
     if(collision.gameObject.tag == "Player")
     {
-        inventoryManager.AddItem(itemName, quantity, sprite, itemDescription);
-        Destroy(gameObject);
+        int leftOverItems = inventoryManager.AddItem(itemName, quantity, sprite, itemDescription, itemType);
+        if (leftOverItems <= 0)
+            Destroy(gameObject);
+        else
+            quantity = leftOverItems;
     }
 }
 }

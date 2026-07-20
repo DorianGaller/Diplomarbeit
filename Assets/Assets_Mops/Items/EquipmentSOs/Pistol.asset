@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ec57e6961c643e4e8452dd00ddf118f, type: 3}
+  m_Name: Pistol
+  m_EditorClassIdentifier: Assembly-CSharp::EquipmentSO
+  itemName: Pistol
+  attack: 3
+  defense: 0
+  agility: 0
+  itemSprite: {fileID: -4979552915664131744, guid: 5b416e84ecb354de3a0b464332404861, type: 3}
