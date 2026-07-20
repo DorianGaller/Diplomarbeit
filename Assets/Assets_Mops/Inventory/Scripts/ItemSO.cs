@@ -17,9 +17,11 @@ public class ItemSO : ScriptableObject
 
     public bool UseItem()
     {
-        if(statToChange == StatToChange.health)
+        if (statToChange == StatToChange.health)
         {
-            Debug.Log("Health um " + amountToChangeStat + " erhöhen");
+            PlayerLife playerLife = GameObject.FindWithTag("Player").GetComponent<PlayerLife>();
+            if (playerLife != null)
+                playerLife.Heal(amountToChangeStat);
         }
         return true;
     }

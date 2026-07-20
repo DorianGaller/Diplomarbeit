@@ -38,6 +38,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Assets_Mops/Stockwerke/Samples/MaterialRoomSample.unity
     guid: 1cc3fac4c7cd03443bfcae6e8e912078
+  - enabled: 1
+    path: Assets/Assets_Mops/Stockwerke/1. Stock/FR oben links.unity
+    guid: 4eebba4e9ae924f78930ae2e70962452
+  - enabled: 1
+    path: Assets/Assets_Mops/Stockwerke/1. Stock/Res mitte links.unity
+    guid: 482e091de8c084042a8a0f0b04fd34b6
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: c316465bbc005c14fa8dac270a9c61a4, type: 2}

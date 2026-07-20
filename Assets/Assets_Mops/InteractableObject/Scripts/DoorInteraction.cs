@@ -11,6 +11,8 @@ public class DoorInteraction : MonoBehaviour
     [Header("Settings")]
     [Tooltip("Name der Scene die geladen werden soll")]
     [SerializeField] private string targetSceneName = "EscapeScene";
+    [Tooltip("ID des SpawnPoints in der Zielszene, an dem der Spieler ankommen soll")]
+    [SerializeField] private string targetSpawnID = "";
 
     [Tooltip("Maximale Distanz zur Tür damit F gedrückt werden kann")]
     [SerializeField] private float interactionRange = 2f;
@@ -101,10 +103,11 @@ public class DoorInteraction : MonoBehaviour
     }
 
     private void OpenDoor()
-    {
-        Debug.Log("Tür geöffnet – lade Scene: " + targetSceneName);
-        SceneManager.LoadScene(targetSceneName);
-    }
+{
+    DoorTransition.nextSpawnID = targetSpawnID;   // NEU – ganz am Anfang der Methode
+    Debug.Log("Tür geöffnet – lade Scene: " + targetSceneName);
+    SceneManager.LoadScene(targetSceneName);
+}
 
     private void OnDrawGizmosSelected()
     {

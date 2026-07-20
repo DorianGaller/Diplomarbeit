@@ -5,7 +5,7 @@ public class EquipmentSO : ScriptableObject
 {
 
     public string itemName;
-    public int attack, defense, agility;
+    public int attack, defense, agility, health;
     
     [SerializeField]
     private Sprite itemSprite;
@@ -14,7 +14,7 @@ public class EquipmentSO : ScriptableObject
     public void PreviewEquipment()
     {
         GameObject.Find("StatManager").GetComponent<PlayerStats>().
-            PreviewStats(attack, defense, agility, itemSprite);
+            PreviewStats(attack, defense, agility, health, itemSprite);
     }
 
     public void EquipItem()
@@ -23,6 +23,7 @@ public class EquipmentSO : ScriptableObject
         playerStats.attack += attack;
         playerStats.defense += defense;
         playerStats.agility += agility;
+        playerStats.health += health;
 
         playerStats.UpdateEquipmentStats();
     }
@@ -33,6 +34,7 @@ public class EquipmentSO : ScriptableObject
         playerStats.attack -= attack;
         playerStats.defense -= defense;
         playerStats.agility -= agility;
+        playerStats.health -= health;
 
         playerStats.UpdateEquipmentStats();
     }

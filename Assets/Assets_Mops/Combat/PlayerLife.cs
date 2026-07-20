@@ -6,7 +6,9 @@ using System.Collections;
 public class PlayerLife : MonoBehaviour
 {
     [Header("Health Settings")]
-    public int maxHP = 100;
+    public int baseMaxHP = 100;
+    private int bonusHP;
+    public int maxHP;
     private int currentHP;
 
     [Header("Heart Sprites")]
@@ -17,7 +19,28 @@ public class PlayerLife : MonoBehaviour
 
     void Start()
     {
+        maxHP = baseMaxHP;
         currentHP = maxHP;
+        UpdateHearts();
+    }
+
+    public void Heal(int amount)
+    {
+        currentHP += amount;
+        currentHP = Mathf.Clamp(currentHP, 0, maxHP);   // darf maxHP nie überschreiten
+        UpdateHearts();
+    }
+
+    public void SetBonusHP(int newBonus)
+    {
+        int oldMax = maxHP;
+        bonusHP = newBonus;
+        maxHP = baseMaxHP + bonusHP;
+
+        // Differenz auf aktuelle HP draufrechnen, damit Equippen sofort "auffüllt"
+        currentHP += (maxHP - oldMax);
+        currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+
         UpdateHearts();
     }
 
@@ -36,6 +59,9 @@ public class PlayerLife : MonoBehaviour
 
     void UpdateHearts()
     {
+
+        if (maxHP <= 0) return;
+        
         int maxHearts = hearts.Length;
 
         // Berechnet wie viele Herzen sichtbar bleiben
