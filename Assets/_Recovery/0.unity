@@ -488,6 +488,53 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1809670218830592882, guid: 531e2976c01813341b241a88724129c6, type: 3}
   m_PrefabInstance: {fileID: 6016778275336423737}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &891588865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 891588867}
+  - component: {fileID: 891588866}
+  m_Layer: 0
+  m_Name: CurrencyDisplay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &891588866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891588865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83a7c714281ee412783b6b71d7e93450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CurrencyDisplay
+  creditsText: {fileID: 7740095035722770019}
+  prefix: 
+  suffix: ' CR'
+--- !u!4 &891588867
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891588865}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 27.22265, y: 380.73196, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &908197143 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 256212131895187555, guid: 3533771074d1240beae10d667c25c179, type: 3}
@@ -913,7 +960,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1424005799}
   - component: {fileID: 1424005798}
-  - component: {fileID: 1424005800}
   m_Layer: 0
   m_Name: CurrencyManager
   m_TagString: Untagged
@@ -934,7 +980,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CurrencyManager
   startingCredits: 1000
-  creditsText: {fileID: 0}
 --- !u!4 &1424005799
 Transform:
   m_ObjectHideFlags: 0
@@ -950,20 +995,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1424005800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1424005797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29bc732a73e8542928f1736cfea86106, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CurrencyManager
-  startingCredits: 1000
-  creditsText: {fileID: 7740095035722770019}
 --- !u!224 &1484434424 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7467687884236381575, guid: d1b4bb0b8834bb84b91c0851c2954764, type: 3}
@@ -19504,3 +19535,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 8569744479747020010}
   - {fileID: 1424005799}
+  - {fileID: 891588867}
