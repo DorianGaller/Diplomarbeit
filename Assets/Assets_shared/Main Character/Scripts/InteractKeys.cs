@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class InteractKeys : MonoBehaviour
 {
@@ -38,36 +39,44 @@ public class InteractKeys : MonoBehaviour
     }
 
     void CacheTilemaps()
-{
-    GameObject[] tilemapObjects = GameObject.FindGameObjectsWithTag("Tilemap");
-
-    if (tilemapObjects.Length == 0)
     {
-        Debug.LogWarning("Keine GameObjects mit Tag 'Tilemap' gefunden!");
-        return;
+        GameObject[] tilemapObjects = GameObject.FindGameObjectsWithTag("Tilemap");
+
+        if (tilemapObjects.Length == 0)
+        {
+            Debug.LogWarning("Keine GameObjects mit Tag 'Tilemap' gefunden!");
+            interactTilemaps = null;
+            return;
+        }
+
+        var tilemapList = new System.Collections.Generic.List<Tilemap>();
+
+        foreach (var go in tilemapObjects)
+        {
+            // Tilemap auf dem GameObject selbst oder in Kindern suchen
+            tilemapList.AddRange(go.GetComponentsInChildren<Tilemap>(true));
+        }
+
+        interactTilemaps = tilemapList.ToArray();
     }
-
-    var tilemapList = new System.Collections.Generic.List<Tilemap>();
-
-    foreach (var go in tilemapObjects)
-    {
-        // Tilemap auf dem GameObject selbst oder in Kindern suchen
-        tilemapList.AddRange(go.GetComponentsInChildren<Tilemap>(true));
-    }
-
-    interactTilemaps = tilemapList.ToArray();
-}
 
     void OnEnable()
     {
         EnableShooting(true);
         EnableInteraction(true);
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void OnDisable()
     {
         EnableShooting(false);
         EnableInteraction(false);
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        CacheTilemaps();
     }
 
     public void EnableShooting(bool enable)
@@ -161,6 +170,8 @@ public class InteractKeys : MonoBehaviour
 
         foreach (var tilemap in interactTilemaps)
         {
+            if (tilemap == null) continue;
+
             Vector3Int playerCell = tilemap.WorldToCell(playerPos);
             int radius = Mathf.CeilToInt(interactDistance);
 
