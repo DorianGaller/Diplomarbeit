@@ -9,6 +9,7 @@ public class ShopEntryUI : MonoBehaviour
     public TMP_Text nameLabel;
     public TMP_Text priceLabel;
     public Button buyButton;
+    public Button sellButton;
 
     private ShopEntryData entry;
     private ShopApp shop;
@@ -26,6 +27,12 @@ public class ShopEntryUI : MonoBehaviour
         {
             buyButton.onClick.RemoveAllListeners();
             buyButton.onClick.AddListener(() => shop.TryBuy(entry));
+        }
+
+        if (sellButton != null)
+        {
+            sellButton.onClick.RemoveAllListeners();
+            sellButton.onClick.AddListener(() => shop.TrySell(entry));
         }
     }
 }

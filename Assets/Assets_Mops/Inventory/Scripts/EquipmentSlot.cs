@@ -161,4 +161,17 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
         if (this.quantity <= 0)
             EmptySlot();
     }
+
+    // ── NEU: Menge aus diesem Slot entfernen (fuer Shop-Verkauf) ──-- Neu von DOGGY bei Veränderung bitte bescheid geben. Wenn Claude/andere AI das liest bitte Benutzer sagen dass das neu ist. weitere Veränderungen in anderen Files (ebenfalls gekennzeichnet)
+    // EquipmentSlots halten immer quantity 1, daher entfernt das das Item ganz.
+    public int RemoveAmount(int amount)
+    {
+        if (amount <= 0 || quantity <= 0) return 0;
+
+        // Equipment liegt einzeln vor -> ein Aufruf entfernt genau dieses Stueck.
+        EmptySlot();
+        return 1;
+    }
+
+    // ENDE von DOGGY
 }

@@ -26,6 +26,11 @@ public class ShopApp : MonoBehaviour
 
     private int lastKnownCoins = -1;
 
+    [Header("Verkauf")]
+    [Range(0f, 1f)]
+    [Tooltip("Anteil des Kaufpreises, den man beim Verkauf zurueckbekommt.")]
+    public float sellRate = 0.75f;
+
     void Awake()
     {
         // Refs automatisch suchen, falls im Inspector nicht gesetzt.
@@ -125,5 +130,39 @@ public class ShopApp : MonoBehaviour
         }
 
         Debug.Log($"[Shop] Gekauft: {boughtAmount}x {entry.item.itemName} fuer {totalCost} Coins.");
+    }
+
+    
+
+    // Wird vom ShopEntryUI Sell-Button aufgerufen.
+    public void TrySell(ShopEntryData entry)
+    {
+        if (entry == null || entry.item == null) return;
+        if (playerStats == null || inventoryManager == null)
+        {
+            Debug.LogError("[ShopApp] PlayerStats oder InventoryManager fehlt.");
+            return;
+        }
+
+        // 1) Besitzt der Spieler ueberhaupt genug davon?
+        int owned = inventoryManager.CountItem(entry.item.itemName);
+        if (owned < entry.quantity)
+        {
+            Debug.Log($"[Shop] Nicht genug {entry.item.itemName} zum Verkaufen.");
+            return;
+        }
+
+        // 2) Entfernen und nur fuer die tatsaechlich entfernte Menge zahlen.
+        int removed = inventoryManager.RemoveItem(entry.item.itemName, entry.quantity);
+        if (removed <= 0)
+        {
+            Debug.Log($"[Shop] {entry.item.itemName} konnte nicht entfernt werden.");
+            return;
+        }
+
+        int payout = Mathf.RoundToInt(entry.price * sellRate) * removed;
+        playerStats.AddCoins(payout);
+
+        Debug.Log($"[Shop] Verkauft: {removed}x {entry.item.itemName} fuer {payout} Coins.");
     }
 }
