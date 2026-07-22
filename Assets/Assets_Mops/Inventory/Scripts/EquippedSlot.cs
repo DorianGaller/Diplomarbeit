@@ -104,33 +104,58 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
     }
 
     public void UnEquipGear()
-{
-    inventoryManager.DeselectAllSlots();
-    inventoryManager.AddItem(itemName, 1, itemSprite, itemDescription, itemType);
-
-    //Update Image//
-    this.itemSprite = emptySprite;
-    slotImage.sprite = this.itemSprite;
-    slotName.enabled = true;
-
-    //Reset the Display Image//
-    if (playerDisplayImage != null)
-        playerDisplayImage.sprite = emptySprite;
-
-    //Update the Player Stats//  ← ERST Stats abziehen (itemName noch gesetzt)
-    for (int i = 0; i < equipmentSOLibary.equipmentSO.Length; i++)
     {
-        if (equipmentSOLibary.equipmentSO[i].itemName == itemName)
-            equipmentSOLibary.equipmentSO[i].UnequipItem();
+        inventoryManager.DeselectAllSlots();
+        inventoryManager.AddItem(itemName, 1, itemSprite, itemDescription, itemType);
+
+        //Update Image//
+        this.itemSprite = emptySprite;
+        slotImage.sprite = this.itemSprite;
+        slotName.enabled = true;
+
+        //Reset the Display Image//
+        if (playerDisplayImage != null)
+            playerDisplayImage.sprite = emptySprite;
+
+        //Update the Player Stats//  ← ERST Stats abziehen (itemName noch gesetzt)
+        for (int i = 0; i < equipmentSOLibary.equipmentSO.Length; i++)
+        {
+            if (equipmentSOLibary.equipmentSO[i].itemName == itemName)
+                equipmentSOLibary.equipmentSO[i].UnequipItem();
+        }
+
+        //Reset Data//  ← DANN erst nullen
+        this.itemName = null;
+        this.itemDescription = null;
+
+        GameObject.Find("StatManager").GetComponent<PlayerStats>().TurnOffPreviewStats();
+        slotInUse = false;
     }
 
-    //Reset Data//  ← DANN erst nullen
-    this.itemName = null;
-    this.itemDescription = null;
+    public void ClearEquippedItem()
+    {
+        inventoryManager.DeselectAllSlots();
 
-    GameObject.Find("StatManager").GetComponent<PlayerStats>().TurnOffPreviewStats();
-    slotInUse = false;
-}
+        // Stats abziehen BEVOR itemName genullt wird
+        for (int i = 0; i < equipmentSOLibary.equipmentSO.Length; i++)
+        {
+            if (equipmentSOLibary.equipmentSO[i].itemName == itemName)
+                equipmentSOLibary.equipmentSO[i].UnequipItem();
+        }
 
+        // Slot leeren, OHNE es dem Inventar zurückzugeben
+        this.itemSprite = emptySprite;
+        slotImage.sprite = this.itemSprite;
+        slotName.enabled = true;
+
+        if (playerDisplayImage != null)
+            playerDisplayImage.sprite = emptySprite;
+
+        this.itemName = null;
+        this.itemDescription = null;
+
+        GameObject.Find("StatManager").GetComponent<PlayerStats>().TurnOffPreviewStats();
+        slotInUse = false;
+    }
 
 }

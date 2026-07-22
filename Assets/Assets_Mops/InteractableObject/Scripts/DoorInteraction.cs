@@ -103,11 +103,14 @@ public class DoorInteraction : MonoBehaviour
     }
 
     private void OpenDoor()
-{
-    DoorTransition.nextSpawnID = targetSpawnID;   // NEU – ganz am Anfang der Methode
-    Debug.Log("Tür geöffnet – lade Scene: " + targetSceneName);
-    SceneManager.LoadScene(targetSceneName);
-}
+    {
+        if (requiredItemName != "" && mainHandSlot != null)
+            mainHandSlot.ClearEquippedItem();
+
+        DoorTransition.nextSpawnID = targetSpawnID;   // ← war verloren gegangen, wieder rein
+        Debug.Log("Tür geöffnet – lade Scene: " + targetSceneName);
+        SceneManager.LoadScene(targetSceneName);
+    }
 
     private void OnDrawGizmosSelected()
     {
