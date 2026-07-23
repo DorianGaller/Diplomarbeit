@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7802382474366882230}
   - component: {fileID: 5419547682097970812}
   m_Layer: 3
-  m_Name: Enemy
+  m_Name: Robot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,7 +89,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 7635e772c561eb640ac010fe476e72f5, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.109983444, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -149,6 +149,10 @@ MonoBehaviour:
   minXP: 5
   maxXP: 15
   xpOrbCount: 3
+  coinPrefab: {fileID: 6316571953962255938, guid: d86b5816915b14ee983add3cfccf6a8f, type: 3}
+  coinDropChance: 0.5
+  minCoins: 1
+  maxCoins: 5
 --- !u!50 &7802382474366882230
 Rigidbody2D:
   serializedVersion: 5
@@ -385,6 +389,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0

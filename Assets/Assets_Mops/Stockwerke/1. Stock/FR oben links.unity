@@ -456,13 +456,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ebf4866c2e6d594996e45a436a38e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawn
-  enemyPrefab: {fileID: 7381866628350399518, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
+  waveConfigs:
+  - enemyCounts:
+    - enemyPrefab: {fileID: 7381866628350399518, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
+      count: 8
+  - enemyCounts:
+    - enemyPrefab: {fileID: 7381866628350399518, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
+      count: 8
+    - enemyPrefab: {fileID: 3502307798667565941, guid: 40956fd26092f0e49bd05a201a3244f3, type: 3}
+      count: 2
+  - enemyCounts:
+    - enemyPrefab: {fileID: 3502307798667565941, guid: 40956fd26092f0e49bd05a201a3244f3, type: 3}
+      count: 6
+    - enemyPrefab: {fileID: 7381866628350399518, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
+      count: 6
+  - enemyCounts:
+    - enemyPrefab: {fileID: 7381866628350399518, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
+      count: 9
+    - enemyPrefab: {fileID: 3502307798667565941, guid: 40956fd26092f0e49bd05a201a3244f3, type: 3}
+      count: 5
+  - enemyCounts:
+    - enemyPrefab: {fileID: 3502307798667565941, guid: 40956fd26092f0e49bd05a201a3244f3, type: 3}
+      count: 8
+    - enemyPrefab: {fileID: 7381866628350399518, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
+      count: 8
   maxEnemiesAlive: 5
-  enemiesPerWave: 10
   spawnDelay: 1.2
   timeBetweenWaves: 4
   spawnAreaSize: {x: 42.4, y: 21.7, z: 0}
-  maxWaves: 1
+  maxWaves: 5
   endlessWaves: 0
   exitTilemap: {fileID: 1327484261}
   exitWorldPosition: {fileID: 533392363}
@@ -936,27 +958,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2673617996072947114, guid: cb8d3aa1d2980e24b8d122bcc8f4c55b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.88
+      value: -13.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 2673617996072947114, guid: cb8d3aa1d2980e24b8d122bcc8f4c55b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.8
       objectReference: {fileID: 0}
     - target: {fileID: 2673617996072947114, guid: cb8d3aa1d2980e24b8d122bcc8f4c55b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.0006110082
+      value: 0.0005533552
       objectReference: {fileID: 0}
     - target: {fileID: 2673617996072947114, guid: cb8d3aa1d2980e24b8d122bcc8f4c55b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.0002590928
       objectReference: {fileID: 0}
     - target: {fileID: 2673617996072947114, guid: cb8d3aa1d2980e24b8d122bcc8f4c55b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.4240414
       objectReference: {fileID: 0}
     - target: {fileID: 2673617996072947114, guid: cb8d3aa1d2980e24b8d122bcc8f4c55b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.9999998
+      value: 0.9056426
       objectReference: {fileID: 0}
     - target: {fileID: 2673617996072947114, guid: cb8d3aa1d2980e24b8d122bcc8f4c55b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -50.18
       objectReference: {fileID: 0}
     - target: {fileID: 2673617996072947114, guid: cb8d3aa1d2980e24b8d122bcc8f4c55b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -16751,8 +16777,16 @@ PrefabInstance:
       value: -0.44
       objectReference: {fileID: 0}
     - target: {fileID: 8095130905523160406, guid: cb8d3aa1d2980e24b8d122bcc8f4c55b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8095130905523160406, guid: cb8d3aa1d2980e24b8d122bcc8f4c55b, type: 3}
       propertyPath: targetSceneName
       value: Res mitte links
+      objectReference: {fileID: 0}
+    - target: {fileID: 8095130905523160406, guid: cb8d3aa1d2980e24b8d122bcc8f4c55b, type: 3}
+      propertyPath: interactionRange
+      value: 2.74
       objectReference: {fileID: 0}
     - target: {fileID: 8095130905523160406, guid: cb8d3aa1d2980e24b8d122bcc8f4c55b, type: 3}
       propertyPath: requiredItemName
@@ -17072,7 +17106,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844434168}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

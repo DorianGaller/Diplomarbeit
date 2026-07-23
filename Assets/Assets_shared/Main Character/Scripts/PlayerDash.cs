@@ -93,6 +93,8 @@ public class PlayerDash : MonoBehaviour
             transform.rotation
         );
 
+        ghost.transform.localScale = transform.localScale;   // NEU – übernimmt den Flip vom PlayerAnimator
+
         SpriteRenderer ghostSR = ghost.GetComponent<SpriteRenderer>();
         SpriteRenderer playerSR = GetComponent<SpriteRenderer>();
 

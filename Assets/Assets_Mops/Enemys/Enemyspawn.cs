@@ -1,16 +1,30 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using TMPro;
 
 public class EnemySpawn : MonoBehaviour
 {
-    [Header("Enemy")]
-    public GameObject enemyPrefab;
-    public int maxEnemiesAlive = 5;
+    [System.Serializable]
+    public class EnemyTypeCount
+    {
+        public GameObject enemyPrefab;
+        public int count;
+    }
 
-    [Header("Wave")]
-    public int enemiesPerWave = 10;
+    [System.Serializable]
+    public class WaveConfig
+    {
+        public EnemyTypeCount[] enemyCounts;
+    }
+
+    [Header("Wave Configuration")]
+    [Tooltip("Ein Eintrag pro Welle. Index 0 = Welle 1, Index 1 = Welle 2, usw.")]
+    public WaveConfig[] waveConfigs;
+
+    [Header("Spawn Settings")]
+    public int maxEnemiesAlive = 5;
     public float spawnDelay = 1.2f;
     public float timeBetweenWaves = 4f;
 
@@ -49,28 +63,26 @@ public class EnemySpawn : MonoBehaviour
     private int enemiesSpawned;
     private int wave = 1;
 
+    private List<GameObject> spawnQueue = new List<GameObject>();
+
     public System.Action OnAllWavesCompleted;
 
     void Start()
     {
-        // MainCamera per Tag suchen
         mainCamera = Camera.main;
         if (mainCamera == null)
             Debug.LogWarning("Keine Kamera mit Tag 'MainCamera' gefunden!");
 
-        // Player per Tag suchen
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
             playerMovement = playerObj.GetComponent<PlayerMovement>();
         else
             Debug.LogWarning("Kein GameObject mit Tag 'Player' gefunden!");
 
-        // UI per Tag suchen
         uiRoot = GameObject.FindGameObjectWithTag("PlayerUI");
         if (uiRoot == null)
             Debug.LogWarning("Kein GameObject mit Tag 'PlayerUI' gefunden!");
 
-        // HUD zuerst initialisieren
         if (hudRoot != null)
         {
             TextMeshProUGUI[] texts = hudRoot.GetComponentsInChildren<TextMeshProUGUI>();
@@ -85,11 +97,40 @@ public class EnemySpawn : MonoBehaviour
         else
             Debug.LogWarning("HUD Root nicht gesetzt!");
 
-        // Erst danach die Coroutine starten
         OnAllWavesCompleted += RemoveExitTile;
         OnAllWavesCompleted += StartExitCameraPan;
         StartCoroutine(WaveLoop());
         UpdateHUD();
+    }
+
+    // ── NEU: baut die Spawn-Liste für die aktuelle Welle ──
+    void BuildSpawnQueue()
+    {
+        spawnQueue.Clear();
+
+        if (waveConfigs == null || waveConfigs.Length == 0)
+        {
+            Debug.LogWarning("Keine Wave Configs im Inspector gesetzt!");
+            return;
+        }
+
+        // Falls mehr Wellen laufen als konfiguriert (z.B. bei endlessWaves),
+        // wird einfach die letzte definierte Welle wiederverwendet
+        int configIndex = Mathf.Min(wave - 1, waveConfigs.Length - 1);
+        WaveConfig config = waveConfigs[configIndex];
+
+        foreach (EnemyTypeCount entry in config.enemyCounts)
+        {
+            for (int i = 0; i < entry.count; i++)
+                spawnQueue.Add(entry.enemyPrefab);
+        }
+
+        // Reihenfolge mischen, damit nicht erst alle Melees und dann alle Normalen kommen
+        for (int i = 0; i < spawnQueue.Count; i++)
+        {
+            int rnd = Random.Range(i, spawnQueue.Count);
+            (spawnQueue[i], spawnQueue[rnd]) = (spawnQueue[rnd], spawnQueue[i]);
+        }
     }
 
     IEnumerator WaveLoop()
@@ -97,15 +138,16 @@ public class EnemySpawn : MonoBehaviour
         while (endlessWaves || wave <= maxWaves)
         {
             enemiesSpawned = 0;
-            Debug.Log("Wave " + wave + " startet");
+            BuildSpawnQueue();
 
+            Debug.Log("Wave " + wave + " startet mit " + spawnQueue.Count + " Gegnern");
             UpdateHUD();
 
-            while (enemiesSpawned < enemiesPerWave)
+            while (enemiesSpawned < spawnQueue.Count)
             {
                 if (enemiesAlive < maxEnemiesAlive)
                 {
-                    SpawnEnemy();
+                    SpawnEnemy(spawnQueue[enemiesSpawned]);
                     enemiesSpawned++;
                     enemiesAlive++;
                     UpdateHUD();
@@ -114,12 +156,10 @@ public class EnemySpawn : MonoBehaviour
                 yield return new WaitForSeconds(spawnDelay);
             }
 
-            // Warten bis alle Gegner tot sind
             while (enemiesAlive > 0)
                 yield return null;
 
             wave++;
-            enemiesPerWave += 2;
             if (endlessWaves || wave <= maxWaves)
                 yield return new WaitForSeconds(timeBetweenWaves);
         }
@@ -131,15 +171,17 @@ public class EnemySpawn : MonoBehaviour
             hudRoot.gameObject.SetActive(false);
     }
 
-    void SpawnEnemy()
+    void SpawnEnemy(GameObject prefab)
     {
+        if (prefab == null) return;
+
         Vector3 pos = transform.position + new Vector3(
             Random.Range(-spawnAreaSize.x / 2, spawnAreaSize.x / 2),
             Random.Range(-spawnAreaSize.y / 2, spawnAreaSize.y / 2),
             0
         );
 
-        GameObject enemy = Instantiate(enemyPrefab, pos, Quaternion.identity);
+        GameObject enemy = Instantiate(prefab, pos, Quaternion.identity);
 
         EnemyLife life = enemy.GetComponent<EnemyLife>();
         if (life != null)
@@ -274,6 +316,6 @@ public class EnemySpawn : MonoBehaviour
             wavesText.text = Mathf.Max(0, maxWaves - wave) + " Waves\nRemaining";
 
         if (enemiesText != null)
-            enemiesText.text = Mathf.Max(0, enemiesPerWave - enemiesSpawned + enemiesAlive) + " Enemys\nRemaining";
+            enemiesText.text = Mathf.Max(0, spawnQueue.Count - enemiesSpawned + enemiesAlive) + " Enemys\nRemaining";
     }
 }

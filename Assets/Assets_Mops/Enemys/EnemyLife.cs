@@ -9,13 +9,20 @@ public class EnemyLife : MonoBehaviour
     private int currentHP;
 
     [Header("Health Bar")]
-    public Image healthFill;   // das grüne Fill-Image
+    public Image healthFill;
 
     [Header("XP Drop")]
     public GameObject xpPrefab;
     public int minXP = 5;
     public int maxXP = 15;
     public int xpOrbCount = 3;
+
+    [Header("Coin Drop")]
+    public GameObject coinPrefab;
+    [Range(0f, 1f)]
+    public float coinDropChance = 0.5f;   // 0.5 = 50% Chance auf Coin-Drop
+    public int minCoins = 1;
+    public int maxCoins = 5;
 
     public Action OnDeath;
 
@@ -66,6 +73,23 @@ public class EnemyLife : MonoBehaviour
             Enemyxp xpScript = xp.GetComponent<Enemyxp>();
             if (xpScript != null)
                 xpScript.xpAmount = xpPerOrb;
+        }
+
+        // 🔹 Coin Drop
+        if (coinPrefab != null && UnityEngine.Random.value <= coinDropChance)
+        {
+            Vector2 offset = UnityEngine.Random.insideUnitCircle * 0.5f;
+
+            Vector3 coinSpawnPos = transform.position;
+            coinSpawnPos.x += offset.x;
+            coinSpawnPos.y += offset.y;
+            coinSpawnPos.z = -2.5f;
+
+            GameObject coin = Instantiate(coinPrefab, coinSpawnPos, Quaternion.identity);
+
+            CoinPickup coinScript = coin.GetComponent<CoinPickup>();
+            if (coinScript != null)
+                coinScript.value = UnityEngine.Random.Range(minCoins, maxCoins + 1);
         }
 
         Destroy(gameObject);
