@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Assets_Justin/Szenen/Main_Menue.unity
     guid: 6660afbe10b7aa8448202fbea1bfcbc5
   - enabled: 1
-    path: Assets/Assets_Mops/Stockwerke/1. Stock/ER oben mitte.unity
+    path: Assets/Assets_Mops/Stockwerke/1. Stock/Escape Room.unity
     guid: 78a058ed5094f844dbf0d658919613dd
   - enabled: 1
     path: Assets/Assets_Mops/Stockwerke/Samples/FightRoomSample.unity
@@ -45,10 +45,10 @@ EditorBuildSettings:
     path: Assets/Assets_Mops/Stockwerke/Samples/MaterialRoomSample.unity
     guid: 1cc3fac4c7cd03443bfcae6e8e912078
   - enabled: 1
-    path: Assets/Assets_Mops/Stockwerke/1. Stock/FR oben links.unity
+    path: Assets/Assets_Mops/Stockwerke/1. Stock/Fight Room.unity
     guid: 4eebba4e9ae924f78930ae2e70962452
   - enabled: 1
-    path: Assets/Assets_Mops/Stockwerke/1. Stock/Res mitte links.unity
+    path: Assets/Assets_Mops/Stockwerke/1. Stock/Ressourcen Room.unity
     guid: 482e091de8c084042a8a0f0b04fd34b6
   - enabled: 1
     path: Assets/Assets_Doggy/Base/BaseScene.unity

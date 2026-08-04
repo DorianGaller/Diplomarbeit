@@ -17,6 +17,8 @@ public class PlayerLife : MonoBehaviour
 
     public Action OnDeath;
 
+    public float incomingDamageMultiplier = 1f;   // NEU
+
     void Start()
     {
         maxHP = baseMaxHP;
@@ -46,7 +48,8 @@ public class PlayerLife : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHP -= damage;
+        int finalDamage = Mathf.RoundToInt(damage * incomingDamageMultiplier);
+        currentHP -= finalDamage;
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
 
         UpdateHearts();
@@ -123,6 +126,6 @@ public class PlayerLife : MonoBehaviour
 
         Time.timeScale = 1f;
 
-        SceneManager.LoadScene("Base_v1");
+        SceneManager.LoadScene("BaseScene");
     }
 }

@@ -35,6 +35,10 @@ public class EnemySpawn : MonoBehaviour
     public int maxWaves = 5;
     public bool endlessWaves = false;
 
+    [Header("Room Modifier")]
+    [Tooltip("Wird von Raum-Modifikatoren gesetzt, 1 = normal")]
+    public float enemyCountMultiplier = 1f;
+
     [Header("Exit Tile")]
     public Tilemap exitTilemap;
     public Transform exitWorldPosition;
@@ -65,7 +69,10 @@ public class EnemySpawn : MonoBehaviour
 
     private List<GameObject> spawnQueue = new List<GameObject>();
 
+    private bool roomActive = false;   // NEU – Raum startet nicht mehr automatisch
+
     public System.Action OnAllWavesCompleted;
+    public static event System.Action<GameObject> OnEnemySpawned;   // NEU
 
     void Start()
     {
@@ -99,11 +106,19 @@ public class EnemySpawn : MonoBehaviour
 
         OnAllWavesCompleted += RemoveExitTile;
         OnAllWavesCompleted += StartExitCameraPan;
-        StartCoroutine(WaveLoop());
         UpdateHUD();
+
+        // KEIN automatischer Start mehr — wartet auf StartRoom()
     }
 
-    // ── NEU: baut die Spawn-Liste für die aktuelle Welle ──
+    // NEU: wird vom FightRoomTrigger aufgerufen, sobald der Spieler den Raum betritt
+    public void StartRoom()
+    {
+        if (roomActive) return;
+        roomActive = true;
+        StartCoroutine(WaveLoop());
+    }
+
     void BuildSpawnQueue()
     {
         spawnQueue.Clear();
@@ -114,18 +129,16 @@ public class EnemySpawn : MonoBehaviour
             return;
         }
 
-        // Falls mehr Wellen laufen als konfiguriert (z.B. bei endlessWaves),
-        // wird einfach die letzte definierte Welle wiederverwendet
         int configIndex = Mathf.Min(wave - 1, waveConfigs.Length - 1);
         WaveConfig config = waveConfigs[configIndex];
 
         foreach (EnemyTypeCount entry in config.enemyCounts)
         {
-            for (int i = 0; i < entry.count; i++)
+            int adjustedCount = Mathf.CeilToInt(entry.count * enemyCountMultiplier);
+            for (int i = 0; i < adjustedCount; i++)
                 spawnQueue.Add(entry.enemyPrefab);
         }
 
-        // Reihenfolge mischen, damit nicht erst alle Melees und dann alle Normalen kommen
         for (int i = 0; i < spawnQueue.Count; i++)
         {
             int rnd = Random.Range(i, spawnQueue.Count);
@@ -186,6 +199,8 @@ public class EnemySpawn : MonoBehaviour
         EnemyLife life = enemy.GetComponent<EnemyLife>();
         if (life != null)
             life.OnDeath += EnemyDied;
+
+        OnEnemySpawned?.Invoke(enemy);
     }
 
     void EnemyDied()
@@ -207,6 +222,7 @@ public class EnemySpawn : MonoBehaviour
         enemiesSpawned = 0;
         wave = 1;
         exitOpened = false;
+        roomActive = true;
 
         if (hudRoot != null)
             hudRoot.gameObject.SetActive(true);
