@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Assets_Justin/Szenen/Game-Startup-Intro.unity
+    guid: 9271b957ae320d440a52355c07451e91
+  - enabled: 1
     path: Assets/Assets_Justin/Szenen/Main_Menue.unity
     guid: 6660afbe10b7aa8448202fbea1bfcbc5
   - enabled: 1
