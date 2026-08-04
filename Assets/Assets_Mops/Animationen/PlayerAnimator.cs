@@ -6,6 +6,13 @@ public class PlayerAnimator : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement;
     private Animator animator;
 
+    [Header("Anti-Stutter")]
+    [Tooltip("Wie lange keine Eingabe da sein muss, bevor wirklich auf Idle gewechselt wird")]
+    [SerializeField] private float stopDelay = 0.08f;
+
+    private float stopTimer = 0f;
+    private bool isMovingState = false;
+
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -15,8 +22,28 @@ public class PlayerAnimator : MonoBehaviour
 
     void Update()
     {
-        bool isMoving = playerMovement.Direction != Vector2.zero;
-        animator.SetBool("IsMoving", isMoving);
+        bool hasInput = playerMovement.Direction != Vector2.zero;
+
+        if (hasInput)
+        {
+            stopTimer = 0f;
+
+            if (!isMovingState)
+            {
+                isMovingState = true;
+                animator.SetBool("IsMoving", true);
+            }
+        }
+        else
+        {
+            stopTimer += Time.deltaTime;
+
+            if (isMovingState && stopTimer >= stopDelay)
+            {
+                isMovingState = false;
+                animator.SetBool("IsMoving", false);
+            }
+        }
 
         if (playerMovement.Direction.x != 0)
         {
