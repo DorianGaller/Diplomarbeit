@@ -6,7 +6,7 @@ public class Intro : MonoBehaviour
 {
     [SerializeField] private RawImage introImage;
     [SerializeField] private RenderTexture introTexture;
-    [SerializeField] private string nextSceneName = "Test map";
+    [SerializeField] private string nextSceneName = "Press_Any_Button Screen";
     [SerializeField] private float introDuration = 11f;
 
     private float elapsedTime;

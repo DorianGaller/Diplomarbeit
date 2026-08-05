@@ -353,7 +353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Intro
   introImage: {fileID: 230942246}
   introTexture: {fileID: 8400000, guid: 238333ced38f5f7489efc054c1ee4cac, type: 2}
-  nextSceneName: Main_Menue
+  nextSceneName: Press_Any_Button Screen
   introDuration: 11
 --- !u!1 &1382155764
 GameObject:
