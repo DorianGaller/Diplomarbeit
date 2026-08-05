@@ -710,7 +710,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 106.25, y: -50.55}
+  m_AnchoredPosition: {x: 106.25, y: -50.55005}
   m_SizeDelta: {x: 162.5, y: 51.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3310579740676982124
@@ -3232,6 +3232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimator
   playerMovement: {fileID: 7797527906175133109}
+  stopDelay: 0.08
 --- !u!1 &2264981067851229319
 GameObject:
   m_ObjectHideFlags: 0
@@ -12509,7 +12510,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 310, y: -50.55}
+  m_AnchoredPosition: {x: 310, y: -50.55005}
   m_SizeDelta: {x: 162.5, y: 51.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2044612378107854742
