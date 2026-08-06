@@ -12,6 +12,9 @@ public class Main_Menue : MonoBehaviour
     [Tooltip("Enter the exact scene name to load in the Inspector.")]
     public string selectedSceneName;
 
+    [Tooltip("Optional: set a specific scene name to return to when pressing Esc.")]
+    public string previousSceneName;
+
     void Start()
     {
         if (quitButton != null)
@@ -22,6 +25,14 @@ public class Main_Menue : MonoBehaviour
         if (loadSceneButton != null)
         {
             loadSceneButton.onClick.AddListener(LoadSelectedScene);
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            LoadPreviousScene();
         }
     }
 
@@ -43,5 +54,26 @@ public class Main_Menue : MonoBehaviour
         }
 
         SceneManager.LoadScene(selectedSceneName, LoadSceneMode.Single);
+    }
+
+    public void LoadPreviousScene()
+    {
+        if (!string.IsNullOrEmpty(previousSceneName))
+        {
+            SceneManager.LoadScene(previousSceneName, LoadSceneMode.Single);
+            return;
+        }
+
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int previousSceneIndex = currentSceneIndex - 1;
+
+        if (previousSceneIndex >= 0)
+        {
+            SceneManager.LoadScene(previousSceneIndex);
+        }
+        else
+        {
+            Debug.LogWarning("No previous scene is available to load.");
+        }
     }
 }
