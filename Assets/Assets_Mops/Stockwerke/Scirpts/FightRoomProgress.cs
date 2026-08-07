@@ -2,26 +2,26 @@ using System.Collections.Generic;
 
 public static class FightRoomProgress
 {
-    private static Dictionary<string, int> visitsPerFloor = new Dictionary<string, int>();
+    private static Dictionary<string, int> elevatorVisitsPerFloor = new Dictionary<string, int>();
 
-    /// <summary>
-    /// Zählt einen Fight-Room-Besuch für das angegebene Stockwerk hoch
-    /// und gibt zurück, der wievielte Besuch das ist (1 = erster Fight Room, 2 = zweiter, usw.)
-    /// </summary>
-    public static int RegisterFightRoomEntry(string floorID)
+    /// <summary>Wird NUR vom Elevator aufgerufen, wenn ein Stockwerk neu betreten wird.</summary>
+    public static int RegisterElevatorEntry(string floorID)
     {
-        if (!visitsPerFloor.ContainsKey(floorID))
-            visitsPerFloor[floorID] = 0;
+        if (!elevatorVisitsPerFloor.ContainsKey(floorID))
+            elevatorVisitsPerFloor[floorID] = 0;
 
-        visitsPerFloor[floorID]++;
-        return visitsPerFloor[floorID];
+        elevatorVisitsPerFloor[floorID]++;
+        return elevatorVisitsPerFloor[floorID];
     }
 
-    /// <summary>
-    /// Setzt alle Zähler zurück — z.B. beim Start eines neuen Runs.
-    /// </summary>
+    /// <summary>Liest den aktuellen Besuchszähler, OHNE ihn zu erhöhen.</summary>
+    public static int GetVisitCount(string floorID)
+    {
+        return elevatorVisitsPerFloor.TryGetValue(floorID, out int count) ? count : 0;
+    }
+
     public static void ResetAll()
     {
-        visitsPerFloor.Clear();
+        elevatorVisitsPerFloor.Clear();
     }
 }

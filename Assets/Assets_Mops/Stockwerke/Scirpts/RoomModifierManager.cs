@@ -30,19 +30,15 @@ public class RoomModifierManager : MonoBehaviour
         if (roomActivated) return;
         roomActivated = true;
 
-        int visitCount = FightRoomProgress.RegisterFightRoomEntry(floorID);
+        int visitCount = FightRoomProgress.GetVisitCount(floorID);   // NEU: nur lesen
 
         if (linkedEnemySpawn != null)
             linkedEnemySpawn.OnAllWavesCompleted += RemoveActiveModifier;
 
         if (visitCount >= 2)
-        {
             PickAndApplyModifier();
-        }
         else
-        {
-            Debug.Log($"Fight Room #{visitCount} auf {floorID} — noch kein Modifikator (erst ab dem 2. Mal).");
-        }
+            Debug.Log($"Stockwerk-Besuch #{visitCount} auf {floorID} — noch kein Modifikator.");
     }
 
     void PickAndApplyModifier()

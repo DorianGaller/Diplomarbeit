@@ -134,6 +134,7 @@ public class ElevatorInteractable : MonoBehaviour
             return;
         }
 
+        FightRoomProgress.RegisterElevatorEntry(sceneName);
         SceneManager.LoadScene(sceneName);
     }
 
