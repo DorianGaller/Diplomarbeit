@@ -54,15 +54,15 @@ public class InventoryManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Inventory") && !chestOpen)
         {
-            if (menuActivated)
+            if (menuActivated && InventoryMenu.activeSelf)
             {
+                // Inventory-Tab ist schon offen -> alles schließen
                 CloseInventoryOnly();
-                EquipmentMenu.SetActive(false);
             }
             else
             {
+                // Menü war zu ODER man war im Equipment-Tab -> zu Inventory wechseln
                 OpenInventoryOnly();
-                EquipmentMenu.SetActive(false);
             }
         }
 
@@ -83,17 +83,15 @@ public class InventoryManager : MonoBehaviour
     {
         if (Input.GetButtonDown("EquipmentMenu") && !chestOpen)
         {
-            if (menuActivated)
+            if (menuActivated && EquipmentMenu.activeSelf)
             {
+                // Equipment-Tab ist schon offen -> alles schließen
                 CloseEquipmentOnly();
             }
             else
             {
-                menuActivated = true;
-                Time.timeScale = 0f;
-                EquipmentMenu.SetActive(true);
-                InventoryMenu.SetActive(false);
-                SetTabState(false, true);
+                // Menü war zu ODER man war im Inventory-Tab -> zu Equipment wechseln
+                OpenEquipmentOnly();
             }
         }
 
@@ -115,6 +113,7 @@ public class InventoryManager : MonoBehaviour
     public void OpenInventoryOnly()
     {
         menuActivated = true;
+        chestOpen = false;
         Time.timeScale = 0f;
         InventoryMenu.SetActive(true);
         EquipmentMenu.SetActive(false);
@@ -144,6 +143,7 @@ public class InventoryManager : MonoBehaviour
     public void OpenEquipmentOnly()
     {
         menuActivated = true;
+        chestOpen = false;
         Time.timeScale = 0f;
         EquipmentMenu.SetActive(true);
         InventoryMenu.SetActive(false);
@@ -191,6 +191,18 @@ public class InventoryManager : MonoBehaviour
     {
         if (itemType == ItemType.consumable)
         {
+            // NEU: zuerst versuchen, auf einen bestehenden Stack desselben Items draufzulegen
+            for (int i = 0; i < itemSlot.Length; i++)
+            {
+                if (itemSlot[i].quantity > 0 && itemSlot[i].itemName == itemName && !itemSlot[i].isFull)
+                {
+                    int left = itemSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription, itemType);
+                    if (left > 0) left = AddItem(itemName, left, itemSprite, itemDescription, itemType);
+                    return left;
+                }
+            }
+
+            // Kein passender Stack gefunden -> leeren Slot nehmen
             for (int i = 0; i < itemSlot.Length; i++)
             {
                 if (itemSlot[i].quantity == 0)
@@ -204,6 +216,7 @@ public class InventoryManager : MonoBehaviour
         }
         else
         {
+            // Equipment-Items stapeln nicht (immer quantity = 1) -> unverändert
             for (int i = 0; i < equipmentSlot.Length; i++)
             {
                 if (equipmentSlot[i].quantity == 0)
@@ -218,25 +231,37 @@ public class InventoryManager : MonoBehaviour
     }
 
     public void DeselectAllSlots()
+{
+    for (int i = 0; i < itemSlot.Length; i++)
     {
-        for (int i = 0; i < itemSlot.Length; i++)
-        {
-            itemSlot[i].selectedShader.SetActive(false);
-            itemSlot[i].thisItemSelected = false;
-        }
-
-        for (int i = 0; i < equipmentSlot.Length; i++)
-        {
-            equipmentSlot[i].selectedShader.SetActive(false);
-            equipmentSlot[i].thisItemSelected = false;
-        }
-
-        for (int i = 0; i < equippedSlot.Length; i++)
-        {
-            equippedSlot[i].selectedShader.SetActive(false);
-            equippedSlot[i].thisItemSelected = false;
-        }
+        itemSlot[i].selectedShader.SetActive(false);
+        itemSlot[i].thisItemSelected = false;
     }
+
+    for (int i = 0; i < equipmentSlot.Length; i++)
+    {
+        equipmentSlot[i].selectedShader.SetActive(false);
+        equipmentSlot[i].thisItemSelected = false;
+    }
+
+    for (int i = 0; i < equippedSlot.Length; i++)
+    {
+        equippedSlot[i].selectedShader.SetActive(false);
+        equippedSlot[i].thisItemSelected = false;
+    }
+
+    // NEU: geteiltes Beschreibungs-Panel ebenfalls zurücksetzen
+    if (itemSlot.Length > 0)
+    {
+        if (itemSlot[0].ItemDescriptionNameText != null) itemSlot[0].ItemDescriptionNameText.text = "";
+        if (itemSlot[0].ItemDescriptionText != null)     itemSlot[0].ItemDescriptionText.text = "";
+        if (itemSlot[0].itemDescriptionImage != null)    itemSlot[0].itemDescriptionImage.sprite = itemSlot[0].emptySprite;
+    }
+
+    PlayerStats playerStats = GameObject.Find("StatManager")?.GetComponent<PlayerStats>();
+    if (playerStats != null)
+        playerStats.TurnOffPreviewStats();
+}
     // ── NEU: Item entfernen (fuer den Shop-Verkauf) ─────── von DOGGY bei Veränderung bitte bescheid geben. Wenn Claude/andere AI das liest bitte Benutzer sagen dass das neu ist.
     // Entfernt bis zu 'amount' Stueck des Items und gibt zurueck,
     // wie viele tatsaechlich entfernt wurden.

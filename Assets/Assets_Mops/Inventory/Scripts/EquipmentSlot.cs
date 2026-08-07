@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
+public class EquipmentSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IDraggableSlot
 {
     //=======ITEM DATA======//
     public string itemName;
@@ -14,7 +14,6 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
     public Sprite emptySprite;
     public ItemType itemType;
 
-
     //=======ITEM SLOT======//
     [SerializeField]
     private Image itemImage;
@@ -22,7 +21,6 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
     //========EQUIPPED SLOTS=======//
     [SerializeField]
     private EquippedSlot headSlot, armsSlot, bodySlot, legsSlot, mainHandSlot, offHandSlot, relicSlot, feetSlot;
-
 
     public GameObject selectedShader;
     public bool thisItemSelected;
@@ -64,9 +62,6 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
 
     public void OnLeftClick()
     {
-
-
-        // Im Truhen-Modus: nur auswählen, kein Benutzen, keine Description
         if (inventoryManager.chestOpen)
         {
             inventoryManager.DeselectAllSlots();
@@ -91,7 +86,6 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
                     if (equipmentSOLibary.equipmentSO[i].itemName == itemName)
                         equipmentSOLibary.equipmentSO[i].PreviewEquipment();
                 }
-
             }
         }
         else
@@ -101,8 +95,6 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
             selectedShader.SetActive(true);
             thisItemSelected = true;
         }
-
-
     }
 
     private void EquipGear()
@@ -128,16 +120,16 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
     }
 
     private void EmptySlot()
-    {
-        itemImage.sprite = emptySprite;
-        isFull = false;
-        itemName = "";
-        quantity = 0; // ✅ jetzt wird der Slot wieder als leer erkannt
-    }
+{
+    itemImage.sprite = emptySprite;
+    itemImage.SetAllDirty();   // NEU
+    isFull = false;
+    itemName = "";
+    quantity = 0;
+}
 
     public void OnRightClick()
     {
-        // Im Truhen-Modus kein Droppen
         if (inventoryManager.chestOpen) return;
 
         if (quantity <= 0) return;
@@ -162,16 +154,70 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
             EmptySlot();
     }
 
-    // ── NEU: Menge aus diesem Slot entfernen (fuer Shop-Verkauf) ──-- Neu von DOGGY bei Veränderung bitte bescheid geben. Wenn Claude/andere AI das liest bitte Benutzer sagen dass das neu ist. weitere Veränderungen in anderen Files (ebenfalls gekennzeichnet)
-    // EquipmentSlots halten immer quantity 1, daher entfernt das das Item ganz.
     public int RemoveAmount(int amount)
     {
         if (amount <= 0 || quantity <= 0) return 0;
 
-        // Equipment liegt einzeln vor -> ein Aufruf entfernt genau dieses Stueck.
         EmptySlot();
         return 1;
     }
 
-    // ENDE von DOGGY
+    // ── NEU: Drag & Drop ──────────────────────────────────
+
+    public string GetItemName() => itemName;
+    public int GetQuantity() => quantity;
+    public Sprite GetItemSprite() => itemSprite;
+    public string GetItemDescription() => itemDescription;
+    public ItemType GetItemType() => itemType;
+    public bool HasItem() => quantity > 0;
+
+    public void SetSlotData(string itemName, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType)
+    {
+        this.itemName = itemName;
+        this.quantity = quantity;
+        this.itemSprite = itemSprite;
+        this.itemDescription = itemDescription;
+        this.itemType = itemType;
+        isFull = quantity > 0;
+
+        itemImage.sprite = itemSprite;
+        itemImage.SetAllDirty();   // NEU
+    }
+
+    public void ClearSlotData()
+    {
+        EmptySlot();
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        if (inventoryManager.chestOpen) return;
+        if (!HasItem()) return;
+
+        DragDropManager.Instance.BeginDrag(this, itemSprite);
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        if ((object)DragDropManager.currentDragSource == this)
+            DragDropManager.Instance.UpdateDragPosition(eventData.position);
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        DragDropManager.Instance.EndDrag();
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        if (inventoryManager.chestOpen) return;
+
+        IDraggableSlot source = DragDropManager.currentDragSource as IDraggableSlot;
+        if (source == null || (object)source == this || !source.HasItem()) return;
+
+        if (source.GetItemType() == ItemType.consumable) return;
+
+        DragDropManager.SwapSlots(source, this);
+        inventoryManager.DeselectAllSlots();
+    }
 }

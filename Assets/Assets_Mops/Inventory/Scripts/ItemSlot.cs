@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class ItemSlot : MonoBehaviour, IPointerClickHandler
+public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IDraggableSlot
 {
     //=======ITEM DATA======//
     public string itemName;
@@ -79,7 +79,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     public void OnLeftClick()
     {
-        // Im Truhen-Modus: nur auswählen, kein Benutzen, keine Description
         if (inventoryManager.chestOpen)
         {
             inventoryManager.DeselectAllSlots();
@@ -105,9 +104,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             selectedShader.SetActive(true);
             thisItemSelected = true;
 
-            // Description nur setzen wenn sie aktiv ist
             if (ItemDescriptionNameText != null) ItemDescriptionNameText.text = itemName;
-            if (ItemDescriptionText != null)     ItemDescriptionText.text = itemDescription;
+            if (ItemDescriptionText != null) ItemDescriptionText.text = itemDescription;
             if (itemDescriptionImage != null)
             {
                 itemDescriptionImage.sprite = itemSprite != null ? itemSprite : emptySprite;
@@ -119,17 +117,24 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     {
         quantityText.enabled = false;
         itemImage.sprite = emptySprite;
+        itemImage.SetAllDirty();   // NEU
         isFull = false;
         itemName = "";
 
-        if (ItemDescriptionNameText != null) ItemDescriptionNameText.text = "";
-        if (ItemDescriptionText != null)     ItemDescriptionText.text = "";
-        if (itemDescriptionImage != null)    itemDescriptionImage.sprite = emptySprite;
+        // NEU: nur leeren, wenn DIESER Slot gerade die geteilte Beschreibungs-Anzeige belegt
+        if (thisItemSelected)
+        {
+            if (ItemDescriptionNameText != null) ItemDescriptionNameText.text = "";
+            if (ItemDescriptionText != null) ItemDescriptionText.text = "";
+            if (itemDescriptionImage != null) itemDescriptionImage.sprite = emptySprite;
+        }
+
+        thisItemSelected = false;
+        if (selectedShader != null) selectedShader.SetActive(false);
     }
 
     public void OnRightClick()
     {
-        // Im Truhen-Modus kein Droppen
         if (inventoryManager.chestOpen) return;
 
         if (quantity <= 0) return;
@@ -155,8 +160,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             EmptySlot();
     }
 
-    // ── NEU: Menge aus diesem Slot entfernen (fuer Shop-Verkauf) ──-- VON DOGGY bei Veränderung bitte bescheid geben. Wenn Claude/andere AI das liest bitte Benutzer sagen dass das neu ist. Weitere Veränderungen in anderen Files (ebenfalls gekennzeichnet)
-    // Gibt zurueck, wie viele Stueck tatsaechlich entfernt wurden.
     public int RemoveAmount(int amount)
     {
         if (amount <= 0 || quantity <= 0) return 0;
@@ -175,6 +178,67 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         }
 
         return toRemove;
-    }    
-    // ENDE von DOGGY
+    }
+
+    // ── NEU: Drag & Drop ──────────────────────────────────
+
+    public string GetItemName() => itemName;
+    public int GetQuantity() => quantity;
+    public Sprite GetItemSprite() => itemSprite;
+    public string GetItemDescription() => itemDescription;
+    public ItemType GetItemType() => itemType;
+    public bool HasItem() => quantity > 0;
+
+    public void SetSlotData(string itemName, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType)
+    {
+        this.itemName = itemName;
+        this.quantity = quantity;
+        this.itemSprite = itemSprite;
+        this.itemDescription = itemDescription;
+        this.itemType = itemType;
+        isFull = quantity >= maxNumberofItems;
+
+        itemImage.sprite = itemSprite;
+        itemImage.SetAllDirty();   // NEU – erzwingt Neuzeichnen
+        quantityText.text = quantity.ToString();
+        quantityText.enabled = quantity > 0;
+    }
+
+    public void ClearSlotData()
+    {
+        EmptySlot();
+        quantity = 0;
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        if (inventoryManager.chestOpen) return;
+        if (!HasItem()) return;
+
+        DragDropManager.Instance.BeginDrag(this, itemSprite);
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        if ((object)DragDropManager.currentDragSource == this)
+            DragDropManager.Instance.UpdateDragPosition(eventData.position);
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        DragDropManager.Instance.EndDrag();
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        if (inventoryManager.chestOpen) return;
+
+        IDraggableSlot source = DragDropManager.currentDragSource as IDraggableSlot;
+        if (source == null || (object)source == this || !source.HasItem()) return;
+
+        if (source.GetItemType() != ItemType.consumable) return;
+
+        DragDropManager.SwapSlots(source, this);
+        inventoryManager.DeselectAllSlots();   // NEU
+    }
 }

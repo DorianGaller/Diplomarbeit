@@ -27,6 +27,7 @@ public class EnemySpawn : MonoBehaviour
     public int maxEnemiesAlive = 5;
     public float spawnDelay = 1.2f;
     public float timeBetweenWaves = 4f;
+    public float minDistanceFromPlayer = 3f;
 
     [Header("Spawn Area")]
     public Vector3 spawnAreaSize = new Vector3(10, 0, 10);
@@ -188,11 +189,7 @@ public class EnemySpawn : MonoBehaviour
     {
         if (prefab == null) return;
 
-        Vector3 pos = transform.position + new Vector3(
-            Random.Range(-spawnAreaSize.x / 2, spawnAreaSize.x / 2),
-            Random.Range(-spawnAreaSize.y / 2, spawnAreaSize.y / 2),
-            0
-        );
+        Vector3 pos = GetValidSpawnPosition();   // NEU
 
         GameObject enemy = Instantiate(prefab, pos, Quaternion.identity);
 
@@ -201,6 +198,28 @@ public class EnemySpawn : MonoBehaviour
             life.OnDeath += EnemyDied;
 
         OnEnemySpawned?.Invoke(enemy);
+    }
+
+    Vector3 GetValidSpawnPosition()   // NEU
+    {
+        Vector3 pos = transform.position;
+        int attempts = 0;
+        const int maxAttempts = 20;
+
+        do
+        {
+            pos = transform.position + new Vector3(
+                Random.Range(-spawnAreaSize.x / 2, spawnAreaSize.x / 2),
+                Random.Range(-spawnAreaSize.y / 2, spawnAreaSize.y / 2),
+                0
+            );
+            attempts++;
+        }
+        while (playerMovement != null
+               && Vector3.Distance(pos, playerMovement.transform.position) < minDistanceFromPlayer
+               && attempts < maxAttempts);
+
+        return pos;
     }
 
     void EnemyDied()

@@ -3,9 +3,8 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class EquippedSlot : MonoBehaviour, IPointerClickHandler
+public class EquippedSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IDraggableSlot
 {
-    //SLOT APPEARANCE//
     [SerializeField]
     private Image slotImage;
 
@@ -15,7 +14,6 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private Image playerDisplayImage;
 
-    //SLOT DATA//
     [SerializeField]
     private ItemType itemType = new ItemType();
 
@@ -32,7 +30,6 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
         equipmentSOLibary = GameObject.Find("InventoryCanvas").GetComponent<EquipmentSOLibary>();
     }
 
-    //OTHER VARIABLES//
     private bool slotInUse;
     [SerializeField]
     public GameObject selectedShader;
@@ -42,7 +39,6 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
 
     [SerializeField]
     private Sprite emptySprite;
-
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -71,8 +67,6 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
         }
     }
 
-
-
     void OnRightClick()
     {
         UnEquipGear();
@@ -90,7 +84,6 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
         this.itemName = itemName;
         this.itemDescription = itemDescription;
 
-        // ← Null-Check damit es nicht crasht wenn nicht zugewiesen
         if (playerDisplayImage != null)
             playerDisplayImage.sprite = this.itemSprite;
 
@@ -101,6 +94,9 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
         }
 
         slotInUse = true;
+
+        // NEU: Vorschau-Panel schließen, da das Item jetzt wirklich ausgerüstet ist
+        GameObject.Find("StatManager").GetComponent<PlayerStats>().TurnOffPreviewStats();
     }
 
     public void UnEquipGear()
@@ -108,23 +104,19 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
         inventoryManager.DeselectAllSlots();
         inventoryManager.AddItem(itemName, 1, itemSprite, itemDescription, itemType);
 
-        //Update Image//
         this.itemSprite = emptySprite;
         slotImage.sprite = this.itemSprite;
         slotName.enabled = true;
 
-        //Reset the Display Image//
         if (playerDisplayImage != null)
             playerDisplayImage.sprite = emptySprite;
 
-        //Update the Player Stats//  ← ERST Stats abziehen (itemName noch gesetzt)
         for (int i = 0; i < equipmentSOLibary.equipmentSO.Length; i++)
         {
             if (equipmentSOLibary.equipmentSO[i].itemName == itemName)
                 equipmentSOLibary.equipmentSO[i].UnequipItem();
         }
 
-        //Reset Data//  ← DANN erst nullen
         this.itemName = null;
         this.itemDescription = null;
 
@@ -136,14 +128,12 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
     {
         inventoryManager.DeselectAllSlots();
 
-        // Stats abziehen BEVOR itemName genullt wird
         for (int i = 0; i < equipmentSOLibary.equipmentSO.Length; i++)
         {
             if (equipmentSOLibary.equipmentSO[i].itemName == itemName)
                 equipmentSOLibary.equipmentSO[i].UnequipItem();
         }
 
-        // Slot leeren, OHNE es dem Inventar zurückzugeben
         this.itemSprite = emptySprite;
         slotImage.sprite = this.itemSprite;
         slotName.enabled = true;
@@ -158,4 +148,53 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
         slotInUse = false;
     }
 
+    // ── NEU: Drag & Drop ──────────────────────────────────
+
+    public string GetItemName() => itemName;
+    public int GetQuantity() => slotInUse ? 1 : 0;
+    public Sprite GetItemSprite() => itemSprite;
+    public string GetItemDescription() => itemDescription;
+    public ItemType GetItemType() => itemType;
+    public bool HasItem() => slotInUse;
+
+    public void SetSlotData(string itemName, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType)
+    {
+        // Läuft bewusst über EquipGear(), damit Stats korrekt mit angewendet werden
+        EquipGear(itemSprite, itemName, itemDescription);
+    }
+
+    public void ClearSlotData()
+    {
+        if (slotInUse)
+            ClearEquippedItem();
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        if (!HasItem()) return;
+        DragDropManager.Instance.BeginDrag(this, itemSprite);
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        if ((object)DragDropManager.currentDragSource == this)
+            DragDropManager.Instance.UpdateDragPosition(eventData.position);
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        DragDropManager.Instance.EndDrag();
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        IDraggableSlot source = DragDropManager.currentDragSource as IDraggableSlot;
+        if (source == null || (object)source == this || !source.HasItem()) return;
+
+        if (source.GetItemType() != itemType) return;   // falscher Ausrüstungsslot (z.B. Kopf-Item auf Bein-Slot)
+
+        EquipGear(source.GetItemSprite(), source.GetItemName(), source.GetItemDescription());
+        source.ClearSlotData();
+        inventoryManager.DeselectAllSlots();
+    }
 }

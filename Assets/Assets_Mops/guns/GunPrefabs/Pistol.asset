@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponSO
   weaponName: Pistol
   weaponSprite: {fileID: -4979552915664131744, guid: 5b416e84ecb354de3a0b464332404861, type: 3}
-  firingMode: 1
+  firingMode: 0
   bulletPrefab: {fileID: 8388209518827460252, guid: bd78c33b5bc7b56438281d0eab6e9958, type: 3}
   fireRate: 0.2
   bulletsPerShot: 1

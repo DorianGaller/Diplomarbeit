@@ -173,13 +173,23 @@ public class InteractKeys : MonoBehaviour
             if (tilemap == null) continue;
 
             Vector3Int playerCell = tilemap.WorldToCell(playerPos);
-            int radius = Mathf.CeilToInt(interactDistance);
 
-            for (int x = -radius; x <= radius; x++)
+            // NEU: Zellgröße berücksichtigen, damit interactDistance wirklich Weltraum-Einheiten entspricht
+            Vector3 cellSize = tilemap.cellSize;
+            int radiusX = Mathf.CeilToInt(interactDistance / Mathf.Max(cellSize.x, 0.0001f));
+            int radiusY = Mathf.CeilToInt(interactDistance / Mathf.Max(cellSize.y, 0.0001f));
+
+            for (int x = -radiusX; x <= radiusX; x++)
             {
-                for (int y = -radius; y <= radius; y++)
+                for (int y = -radiusY; y <= radiusY; y++)
                 {
                     Vector3Int checkCell = new Vector3Int(playerCell.x + x, playerCell.y + y, playerCell.z);
+
+                    // NEU: tatsächliche Distanz prüfen statt nur Quadrat
+                    Vector3 cellWorldPos = tilemap.GetCellCenterWorld(checkCell);
+                    if (Vector3.Distance(playerPos, cellWorldPos) > interactDistance)
+                        continue;
+
                     TileBase tile = tilemap.GetTile(checkCell);
 
                     if (tile is InteractableTile interactableTile)

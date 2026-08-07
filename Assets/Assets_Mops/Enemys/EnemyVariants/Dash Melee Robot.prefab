@@ -14,20 +14,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5419547682097970812, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.7688888
+      value: 2.0177777
       objectReference: {fileID: 0}
     - target: {fileID: 5419547682097970812, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 3.4986317
+      value: 3.445285
       objectReference: {fileID: 0}
     - target: {fileID: 7381866628350399518, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
       propertyPath: m_Name
-      value: Melee Robot
+      value: Dash Melee Robot
       objectReference: {fileID: 0}
     - target: {fileID: 7464398803952498146, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 3321789133244264847, guid: c43c1050cde7e684b83ed89c83b4765e, type: 3}
+      objectReference: {fileID: -2105766192561095228, guid: c43c1050cde7e684b83ed89c83b4765e, type: 3}
     - target: {fileID: 7464398803952498146, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -46,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8113823348523320301, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
       propertyPath: shootRange
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8113823348523320301, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
       propertyPath: stopOffset
@@ -100,6 +100,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7381866628350399518, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
       insertIndex: -1
       addedObject: {fileID: -4916289202194585811}
+    - targetCorrespondingSourceObject: {fileID: 7381866628350399518, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7874242885505332412}
   m_SourcePrefab: {fileID: 100100000, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
 --- !u!1 &3502307798667565941 stripped
 GameObject:
@@ -119,6 +122,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMeleeAttack
   player: {fileID: 0}
-  attackRange: 3
-  damage: 10
+  attackRange: 2
+  damage: 15
   attackInterval: 1
+--- !u!114 &7874242885505332412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3502307798667565941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb5fa9ea9d6e95849a28cc4d345e146d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDash
+  dashSpeed: 12
+  dashDuration: 0.2
+  dashCooldown: 2.5
+  dashTriggerRange: 10
+  minDashRange: 1.5
+  dashGhostPrefab: {fileID: 7260098115818715127, guid: 061e8cb799738954e890f6fedf23207a, type: 3}
+  ghostSpawnRate: 0.05

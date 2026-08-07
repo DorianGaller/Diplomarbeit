@@ -113,7 +113,7 @@ MonoBehaviour:
   player: {fileID: 0}
   speed: 2
   shootRange: 10
-  stopOffset: 5
+  stopOffset: 7
 --- !u!114 &7691642563939369976
 MonoBehaviour:
   m_ObjectHideFlags: 0
