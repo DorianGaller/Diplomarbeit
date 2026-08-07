@@ -683,7 +683,7 @@ MonoBehaviour:
   quitButton: {fileID: 278919969}
   loadSceneButton: {fileID: 432695785}
   selectedSceneName: BaseScene
-  previousSceneName: Press_Any_Button_Screen
+  previousSceneName: Press_Any_Button Screen
 --- !u!1 &1491396586
 GameObject:
   m_ObjectHideFlags: 0
