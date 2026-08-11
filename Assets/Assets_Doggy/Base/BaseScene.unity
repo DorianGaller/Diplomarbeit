@@ -1543,6 +1543,7 @@ MonoBehaviour:
   itemListParent: {fileID: 526103450}
   shopEntryPrefab: {fileID: 3228754152314417513, guid: 2bf56eb2dd7a74a2ab723173d6a342e2, type: 3}
   sellRate: 0.75
+  verboseLogging: 1
 --- !u!114 &365356965 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8323201450422284429, guid: 531e2976c01813341b241a88724129c6, type: 3}
@@ -6604,7 +6605,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1792898371
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12638,18 +12639,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLife
   baseMaxHP: 100
   maxHP: 100
-  hearts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  fadeDuration: 0.25
+  healthBarFill: {fileID: 0}
+  healthBarText: {fileID: 0}
+  barFillSpeed: 4
+  playerSpriteRenderer: {fileID: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.15
   incomingDamageMultiplier: 1
 --- !u!114 &2743507006363919435
 MonoBehaviour:

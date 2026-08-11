@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Steel
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemName: Steel
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 6298086538089013102, guid: 3c4a03a27e31f42248776a8e6bcc924d, type: 3}
   itemDescription: 
   statToChange: 0
   amountToChangeStat: 0
   attributeToChange: 0
   amountToChangeAttribute: 0
-  itemType: 0
+  itemType: 1

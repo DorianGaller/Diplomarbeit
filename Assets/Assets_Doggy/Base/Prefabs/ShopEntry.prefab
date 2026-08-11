@@ -104,8 +104,9 @@ MonoBehaviour:
   iconImage: {fileID: 1674406896174207656}
   nameLabel: {fileID: 785615292984031368}
   priceLabel: {fileID: 7086188860856750669}
+  ownedLabel: {fileID: 0}
   buyButton: {fileID: 7438053388504378299}
-  sellButton: {fileID: 0}
+  sellButton: {fileID: 8100532268803326175}
 --- !u!1 &3240599392671754568
 GameObject:
   m_ObjectHideFlags: 0
