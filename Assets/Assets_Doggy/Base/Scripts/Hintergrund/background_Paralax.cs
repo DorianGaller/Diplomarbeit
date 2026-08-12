@@ -14,11 +14,11 @@ public class BackgroundParallax : MonoBehaviour
     public Transform farObject;
 
     // Parallax factors are script-controlled (not editable in Inspector)
-    private readonly Vector2 nearParallax = new Vector2(0.2f, 0f);
-    private readonly Vector2 farParallax = new Vector2(0.03f, 0.09f);
+    private readonly Vector2 nearParallax = new Vector2(0.1f, 0.015f);
+    private readonly Vector2 farParallax = new Vector2(0.025f, 0.07f);
 
     // Smoothing (script-controlled)
-    private readonly float smoothSpeed = 6f;
+    private readonly float smoothSpeed = 3f;
 
     private Vector3 playerStartPos;
     private Vector3 nearStartPos;
@@ -46,13 +46,12 @@ public class BackgroundParallax : MonoBehaviour
         float dt = Time.deltaTime;
         Vector3 playerOffset = player.position - playerStartPos;
 
-        // Near: only X movement (lock Y to start)
+        // Near: X and Y movement (opposite direction like parallax)
         if (nearObject != null)
         {
-            Vector3 target = nearStartPos + new Vector3(playerOffset.x * nearParallax.x, 0f, 0f);
+            Vector3 target = nearStartPos + new Vector3(-playerOffset.x * nearParallax.x, -playerOffset.y * nearParallax.y, 0f);
             float t = 1f - Mathf.Exp(-smoothSpeed * dt);
             Vector3 newPos = Vector3.Lerp(nearObject.position, target, t);
-            newPos.y = nearStartPos.y; // ensure Y stays at initial
             nearObject.position = newPos;
         }
 
