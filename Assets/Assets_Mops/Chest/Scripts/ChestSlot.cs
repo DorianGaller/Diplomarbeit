@@ -25,17 +25,22 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler
 
     public void SetItem(Chest.ChestItem item, int index, ChestUI ui)
     {
-        slotIndex       = index;
-        chestUI         = ui;
-        hasItem         = true;
-        itemName        = item.itemName;
-        quantity        = item.quantity;
-        itemSprite      = item.itemSprite;
+        slotIndex = index;
+        chestUI = ui;
+        hasItem = true;
+        itemName = item.itemName;
+        quantity = item.quantity;
+        itemSprite = item.itemSprite;
         itemDescription = item.itemDescription;
 
-        itemImage.sprite     = itemSprite != null ? itemSprite : emptySprite;
-        quantityText.text    = quantity.ToString();
-        quantityText.enabled = quantity > 0;
+        if (itemImage != null)
+            itemImage.sprite = itemSprite != null ? itemSprite : emptySprite;
+
+        if (quantityText != null)
+        {
+            quantityText.text = quantity.ToString();
+            quantityText.enabled = quantity > 0;
+        }
     }
 
     public void ClearSlot()
@@ -47,17 +52,25 @@ public class ChestSlot : MonoBehaviour, IPointerClickHandler
         itemSprite = null;
         itemDescription = "";
 
-        if (emptySprite != null) itemImage.sprite = emptySprite;
-        quantityText.enabled = false;
+        if (itemImage != null && emptySprite != null)
+            itemImage.sprite = emptySprite;
+
+        if (quantityText != null)
+            quantityText.enabled = false;
+
         if (selectedShader != null) selectedShader.SetActive(false);
         thisItemSelected = false;
     }
 
     public void UpdateQuantity(int newQuantity)
     {
-        quantity             = newQuantity;
-        quantityText.text    = newQuantity.ToString();
-        quantityText.enabled = newQuantity > 0;
+        quantity = newQuantity;
+
+        if (quantityText != null)
+        {
+            quantityText.text = newQuantity.ToString();
+            quantityText.enabled = newQuantity > 0;
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData)

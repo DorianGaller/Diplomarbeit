@@ -1,12 +1,11 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class VentManager : MonoBehaviour
 {
     [Header("PLAYER")]
     public MonoBehaviour playerMovement;
-
-    // -------------------- GAMEOBJECTS --------------------
 
     [Header("ON ENTER VENT - OBJECTS")]
     public List<GameObject> enableOnEnter = new List<GameObject>();
@@ -16,8 +15,6 @@ public class VentManager : MonoBehaviour
     public List<GameObject> enableOnExit = new List<GameObject>();
     public List<GameObject> disableOnExit = new List<GameObject>();
 
-    // -------------------- 2D COLLIDERS (SPRITES!) --------------------
-
     [Header("ON ENTER VENT - 2D COLLIDERS")]
     public List<Collider2D> enable2DCollidersOnEnter = new List<Collider2D>();
     public List<Collider2D> disable2DCollidersOnEnter = new List<Collider2D>();
@@ -26,16 +23,34 @@ public class VentManager : MonoBehaviour
     public List<Collider2D> enable2DCollidersOnExit = new List<Collider2D>();
     public List<Collider2D> disable2DCollidersOnExit = new List<Collider2D>();
 
-    // -------------------- STATE --------------------
-
     private bool isInVent = false;
     public bool IsInVent => isInVent;
 
-    // -------------------- MAIN --------------------
+    private void Start()   // NEU
+    {
+        StartCoroutine(ResolvePlayerMovementNextFrame());
+    }
+
+    // NEU: wartet einen Frame (DontDestroy-Duplikate bereinigt sich),
+    // löst dann IMMER den tatsächlich lebenden PlayerMovement neu auf
+    private IEnumerator ResolvePlayerMovementNextFrame()
+    {
+        yield return null;
+
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+        {
+            PlayerMovement liveMovement = playerObj.GetComponent<PlayerMovement>();
+            if (liveMovement != null)
+                playerMovement = liveMovement;
+        }
+
+        if (playerMovement == null)
+            Debug.LogError("VentManager: Player Movement nicht gefunden!");
+    }
 
     public void ToggleVent()
     {
-        // Sicherheit: Movement immer aktiv
         if (playerMovement != null)
             playerMovement.enabled = true;
 
@@ -69,8 +84,6 @@ public class VentManager : MonoBehaviour
         ClearUIFocus();
     }
 
-    // -------------------- HELPERS --------------------
-
     private void ToggleObjects(List<GameObject> enableList, List<GameObject> disableList)
     {
         foreach (GameObject obj in enableList)
@@ -85,7 +98,6 @@ public class VentManager : MonoBehaviour
                 obj.SetActive(false);
         }
     }
-
 
     private void Toggle2DColliders(List<Collider2D> enableList, List<Collider2D> disableList)
     {

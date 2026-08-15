@@ -119,11 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &109041907 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6203828176741735185, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
-  m_PrefabInstance: {fileID: 1646225203}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &297043448
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,11 +152,6 @@ Transform:
   - {fileID: 679604651}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &300593191 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6203828176741735185, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
-  m_PrefabInstance: {fileID: 679604650}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &494031772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,11 +252,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 507337805701435683, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.08
+      value: 12.1
       objectReference: {fileID: 0}
     - target: {fileID: 507337805701435683, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.95
+      value: 3.63
       objectReference: {fileID: 0}
     - target: {fileID: 507337805701435683, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: m_LocalPosition.z
@@ -300,65 +290,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2225593455211880301, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
-      propertyPath: canvasToOpen
-      value: 
-      objectReference: {fileID: 300593191}
     - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: chestUI
       value: 
       objectReference: {fileID: 566670909}
     - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
-      propertyPath: chestItems.Array.data[0].itemSO
+      propertyPath: interactionHint
       value: 
-      objectReference: {fileID: 11400000, guid: a5448b0494b39ef42b1dd94862889356, type: 2}
-    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
-      propertyPath: chestItems.Array.data[0].itemName
-      value: Nano-Stim
-      objectReference: {fileID: 0}
-    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
-      propertyPath: chestItems.Array.data[0].itemType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
-      propertyPath: chestItems.Array.data[0].quantity
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
-      propertyPath: chestItems.Array.data[0].itemSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 0fdbffc054ad0da4d947bf719f9c6276, type: 3}
-    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
-      propertyPath: chestItems.Array.data[0].itemDescription
-      value: Injects a swarm of repair nanobots that seal wounds and restore vital
-        functions.
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1745696999}
     - target: {fileID: 5605926594920797430, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1056502223}
-    - target: {fileID: 5605926594920797430, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadAndOpen
-      objectReference: {fileID: 0}
-    - target: {fileID: 6203828176741735185, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8476670172117773284, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 5124846962368112271, guid: 4d3b8bacc3cde4678a34fffb46eee99e, type: 3}
-    - target: {fileID: 8476670172117773284, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9172255874949554188, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: m_Name
       value: Chest (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4929686811665934048, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+    - {fileID: 6203828176741735185, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
@@ -799,10 +750,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Character
       objectReference: {fileID: 0}
-    - target: {fileID: 4081211905513376982, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5915155793719968739, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -875,8 +822,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4081211905513376982, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -902,11 +848,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 507337805701435683, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.76
+      value: 9.6
       objectReference: {fileID: 0}
     - target: {fileID: 507337805701435683, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.77
+      value: 3.58
       objectReference: {fileID: 0}
     - target: {fileID: 507337805701435683, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: m_LocalPosition.z
@@ -941,13 +887,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2225593455211880301, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225593455211880301, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: canvasToOpen
       value: 
-      objectReference: {fileID: 109041907}
+      objectReference: {fileID: 0}
     - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: chestUI
       value: 
       objectReference: {fileID: 566670909}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: interactionHint
+      value: 
+      objectReference: {fileID: 1745696999}
+    - target: {fileID: 4929686811665934048, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5605926594920797430, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -955,6 +913,30 @@ PrefabInstance:
     - target: {fileID: 5605926594920797430, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadAndOpen
+      objectReference: {fileID: 0}
+    - target: {fileID: 7261949917083399931, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365553590392405839, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365553590392405839, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365553590392405839, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365553590392405839, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365553590392405839, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8476670172117773284, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: m_Sprite
@@ -969,7 +951,9 @@ PrefabInstance:
       value: Chest
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4929686811665934048, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+    - {fileID: 6203828176741735185, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
@@ -1012,6 +996,11 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 3
   m_ColliderType: 1
+--- !u!1 &1745696999 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3335884002099020031, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+  m_PrefabInstance: {fileID: 1056502215}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1979220889
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12418,7 +12407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8095130905523160406, guid: cb8d3aa1d2980e24b8d122bcc8f4c55b, type: 3}
       propertyPath: targetSpawnID
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8095130905523160406, guid: cb8d3aa1d2980e24b8d122bcc8f4c55b, type: 3}
       propertyPath: targetSceneName

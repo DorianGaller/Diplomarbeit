@@ -16,23 +16,39 @@ public class ChestUI : MonoBehaviour
 
     public ItemType itemType;
 
+    private bool initialized = false;   // NEU
+
     void Awake()
     {
-        inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
-
-        // Slots automatisch aus Kindobjekten holen falls nicht manuell zugewiesen
-        if (chestSlots == null || chestSlots.Length == 0)
-            chestSlots = GetComponentsInChildren<ChestSlot>(true);
+        EnsureInitialized();
     }
 
     void Start()
     {
+        EnsureInitialized();
+    }
+
+    // NEU: fasst Awake+Start zusammen und ist beliebig oft sicher aufrufbar,
+    // egal ob das GameObject beim Szenenstart aktiv war oder nicht
+    private void EnsureInitialized()
+    {
+        if (initialized) return;
+        initialized = true;
+
+        if (inventoryManager == null)
+            inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
+
+        if (chestSlots == null || chestSlots.Length == 0)
+            chestSlots = GetComponentsInChildren<ChestSlot>(true);
+
         if (closeButton   != null) closeButton.onClick.AddListener(Close);
         if (takeAllButton != null) takeAllButton.onClick.AddListener(TakeAll);
     }
 
     public void LoadAndOpen(Chest chest)
     {
+        EnsureInitialized();   // NEU – garantiert Setup, auch wenn Awake() nie automatisch lief
+
         currentChest = chest;
 
         for (int i = 0; i < chestSlots.Length; i++)
@@ -50,7 +66,6 @@ public class ChestUI : MonoBehaviour
         inventoryManager.OpenChestView();
     }
 
-    // Rechtsklick: ganzen Stack nehmen
     public void TakeItem(int slotIndex)
     {
         if (currentChest == null) return;
@@ -73,7 +88,6 @@ public class ChestUI : MonoBehaviour
         }
     }
 
-    // Linksklick: 1 Stück nehmen
     public void TakeOneItem(int slotIndex)
     {
         if (currentChest == null) return;

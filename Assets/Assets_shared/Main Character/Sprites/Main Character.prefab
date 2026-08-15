@@ -1299,11 +1299,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: eddd477e0893dcd4384a394341de6989, type: 2}
   - {fileID: 11400000, guid: b3d5e8e95bed94bbebb3cb29c76ab7d3, type: 2}
   - {fileID: 11400000, guid: 2af8db872787e86478df5b365ba24c84, type: 2}
+  - {fileID: 11400000, guid: a5448b0494b39ef42b1dd94862889356, type: 2}
   chestPanel: {fileID: 4952699836058817185}
   inventoryDescription: {fileID: 2317773029957226909}
   menuTabs: {fileID: 564730114639772748}
   inventoryTabSelected: {fileID: 4679508717475226044}
   equipmentTabSelected: {fileID: 5804035429105403357}
+  descriptionNameText: {fileID: 2982325377695621840}
+  descriptionText: {fileID: 7351123838767233368}
+  descriptionImage: {fileID: 6975174423545744839}
+  emptyPreviewSprite: {fileID: -2584541018943888324, guid: d1f5673ae2c42454cb3f3d26c20ff763, type: 3}
   chestOpen: 0
 --- !u!114 &2057089784905418344
 MonoBehaviour:
@@ -5130,7 +5135,7 @@ RectTransform:
   m_GameObject: {fileID: 3251585467025893595}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.17, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7947414697287522115}
@@ -10998,7 +11003,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1041301941664765792, guid: 0d193d1eb91fd6349866262d15160dd3, type: 3}
+  m_Sprite: {fileID: 4716429076600413205, guid: 0b126d398b76bfa4686be88bc555f493, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13443,7 +13448,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 261, y: 796}
+  m_AnchoredPosition: {x: 261, y: 775}
   m_SizeDelta: {x: 360.53, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1092515113382560469

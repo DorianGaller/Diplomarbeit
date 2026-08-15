@@ -77,7 +77,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
             OnRightClick();
     }
 
-    public void OnLeftClick()
+    void OnLeftClick()
     {
         if (inventoryManager.chestOpen)
         {
@@ -104,12 +104,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
             selectedShader.SetActive(true);
             thisItemSelected = true;
 
-            if (ItemDescriptionNameText != null) ItemDescriptionNameText.text = itemName;
-            if (ItemDescriptionText != null) ItemDescriptionText.text = itemDescription;
-            if (itemDescriptionImage != null)
-            {
-                itemDescriptionImage.sprite = itemSprite != null ? itemSprite : emptySprite;
-            }
+            inventoryManager.ShowItemPreview(itemName, itemDescription, itemSprite);
         }
     }
 
@@ -117,17 +112,14 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     {
         quantityText.enabled = false;
         itemImage.sprite = emptySprite;
-        itemImage.SetAllDirty();   // NEU
         isFull = false;
         itemName = "";
+        itemSprite = null;         // NEU
+        itemDescription = "";      // NEU
+        itemType = default;        // NEU – zur Sicherheit
 
-        // NEU: nur leeren, wenn DIESER Slot gerade die geteilte Beschreibungs-Anzeige belegt
         if (thisItemSelected)
-        {
-            if (ItemDescriptionNameText != null) ItemDescriptionNameText.text = "";
-            if (ItemDescriptionText != null) ItemDescriptionText.text = "";
-            if (itemDescriptionImage != null) itemDescriptionImage.sprite = emptySprite;
-        }
+            inventoryManager.ClearItemPreview();
 
         thisItemSelected = false;
         if (selectedShader != null) selectedShader.SetActive(false);

@@ -1,11 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
-/// <summary>
-/// Füge diesen Script dem Door-GameObject hinzu.
-/// Die Tür kann nur geöffnet werden, wenn der Spieler in der Nähe ist
-/// und F drückt. Danach wird eine neue Scene geladen.
-/// </summary>
 public class DoorInteraction : MonoBehaviour
 {
     [Header("Settings")]
@@ -32,16 +28,29 @@ public class DoorInteraction : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(ResolveReferencesNextFrame());   // NEU
+    }
+
+    // NEU: wartet einen Frame, damit DontDestroy-Duplikate bereinigt sind,
+    // löst dann Player und MainHand-Slot dynamisch neu auf
+    private IEnumerator ResolveReferencesNextFrame()
+    {
+        yield return null;
+
         GameObject playerObj = GameObject.FindWithTag("Player");
         if (playerObj != null)
             player = playerObj.transform;
         else
             Debug.LogError("DoorInteraction: Kein GameObject mit Tag 'Player' gefunden!");
 
-        // MainHand-Slot nur suchen wenn ein Item benötigt wird
         if (requiredItemName != "" && mainHandSlot == null)
         {
-            EquippedSlot[] allSlots = FindObjectsByType<EquippedSlot>(FindObjectsSortMode.None);
+            // NEU: FindObjectsInactive.Include, damit auch der (noch geschlossene) Equipment-Slot gefunden wird
+            EquippedSlot[] allSlots = FindObjectsByType<EquippedSlot>(
+                FindObjectsInactive.Include,
+                FindObjectsSortMode.None
+            );
+
             foreach (EquippedSlot slot in allSlots)
             {
                 if (slot.gameObject.name.ToLower().Contains("mainhand"))
@@ -67,7 +76,6 @@ public class DoorInteraction : MonoBehaviour
         float distance = Vector2.Distance(transform.position, player.position);
         bool playerInRange = distance <= interactionRange;
 
-        // Item-Check: wenn kein Item benötigt wird, immer true
         bool hasRequiredItem = requiredItemName == "" || HasRequiredItem();
 
         if (interactionHint != null)
@@ -79,10 +87,6 @@ public class DoorInteraction : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Prüft ob das benötigte Item im MainHand-Slot ausgerüstet ist.
-    /// Wird nur aufgerufen wenn requiredItemName nicht leer ist.
-    /// </summary>
     private bool HasRequiredItem()
     {
         if (mainHandSlot == null) return false;
@@ -107,7 +111,7 @@ public class DoorInteraction : MonoBehaviour
         if (requiredItemName != "" && mainHandSlot != null)
             mainHandSlot.ClearEquippedItem();
 
-        DoorTransition.nextSpawnID = targetSpawnID;   // ← war verloren gegangen, wieder rein
+        DoorTransition.nextSpawnID = targetSpawnID;
         Debug.Log("Tür geöffnet – lade Scene: " + targetSceneName);
         SceneManager.LoadScene(targetSceneName);
     }

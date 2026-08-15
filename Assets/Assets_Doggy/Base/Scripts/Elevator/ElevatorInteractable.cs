@@ -14,8 +14,8 @@ public class ElevatorInteractable : MonoBehaviour
     [SerializeField] private string playerTag = "Player";
 
     [Header("UI Referenzen")]
-    [SerializeField] private GameObject interactionPrompt;   // "F zum Interagieren"
-    [SerializeField] private GameObject elevatorPanel;       // Auswahl-UI
+    [SerializeField] private GameObject interactionPrompt;
+    [SerializeField] private GameObject elevatorPanel;
 
     [Header("Ziel")]
     [SerializeField] private string levelSceneName = "Level_01";
@@ -51,7 +51,6 @@ public class ElevatorInteractable : MonoBehaviour
         HandleInput();
     }
 
-    /// <summary>Prueft ob der Spieler in Reichweite ist.</summary>
     void CheckPlayerDistance()
     {
         bool wasInRange = playerInRange;
@@ -62,7 +61,6 @@ public class ElevatorInteractable : MonoBehaviour
             interactionPrompt.SetActive(playerInRange && !isPanelOpen);
         }
 
-        // Weglaufen schliesst das Panel
         if (isPanelOpen && !playerInRange)
         {
             ClosePanel();
@@ -107,7 +105,6 @@ public class ElevatorInteractable : MonoBehaviour
         if (interactionPrompt != null) interactionPrompt.SetActive(false);
     }
 
-    /// <summary>Wird auch vom "Verlassen"-Button aufgerufen.</summary>
     public void ClosePanel()
     {
         if (elevatorPanel != null) elevatorPanel.SetActive(false);
@@ -116,7 +113,6 @@ public class ElevatorInteractable : MonoBehaviour
         if (interactionPrompt != null) interactionPrompt.SetActive(playerInRange);
     }
 
-    /// <summary>Button "Level starten" haengt hier drauf.</summary>
     public void LoadLevel()
     {
         LoadScene(levelSceneName);
@@ -134,6 +130,7 @@ public class ElevatorInteractable : MonoBehaviour
             return;
         }
 
+        DoorTransition.nextSpawnID = sceneName;   // NEU – Spieler landet am richtigen SpawnPoint
         FightRoomProgress.RegisterElevatorEntry(sceneName);
         SceneManager.LoadScene(sceneName);
     }
