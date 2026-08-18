@@ -1096,6 +1096,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Character
       objectReference: {fileID: 0}
+    - target: {fileID: 3075491398782624749, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: baseMaxHP
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075491398782624749, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5915155793719968739, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -12348,7 +12356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3090843372606281264, guid: cb8d3aa1d2980e24b8d122bcc8f4c55b, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[0].m_RefCount
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3090843372606281264, guid: cb8d3aa1d2980e24b8d122bcc8f4c55b, type: 3}
       propertyPath: m_Tiles.Array.data[0].second.m_TileColorIndex
@@ -12376,27 +12384,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3090843372606281264, guid: cb8d3aa1d2980e24b8d122bcc8f4c55b, type: 3}
       propertyPath: m_Tiles.Array.data[0].second.m_TileSpriteIndex
-      value: 4294967295
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3090843372606281264, guid: cb8d3aa1d2980e24b8d122bcc8f4c55b, type: 3}
       propertyPath: m_Tiles.Array.data[1].second.m_TileSpriteIndex
-      value: 4294967295
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3090843372606281264, guid: cb8d3aa1d2980e24b8d122bcc8f4c55b, type: 3}
       propertyPath: m_Tiles.Array.data[2].second.m_TileSpriteIndex
-      value: 4294967295
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3090843372606281264, guid: cb8d3aa1d2980e24b8d122bcc8f4c55b, type: 3}
       propertyPath: m_Tiles.Array.data[3].second.m_TileSpriteIndex
-      value: 4294967295
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3090843372606281264, guid: cb8d3aa1d2980e24b8d122bcc8f4c55b, type: 3}
       propertyPath: m_Tiles.Array.data[4].second.m_TileSpriteIndex
-      value: 4294967295
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3090843372606281264, guid: cb8d3aa1d2980e24b8d122bcc8f4c55b, type: 3}
       propertyPath: m_Tiles.Array.data[5].second.m_TileSpriteIndex
-      value: 4294967295
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3249933631985737952, guid: cb8d3aa1d2980e24b8d122bcc8f4c55b, type: 3}
       propertyPath: m_Tiles.Array.size
