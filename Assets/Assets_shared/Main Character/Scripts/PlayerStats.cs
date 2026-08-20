@@ -4,18 +4,18 @@ using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
-    public int attack, defense, agility, health, weight;   // NEU: weight
+    public int attack, defense, agility, health, weight;
 
     public int coins;
 
     [SerializeField]
-    private TMP_Text attackText, defenseText, agilityText, healthText, weightText;   // NEU: weightText
+    private TMP_Text attackText, defenseText, agilityText, healthText, weightText;
 
     [SerializeField]
     private TMP_Text coinsText;
 
     [SerializeField]
-    private TMP_Text attackPreText, defensePreText, agilityPreText, healthPreText, weightPreText;   // NEU
+    private TMP_Text attackPreText, defensePreText, agilityPreText, healthPreText, weightPreText;
 
     [SerializeField]
     private Image previewImage;
@@ -30,13 +30,19 @@ public class PlayerStats : MonoBehaviour
     private PlayerLife playerLife;
 
     [Header("Weight Penalty")]
-    [SerializeField] private PlayerMovement playerMovement;   // NEU
-    [Tooltip("Wie stark 1 Gewichtspunkt die Geschwindigkeit prozentual verringert")]
+    [SerializeField] private PlayerMovement playerMovement;
     [Range(0f, 0.05f)]
-    public float speedPenaltyPerWeight = 0.005f;   // 0.5% pro Gewichtspunkt
-    [Tooltip("Maximale Verlangsamung, egal wie schwer die Ausrüstung insgesamt wird")]
+    public float speedPenaltyPerWeight = 0.005f;
     [Range(0f, 1f)]
-    public float maxSpeedPenalty = 0.3f;   // nie mehr als 30% langsamer
+    public float maxSpeedPenalty = 0.3f;
+
+    [Header("Agility Bonus")]   // NEU
+    [Tooltip("Wie stark 1 Agility-Punkt die Geschwindigkeit prozentual erhöht")]
+    [Range(0f, 0.05f)]
+    public float speedBonusPerAgility = 0.01f;
+    [Tooltip("Maximaler Geschwindigkeitsbonus durch Agility")]
+    [Range(0f, 1f)]
+    public float maxSpeedBonus = 0.5f;
 
     void Start()
     {
@@ -51,7 +57,7 @@ public class PlayerStats : MonoBehaviour
         agilityText.text = agility.ToString();
 
         if (weightText != null)
-            weightText.text = weight.ToString();   // NEU
+            weightText.text = weight.ToString();
 
         if (playerLife != null)
         {
@@ -60,10 +66,11 @@ public class PlayerStats : MonoBehaviour
                 healthText.text = playerLife.maxHP.ToString();
         }
 
-        ApplyWeightPenalty();   // NEU
+        ApplyWeightPenalty();
+        ApplyAgilityBonus();   // NEU
     }
 
-    void ApplyWeightPenalty()   // NEU
+    void ApplyWeightPenalty()
     {
         if (playerMovement == null) return;
 
@@ -71,6 +78,16 @@ public class PlayerStats : MonoBehaviour
         float multiplier = 1f - penalty;
 
         playerMovement.SetWeightPenalty(multiplier);
+    }
+
+    void ApplyAgilityBonus()   // NEU
+    {
+        if (playerMovement == null) return;
+
+        float bonus = Mathf.Clamp(agility * speedBonusPerAgility, 0f, maxSpeedBonus);
+        float multiplier = 1f + bonus;
+
+        playerMovement.SetAgilityBonus(multiplier);
     }
 
     public void UpdateCoinsDisplay()
@@ -93,7 +110,7 @@ public class PlayerStats : MonoBehaviour
         return true;
     }
 
-    public void PreviewStats(int attack, int defense, int agility, int health, int weight, Sprite itemSprite)   // NEU: weight-Parameter
+    public void PreviewStats(int attack, int defense, int agility, int health, int weight, Sprite itemSprite)
     {
         attackPreText.text = attack.ToString();
         defensePreText.text = defense.ToString();
@@ -101,7 +118,7 @@ public class PlayerStats : MonoBehaviour
         if (healthPreText != null)
             healthPreText.text = health.ToString();
         if (weightPreText != null)
-            weightPreText.text = weight.ToString();   // NEU
+            weightPreText.text = weight.ToString();
         previewImage.sprite = itemSprite;
         selectedItemStats.SetActive(true);
         selcteedItemImage.SetActive(true);

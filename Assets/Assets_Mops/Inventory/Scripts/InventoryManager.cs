@@ -22,14 +22,38 @@ public class InventoryManager : MonoBehaviour
     public GameObject inventoryTabSelected;      // SelectedPanel auf dem Inventory-Tab-Button
     public GameObject equipmentTabSelected;      // SelectedPanel auf dem Equipment-Tab-Button
 
+    [Header("Chest Tabs")]
+    public GameObject chestTabsRoot;
+    public GameObject chestInventoryTabSelected;   // NEU – Selected-Anzeige für den Inventory-Tab in der Truhen-Ansicht
+    public GameObject chestEquipmentTabSelected;
+
+
+    [Header("Chest Equipment View (nur Grid, kein Charakter-Screen)")]
+    [Tooltip("Das Teil-Panel im Equipment-Menü, das NUR das Grid mit den Ausrüstungs-Items zeigt (z.B. ItemPanel)")]
+    public GameObject equipmentItemGridOnly;   // NEU
+    [Tooltip("Diese Equipment-Menü-Teile sollen im Chest-Modus ausgeblendet bleiben (z.B. StatPanel, PlayerEquipmentPanel)")]
+    public GameObject[] equipmentMenuPartsToHideInChest;   // NEU   // NEU – Selected-Anzeige für den Equipment-Tab in der Truhen-Ansicht
+
     [Header("Item Preview (geteiltes Panel)")]
     [SerializeField] private TMP_Text descriptionNameText;
     [SerializeField] private TMP_Text descriptionText;
     [SerializeField] private Image descriptionImage;
     [SerializeField] private Sprite emptyPreviewSprite;
 
+    [Header("Chest Equipment Grid Resize")]
+    [Tooltip("Breite des Grids, wenn es im Chest-Modus alleine (ohne Stats/Charakter) gezeigt wird")]
+    public float chestEquipmentGridWidth = 900f;
+    [Tooltip("Cell Size des Grids im Chest-Modus")]
+    public Vector2 chestEquipmentGridCellSize = new Vector2(150f, 150f);
+
     private bool menuActivated;
     public bool chestOpen;
+
+    private RectTransform equipmentItemGridRect;
+    private GridLayoutGroup equipmentItemGridLayout;
+    private float defaultGridWidth;
+    private Vector2 defaultGridCellSize;
+    private bool gridDefaultsCached = false;
 
     void Update()
     {
@@ -40,18 +64,18 @@ public class InventoryManager : MonoBehaviour
             Equipment();
     }
 
-     public void ShowItemPreview(string itemName, string itemDescription, Sprite itemSprite)
+    public void ShowItemPreview(string itemName, string itemDescription, Sprite itemSprite)
     {
         if (descriptionNameText != null) descriptionNameText.text = itemName;
-        if (descriptionText != null)     descriptionText.text = itemDescription;
-        if (descriptionImage != null)    descriptionImage.sprite = itemSprite != null ? itemSprite : emptyPreviewSprite;
+        if (descriptionText != null) descriptionText.text = itemDescription;
+        if (descriptionImage != null) descriptionImage.sprite = itemSprite != null ? itemSprite : emptyPreviewSprite;
     }
 
     public void ClearItemPreview()
     {
         if (descriptionNameText != null) descriptionNameText.text = "";
-        if (descriptionText != null)     descriptionText.text = "";
-        if (descriptionImage != null)    descriptionImage.sprite = emptyPreviewSprite;
+        if (descriptionText != null) descriptionText.text = "";
+        if (descriptionImage != null) descriptionImage.sprite = emptyPreviewSprite;
     }
 
     // ── TAB HELPER ────────────────────────────────────────
@@ -141,6 +165,7 @@ public class InventoryManager : MonoBehaviour
         EquipmentMenu.SetActive(false);
         if (chestPanel != null) chestPanel.SetActive(false);
         if (inventoryDescription != null) inventoryDescription.SetActive(true);
+        if (chestTabsRoot != null) chestTabsRoot.SetActive(false);   // NEU
         SetTabState(true, false);
     }
 
@@ -169,6 +194,16 @@ public class InventoryManager : MonoBehaviour
         Time.timeScale = 0f;
         EquipmentMenu.SetActive(true);
         InventoryMenu.SetActive(false);
+
+        foreach (var part in equipmentMenuPartsToHideInChest)
+        {
+            if (part != null) part.SetActive(true);
+        }
+
+        ResizeEquipmentGrid(false);
+
+        if (chestTabsRoot != null) chestTabsRoot.SetActive(false);   // NEU
+
         SetTabState(false, true);
     }
 
@@ -180,9 +215,12 @@ public class InventoryManager : MonoBehaviour
         menuActivated = true;
         Time.timeScale = 0f;
         InventoryMenu.SetActive(true);
+        EquipmentMenu.SetActive(false);
         if (chestPanel != null) chestPanel.SetActive(true);
         if (inventoryDescription != null) inventoryDescription.SetActive(false);
+        if (chestTabsRoot != null) chestTabsRoot.SetActive(true);   // NEU
         SetTabState(true, false);
+        SetChestTabState(true, false);
     }
 
     public void CloseChestView()
@@ -191,10 +229,59 @@ public class InventoryManager : MonoBehaviour
         menuActivated = false;
         Time.timeScale = 1f;
         InventoryMenu.SetActive(false);
+        EquipmentMenu.SetActive(false);
         if (chestPanel != null) chestPanel.SetActive(false);
         if (inventoryDescription != null) inventoryDescription.SetActive(false);
+        if (chestTabsRoot != null) chestTabsRoot.SetActive(false);
+
+        foreach (var part in equipmentMenuPartsToHideInChest)
+        {
+            if (part != null) part.SetActive(true);
+        }
+
+        ResizeEquipmentGrid(false);   // NEU – zurück auf normale Größe
+
         DeselectAllSlots();
         SetTabState(false, false);
+        SetChestTabState(false, false);
+    }
+
+    public void OpenChestInventoryTab()
+    {
+        if (!chestOpen) return;
+
+        InventoryMenu.SetActive(true);
+        EquipmentMenu.SetActive(false);
+        SetChestTabState(true, false);
+    }
+
+    public void OpenChestEquipmentTab()
+    {
+        if (!chestOpen) return;
+
+        InventoryMenu.SetActive(false);
+        EquipmentMenu.SetActive(true);
+
+        foreach (var part in equipmentMenuPartsToHideInChest)
+        {
+            if (part != null) part.SetActive(false);
+        }
+
+        if (equipmentItemGridOnly != null)
+            equipmentItemGridOnly.SetActive(true);
+
+        ResizeEquipmentGrid(true);   // NEU
+
+        SetChestTabState(false, true);
+    }
+
+    private void SetChestTabState(bool inventoryActive, bool equipmentActive)   // NEU
+    {
+        if (chestInventoryTabSelected != null)
+            chestInventoryTabSelected.SetActive(inventoryActive);
+
+        if (chestEquipmentTabSelected != null)
+            chestEquipmentTabSelected.SetActive(equipmentActive);
     }
 
     // ── BESTEHENDE METHODEN ───────────────────────────────
@@ -317,6 +404,37 @@ public class InventoryManager : MonoBehaviour
             if (equipmentSlot[i].itemName == itemName) total += equipmentSlot[i].quantity;
 
         return total;
+    }
+
+    private void CacheEquipmentGridDefaults()
+    {
+        if (gridDefaultsCached || equipmentItemGridOnly == null) return;
+
+        equipmentItemGridRect = equipmentItemGridOnly.GetComponent<RectTransform>();
+        equipmentItemGridLayout = equipmentItemGridOnly.GetComponent<GridLayoutGroup>();
+
+        if (equipmentItemGridRect != null)
+            defaultGridWidth = equipmentItemGridRect.sizeDelta.x;
+
+        if (equipmentItemGridLayout != null)
+            defaultGridCellSize = equipmentItemGridLayout.cellSize;
+
+        gridDefaultsCached = true;
+    }
+
+    private void ResizeEquipmentGrid(bool chestMode)
+    {
+        CacheEquipmentGridDefaults();
+
+        if (equipmentItemGridRect != null)
+        {
+            Vector2 size = equipmentItemGridRect.sizeDelta;
+            size.x = chestMode ? chestEquipmentGridWidth : defaultGridWidth;   // NEU – nur X, Y bleibt unangetastet
+            equipmentItemGridRect.sizeDelta = size;
+        }
+
+        if (equipmentItemGridLayout != null)
+            equipmentItemGridLayout.cellSize = chestMode ? chestEquipmentGridCellSize : defaultGridCellSize;
     }
 
     // ---- Ende von DOGGYs neuem Code

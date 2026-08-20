@@ -112,8 +112,11 @@ public class DoorInteraction : MonoBehaviour
             mainHandSlot.ClearEquippedItem();
 
         DoorTransition.nextSpawnID = targetSpawnID;
-        Debug.Log("Tür geöffnet – lade Scene: " + targetSceneName);
-        SceneManager.LoadScene(targetSceneName);
+
+        if (SceneTransitionManager.Instance != null)
+            SceneTransitionManager.Instance.TransitionToScene(targetSceneName);
+        else
+            SceneManager.LoadScene(targetSceneName);
     }
 
     private void OnDrawGizmosSelected()

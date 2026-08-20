@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21c716abea2032541a8bd9e1bcd6e520, type: 3}
+  m_Name: Leg exoskeleton
+  m_EditorClassIdentifier: Assembly-CSharp::ItemSO
+  itemName: Leg exoskeleton
+  itemSprite: {fileID: 21300000, guid: b591557958c2df642a94bdc98ac85bce, type: 3}
+  itemDescription: "A lightweight leg exoskeleton that mechanically enhances muscle
+    power and increases movement speed \u2013 at the cost of some additional weight."
+  statToChange: 0
+  amountToChangeStat: 0
+  attributeToChange: 3
+  amountToChangeAttribute: 5
+  itemType: 5

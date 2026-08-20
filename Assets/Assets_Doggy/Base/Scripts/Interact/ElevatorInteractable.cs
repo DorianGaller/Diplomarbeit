@@ -75,6 +75,10 @@ public class ElevatorInteractable : InteractableBase
 
         DoorTransition.nextSpawnID = sceneName;
         FightRoomProgress.RegisterElevatorEntry(sceneName);
-        SceneManager.LoadScene(sceneName);
+
+        if (SceneTransitionManager.Instance != null)
+            SceneTransitionManager.Instance.TransitionToScene(sceneName);
+        else
+            SceneManager.LoadScene(sceneName);
     }
 }
