@@ -130,9 +130,13 @@ public class ElevatorInteractable : MonoBehaviour
             return;
         }
 
-        DoorTransition.nextSpawnID = sceneName;   // NEU – Spieler landet am richtigen SpawnPoint
+        DoorTransition.nextSpawnID = sceneName;
         FightRoomProgress.RegisterElevatorEntry(sceneName);
-        SceneManager.LoadScene(sceneName);
+
+        if (SceneTransitionManager.Instance != null)
+            SceneTransitionManager.Instance.TransitionToScene(sceneName);
+        else
+            SceneManager.LoadScene(sceneName);
     }
 
     void OnDrawGizmosSelected()

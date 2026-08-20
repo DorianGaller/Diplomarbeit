@@ -163,10 +163,13 @@ public class PlayerLife : MonoBehaviour
     {
         Time.timeScale = 0f;
 
-        yield return new WaitForSecondsRealtime(4f);
+        yield return new WaitForSecondsRealtime(1f);
 
         Time.timeScale = 1f;
 
-        SceneManager.LoadScene("BaseScene");
+        if (SceneTransitionManager.Instance != null)
+            SceneTransitionManager.Instance.TransitionToScene("BaseScene");
+        else
+            SceneManager.LoadScene("BaseScene");
     }
 }

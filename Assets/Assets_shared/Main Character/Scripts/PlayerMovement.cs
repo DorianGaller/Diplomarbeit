@@ -4,13 +4,16 @@ public class PlayerMovement : MonoBehaviour
 {
     public float movementSpeed = 5f;
 
-    private float weightSpeedMultiplier = 1f;   // NEU
+    private float weightSpeedMultiplier = 1f;
+    private float agilitySpeedMultiplier = 1f;   // NEU
     private Vector2 direction;
     private float currentSpeed;
     private Rigidbody2D rb;
-    private bool isDashing = false;   // NEU
+    private bool isDashing = false;
 
     public Vector2 Direction => direction;
+
+    private float TotalSpeedMultiplier => weightSpeedMultiplier * agilitySpeedMultiplier;   // NEU
 
     void Start()
     {
@@ -40,16 +43,23 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetDashState(bool dashing, float dashSpeed)
     {
-        isDashing = dashing;   // NEU
-        currentSpeed = dashing ? dashSpeed * weightSpeedMultiplier : movementSpeed * weightSpeedMultiplier;   // NEU: Gewichts-Multiplikator greift bei beidem
+        isDashing = dashing;
+        currentSpeed = dashing ? dashSpeed * TotalSpeedMultiplier : movementSpeed * TotalSpeedMultiplier;
     }
 
-    // NEU: wird von PlayerStats aufgerufen, sobald sich das Ausrüstungsgewicht ändert
     public void SetWeightPenalty(float multiplier)
     {
         weightSpeedMultiplier = multiplier;
 
         if (!isDashing)
-            currentSpeed = movementSpeed * weightSpeedMultiplier;
+            currentSpeed = movementSpeed * TotalSpeedMultiplier;
+    }
+
+    public void SetAgilityBonus(float multiplier)   // NEU
+    {
+        agilitySpeedMultiplier = multiplier;
+
+        if (!isDashing)
+            currentSpeed = movementSpeed * TotalSpeedMultiplier;
     }
 }

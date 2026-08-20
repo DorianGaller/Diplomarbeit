@@ -1096,14 +1096,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Character
       objectReference: {fileID: 0}
-    - target: {fileID: 3075491398782624749, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
-      propertyPath: baseMaxHP
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: 3075491398782624749, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5915155793719968739, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1393,6 +1385,39 @@ PrefabInstance:
       propertyPath: interactionHint
       value: 
       objectReference: {fileID: 889850682}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[1].itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 5a9279c77f2fd4742ae991dc3a2a31f6, type: 2}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[0].quantity
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[1].itemName
+      value: Leg exoskeleton
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[1].itemType
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[1].quantity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[1].itemSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b591557958c2df642a94bdc98ac85bce, type: 3}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[1].itemDescription
+      value: "A lightweight leg exoskeleton that mechanically enhances muscle power
+        and increases movement speed \u2013 at the cost of some additional weight."
+      objectReference: {fileID: 0}
     - target: {fileID: 4929686811665934048, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: m_IsActive
       value: 1

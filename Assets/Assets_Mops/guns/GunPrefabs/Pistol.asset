@@ -19,3 +19,4 @@ MonoBehaviour:
   fireRate: 0.2
   bulletsPerShot: 1
   spreadAngle: 0
+  muzzleOffset: 1.2
