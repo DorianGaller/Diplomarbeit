@@ -13,13 +13,13 @@ public class Intro : MonoBehaviour
     [SerializeField] private TMP_Text easterEggText;
     private static readonly string[] EasterEggPhrases =
     {
-        "Pack you Rock Star Games",
+        "Pack you Rock Star Games!",
         "Wo ist der Onkel?",
-        "Mops war hier",
-        "Toast war hier",
-        "Galli war hier",
-        "Skili war hier",
-        "Ymom2 war hier",
+        "Mops war hier!",
+        "Toast war hier!",
+        "Galli war hier!",
+        "Skili war hier!",
+        "Ymom2 war hier!",
         "ESCyber bevor GTA6?!",
         "Irfan der Klassenbeste",
         "End Update",
