@@ -15,6 +15,12 @@ public class Intro : MonoBehaviour
     {
         "Pack you Rock Star Games",
         "Wo ist der Onkel?",
+        "Sörian",
+        "Mops war hier",
+        "ESCyber bevor GTA6?!",
+        "Irfan der Klassenbeste",
+        "End Update",
+
     };
 
     [SerializeField] private Canvas imageCanvas;
