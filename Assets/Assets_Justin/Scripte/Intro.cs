@@ -15,8 +15,11 @@ public class Intro : MonoBehaviour
     {
         "Pack you Rock Star Games",
         "Wo ist der Onkel?",
-        "Sörian",
         "Mops war hier",
+        "Toast war hier",
+        "Galli war hier",
+        "Skili war hier",
+        "Ymom2 war hier",
         "ESCyber bevor GTA6?!",
         "Irfan der Klassenbeste",
         "End Update",
@@ -48,6 +51,7 @@ public class Intro : MonoBehaviour
     [SerializeField] private float dotDelay = 0.45f;
     [SerializeField] private float imageFadeDuration = 0.7f;
     [SerializeField] private float textFadeDuration = 0.7f;
+    [SerializeField] private float easterEggFadeInDuration = 0.25f;
     [SerializeField] private float helperFadeDuration = 0.35f;
     [SerializeField] private float helperFadeDelay = 0.15f;
 
@@ -88,10 +92,10 @@ public class Intro : MonoBehaviour
 
         SetSpriteLayout(selectedSprite, selectedScale);
         SetTextY(introText, firstTextY);
-        yield return TypeText("A diploma Game Project from", letterDelay);
+        yield return TypeText("A Diploma Game Project from", letterDelay);
         yield return ShowSprite(selectedSprite, selectedScale, imageFadeDuration);
-        yield return WaitForDuration(2f);
-        ShowEasterEggInstantly();
+        yield return WaitForDuration(1.5f);
+        yield return ShowEasterEgg();
 
         yield return ClearTextAndImages();
         yield return WaitForDuration(2f);
@@ -110,7 +114,7 @@ public class Intro : MonoBehaviour
         yield return WaitForDuration(2f);
 
         SetTextY(introText, finalTextY);
-        yield return TypeText("The ESC-Dev Team Presents . . .", letterDelay * 2f);
+        yield return TypeText("The ESC-Dev-Team Presents . . .", letterDelay * 2f);
         if (introText != null)
         {
             introText.text = string.Empty;
@@ -257,11 +261,11 @@ public class Intro : MonoBehaviour
         }
     }
 
-    private void ShowEasterEggInstantly()
+    private System.Collections.IEnumerator ShowEasterEgg()
     {
         if (easterEggText == null || EasterEggPhrases.Length == 0)
         {
-            return;
+            yield break;
         }
 
         SetTextY(easterEggText, easterEggTextY);
@@ -269,7 +273,8 @@ public class Intro : MonoBehaviour
         easterEggText.alignment = TextAlignmentOptions.Center;
         easterEggText.gameObject.SetActive(true);
         easterEggText.rectTransform.localRotation = Quaternion.identity;
-        SetTextAlpha(easterEggText, 1f);
+        SetTextAlpha(easterEggText, 0f);
+        yield return FadeTextElement(easterEggText, 1f, easterEggFadeInDuration);
     }
 
     private static void SetTextY(TMP_Text text, float y)
