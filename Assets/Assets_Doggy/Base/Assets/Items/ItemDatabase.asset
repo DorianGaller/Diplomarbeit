@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09e39b9f2763c4af4a2ba857e35bd218, type: 3}
+  m_Name: ItemDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::ItemDatabase
+  items:
+  - itemName: Steel
+    itemSprite: {fileID: 6298086538089013102, guid: 3c4a03a27e31f42248776a8e6bcc924d, type: 3}
+    itemDescription: bla bla
+    itemType: 10
+    maxStackSize: 99
+    weaponExpValue: 25
+    weaponSO: {fileID: 0}
+  - itemName: Pistol
+    itemSprite: {fileID: -4979552915664131744, guid: 5b416e84ecb354de3a0b464332404861, type: 3}
+    itemDescription: bla bla
+    itemType: 6
+    maxStackSize: 1
+    weaponExpValue: 0
+    weaponSO: {fileID: 11400000, guid: 9ecdab447c5d6824ca043f0bdd317648, type: 2}

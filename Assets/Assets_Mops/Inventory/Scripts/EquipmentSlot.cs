@@ -98,26 +98,29 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHand
     }
 
     private void EquipGear()
-    {
-        if (itemType == ItemType.head)
-            headSlot.EquipGear(itemSprite, itemName, itemDescription);
-        else if (itemType == ItemType.arms)
-            armsSlot.EquipGear(itemSprite, itemName, itemDescription);
-        else if (itemType == ItemType.body)
-            bodySlot.EquipGear(itemSprite, itemName, itemDescription);
-        else if (itemType == ItemType.legs)
-            legsSlot.EquipGear(itemSprite, itemName, itemDescription);
-        else if (itemType == ItemType.mainHand)
-            mainHandSlot.EquipGear(itemSprite, itemName, itemDescription);
-        else if (itemType == ItemType.offHand)
-            offHandSlot.EquipGear(itemSprite, itemName, itemDescription);
-        else if (itemType == ItemType.relic)
-            relicSlot.EquipGear(itemSprite, itemName, itemDescription);
-        else if (itemType == ItemType.feet)
-            feetSlot.EquipGear(itemSprite, itemName, itemDescription);
+{
+    bool equipped = false;
 
+    if (itemType == ItemType.head)        
+        { headSlot.EquipGear(itemSprite, itemName, itemDescription);     equipped = true; }
+    else if (itemType == ItemType.arms)   
+        { armsSlot.EquipGear(itemSprite, itemName, itemDescription);     equipped = true; }
+    else if (itemType == ItemType.body)   
+        { bodySlot.EquipGear(itemSprite, itemName, itemDescription);     equipped = true; }
+    else if (itemType == ItemType.legs)   
+        { legsSlot.EquipGear(itemSprite, itemName, itemDescription);     equipped = true; }
+    else if 
+        (itemType == ItemType.mainHand){ mainHandSlot.EquipGear(itemSprite, itemName, itemDescription); equipped = true; }
+    else if 
+        (itemType == ItemType.offHand){ offHandSlot.EquipGear(itemSprite, itemName, itemDescription);  equipped = true; }
+    else if 
+        (itemType == ItemType.relic)  { relicSlot.EquipGear(itemSprite, itemName, itemDescription);    equipped = true; }
+    else if 
+        (itemType == ItemType.feet)   { feetSlot.EquipGear(itemSprite, itemName, itemDescription);     equipped = true; }
+
+    if (equipped)
         EmptySlot();
-    }
+}
 
     private void EmptySlot()
 {
@@ -140,6 +143,7 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHand
         newItem.itemName = itemName;
         newItem.sprite = itemSprite;
         newItem.itemDescription = itemDescription;
+        newItem.itemType = itemType; 
 
         SpriteRenderer sr = itemToDrop.AddComponent<SpriteRenderer>();
         sr.sprite = itemSprite;
@@ -215,7 +219,7 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHand
         IDraggableSlot source = DragDropManager.currentDragSource as IDraggableSlot;
         if (source == null || (object)source == this || !source.HasItem()) return;
 
-        if (source.GetItemType() == ItemType.consumable) return;
+        if (InventoryManager.IsStackableType(source.GetItemType())) return;
 
         DragDropManager.SwapSlots(source, this);
         inventoryManager.DeselectAllSlots();

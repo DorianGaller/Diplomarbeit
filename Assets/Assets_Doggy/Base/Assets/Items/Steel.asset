@@ -19,4 +19,4 @@ MonoBehaviour:
   amountToChangeStat: 0
   attributeToChange: 0
   amountToChangeAttribute: 0
-  itemType: 1
+  itemType: 10

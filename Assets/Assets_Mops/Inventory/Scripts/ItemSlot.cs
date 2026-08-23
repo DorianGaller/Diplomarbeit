@@ -89,6 +89,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
 
         if (thisItemSelected)
         {
+            if (itemType != ItemType.consumable) return;
             bool usable = inventoryManager.UseItem(itemName);
             if (usable)
             {
@@ -137,6 +138,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         newItem.itemName = itemName;
         newItem.sprite = itemSprite;
         newItem.itemDescription = itemDescription;
+        newItem.itemType = itemType; 
 
         SpriteRenderer sr = itemToDrop.AddComponent<SpriteRenderer>();
         sr.sprite = itemSprite;
@@ -228,7 +230,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         IDraggableSlot source = DragDropManager.currentDragSource as IDraggableSlot;
         if (source == null || (object)source == this || !source.HasItem()) return;
 
-        if (source.GetItemType() != ItemType.consumable) return;
+        if (!InventoryManager.IsStackableType(source.GetItemType())) return;
 
         DragDropManager.SwapSlots(source, this);
         inventoryManager.DeselectAllSlots();   // NEU

@@ -32700,7 +32700,7 @@ MonoBehaviour:
   agility: 3
   health: 0
   weight: 0
-  coins: 0
+  coins: 1000
   attackText: {fileID: 7105675247580529668}
   defenseText: {fileID: 1838724791003829609}
   agilityText: {fileID: 5145148656641029977}

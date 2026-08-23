@@ -296,9 +296,15 @@ public class InventoryManager : MonoBehaviour
         return false;
     }
 
+    /// <summary>Typen, die im stapelnden Inventory-Grid landen.</summary>
+    public static bool IsStackableType(ItemType type)
+    {
+        return type == ItemType.consumable || type == ItemType.material;
+    }
+    
     public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType)
     {
-        if (itemType == ItemType.consumable)
+        if (IsStackableType(itemType))
         {
             // NEU: zuerst versuchen, auf einen bestehenden Stack desselben Items draufzulegen
             for (int i = 0; i < itemSlot.Length; i++)
@@ -452,4 +458,5 @@ public enum ItemType
     offHand,
     relic,
     feet,
+    material,     // NEU — von DOGGY hinzugefügt, um Material-Items zu kennzeichnen, die nicht ausrüstbar sind, aber im Inventar liegen können.
 };

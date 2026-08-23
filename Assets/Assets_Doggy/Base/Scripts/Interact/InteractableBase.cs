@@ -10,12 +10,12 @@ public abstract class InteractableBase : MonoBehaviour
 {
     [Header("Interaktion")]
     [SerializeField] protected float interactionRadius = 2.5f;
-    [SerializeField] protected KeyCode interactionKey = KeyCode.E;
+    [SerializeField] protected KeyCode interactionKey = KeyCode.F;
     [SerializeField] protected string playerTag = "Player";
     [SerializeField] protected bool canInteract = true;
 
     [Header("Prompt")]
-    [SerializeField] protected string promptText = "[E to interact]";
+    [SerializeField] protected string promptText = "Press F to Interact";
 
     [Header("Debug")]
     [SerializeField] protected bool showDebugInfo = false;
