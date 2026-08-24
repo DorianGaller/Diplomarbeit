@@ -163,9 +163,11 @@ public class PlayerLife : MonoBehaviour
     {
         Time.timeScale = 0f;
 
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(4f);
 
         Time.timeScale = 1f;
+
+        DoorTransition.nextSpawnID = "1";   // NEU – Spawn ID 1 in der BaseScene
 
         if (SceneTransitionManager.Instance != null)
             SceneTransitionManager.Instance.TransitionToScene("BaseScene");
