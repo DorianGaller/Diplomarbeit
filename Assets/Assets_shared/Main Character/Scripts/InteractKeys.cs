@@ -144,7 +144,13 @@ public class InteractKeys : MonoBehaviour
             }
 
             GameObject shot = Instantiate(weapon.bulletPrefab, shootPoint.position, Quaternion.identity);
-            shot.GetComponent<GunshotEffect>()?.Init(shootDir);
+
+            GunshotEffect effect = shot.GetComponent<GunshotEffect>();
+            if (effect != null)
+            {
+                effect.damage = weaponHolder.CurrentDamage;
+                effect.Init(shootDir);
+            }
         }
     }
 

@@ -21,6 +21,22 @@ public class WeaponHolder : MonoBehaviour
     // Aktuell ausgerüstete Waffe — von InteractKeys gelesen
     public WeaponSO CurrentWeapon { get; private set; }
 
+    /// <summary>
+    /// Level der aktuell ausgerüsteten Waffe.
+    /// Step 2a: noch fest 1. Ab Step 2b kommt der Wert aus der WeaponInstance.
+    /// </summary>
+    public int CurrentWeaponLevel { get; private set; } = 1;
+
+    /// <summary>Schaden der aktuellen Waffe inkl. Level. 0 wenn nichts ausgerüstet ist.</summary>
+    public int CurrentDamage
+    {
+        get
+        {
+            if (CurrentWeapon == null) return 0;
+            return WeaponStats.GetDamage(CurrentWeapon, CurrentWeaponLevel);
+    }
+    }
+
     private InteractKeys interactKeys;
     private FieldInfo itemNameField;
     private string lastEquippedName = null;
