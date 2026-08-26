@@ -385,9 +385,9 @@ MonoBehaviour:
   imageCanvas: {fileID: 1382155767}
   imageDisplay: {fileID: 2007451513}
   selectedSprite: {fileID: -436287872336935062, guid: 6973496e698b1a0499245e6d790d7d50, type: 3}
-  finalSprite: {fileID: -6376539231944490220, guid: b0296bcae653f834f8581918ba514c33, type: 3}
+  finalSprite: {fileID: 1404028623067837608, guid: 73fb866bd24c3c04682f717994c82b79, type: 3}
   selectedScale: 1
-  finalScale: 5
+  finalScale: 1
   imageVerticalOffset: -50
   chatGptText: {fileID: 1134061993}
   claudeText: {fileID: 1871418001}

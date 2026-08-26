@@ -23,6 +23,7 @@ public class Intro : MonoBehaviour
         "ESCyber bevor GTA6?!",
         "Irfan der Klassenbeste",
         "End Update",
+        "Cookie der Freut sich auch!"
 
     };
 

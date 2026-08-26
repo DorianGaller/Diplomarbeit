@@ -82,7 +82,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         if (inventoryManager.chestOpen)
         {
             inventoryManager.DeselectAllSlots();
-            selectedShader.SetActive(true);
+            if (selectedShader != null) selectedShader.SetActive(true);
             thisItemSelected = true;
             return;
         }
@@ -102,7 +102,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         else
         {
             inventoryManager.DeselectAllSlots();
-            selectedShader.SetActive(true);
+            if (selectedShader != null) selectedShader.SetActive(true);
             thisItemSelected = true;
 
             inventoryManager.ShowItemPreview(itemName, itemDescription, itemSprite);

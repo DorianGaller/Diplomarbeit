@@ -349,19 +349,19 @@ public class InventoryManager : MonoBehaviour
     {
         for (int i = 0; i < itemSlot.Length; i++)
         {
-            itemSlot[i].selectedShader.SetActive(false);
+            if (itemSlot[i].selectedShader != null) itemSlot[i].selectedShader.SetActive(false);
             itemSlot[i].thisItemSelected = false;
         }
 
         for (int i = 0; i < equipmentSlot.Length; i++)
         {
-            equipmentSlot[i].selectedShader.SetActive(false);
+            if (equipmentSlot[i].selectedShader != null) equipmentSlot[i].selectedShader.SetActive(false);
             equipmentSlot[i].thisItemSelected = false;
         }
 
         for (int i = 0; i < equippedSlot.Length; i++)
         {
-            equippedSlot[i].selectedShader.SetActive(false);
+            if (equippedSlot[i].selectedShader != null) equippedSlot[i].selectedShader.SetActive(false);
             equippedSlot[i].thisItemSelected = false;
         }
 
