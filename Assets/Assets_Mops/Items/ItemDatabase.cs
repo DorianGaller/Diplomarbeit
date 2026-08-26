@@ -10,12 +10,21 @@ using System.Collections.Generic;
 /// - Als ScriptableObject-Asset ist sie szenenunabhaengig und ueberall verfuegbar,
 ///   ohne GameObject.Find() und ohne Inspector-Verdrahtung.
 ///
+/// SPEICHERORT:
+/// Assets/Assets_Mops/Items/Resources/ItemDatabase.asset
+///
+/// Wichtig: Resources.Load() findet nur Assets, die in einem Ordner mit dem
+/// exakten Namen "Resources" liegen. Der Ordner darf aber irgendwo im Projekt
+/// stehen — deshalb liegt er direkt bei den Items und nicht unter Assets/Resources/.
+/// Geladen wird immer nur der Pfad INNERHALB des Resources-Ordners, hier also
+/// schlicht "ItemDatabase".
+///
 /// SETUP (einmalig):
-/// 1. Ordner anlegen: Assets/Resources/
-/// 2. Rechtsklick -> Create -> Inventory -> Item Database
-/// 3. Asset muss exakt "ItemDatabase" heissen und in Assets/Resources/ liegen
-/// 4. Im Inspector die Items eintragen
-/// 5. Rechtsklick auf das Asset -> "Validate Database" prueft auf Fehler
+/// 1. Rechtsklick -> Create -> Inventory -> Item Database
+/// 2. Asset muss exakt "ItemDatabase" heissen und in
+///    Assets/Assets_Mops/Items/Resources/ liegen
+/// 3. Im Inspector die Items eintragen
+/// 4. Rechtsklick auf das Asset -> "Validate Database" prueft auf Fehler
 /// </summary>
 [CreateAssetMenu(fileName = "ItemDatabase", menuName = "Inventory/Item Database")]
 public class ItemDatabase : ScriptableObject
@@ -26,7 +35,15 @@ public class ItemDatabase : ScriptableObject
 
     // ── Zugriff ───────────────────────────────────────────
 
+    /// <summary>
+    /// Pfad INNERHALB des Resources-Ordners — nicht der Projektpfad.
+    /// Das Asset selbst liegt unter Assets/Assets_Mops/Items/Resources/ItemDatabase.asset.
+    /// Laege es z.B. in .../Resources/Datenbanken/, waere der Wert "Datenbanken/ItemDatabase".
+    /// </summary>
     private const string ResourcePath = "ItemDatabase";
+
+    /// <summary>Voller Projektpfad — nur fuer Fehlermeldungen und den Editor-Fallback.</summary>
+    private const string AssetPath = "Assets/Assets_Mops/Items/Resources/ItemDatabase.asset";
 
     private static ItemDatabase cachedInstance;
     private Dictionary<string, ItemDefinition> lookup;
@@ -39,11 +56,33 @@ public class ItemDatabase : ScriptableObject
             {
                 cachedInstance = Resources.Load<ItemDatabase>(ResourcePath);
 
+#if UNITY_EDITOR
+                // Fallback: Wurde das Asset im Projekt verschoben oder liegt es (noch)
+                // nicht in einem Resources-Ordner, wird es im Editor trotzdem gefunden.
+                // Im Build gibt es diesen Weg nicht — dort MUSS es unter Resources/ liegen.
+                if (cachedInstance == null)
+                {
+                    string[] guids = UnityEditor.AssetDatabase.FindAssets("t:ItemDatabase");
+
+                    if (guids.Length > 0)
+                    {
+                        string foundPath = UnityEditor.AssetDatabase.GUIDToAssetPath(guids[0]);
+                        cachedInstance =
+                            UnityEditor.AssetDatabase.LoadAssetAtPath<ItemDatabase>(foundPath);
+
+                        Debug.LogWarning(
+                            $"[ItemDatabase] Asset liegt unter '{foundPath}' und damit nicht " +
+                            $"im erwarteten Resources-Ordner. Im Editor funktioniert es, im " +
+                            $"fertigen Build NICHT. Bitte nach '{AssetPath}' verschieben.");
+                    }
+                }
+#endif
+
                 if (cachedInstance == null)
                 {
                     Debug.LogError(
-                        "[ItemDatabase] Asset nicht gefunden! Erwartet: " +
-                        "Assets/Resources/ItemDatabase.asset");
+                        "[ItemDatabase] Asset nicht gefunden! Erwartet: " + AssetPath +
+                        " (der Ordner muss exakt 'Resources' heissen).");
                 }
             }
             return cachedInstance;

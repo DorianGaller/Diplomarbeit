@@ -20,6 +20,7 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     private Sprite itemSprite;
     private string itemName;
     private string itemDescription;
+    private string instanceId;
 
     private InventoryManager inventoryManager;
     private EquipmentSOLibary equipmentSOLibary;
@@ -72,11 +73,16 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
         UnEquipGear();
     }
 
+    // Überladung, damit bestehende Aufrufer weiter kompilieren
     public void EquipGear(Sprite itemSprite, string itemName, string itemDescription)
+        => EquipGear(itemSprite, itemName, itemDescription, null);
+
+    public void EquipGear(Sprite itemSprite, string itemName, string itemDescription, string instanceId)
     {
         if (slotInUse)
             UnEquipGear();
 
+        this.instanceId = instanceId;
         this.itemSprite = itemSprite;
         slotImage.sprite = this.itemSprite;
         slotName.enabled = false;
@@ -102,7 +108,7 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     public void UnEquipGear()
     {
         inventoryManager.DeselectAllSlots();
-        inventoryManager.AddItem(itemName, 1, itemSprite, itemDescription, itemType);
+        inventoryManager.AddItem(itemName, 1, itemSprite, itemDescription, itemType, instanceId);
 
         this.itemSprite = emptySprite;
         slotImage.sprite = this.itemSprite;
@@ -119,6 +125,7 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
 
         this.itemName = null;
         this.itemDescription = null;
+        this.instanceId = null;
 
         GameObject.Find("StatManager").GetComponent<PlayerStats>().TurnOffPreviewStats();
         slotInUse = false;
@@ -143,6 +150,7 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
 
         this.itemName = null;
         this.itemDescription = null;
+        this.instanceId = null;
 
         GameObject.Find("StatManager").GetComponent<PlayerStats>().TurnOffPreviewStats();
         slotInUse = false;
@@ -156,11 +164,13 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     public string GetItemDescription() => itemDescription;
     public ItemType GetItemType() => itemType;
     public bool HasItem() => slotInUse;
+    public string GetInstanceId() => instanceId;
 
-    public void SetSlotData(string itemName, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType)
+    public void SetSlotData(string itemName, int quantity, Sprite itemSprite,
+                            string itemDescription, ItemType itemType, string instanceId)
     {
         // Läuft bewusst über EquipGear(), damit Stats korrekt mit angewendet werden
-        EquipGear(itemSprite, itemName, itemDescription);
+        EquipGear(itemSprite, itemName, itemDescription, instanceId);
     }
 
     public void ClearSlotData()
@@ -193,7 +203,8 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
 
         if (source.GetItemType() != itemType) return;   // falscher Ausrüstungsslot (z.B. Kopf-Item auf Bein-Slot)
 
-        EquipGear(source.GetItemSprite(), source.GetItemName(), source.GetItemDescription());
+        EquipGear(source.GetItemSprite(), source.GetItemName(),
+                  source.GetItemDescription(), source.GetInstanceId());
         source.ClearSlotData();
         inventoryManager.DeselectAllSlots();
     }

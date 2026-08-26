@@ -302,7 +302,8 @@ public class InventoryManager : MonoBehaviour
         return type == ItemType.consumable || type == ItemType.material;
     }
     
-    public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType)
+    public int AddItem(string itemName, int quantity, Sprite itemSprite,
+                       string itemDescription, ItemType itemType, string instanceId = null)
     {
         if (IsStackableType(itemType))
         {
@@ -311,8 +312,8 @@ public class InventoryManager : MonoBehaviour
             {
                 if (itemSlot[i].quantity > 0 && itemSlot[i].itemName == itemName && !itemSlot[i].isFull)
                 {
-                    int left = itemSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription, itemType);
-                    if (left > 0) left = AddItem(itemName, left, itemSprite, itemDescription, itemType);
+                    int left = itemSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription, itemType, instanceId);
+                    if (left > 0) left = AddItem(itemName, left, itemSprite, itemDescription, itemType, instanceId);
                     return left;
                 }
             }
@@ -322,8 +323,8 @@ public class InventoryManager : MonoBehaviour
             {
                 if (itemSlot[i].quantity == 0)
                 {
-                    int left = itemSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription, itemType);
-                    if (left > 0) left = AddItem(itemName, left, itemSprite, itemDescription, itemType);
+                    int left = itemSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription, itemType, instanceId);
+                    if (left > 0) left = AddItem(itemName, left, itemSprite, itemDescription, itemType, instanceId);
                     return left;
                 }
             }
@@ -336,8 +337,8 @@ public class InventoryManager : MonoBehaviour
             {
                 if (equipmentSlot[i].quantity == 0)
                 {
-                    int left = equipmentSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription, itemType);
-                    if (left > 0) left = AddItem(itemName, left, itemSprite, itemDescription, itemType);
+                    int left = equipmentSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription, itemType, instanceId);
+                    if (left > 0) left = AddItem(itemName, left, itemSprite, itemDescription, itemType, instanceId);
                     return left;
                 }
             }

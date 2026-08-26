@@ -1,99 +1,122 @@
 using UnityEngine;
-using System.Reflection;
-
+ 
 /// <summary>
-/// Hängt am Player (oder GameManager).
-/// Beobachtet den MainHand-Slot und gibt InteractKeys immer die aktuelle Waffe.
+/// Haengt am Player. Beobachtet den MainHand-Slot und stellt die aktuell
+/// ausgeruestete Waffe samt ihrem Fortschritt bereit.
+///
+/// Der Reflection-Zugriff auf EquippedSlot.itemName ist weggefallen —
+/// der Slot liefert Name und instanceId jetzt oeffentlich.
 /// </summary>
 public class WeaponHolder : MonoBehaviour
 {
     [Header("Slot Reference")]
     [Tooltip("MainHand EquippedSlot aus dem InventoryCanvas")]
     [SerializeField] private EquippedSlot mainHandSlot;
-
-    [Header("Weapon Library")]
-    [Tooltip("Alle verfügbaren WeaponSOs — Name muss mit itemName im Slot übereinstimmen")]
+ 
+    [Header("Fallback")]
+    [Tooltip("Wird nur benutzt, wenn die Waffe nicht in der ItemDatabase steht. " +
+             "Auf Dauer sollte die Datenbank die einzige Quelle sein.")]
     [SerializeField] private WeaponSO[] weapons;
-
+ 
     [Header("Debug")]
     [SerializeField] private bool showDebugLog = false;
-
-    // Aktuell ausgerüstete Waffe — von InteractKeys gelesen
+ 
+    // ── Oeffentlicher Zustand ─────────────────────────────
+ 
+    /// <summary>Die Waffenklasse. Null wenn nichts ausgeruestet ist.</summary>
     public WeaponSO CurrentWeapon { get; private set; }
-
-    /// <summary>
-    /// Level der aktuell ausgerüsteten Waffe.
-    /// Step 2a: noch fest 1. Ab Step 2b kommt der Wert aus der WeaponInstance.
-    /// </summary>
-    public int CurrentWeaponLevel { get; private set; } = 1;
-
-    /// <summary>Schaden der aktuellen Waffe inkl. Level. 0 wenn nichts ausgerüstet ist.</summary>
-    public int CurrentDamage
-    {
-        get
-        {
-            if (CurrentWeapon == null) return 0;
-            return WeaponStats.GetDamage(CurrentWeapon, CurrentWeaponLevel);
-    }
-    }
-
+ 
+    /// <summary>Das konkrete Exemplar. Null bei Altbestand ohne Instanz.</summary>
+    public WeaponInstance CurrentInstance { get; private set; }
+ 
+    /// <summary>Level der ausgeruesteten Waffe. Ohne Instanz: 1.</summary>
+    public int CurrentWeaponLevel =>
+        CurrentInstance != null ? CurrentInstance.level : 1;
+ 
+    /// <summary>Schaden inkl. Level. 0 wenn nichts ausgeruestet ist.</summary>
+    public int CurrentDamage =>
+        CurrentWeapon == null ? 0 : WeaponStats.GetDamage(CurrentWeapon, CurrentWeaponLevel);
+ 
+    // ── Intern ────────────────────────────────────────────
+ 
     private InteractKeys interactKeys;
-    private FieldInfo itemNameField;
-    private string lastEquippedName = null;
-
+    private string lastName;
+    private string lastInstanceId;
+ 
     private void Start()
     {
         interactKeys = GetComponent<InteractKeys>();
         if (interactKeys == null)
             interactKeys = GetComponentInChildren<InteractKeys>();
-
+ 
         if (interactKeys == null)
             Debug.LogError("WeaponHolder: InteractKeys nicht gefunden!");
-
+ 
         if (mainHandSlot == null)
             Debug.LogError("WeaponHolder: Kein mainHandSlot zugewiesen!");
-
-        // Reflection einmalig cachen
-        itemNameField = typeof(EquippedSlot).GetField(
-            "itemName",
-            BindingFlags.NonPublic | BindingFlags.Instance
-        );
-
+ 
         UpdateWeapon();
     }
-
+ 
     private void Update()
     {
-        if (mainHandSlot == null || itemNameField == null) return;
-
-        string currentName = itemNameField.GetValue(mainHandSlot) as string;
-        if (currentName == lastEquippedName) return;
-
-        lastEquippedName = currentName;
+        if (mainHandSlot == null) return;
+ 
+        string currentName = mainHandSlot.GetItemName();
+        string currentId = mainHandSlot.GetInstanceId();
+ 
+        // Auch auf die ID reagieren: zwei gleichnamige Waffen zu tauschen
+        // aendert den Namen nicht, aber sehr wohl das Level.
+        if (currentName == lastName && currentId == lastInstanceId) return;
+ 
+        lastName = currentName;
+        lastInstanceId = currentId;
         UpdateWeapon();
     }
-
+ 
     private void UpdateWeapon()
     {
         CurrentWeapon = null;
-
-        if (!string.IsNullOrEmpty(lastEquippedName))
+        CurrentInstance = null;
+ 
+        if (!string.IsNullOrEmpty(lastInstanceId))
+            CurrentInstance = WeaponRegistry.Get(lastInstanceId);
+ 
+        if (!string.IsNullOrEmpty(lastName))
         {
-            foreach (var weapon in weapons)
-            {
-                if (weapon.weaponName == lastEquippedName)
-                {
-                    CurrentWeapon = weapon;
-                    break;
-                }
-            }
+            CurrentWeapon = ItemDatabase.GetWeapon(lastName);
+ 
+            if (CurrentWeapon == null)
+                CurrentWeapon = FindInFallbackArray(lastName);
         }
-
-        // canShoot nur erlauben wenn eine Waffe ausgerüstet ist
+ 
         if (interactKeys != null)
             interactKeys.canShoot = CurrentWeapon != null;
-
+ 
         if (showDebugLog)
-            Debug.Log($"WeaponHolder: Waffe gewechselt → '{CurrentWeapon?.weaponName ?? "keine"}'");
+        {
+            Debug.Log($"WeaponHolder: '{lastName ?? "keine"}' " +
+                      $"id='{lastInstanceId ?? "-"}' " +
+                      $"Lv{CurrentWeaponLevel} dmg={CurrentDamage}" +
+                      (CurrentInstance == null && !string.IsNullOrEmpty(lastName)
+                          ? "  (keine Instanz — Altbestand?)" : ""));
+        }
+    }
+ 
+    private WeaponSO FindInFallbackArray(string weaponKey)
+    {
+        if (weapons == null) return null;
+ 
+        foreach (var weapon in weapons)
+        {
+            if (weapon != null && weapon.weaponName == weaponKey)
+            {
+                if (showDebugLog)
+                    Debug.LogWarning($"WeaponHolder: '{weaponKey}' steht nicht in der " +
+                                     "ItemDatabase, Fallback-Array benutzt.");
+                return weapon;
+            }
+        }
+        return null;
     }
 }

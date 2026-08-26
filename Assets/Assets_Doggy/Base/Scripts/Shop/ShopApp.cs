@@ -176,7 +176,12 @@ public class ShopApp : MonoBehaviour
 
     public bool CanSell(ShopEntryData entry)
     {
-        if (entry == null) return false;
+        if (entry == null || entry.item == null) return false;
+
+        // Waffenverkauf braucht eine instanzbewusste UI — sonst wird
+        // beim Verkauf womöglich die hochgelevelte Waffe entfernt.
+        if (ItemDatabase.IsWeapon(entry.item.itemName)) return false;
+
         return GetOwned(entry) >= Mathf.Max(1, entry.quantity);
     }
 
@@ -202,13 +207,40 @@ public class ShopApp : MonoBehaviour
             return;
         }
 
+        // Waffen sind Einzelstuecke mit eigener Identitaet.
+        string instanceId = null;
+        if (ItemDatabase.IsWeapon(entry.item.itemName))
+        {
+            amount = 1;
+            fullCost = entry.price;
+
+            if (playerStats.coins < fullCost)
+            {
+                Debug.Log($"[Shop] Zu wenig Coins fuer {entry.item.itemName}.");
+                return;
+            }
+
+            var inst = WeaponRegistry.Create(entry.item.itemName);
+            if (inst == null)
+            {
+                Debug.LogError($"[Shop] Instanz fuer {entry.item.itemName} konnte nicht erzeugt werden.");
+                return;
+            }
+            instanceId = inst.instanceId;
+        }
+
         // 2) Einlagern. AddItem gibt zurueck, was NICHT reingepasst hat.
         int leftOver = inventoryManager.AddItem(
             entry.item.itemName,
             amount,
             entry.item.itemSprite,
             entry.item.itemDescription,
-            entry.item.itemType);
+            entry.item.itemType,
+            instanceId);
+
+        // NEU: passt die Waffe nicht rein, Instanz wieder wegraeumen
+        if (leftOver >= amount && instanceId != null)
+            WeaponRegistry.Remove(instanceId);
 
         if (leftOver >= amount)
         {

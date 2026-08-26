@@ -13,6 +13,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     public string itemDescription;
     public Sprite emptySprite;
     public ItemType itemType;
+    public string instanceId;
 
     [SerializeField]
     private int maxNumberofItems;
@@ -39,12 +40,14 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
     }
 
-    public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType)
-    {
+    public int AddItem(string itemName, int quantity, Sprite itemSprite,
+                   string itemDescription, ItemType itemType, string instanceId = null)
+{
         if (isFull)
             return quantity;
 
         this.itemType = itemType;
+        this.instanceId = instanceId;
 
         this.itemName = itemName;
         this.itemSprite = itemSprite;
@@ -117,7 +120,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         itemName = "";
         itemSprite = null;         // NEU
         itemDescription = "";      // NEU
-        itemType = default;        // NEU – zur Sicherheit
+        itemType = default; 
+        instanceId = null;       
 
         if (thisItemSelected)
             inventoryManager.ClearItemPreview();
@@ -139,6 +143,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         newItem.sprite = itemSprite;
         newItem.itemDescription = itemDescription;
         newItem.itemType = itemType; 
+        newItem.instanceId = instanceId;
 
         SpriteRenderer sr = itemToDrop.AddComponent<SpriteRenderer>();
         sr.sprite = itemSprite;
@@ -182,14 +187,17 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     public string GetItemDescription() => itemDescription;
     public ItemType GetItemType() => itemType;
     public bool HasItem() => quantity > 0;
+    public string GetInstanceId() => instanceId;
 
-    public void SetSlotData(string itemName, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType)
+    public void SetSlotData(string itemName, int quantity, Sprite itemSprite,
+                        string itemDescription, ItemType itemType, string instanceId)
     {
         this.itemName = itemName;
         this.quantity = quantity;
         this.itemSprite = itemSprite;
         this.itemDescription = itemDescription;
         this.itemType = itemType;
+        this.instanceId = instanceId;
         isFull = quantity >= maxNumberofItems;
 
         itemImage.sprite = itemSprite;

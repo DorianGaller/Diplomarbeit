@@ -1792,6 +1792,9 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: 660844b55b3b5454b8b841e9004f57bd, type: 2}
     price: 100
     quantity: 1
+  - item: {fileID: 11400000, guid: b3d5e8e95bed94bbebb3cb29c76ab7d3, type: 2}
+    price: 100
+    quantity: 1
   playerStats: {fileID: 0}
   inventoryManager: {fileID: 0}
   coinsLabel: {fileID: 7740095035722770019}

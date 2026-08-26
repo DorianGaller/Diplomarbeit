@@ -19,6 +19,9 @@ public class Item : MonoBehaviour
 
     public ItemType itemType;
 
+    // NEU — bei Waffen die ID aus der Registry
+    public string instanceId;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
 {
@@ -32,7 +35,8 @@ public class Item : MonoBehaviour
 {
     if(collision.gameObject.tag == "Player")
     {
-        int leftOverItems = inventoryManager.AddItem(itemName, quantity, sprite, itemDescription, itemType);
+        int leftOverItems = inventoryManager.AddItem(itemName, quantity, sprite,
+                                                     itemDescription, itemType, instanceId);
         if (leftOverItems <= 0)
             Destroy(gameObject);
         else

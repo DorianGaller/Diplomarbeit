@@ -48,15 +48,17 @@ public class DragDropManager : MonoBehaviour
         Sprite bSprite = b.GetItemSprite();
         string bDesc = b.GetItemDescription();
         ItemType bType = b.GetItemType();
+        string bId = b.GetInstanceId();
         bool bHadItem = b.HasItem();
 
         if (a.HasItem())
-            b.SetSlotData(a.GetItemName(), a.GetQuantity(), a.GetItemSprite(), a.GetItemDescription(), a.GetItemType());
+            b.SetSlotData(a.GetItemName(), a.GetQuantity(), a.GetItemSprite(),
+                          a.GetItemDescription(), a.GetItemType(), a.GetInstanceId());
         else
             b.ClearSlotData();
 
         if (bHadItem)
-            a.SetSlotData(bName, bQty, bSprite, bDesc, bType);
+            a.SetSlotData(bName, bQty, bSprite, bDesc, bType, bId);
         else
             a.ClearSlotData();
     }
