@@ -5921,7 +5921,8 @@ MonoBehaviour:
   doorclosedObject: {fileID: 112120225}
   openDoorObject: {fileID: 1203977331}
   postClickZoomTarget: {fileID: 416099425}
-  particlesToFadeOnRedTransition: []
+  particlesToFadeOnRedTransition:
+  - {fileID: 1420090480}
 --- !u!4 &1620575931
 Transform:
   m_ObjectHideFlags: 0

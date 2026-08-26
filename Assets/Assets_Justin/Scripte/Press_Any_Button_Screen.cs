@@ -753,11 +753,14 @@ public class Press_Any_Button_Screen : MonoBehaviour
             particleStartColors[i] = particleMaterials[i].color;
         }
 
-        foreach (ParticleSystem particleSystem in particlesToFadeOnRedTransition)
+        if (particlesToFadeOnRedTransition != null)
         {
-            if (particleSystem != null)
+            foreach (ParticleSystem particleSystem in particlesToFadeOnRedTransition)
             {
-                particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+                if (particleSystem != null)
+                {
+                    particleSystem.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+                }
             }
         }
 
