@@ -680,7 +680,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &430507641
 Transform:
   m_ObjectHideFlags: 0
@@ -114644,6 +114644,7 @@ MonoBehaviour:
   sprite: {fileID: -4979552915664131744, guid: 5b416e84ecb354de3a0b464332404861, type: 3}
   itemDescription: Geile Schusswaffe
   itemType: 6
+  instanceId: 
 --- !u!212 &1844434171
 SpriteRenderer:
   serializedVersion: 2
