@@ -244,14 +244,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ebf4866c2e6d594996e45a436a38e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawn
-  enemyPrefab: {fileID: 7381866628350399518, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
+  waveConfigs: []
   maxEnemiesAlive: 5
-  enemiesPerWave: 10
   spawnDelay: 1.2
   timeBetweenWaves: 4
+  minDistanceFromPlayer: 3
   spawnAreaSize: {x: 10, y: 0, z: 10}
   maxWaves: 5
   endlessWaves: 0
+  enemyCountMultiplier: 1
+  exitTilemap: {fileID: 0}
+  exitWorldPosition: {fileID: 0}
+  exitWidth: 3
+  exitHeight: 2
+  cameraPanDuration: 2
+  exitZoomSize: 4
+  returnCameraAfterPan: 1
+  cameraPanTarget: {fileID: 0}
+  hudRoot: {fileID: 0}
 --- !u!4 &1853628933
 Transform:
   m_ObjectHideFlags: 0
@@ -400,6 +410,38 @@ PrefabInstance:
     - target: {fileID: 2043248121099713614, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
       propertyPath: m_Name
       value: Main Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 5915155793719968739, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5915155793719968739, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5915155793719968739, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5915155793719968739, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094453112314835524, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094453112314835524, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094453112314835524, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094453112314835524, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8771287510499454700, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
       propertyPath: m_LocalPosition.x

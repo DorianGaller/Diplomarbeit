@@ -1,0 +1,572 @@
+fileFormatVersion: 2
+guid: b4045259448ad408db032675cf3bd409
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3190482905290368109
+    second: BlueRobot_Shooting_Animation_v1.png_0
+  - first:
+      213: -7042522864323598146
+    second: BlueRobot_Shooting_Animation_v1.png_1
+  - first:
+      213: -6938389105236692554
+    second: BlueRobot_Shooting_Animation_v1.png_2
+  - first:
+      213: -3959690745770861910
+    second: BlueRobot_Shooting_Animation_v1.png_3
+  - first:
+      213: 3079670797613421573
+    second: BlueRobot_Shooting_Animation_v1.png_4
+  - first:
+      213: -518503200714072063
+    second: BlueRobot_Shooting_Animation_v1.png_5
+  - first:
+      213: -5921098608114989780
+    second: BlueRobot_Shooting_Animation_v1.png_6
+  - first:
+      213: -2198841836232587322
+    second: BlueRobot_Shooting_Animation_v1.png_7
+  - first:
+      213: -7061035233606759213
+    second: BlueRobot_Shooting_Animation_v1.png_8
+  - first:
+      213: 4026994964772041072
+    second: BlueRobot_Shooting_Animation_v1.png_9
+  - first:
+      213: -5344036699367877416
+    second: BlueRobot_Shooting_Animation_v1.png_10
+  - first:
+      213: 1065463009753399105
+    second: BlueRobot_Shooting_Animation_v1.png_11
+  - first:
+      213: 6044669279344342344
+    second: BlueRobot_Shooting_Animation_v1.png_12
+  - first:
+      213: -5394316584418111662
+    second: BlueRobot_Shooting_Animation_v1.png_13
+  - first:
+      213: 2472595607676187163
+    second: BlueRobot_Shooting_Animation_v1.png_14
+  - first:
+      213: -984469770073148749
+    second: BlueRobot_Shooting_Animation_v1.png_15
+  - first:
+      213: 7417175993209393662
+    second: BlueRobot_Shooting_Animation_v1.png_16
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 25
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BlueRobot_Shooting_Animation_v1.png_0
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 289
+        width: 43
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d64e9c76c4fd64c20800000000000000
+      internalID: 3190482905290368109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueRobot_Shooting_Animation_v1.png_1
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 289
+        width: 43
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb8ec6d84cee34e90800000000000000
+      internalID: -7042522864323598146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueRobot_Shooting_Animation_v1.png_2
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 289
+        width: 43
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b13de4bed3e5bf90800000000000000
+      internalID: -6938389105236692554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueRobot_Shooting_Animation_v1.png_3
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 289
+        width: 43
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaa1dedfe3a5c09c0800000000000000
+      internalID: -3959690745770861910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueRobot_Shooting_Animation_v1.png_4
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 289
+        width: 43
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50454ec06403dba20800000000000000
+      internalID: 3079670797613421573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueRobot_Shooting_Animation_v1.png_5
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 197
+        width: 43
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 100e88a0618edc8f0800000000000000
+      internalID: -518503200714072063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueRobot_Shooting_Animation_v1.png_6
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 197
+        width: 46
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c250f3fef2804dda0800000000000000
+      internalID: -5921098608114989780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueRobot_Shooting_Animation_v1.png_7
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 197
+        width: 47
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c7c61afff42c71e0800000000000000
+      internalID: -2198841836232587322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueRobot_Shooting_Animation_v1.png_8
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 197
+        width: 48
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dc0a52bdd9220e90800000000000000
+      internalID: -7061035233606759213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueRobot_Shooting_Animation_v1.png_9
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 197
+        width: 43
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0713683a592c2e730800000000000000
+      internalID: 4026994964772041072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueRobot_Shooting_Animation_v1.png_10
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 105
+        width: 39
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d4d6839fea26d5b0800000000000000
+      internalID: -5344036699367877416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueRobot_Shooting_Animation_v1.png_11
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 105
+        width: 46
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14f7ba956f849ce00800000000000000
+      internalID: 1065463009753399105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueRobot_Shooting_Animation_v1.png_12
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 105
+        width: 47
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 845390cfeaaf2e350800000000000000
+      internalID: 6044669279344342344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueRobot_Shooting_Animation_v1.png_13
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 105
+        width: 47
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25f82c395a98325b0800000000000000
+      internalID: -5394316584418111662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueRobot_Shooting_Animation_v1.png_14
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 105
+        width: 46
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b12fab4da9c605220800000000000000
+      internalID: 2472595607676187163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueRobot_Shooting_Animation_v1.png_15
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 13
+        width: 65
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b2fda6c5f57652f0800000000000000
+      internalID: -984469770073148749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueRobot_Shooting_Animation_v1.png_16
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 13
+        width: 44
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef11dc7944a1fe660800000000000000
+      internalID: 7417175993209393662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BlueRobot_Shooting_Animation_v1.png_0: 3190482905290368109
+      BlueRobot_Shooting_Animation_v1.png_1: -7042522864323598146
+      BlueRobot_Shooting_Animation_v1.png_10: -5344036699367877416
+      BlueRobot_Shooting_Animation_v1.png_11: 1065463009753399105
+      BlueRobot_Shooting_Animation_v1.png_12: 6044669279344342344
+      BlueRobot_Shooting_Animation_v1.png_13: -5394316584418111662
+      BlueRobot_Shooting_Animation_v1.png_14: 2472595607676187163
+      BlueRobot_Shooting_Animation_v1.png_15: -984469770073148749
+      BlueRobot_Shooting_Animation_v1.png_16: 7417175993209393662
+      BlueRobot_Shooting_Animation_v1.png_2: -6938389105236692554
+      BlueRobot_Shooting_Animation_v1.png_3: -3959690745770861910
+      BlueRobot_Shooting_Animation_v1.png_4: 3079670797613421573
+      BlueRobot_Shooting_Animation_v1.png_5: -518503200714072063
+      BlueRobot_Shooting_Animation_v1.png_6: -5921098608114989780
+      BlueRobot_Shooting_Animation_v1.png_7: -2198841836232587322
+      BlueRobot_Shooting_Animation_v1.png_8: -7061035233606759213
+      BlueRobot_Shooting_Animation_v1.png_9: 4026994964772041072
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 5359680669108917281}
   - component: {fileID: 7802382474366882230}
   - component: {fileID: 5419547682097970812}
+  - component: {fileID: -8887773159486723010}
+  - component: {fileID: 7973060751879412430}
   m_Layer: 3
   m_Name: Robot
   m_TagString: Untagged
@@ -143,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae9f69b58b43d264cade921735d55ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLife
-  maxHP: 100
+  maxHP: 75
   healthFill: {fileID: 8183179898403202299}
   xpPrefab: {fileID: 4771013033056852365, guid: 1abfe0644d009474ea4a4aabff66f260, type: 3}
   minXP: 5
@@ -226,6 +228,43 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.7728543, y: 2.6254158}
   m_EdgeRadius: 0
+--- !u!95 &-8887773159486723010
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7381866628350399518}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2e2b35e6411a443688428e16bf4fafab, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7973060751879412430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7381866628350399518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eedef0c6c7c2d094dad99a2e8c2f193c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimator
+  follow: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  stateChangeDelay: 0.1
 --- !u!1 &7690289282217472659
 GameObject:
   m_ObjectHideFlags: 0

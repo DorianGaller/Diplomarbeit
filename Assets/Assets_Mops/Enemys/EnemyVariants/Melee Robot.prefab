@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5359680669108917281, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
+      propertyPath: maxHP
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5359680669108917281, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
       propertyPath: coinDropChance
       value: 0.3
       objectReference: {fileID: 0}
@@ -94,6 +98,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7691642563939369976, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
+    - {fileID: -8887773159486723010, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

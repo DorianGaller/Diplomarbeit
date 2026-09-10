@@ -46,5 +46,7 @@ void Start()
 
         // Projektil initialisieren
         shot.GetComponent<GunshotEffect>()?.Init(shootDir);
+
+        GetComponent<EnemyAnimator>()?.TriggerShoot();
     }
 }

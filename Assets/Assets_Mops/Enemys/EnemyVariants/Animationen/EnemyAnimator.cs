@@ -66,4 +66,10 @@ public class EnemyAnimator : MonoBehaviour
             transform.localScale = scale;
         }
     }
+
+    public void TriggerShoot()
+    {
+        if (animator != null)
+            animator.SetTrigger("Shoot");
+    }
 }
