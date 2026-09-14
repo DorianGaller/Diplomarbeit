@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: c43c1050cde7e684b83ed89c83b4765e
+guid: 89bf9254fa6126841a56cb4678b8e83f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3321789133244264847
-    second: escyber_enemy_robot_concepts_0
-  - first:
-      213: 7650419578479970033
-    second: escyber_enemy_robot_concepts_1
-  - first:
-      213: -2105766192561095228
-    second: escyber_enemy_robot_concepts_2
+      213: 3899668847760250844
+    second: Red_Robot_Enemy_v1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -57,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 225
+  spritePixelsToUnits: 398.5
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -119,67 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Melle_Robot
+      name: Red_Robot_Enemy_v1_0
       rect:
         serializedVersion: 2
-        x: 274
-        y: 51
-        width: 398
-        height: 787
+        x: 191
+        y: 0
+        width: 658
+        height: 1009
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f81f6c9fd9d591e20800000000000000
-      internalID: 3321789133244264847
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Robot
-      rect:
-        serializedVersion: 2
-        x: 1174
-        y: 63
-        width: 364
-        height: 851
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1f60efda210cb2a60800000000000000
-      internalID: 7650419578479970033
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Dashing_Robot
-      rect:
-        serializedVersion: 2
-        x: 2017
-        y: 63
-        width: 454
-        height: 775
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4cd7e500ec0d6c2e0800000000000000
-      internalID: -2105766192561095228
+      spriteID: cd7186cd7286e1630800000000000000
+      internalID: 3899668847760250844
       vertices: []
       indices: 
       edges: []
@@ -188,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 88253bc6f6397a34095e190c98b9bc6b
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -198,9 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Dashing_Robot: -2105766192561095228
-      Melle_Robot: 3321789133244264847
-      Robot: 7650419578479970033
+      Red_Robot_Enemy_v1_0: 3899668847760250844
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

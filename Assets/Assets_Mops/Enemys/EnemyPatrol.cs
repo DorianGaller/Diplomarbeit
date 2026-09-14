@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class EnemyPatrol : MonoBehaviour
 {
@@ -20,13 +21,21 @@ public class EnemyPatrol : MonoBehaviour
 
     [Header("References")]
     [Tooltip("Wird deaktiviert, solange patrolliert wird, und aktiviert sobald der Spieler entdeckt ist")]
-    public EnemyFollow enemyFollow;
+    public EnemyChase enemyChase;
+
+    [Header("Patrol Pathfinding")]
+    public Vector2 cellSize = new Vector2(2.24f, 1.74f);   // GEÄNDERT: Vector2 statt float
+    public float patrolRepathInterval = 0.5f;
+
+    private List<Vector2> patrolPath = new List<Vector2>();
+    private int patrolPathIndex = 0;
+    private float patrolRepathTimer = 999f;
 
     private Transform player;
     private int currentWaypointIndex = 0;
     private float waitTimer = 0f;
     private bool isWaiting = false;
-    private bool isAlerted = false;
+    public bool isAlerted = false;
     private float loseSightTimer = 0f;
 
     void Start()
@@ -35,11 +44,14 @@ public class EnemyPatrol : MonoBehaviour
         if (playerObj != null)
             player = playerObj.transform;
 
-        if (enemyFollow == null)
-            enemyFollow = GetComponent<EnemyFollow>();
+        if (enemyChase == null)
+            enemyChase = GetComponent<EnemyChase>();
 
-        if (enemyFollow != null)
-            enemyFollow.enabled = false;   // Patrol übernimmt zunächst die Bewegung
+        if (enemyChase != null)
+            enemyChase.enabled = false;
+
+        if (obstacleLayer.value == 0)   // NEU
+            Debug.LogWarning("EnemyPatrol: Obstacle Layer ist nicht gesetzt (Nothing) — Sichtlinie wird nie blockiert, Gegner sieht durch Wände!", this);
     }
 
     void Update()
@@ -62,13 +74,16 @@ public class EnemyPatrol : MonoBehaviour
 
         if (isAlerted)
         {
-            if (enemyFollow != null && !enemyFollow.enabled)
-                enemyFollow.enabled = true;
+            if (enemyChase != null && !enemyChase.enabled)
+                enemyChase.enabled = true;
         }
         else
         {
-            if (enemyFollow != null && enemyFollow.enabled)
-                enemyFollow.enabled = false;
+            if (enemyChase != null && enemyChase.enabled)
+            {
+                enemyChase.enabled = false;
+                patrolRepathTimer = 999f;   // NEU: sofort neu pathfinden beim Zurückwechseln
+            }
 
             Patrol();
         }
@@ -78,10 +93,10 @@ public class EnemyPatrol : MonoBehaviour
     {
         if (waypoints == null || waypoints.Length == 0) return;
 
-        Transform target = waypoints[currentWaypointIndex];
-        float distance = Vector2.Distance(transform.position, target.position);
+        Transform targetWaypoint = waypoints[currentWaypointIndex];
+        float distanceToWaypoint = Vector2.Distance(transform.position, targetWaypoint.position);
 
-        if (distance <= waypointTolerance)
+        if (distanceToWaypoint <= waypointTolerance)
         {
             if (!isWaiting)
             {
@@ -94,14 +109,51 @@ public class EnemyPatrol : MonoBehaviour
             {
                 isWaiting = false;
                 currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
+                patrolPath.Clear();
             }
             return;
         }
 
-        Vector3 dir = (target.position - transform.position).normalized;
-        transform.position += dir * patrolSpeed * Time.deltaTime;
+        patrolRepathTimer += Time.deltaTime;
+        if (patrolRepathTimer >= patrolRepathInterval || patrolPath.Count == 0)
+        {
+            patrolRepathTimer = 0f;
+            patrolPath = GridAStar.FindPath(transform.position, targetWaypoint.position, cellSize, obstacleLayer);
+            patrolPathIndex = 0;
 
-        FaceDirection(dir);
+            // NEU: letzten Gitter-Punkt durch die exakte Wegpunkt-Position ersetzen,
+            // damit der Gegner wirklich am echten Wegpunkt ankommt statt an der gerundeten Zelle
+            if (patrolPath.Count > 0)
+                patrolPath[patrolPath.Count - 1] = targetWaypoint.position;
+        }
+
+        FollowPatrolPath();
+
+
+        if (patrolPath.Count == 0)
+        {
+            Vector2 dir = (targetWaypoint.position - transform.position).normalized;
+            transform.position += (Vector3)(dir * patrolSpeed * Time.deltaTime);
+            FaceDirection(dir);
+        }
+    }
+    void FollowPatrolPath()
+    {
+        if (patrolPath == null || patrolPathIndex >= patrolPath.Count) return;
+
+        Vector2 wp = patrolPath[patrolPathIndex];
+        Vector2 dir = wp - (Vector2)transform.position;
+
+        if (dir.magnitude <= waypointTolerance)
+        {
+            patrolPathIndex++;
+            return;
+        }
+
+        Vector2 normalizedDir = dir.normalized;   // NEU
+        transform.position += (Vector3)(normalizedDir * patrolSpeed * Time.deltaTime);
+
+        FaceDirection(normalizedDir);   // GEÄNDERT: normalisierte Richtung statt skalierter Bewegungsvektor
     }
 
     bool CanSeePlayer()

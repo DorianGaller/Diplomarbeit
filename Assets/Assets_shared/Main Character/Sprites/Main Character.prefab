@@ -1709,6 +1709,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b3d5e8e95bed94bbebb3cb29c76ab7d3, type: 2}
   - {fileID: 11400000, guid: 2af8db872787e86478df5b365ba24c84, type: 2}
   - {fileID: 11400000, guid: a5448b0494b39ef42b1dd94862889356, type: 2}
+  - {fileID: 11400000, guid: a5448b0494b39ef42b1dd94862889356, type: 2}
   chestPanel: {fileID: 4952699836058817185}
   inventoryDescription: {fileID: 2317773029957226909}
   menuTabs: {fileID: 564730114639772748}

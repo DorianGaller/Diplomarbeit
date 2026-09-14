@@ -218,9 +218,9 @@ public class InventoryManager : MonoBehaviour
         EquipmentMenu.SetActive(false);
         if (chestPanel != null) chestPanel.SetActive(true);
         if (inventoryDescription != null) inventoryDescription.SetActive(false);
-        if (chestTabsRoot != null) chestTabsRoot.SetActive(true);   // NEU
-        SetTabState(true, false);
+        if (chestTabsRoot != null) chestTabsRoot.SetActive(true);
         SetChestTabState(true, false);
+        // SetTabState(true, false); entfernt — die normalen Menu-Tabs sollen im Truhen-Modus nicht erscheinen
     }
 
     public void CloseChestView()
@@ -301,7 +301,7 @@ public class InventoryManager : MonoBehaviour
     {
         return type == ItemType.consumable || type == ItemType.material;
     }
-    
+
     public int AddItem(string itemName, int quantity, Sprite itemSprite,
                        string itemDescription, ItemType itemType, string instanceId = null)
     {

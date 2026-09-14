@@ -27,3 +27,12 @@ MonoBehaviour:
     maxStackSize: 1
     weaponExpValue: 0
     weaponSO: {fileID: 11400000, guid: 9ecdab447c5d6824ca043f0bdd317648, type: 2}
+  - itemName: CY-K-47
+    itemSprite: {fileID: -157389755114902959, guid: 14902e4a36c0b3f43a1eeb419df18c85, type: 3}
+    itemDescription: 'Super Duper AK
+
+'
+    itemType: 6
+    maxStackSize: 1
+    weaponExpValue: 0
+    weaponSO: {fileID: 11400000, guid: 0723e1ab00b5a524fb0a0b81738448fa, type: 2}
