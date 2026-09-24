@@ -310,6 +310,30 @@ PrefabInstance:
       propertyPath: interactionHint
       value: 
       objectReference: {fileID: 893662904}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[0].itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 660844b55b3b5454b8b841e9004f57bd, type: 2}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[0].itemName
+      value: Steel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[0].itemType
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[0].quantity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[0].itemSprite
+      value: 
+      objectReference: {fileID: 6298086538089013102, guid: 3c4a03a27e31f42248776a8e6bcc924d, type: 3}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[0].itemDescription
+      value: geilo
+      objectReference: {fileID: 0}
     - target: {fileID: 9172255874949554188, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: m_Name
       value: Chest
