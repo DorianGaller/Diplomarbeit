@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private float currentSpeed;
     private Rigidbody2D rb;
     private bool isDashing = false;
+    private bool movementInputLocked;
 
     public Vector2 Direction => direction;
 
@@ -24,6 +25,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (movementInputLocked)
+        {
+            direction = Vector2.zero;
+            return;
+        }
+
         float inputX = Input.GetAxisRaw("Horizontal");
         float inputY = Input.GetAxisRaw("Vertical");
 
@@ -45,6 +52,13 @@ public class PlayerMovement : MonoBehaviour
     {
         isDashing = dashing;
         currentSpeed = dashing ? dashSpeed * TotalSpeedMultiplier : movementSpeed * TotalSpeedMultiplier;
+    }
+
+    public void SetMovementInputLocked(bool locked)
+    {
+        movementInputLocked = locked;
+        if (locked)
+            direction = Vector2.zero;
     }
 
     public void SetWeightPenalty(float multiplier)
