@@ -20,6 +20,7 @@ public class Intro : MonoBehaviour
         "Galli war hier!",
         "Skili war hier!",
         "Ymom2 war hier!",
+        "Big F war hier!",
         "ESCyber bevor GTA6?!",
         "Irfan der Klassenbeste",
         "End Update",
