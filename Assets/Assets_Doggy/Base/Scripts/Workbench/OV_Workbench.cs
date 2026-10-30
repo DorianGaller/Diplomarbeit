@@ -13,7 +13,8 @@ public class OV_Workbench : MonoBehaviour
     {
         [Tooltip("Sound played when the button is clicked. If empty, the Default Click Sound is used.")]
         public AudioClip clickSound;
-        [Tooltip("Optional: this canvas is activated after the animation and sits on top of the workbench.")]
+        [Tooltip("Optional: this canvas is activated after the animation and sits on top of the workbench. " +
+                 "While it is open, the overview is hidden. When it closes, the overview comes back.")]
         public Canvas targetCanvas;
         [Tooltip("Runs AFTER the button animation. Move the old OnClick calls here.")]
         public UnityEvent onActivated;
@@ -30,6 +31,8 @@ public class OV_Workbench : MonoBehaviour
 
     [Header("Player")]
     [SerializeField] private PlayerMovement playerMovement;
+    [Tooltip("Leave empty: found automatically on the player. Used to block shooting while the workbench is open.")]
+    [SerializeField] private InteractKeys playerInteractKeys;
 
     [Header("Workbench Buttons")]
     [SerializeField] private Button firstButton;
@@ -87,7 +90,11 @@ public class OV_Workbench : MonoBehaviour
     private int workbenchOriginalSortingOrder;
     private bool workbenchOriginalOverrideSorting;
 
+    // The sub-menu (e.g. the upgrade panel) that is open right now. null = overview is showing.
+    private Canvas activeSubCanvas;
+
     public bool IsOpen => isOpen;
+    public bool IsSubMenuOpen => activeSubCanvas != null;
 
     private void Awake()
     {
@@ -149,6 +156,16 @@ public class OV_Workbench : MonoBehaviour
     {
         if (isOpen)
         {
+            // A sub-menu is open: the overview is hidden and ignores all input.
+            // As soon as the sub-menu closes itself (Esc, close button), the overview comes back.
+            // We return here in both cases, so the same Esc press can't also close the overview.
+            if (activeSubCanvas != null)
+            {
+                if (!activeSubCanvas.gameObject.activeInHierarchy)
+                    ReturnToOverview();
+                return;
+            }
+
             // While a button animation runs, ignore all input.
             if (pressRoutine == null)
             {
@@ -174,6 +191,8 @@ public class OV_Workbench : MonoBehaviour
 
     private void OnDisable()
     {
+        activeSubCanvas = null;
+
         if (savedCanvases.Count > 0)
             RestoreOtherCanvases();
 
@@ -200,6 +219,7 @@ public class OV_Workbench : MonoBehaviour
 
         LockPlayerControls();
         isOpen = true;
+        activeSubCanvas = null;
 
         // 1) Remember + deactivate every other canvas, 2) put the workbench on top.
         int topOrder = DeactivateOtherCanvases();
@@ -215,7 +235,8 @@ public class OV_Workbench : MonoBehaviour
 
     public void Close()
     {
-        if (!isOpen || pressRoutine != null)
+        // Close the sub-menu first; the overview only closes from the overview itself.
+        if (!isOpen || pressRoutine != null || activeSubCanvas != null)
             return;
 
         isOpen = false;
@@ -231,6 +252,65 @@ public class OV_Workbench : MonoBehaviour
         RestoreOtherCanvases();
 
         transition = StartCoroutine(AnimateCanvas(false));
+    }
+
+    // ---------------------------------------------------------------- Sub-menus
+
+    private void OpenSubMenu(Canvas target)
+    {
+        // Hide the overview instantly; the sub-menu appears on top in the same frame.
+        if (transition != null)
+        {
+            StopCoroutine(transition);
+            transition = null;
+        }
+
+        canvasGroup.alpha = 0f;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
+        RestoreButtonScales();
+
+        activeSubCanvas = target;
+        ShowTargetCanvasOnTop(target);
+    }
+
+    private void ReturnToOverview()
+    {
+        activeSubCanvas = null;
+
+        // The sub-menu's own close logic may have re-enabled shooting, so lock it again.
+        if (playerInteractKeys != null)
+            playerInteractKeys.EnableShooting(false);
+
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
+
+        if (transition != null)
+            StopCoroutine(transition);
+        transition = StartCoroutine(FadeOverviewIn());
+    }
+
+    private IEnumerator FadeOverviewIn()
+    {
+        float duration = transitionDuration * 0.5f;
+        float startAlpha = canvasGroup.alpha;
+        float startTime = Time.unscaledTime;
+
+        while (true)
+        {
+            float t = duration > 0f
+                ? Mathf.Clamp01((Time.unscaledTime - startTime) / duration)
+                : 1f;
+
+            canvasGroup.alpha = Mathf.Lerp(startAlpha, 1f, Mathf.SmoothStep(0f, 1f, t));
+
+            if (t >= 1f)
+                break;
+
+            yield return null;
+        }
+
+        transition = null;
     }
 
     // ---------------------------------------------------------------- Canvas handling
@@ -345,6 +425,9 @@ public class OV_Workbench : MonoBehaviour
         if (playerMovement == null)
             playerMovement = playerObject.GetComponent<PlayerMovement>();
 
+        if (playerInteractKeys == null)
+            playerInteractKeys = playerObject.GetComponent<InteractKeys>();
+
         if (playerMovement == null)
             Debug.LogWarning("[OV_Workbench] Assign the player's movement component to lock movement while open.", this);
     }
@@ -360,6 +443,9 @@ public class OV_Workbench : MonoBehaviour
         if (playerMovement != null)
             playerMovement.SetMovementInputLocked(true);
 
+        if (playerInteractKeys != null)
+            playerInteractKeys.EnableShooting(false);
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         controlsLocked = true;
@@ -369,6 +455,9 @@ public class OV_Workbench : MonoBehaviour
     {
         if (playerMovement != null)
             playerMovement.SetMovementInputLocked(false);
+
+        if (playerInteractKeys != null)
+            playerInteractKeys.EnableShooting(true);
 
         Cursor.lockState = previousCursorLockMode;
         Cursor.visible = previousCursorVisibility;
@@ -483,8 +572,8 @@ public class OV_Workbench : MonoBehaviour
 
     private void ActivateButton(ButtonVisual visual)
     {
-        // Only allow presses when fully open and no other press/transition is running.
-        if (!isOpen || pressRoutine != null || transition != null)
+        // Only allow presses when the overview is fully open and nothing else is running.
+        if (!isOpen || activeSubCanvas != null || pressRoutine != null || transition != null)
             return;
 
         // Set immediately so a second click in the same frame can't slip through.
@@ -550,7 +639,10 @@ public class OV_Workbench : MonoBehaviour
         // Animation done -> now run the button's own logic.
         if (action != null)
         {
-            ShowTargetCanvasOnTop(action.targetCanvas);
+            // Buttons with a target canvas open a sub-menu and hide the overview.
+            if (action.targetCanvas != null)
+                OpenSubMenu(action.targetCanvas);
+
             action.onActivated?.Invoke();
         }
 
