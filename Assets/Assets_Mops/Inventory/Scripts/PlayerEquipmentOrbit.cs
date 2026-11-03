@@ -97,7 +97,15 @@ public class PlayerEquipmentOrbit : MonoBehaviour
 
         lastAimDir = dir;
 
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        float muzzleOffset = defaultMuzzleOffset;
+        if (weaponHolder != null && weaponHolder.CurrentWeapon != null)
+            muzzleOffset = weaponHolder.CurrentWeapon.muzzleOffset;
+
+        // Maus zwischen Muendung und Spieler -> Gun dreht sich zum Spieler
+        bool pointAtPlayer = rawOffset.magnitude < orbitRadius + muzzleOffset;
+        Vector2 facing = pointAtPlayer ? -dir : dir;
+
+        float angle = Mathf.Atan2(facing.y, facing.x) * Mathf.Rad2Deg;
 
         iconTransform.position = transform.position + (Vector3)(dir * orbitRadius);
 
@@ -109,11 +117,7 @@ public class PlayerEquipmentOrbit : MonoBehaviour
 
         if (shootPoint != null)
         {
-            float muzzleOffset = defaultMuzzleOffset;
-            if (weaponHolder != null && weaponHolder.CurrentWeapon != null)
-                muzzleOffset = weaponHolder.CurrentWeapon.muzzleOffset;
-
-            Vector3 muzzlePos = iconTransform.position + (Vector3)(dir * muzzleOffset);
+            Vector3 muzzlePos = iconTransform.position + (Vector3)(facing * muzzleOffset);
             shootPoint.position = muzzlePos;
             shootPoint.rotation = iconTransform.rotation;
         }

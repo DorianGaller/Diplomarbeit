@@ -9,6 +9,9 @@ public class GunshotEffect : MonoBehaviour
     [Header("Damage")]
     public int damage = 25;
 
+    [HideInInspector]
+    public bool fromPlayer = false;
+
     [Header("Lifetime & Fade")]
     public float lifeTime = 0.25f;
     public float fadeSpeed = 6f;
@@ -17,12 +20,16 @@ public class GunshotEffect : MonoBehaviour
     private SpriteRenderer sr;
     private bool hasHit = false;
 
-    public void Init(Vector2 dir)
+        public void Init(Vector2 dir)
     {
         if (dir == Vector2.zero)
             dir = Vector2.up;
 
         direction = dir.normalized;
+
+        // Sprite zeigt bei Rotation 0,0,0 nach oben -> 90° abziehen
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 
     void Awake()
@@ -66,6 +73,9 @@ public class GunshotEffect : MonoBehaviour
         PlayerLife player = collision.GetComponent<PlayerLife>();
         if (player != null)
         {
+            // Eigene Kugeln fliegen durch den Spieler durch
+            if (fromPlayer) return;
+
             player.TakeDamage(damage);
             hasHit = true;
             Destroy(gameObject);

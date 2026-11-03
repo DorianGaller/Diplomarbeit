@@ -121,11 +121,7 @@ public class InteractKeys : MonoBehaviour
         if (Time.time < nextFireTime) return;
         nextFireTime = Time.time + weapon.fireRate;
 
-        // Richtung berechnen
-        Vector3 mouseScreenPos = Mouse.current.position.ReadValue();
-        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mouseScreenPos);
-        mouseWorldPos.z = 0f;
-        Vector2 baseDir = (mouseWorldPos - shootPoint.position).normalized;
+        Vector2 baseDir = shootPoint.right;
 
         // 🔹 Mehrere Bullets (Shotgun etc.) mit optionalem Spread
         for (int i = 0; i < weapon.bulletsPerShot; i++)
@@ -146,9 +142,10 @@ public class InteractKeys : MonoBehaviour
             GameObject shot = Instantiate(weapon.bulletPrefab, shootPoint.position, Quaternion.identity);
 
             GunshotEffect effect = shot.GetComponent<GunshotEffect>();
-            if (effect != null)
+             if (effect != null)
             {
                 effect.damage = weaponHolder.CurrentDamage;
+                effect.fromPlayer = true;
                 effect.Init(shootDir);
             }
         }
