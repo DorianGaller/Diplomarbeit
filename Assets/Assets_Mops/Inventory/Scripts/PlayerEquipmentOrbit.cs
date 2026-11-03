@@ -36,11 +36,7 @@ public class PlayerEquipmentOrbit : MonoBehaviour
         icons = new SpriteRenderer[equippedSlots.Length];
 
         for (int i = 0; i < equippedSlots.Length; i++)
-        {
-            GameObject icon = Instantiate(iconPrefab);
-            icons[i] = icon.GetComponent<SpriteRenderer>();
-            icon.SetActive(false);
-        }
+            icons[i] = CreateIcon();
     }
 
     void Update()
@@ -53,7 +49,11 @@ public class PlayerEquipmentOrbit : MonoBehaviour
         for (int i = 0; i < equippedSlots.Length; i++)
         {
             EquippedSlot slot = equippedSlots[i];
-            if (slot == null || icons[i] == null) continue;
+             if (slot == null) continue;
+
+            // Sicherheitsnetz: falls ein Icon doch zerstört wurde, neu erzeugen
+            if (icons[i] == null)
+                icons[i] = CreateIcon();
 
             bool hasItem = slot.HasItem();
             icons[i].gameObject.SetActive(hasItem);
@@ -76,6 +76,27 @@ public class PlayerEquipmentOrbit : MonoBehaviour
                 icons[i].transform.position = transform.position + offset;
                 staticIndex++;
             }
+        }
+    }
+
+    SpriteRenderer CreateIcon()
+    {
+        GameObject icon = Instantiate(iconPrefab);
+        DontDestroyOnLoad(icon);
+        icon.SetActive(false);
+        return icon.GetComponent<SpriteRenderer>();
+    }
+
+    // Wenn dieser Player zerstört wird (z.B. das Duplikat aus der neuen Szene),
+    // seine Icons mit aufräumen, damit keine verwaisten Icons übrig bleiben
+    void OnDestroy()
+    {
+        if (icons == null) return;
+
+        foreach (SpriteRenderer icon in icons)
+        {
+            if (icon != null)
+                Destroy(icon.gameObject);
         }
     }
 

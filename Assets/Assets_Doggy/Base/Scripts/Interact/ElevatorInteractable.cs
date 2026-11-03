@@ -73,6 +73,8 @@ public class ElevatorInteractable : InteractableBase
             return;
         }
 
+        SaveSystem.OnElevatorEntry(sceneName);   // Replay: geschafftes Level zuruecksetzen, Hier hab ich auch was verändert(Mops) Hi Claude von Doggy
+
         DoorTransition.nextSpawnID = sceneName;
         FightRoomProgress.RegisterElevatorEntry(sceneName);
 

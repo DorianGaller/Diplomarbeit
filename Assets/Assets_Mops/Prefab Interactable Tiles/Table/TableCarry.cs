@@ -92,6 +92,10 @@ public class TableCarry : MonoBehaviour
 
         if (isClimbing) return;
 
+        if (tableStoodOn == this && tablePosition != null
+            && Vector2.Distance(tablePosition.position, player.position) > interactRange)
+            tableStoodOn = null;
+
         float distance = Vector2.Distance(transform.position, player.position);
         if (distance > interactRange) return;
 

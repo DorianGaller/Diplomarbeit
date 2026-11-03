@@ -70,7 +70,9 @@ public class EnemySpawn : MonoBehaviour
 
     private List<GameObject> spawnQueue = new List<GameObject>();
 
-    private bool roomActive = false;   // NEU – Raum startet nicht mehr automatisch
+    private bool roomActive = false;
+    
+    public bool IsCleared { get; private set; }   // NEU – Raum startet nicht mehr automatisch
 
     public System.Action OnAllWavesCompleted;
     public static event System.Action<GameObject> OnEnemySpawned;   // NEU
@@ -93,7 +95,8 @@ public class EnemySpawn : MonoBehaviour
 
         if (hudRoot != null)
         {
-            TextMeshProUGUI[] texts = hudRoot.GetComponentsInChildren<TextMeshProUGUI>();
+            // true = auch finden, wenn das WaveUI gerade aus ist
+            TextMeshProUGUI[] texts = hudRoot.GetComponentsInChildren<TextMeshProUGUI>(true);
             if (texts.Length >= 2)
             {
                 wavesText = texts[0];
@@ -107,16 +110,35 @@ public class EnemySpawn : MonoBehaviour
 
         OnAllWavesCompleted += RemoveExitTile;
         OnAllWavesCompleted += StartExitCameraPan;
+        OnAllWavesCompleted += MarkRoomCleared;
+
+        // Laut Spielstand schon geschafft -> nicht nochmal starten, Ausgang gleich offen
+        if (SaveSystem.IsCleared(SaveSystem.GetObjectId(gameObject)))
+        {
+            IsCleared = true;
+            roomActive = true;   // StartRoom() macht dann nichts mehr
+            RemoveExitTile();
+        }
         UpdateHUD();
+
+        // WaveUI erst zeigen, wenn ein Raum wirklich startet
+        if (hudRoot != null)
+            hudRoot.gameObject.SetActive(false);
 
         // KEIN automatischer Start mehr — wartet auf StartRoom()
     }
 
     // NEU: wird vom FightRoomTrigger aufgerufen, sobald der Spieler den Raum betritt
-    public void StartRoom()
+        public void StartRoom()
     {
         if (roomActive) return;
         roomActive = true;
+
+        // Jeder neue Angriff zeigt das WaveUI wieder an (auch wenn ein vorheriger Raum es ausgeschaltet hat)
+        if (hudRoot != null)
+            hudRoot.gameObject.SetActive(true);
+
+        UpdateHUD();
         StartCoroutine(WaveLoop());
     }
 
@@ -251,6 +273,13 @@ public class EnemySpawn : MonoBehaviour
     }
 
     private bool exitOpened = false;
+
+        void MarkRoomCleared()
+    {
+        IsCleared = true;
+        SaveSystem.MarkCleared(SaveSystem.GetObjectId(gameObject));
+    }
+
 
     void RemoveExitTile()
     {

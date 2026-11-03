@@ -12,6 +12,8 @@ public class Chest : MonoBehaviour, IInteractable
         [TextArea] public string itemDescription;
         public ItemSO itemSO;
         public ItemType itemType;
+        [Tooltip("An = geht beim Nehmen direkt aufs Konto (Coins), nicht ins Inventar")]
+        public bool isCredits;
     }
 
     [Header("Items manuell befüllen")]

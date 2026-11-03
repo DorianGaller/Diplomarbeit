@@ -15,7 +15,8 @@ public class TutorialManager : MonoBehaviour
 
     [Header("Texte")]
     [TextArea(2, 5)]
-    [SerializeField] private string[] messages =
+    [SerializeField]
+    private string[] messages =
     {
         "You can move tables! Stand next to a table and press G to pick it up. Press G again to put it down.",
         "Press T next to a table to climb on it. Press T again to climb down. Use tables to reach vents!",
@@ -36,12 +37,17 @@ public class TutorialManager : MonoBehaviour
     private InteractKeys interactKeys;
     private int index;
 
+        /// <summary>Beim Starten/Laden eines Profils darf das Tutorial wieder kommen.</summary>
+    public static void ResetSession() => hasShown = false;
+
+
     private void Start()
     {
         if (tutorialPanel != null)
             tutorialPanel.SetActive(false);
 
-        if (hasShown) return;
+                // Nur bis das Level einmal geschafft ist (Boss besiegt)
+        if (hasShown || SaveSystem.IsLevelCompleted(SaveSystem.GetLevelId(gameObject.scene.path))) return;
 
         StartCoroutine(StartNextFrame());
     }
@@ -74,6 +80,11 @@ public class TutorialManager : MonoBehaviour
 
         index = 0;
         tutorialText.text = messages[index];
+        // Falls das Canvas im Editor ausgeschaltet wurde, mit einschalten
+        Canvas canvas = tutorialPanel.GetComponentInParent<Canvas>(true);
+        if (canvas != null)
+            canvas.gameObject.SetActive(true);
+
         tutorialPanel.SetActive(true);
     }
 

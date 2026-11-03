@@ -17,6 +17,9 @@ public class FightRoomTrigger : MonoBehaviour
         if (triggered) return;
         if (!other.CompareTag("Player")) return;
 
+        // Schon geschafft (Spielstand) -> keine Modifikator-Ankuendigung, keine Wellen
+        if (enemySpawn != null && enemySpawn.IsCleared) return;
+
         triggered = true;
 
         if (roomModifierManager != null)

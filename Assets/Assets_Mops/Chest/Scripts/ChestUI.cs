@@ -14,6 +14,8 @@ public class ChestUI : MonoBehaviour
     private Chest currentChest;
     private InventoryManager inventoryManager;
 
+    private PlayerStats playerStats;
+
     public ItemType itemType;
 
     private bool initialized = false;   // NEU
@@ -73,6 +75,13 @@ public class ChestUI : MonoBehaviour
         Chest.ChestItem item = currentChest.chestItems[slotIndex];
         if (item.quantity <= 0) return;
 
+        
+        if (item.isCredits)
+        {
+            AddCreditsToAccount(slotIndex, item);
+            return;
+        }
+
         int leftOver = inventoryManager.AddItem(
             item.itemName, item.quantity, item.itemSprite, item.itemDescription, item.itemType);
 
@@ -95,6 +104,13 @@ public class ChestUI : MonoBehaviour
         Chest.ChestItem item = currentChest.chestItems[slotIndex];
         if (item.quantity <= 0) return;
 
+        
+        if (item.isCredits)
+        {
+            AddCreditsToAccount(slotIndex, item);
+            return;
+        }
+
         int leftOver = inventoryManager.AddItem(
             item.itemName, 1, item.itemSprite, item.itemDescription, item.itemType);
 
@@ -111,6 +127,27 @@ public class ChestUI : MonoBehaviour
                 chestSlots[slotIndex].UpdateQuantity(item.quantity);
             }
         }
+    }
+
+        // ESCredits gehen nicht ins Inventar, sondern direkt aufs Konto (PlayerStats.coins)
+    private void AddCreditsToAccount(int slotIndex, Chest.ChestItem item)
+    {
+        if (playerStats == null)
+        {
+            GameObject statManager = GameObject.Find("StatManager");
+            if (statManager != null)
+                playerStats = statManager.GetComponent<PlayerStats>();
+        }
+
+        if (playerStats == null)
+        {
+            Debug.LogError("ChestUI: StatManager/PlayerStats nicht gefunden, Credits bleiben in der Kiste!");
+            return;
+        }
+
+        playerStats.AddCoins(item.quantity);
+        currentChest.RemoveItem(slotIndex);
+        chestSlots[slotIndex].ClearSlot();
     }
 
     public void TakeAll()

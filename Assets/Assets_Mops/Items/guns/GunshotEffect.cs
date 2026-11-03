@@ -70,13 +70,22 @@ public class GunshotEffect : MonoBehaviour
             return;
         }
 
-        PlayerLife player = collision.GetComponent<PlayerLife>();
+                PlayerLife player = collision.GetComponent<PlayerLife>();
         if (player != null)
         {
             // Eigene Kugeln fliegen durch den Spieler durch
             if (fromPlayer) return;
 
             player.TakeDamage(damage);
+            hasHit = true;
+            Destroy(gameObject);
+            return;
+        }
+
+        // Feste Collider (Wände, Tische, Kisten, Deko ...) stoppen jede Kugel.
+        // Trigger-Zonen (FightRoomTrigger, Interaktions-Bereiche ...) lassen sie durch.
+        if (!collision.isTrigger)
+        {
             hasHit = true;
             Destroy(gameObject);
         }

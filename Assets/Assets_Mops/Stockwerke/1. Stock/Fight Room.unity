@@ -219,7 +219,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.053720236, y: -0.10743332}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0.049999997}
     pivot: {x: 0.5, y: 0.5}
@@ -229,7 +229,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 6.58, y: 8.410391}
+  m_Size: {x: 4.108949, y: 3.8980331}
   m_EdgeRadius: 0
 --- !u!114 &126826808
 MonoBehaviour:
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DoorInteraction
   targetSceneName: Fight Room
   targetSpawnID: 7
-  interactionRange: 2.16
+  interactionRange: 2.5
   requiredItemName: 
   mainHandSlot: {fileID: 0}
   interactionHint: {fileID: 652945566}
@@ -703,7 +703,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -12
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 1.1, y: 1.1, z: 0}
@@ -1924,6 +1924,10 @@ PrefabInstance:
     - target: {fileID: 2043248121099713614, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
       propertyPath: m_Name
       value: Main Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 2043248121099713614, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2214615391723043984, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
       propertyPath: m_AnchorMax.y
@@ -115833,16 +115837,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b091b24ccc20cb34c971c214d59a31db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossLife
-  maxHP: 500
-  phase2ThresholdPercent: 50
+  maxHP: 1000
+  phase2ThresholdPercent: 65
   healthBarUI: {fileID: 809152615}
   xpPrefab: {fileID: 4771013033056852365, guid: 1abfe0644d009474ea4a4aabff66f260, type: 3}
   xpAmount: 200
   xpOrbCount: 6
   coinPrefab: {fileID: 6316571953962255938, guid: d86b5816915b14ee983add3cfccf6a8f, type: 3}
   coinDropCount: 5
-  minCoinsPerDrop: 8
-  maxCoinsPerDrop: 15
+  minCoinsPerDrop: 10
+  maxCoinsPerDrop: 20
   exitTilemap: {fileID: 1327484261}
   exitWorldPosition: {fileID: 767586629}
   exitWidth: 1
@@ -117057,7 +117061,7 @@ TilemapRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -12
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.3, y: 1.1, z: 0}

@@ -18,11 +18,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5419547682097970812, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 26.32
+      value: 1.651192
       objectReference: {fileID: 0}
     - target: {fileID: 5419547682097970812, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 40.36
+      value: 2.531995
       objectReference: {fileID: 0}
     - target: {fileID: 7381866628350399518, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
       propertyPath: m_Name
@@ -124,6 +124,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMeleeAttack
   player: {fileID: 0}
-  attackRange: 3
+  attackRange: 2
   damage: 10
   attackInterval: 1

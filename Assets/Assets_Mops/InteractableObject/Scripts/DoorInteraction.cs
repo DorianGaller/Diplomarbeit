@@ -32,10 +32,14 @@ public class DoorInteraction : MonoBehaviour
 
     private Transform player;
 
+    private string saveId;
+
     private void Start()
     {
         if (doorRenderer == null)
             doorRenderer = GetComponent<SpriteRenderer>();
+
+        saveId = SaveSystem.GetObjectId(gameObject);
 
         StartCoroutine(ResolveReferencesNextFrame());   // NEU
     }
@@ -85,7 +89,7 @@ public class DoorInteraction : MonoBehaviour
         float distance = Vector2.Distance(transform.position, player.position);
         bool playerInRange = distance <= interactionRange;
 
-        bool hasRequiredItem = requiredItemName == "" || HasRequiredItem();
+        bool hasRequiredItem = requiredItemName == "" || SaveSystem.IsCleared(saveId) || HasRequiredItem();
 
         UpdateDoorSprite(hasRequiredItem);
 
@@ -129,8 +133,14 @@ public class DoorInteraction : MonoBehaviour
 
     private void OpenDoor()
     {
-        if (requiredItemName != "" && mainHandSlot != null)
-            mainHandSlot.ClearEquippedItem();
+                // Beim ersten Oeffnen Keycard verbrauchen und Tuer als offen merken
+        if (requiredItemName != "" && !SaveSystem.IsCleared(saveId))
+        {
+            if (mainHandSlot != null)
+                mainHandSlot.ClearEquippedItem();
+
+            SaveSystem.MarkCleared(saveId);
+        }
 
         DoorTransition.nextSpawnID = targetSpawnID;
 

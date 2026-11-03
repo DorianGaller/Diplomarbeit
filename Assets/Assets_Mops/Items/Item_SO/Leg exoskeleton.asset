@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Leg exoskeleton
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemName: Leg exoskeleton
-  itemSprite: {fileID: 21300000, guid: b591557958c2df642a94bdc98ac85bce, type: 3}
+  itemSprite: {fileID: 21300000, guid: c1e63fb4bb06a20459f895e599745aa7, type: 3}
   itemDescription: "A lightweight leg exoskeleton that mechanically enhances muscle
     power and increases movement speed \u2013 at the cost of some additional weight."
   statToChange: 0
