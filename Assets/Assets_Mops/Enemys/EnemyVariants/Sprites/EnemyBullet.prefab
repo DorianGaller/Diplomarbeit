@@ -108,8 +108,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GunshotEffect
   speed: 14
   damage: 10
-  lifeTime: 0.35
-  fadeSpeed: 3
+  fromPlayer: 0
+  lifeTime: 0.4
+  fadeSpeed: 8
 --- !u!58 &5682988704005110378
 CircleCollider2D:
   m_ObjectHideFlags: 0

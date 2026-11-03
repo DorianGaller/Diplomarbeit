@@ -19,12 +19,19 @@ public class PlayerEquipmentOrbit : MonoBehaviour
     private Camera cam;
     private Vector2 lastAimDir = Vector2.right;
 
+    private Vector3 iconBaseScale = Vector3.one;
+    private EquipmentSOLibary equipmentSOLibary;
+
     void Start()
     {
         cam = Camera.main;
 
         if (weaponHolder == null)
             weaponHolder = GetComponent<WeaponHolder>();
+
+        if (iconPrefab != null)
+            iconBaseScale = iconPrefab.transform.localScale;
+
 
         icons = new SpriteRenderer[equippedSlots.Length];
 
@@ -57,16 +64,43 @@ public class PlayerEquipmentOrbit : MonoBehaviour
 
             if (slot.GetItemType() == ItemType.mainHand)
             {
+                icons[i].transform.localScale = iconBaseScale * GetHeldScale(slot.GetItemName());
                 PositionWeaponIcon(icons[i].transform, icons[i]);
             }
             else
             {
+                icons[i].transform.localScale = iconBaseScale;
+
                 float angle = staticIndex * (360f / Mathf.Max(1, staticCount)) * Mathf.Deg2Rad;
                 Vector3 offset = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * orbitRadius;
                 icons[i].transform.position = transform.position + offset;
                 staticIndex++;
             }
         }
+    }
+
+    // Holt heldScale aus dem EquipmentSO mit gleichem itemName (1 wenn keins gefunden).
+    // Absichtlich jedes Frame, damit man den Wert im Play-Mode live anpassen kann.
+    float GetHeldScale(string itemName)
+    {
+        if (string.IsNullOrEmpty(itemName)) return 1f;
+
+        if (equipmentSOLibary == null)
+        {
+            GameObject canvas = GameObject.Find("InventoryCanvas");
+            if (canvas != null)
+                equipmentSOLibary = canvas.GetComponent<EquipmentSOLibary>();
+        }
+
+        if (equipmentSOLibary == null || equipmentSOLibary.equipmentSO == null) return 1f;
+
+        foreach (EquipmentSO so in equipmentSOLibary.equipmentSO)
+        {
+            if (so != null && so.itemName == itemName)
+                return so.heldScale;
+        }
+
+        return 1f;
     }
 
     int CountNonWeaponSlots()

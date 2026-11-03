@@ -18,4 +18,5 @@ MonoBehaviour:
   agility: 0
   health: 0
   weight: 2
+  heldScale: 0.85
   itemSprite: {fileID: -4979552915664131744, guid: 5b416e84ecb354de3a0b464332404861, type: 3}

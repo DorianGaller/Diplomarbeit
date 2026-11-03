@@ -199,9 +199,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Open Inventory       (F)
+  m_text: 'Open Inventory      (F)
 
-    Carry                          (G)
+    Carry                     (G)
 
     Climb
     on the Table (T)'
@@ -231,8 +231,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 71.93
-  m_fontSizeBase: 71.93
+  m_fontSize: 56.67
+  m_fontSizeBase: 56.67
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -343,6 +343,10 @@ PrefabInstance:
     - target: {fileID: 593880908007603840, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
       propertyPath: hintRange
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 593880908007603840, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
+      propertyPath: closeRange
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 593880908007603840, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
       propertyPath: interactionHint
@@ -486,7 +490,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5127507683508001341, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
       propertyPath: m_BodyType
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5127507683508001341, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
       propertyPath: m_GravityScale
@@ -659,10 +663,6 @@ PrefabInstance:
       value: ChestUI, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8006284371630833236, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 6056658273053375405}
-    - target: {fileID: 8006284371630833236, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: Chest, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -708,40 +708,15 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2654115488728186202}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7316072328002598049, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6056658273053375405}
-    - targetCorrespondingSourceObject: {fileID: 4410033723477352629, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6487826611082082531}
     - targetCorrespondingSourceObject: {fileID: 4410033723477352629, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1387518803002290608}
-    - targetCorrespondingSourceObject: {fileID: 4410033723477352629, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8793695807739980526}
   m_SourcePrefab: {fileID: 100100000, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
 --- !u!1 &3472534333601701561 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4410033723477352629, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
   m_PrefabInstance: {fileID: 937731524289183244}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6487826611082082531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3472534333601701561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fb6726c3edde41caadb81851c02c7b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TableProximityTrigger
-  infoText: {fileID: 4207942294464207257}
-  canvasToClose: {fileID: 0}
-  canvasToOpen: {fileID: 0}
-  activationRadius: 3
 --- !u!114 &1387518803002290608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -763,52 +738,15 @@ MonoBehaviour:
   tablePosition: {fileID: 9022401514757602837}
   groundPosition: {fileID: 2654115488728186202}
   tableCollider: {fileID: 7509635987268006405}
---- !u!114 &8793695807739980526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3472534333601701561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d42fb4903da84428803b4978da33581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Chest
-  chestItems: []
-  itemObjects: []
-  itemObjectQuantities: 
-  chestUI: {fileID: 0}
-  interactionHint: {fileID: 0}
-  hintRange: 2
+  activeOnTable:
+  - {fileID: 0}
+  activeOnGround:
+  - {fileID: 0}
 --- !u!61 &7509635987268006405 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 7292713176438164489, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
   m_PrefabInstance: {fileID: 937731524289183244}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7531308164421634733 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7316072328002598049, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}
-  m_PrefabInstance: {fileID: 937731524289183244}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6056658273053375405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7531308164421634733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d42fb4903da84428803b4978da33581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Chest
-  chestItems: []
-  itemObjects: []
-  itemObjectQuantities: 
-  chestUI: {fileID: 0}
-  interactionHint: {fileID: 1953355575541026925}
-  hintRange: 2
 --- !u!4 &9022401514757602837 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8085508917970567193, guid: 625ae3dfe3ad0dc4398471caee65f5cc, type: 3}

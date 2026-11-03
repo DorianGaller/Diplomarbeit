@@ -114604,7 +114604,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 754575075070389763, guid: ff6f95799cd132a45b09cfc2ae49090b, type: 3}
   shootPoint: {fileID: 1560628451}
   phase1BurstShots: 3
-  phase2BurstShots: 5
+  phase2BurstShots: 4
   shotInterval: 0.2
   dashSpeed: 12
   dashDuration: 0.25
