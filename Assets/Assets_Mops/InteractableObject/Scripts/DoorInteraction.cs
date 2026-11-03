@@ -24,10 +24,19 @@ public class DoorInteraction : MonoBehaviour
     [Tooltip("Optionaler Hinweis (z.B. 'F - Tür öffnen')")]
     [SerializeField] private GameObject interactionHint;
 
+    [Header("Optional: Tür-Sprites (gesperrt / entsperrt)")]
+    [Tooltip("Leer lassen = SpriteRenderer am selben Objekt")]
+    [SerializeField] private SpriteRenderer doorRenderer;
+    [SerializeField] private Sprite lockedSprite;
+    [SerializeField] private Sprite unlockedSprite;
+
     private Transform player;
 
     private void Start()
     {
+        if (doorRenderer == null)
+            doorRenderer = GetComponent<SpriteRenderer>();
+
         StartCoroutine(ResolveReferencesNextFrame());   // NEU
     }
 
@@ -78,6 +87,8 @@ public class DoorInteraction : MonoBehaviour
 
         bool hasRequiredItem = requiredItemName == "" || HasRequiredItem();
 
+        UpdateDoorSprite(hasRequiredItem);
+
         if (interactionHint != null)
             interactionHint.SetActive(playerInRange && hasRequiredItem);
 
@@ -85,6 +96,16 @@ public class DoorInteraction : MonoBehaviour
         {
             OpenDoor();
         }
+    }
+
+    // Gruen wenn die Keycard in der Main Hand ist, sonst rot
+    private void UpdateDoorSprite(bool unlocked)
+    {
+        if (doorRenderer == null) return;
+
+        Sprite target = unlocked ? unlockedSprite : lockedSprite;
+        if (target != null && doorRenderer.sprite != target)
+            doorRenderer.sprite = target;
     }
 
     private bool HasRequiredItem()

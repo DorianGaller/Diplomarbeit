@@ -348,9 +348,9 @@ public class EnemySpawn : MonoBehaviour
     void UpdateHUD()
     {
         if (wavesText != null)
-            wavesText.text = Mathf.Max(0, maxWaves - wave) + " Waves\nRemaining";
+            wavesText.text = Mathf.Max(0, maxWaves - wave) + " Waves";
 
         if (enemiesText != null)
-            enemiesText.text = Mathf.Max(0, spawnQueue.Count - enemiesSpawned + enemiesAlive) + " Enemys\nRemaining";
+            enemiesText.text = Mathf.Max(0, spawnQueue.Count - enemiesSpawned + enemiesAlive) + " Enemys";
     }
 }
