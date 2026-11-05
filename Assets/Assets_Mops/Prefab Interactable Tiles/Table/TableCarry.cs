@@ -20,6 +20,8 @@ public class TableCarry : MonoBehaviour
     [SerializeField] private float dropDistance = 1.8f;
     [Range(0.1f, 1f)]
     [SerializeField] private float carryScale = 0.5f;
+    [Tooltip("Abstand nach aussen zum Equipment-Orbit, damit der Tisch nicht ueber der Waffe haengt")]
+    [SerializeField] private float gapToOrbit = 0.8f;
 
     [Header("Klettern (gleiche Werte wie bei StandOnTable)")]
     [SerializeField] private Transform tablePosition;
@@ -41,6 +43,7 @@ public class TableCarry : MonoBehaviour
     private Rigidbody2D playerRb;
     private BoxCollider2D playerCollider;
     private PlayerMovement playerMovement;
+    private PlayerEquipmentOrbit orbit;
     private Camera cam;
 
     private Collider2D[] colliders;
@@ -75,6 +78,7 @@ public class TableCarry : MonoBehaviour
         playerRb = playerObj.GetComponent<Rigidbody2D>();
         playerCollider = playerObj.GetComponent<BoxCollider2D>();
         playerMovement = playerObj.GetComponent<PlayerMovement>();
+        orbit = playerObj.GetComponentInChildren<PlayerEquipmentOrbit>();
     }
 
     private void Update()
@@ -128,6 +132,11 @@ public class TableCarry : MonoBehaviour
         return true;
     }
 
+    private float CurrentCarryDistance()
+    {
+        return orbit != null ? Mathf.Max(carryDistance, orbit.orbitRadius + gapToOrbit) : carryDistance;
+    }
+
     // ── Tragen ────────────────────────────────────────────
 
     private void PickUp()
@@ -149,7 +158,7 @@ public class TableCarry : MonoBehaviour
 
     private void Drop()
     {
-        Vector3 dropPos = player.position + (Vector3)(lastDir * dropDistance);
+        Vector3 dropPos = player.position + (Vector3)(lastDir * Mathf.Max(dropDistance, CurrentCarryDistance()));
         dropPos.z = transform.position.z;
         transform.position = dropPos;
 
@@ -177,7 +186,7 @@ public class TableCarry : MonoBehaviour
 
         lastDir = dir;
 
-        Vector3 pos = player.position + (Vector3)(dir * carryDistance);
+        Vector3 pos = player.position + (Vector3)(dir * CurrentCarryDistance());
         pos.z = transform.position.z;
         transform.position = pos;
     }

@@ -116,6 +116,12 @@ MonoBehaviour:
   speed: 2
   shootRange: 7
   stopOffset: 1
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  bodyRadius: 0.89
+  pathCellSize: {x: 0.75, y: 0.75}
+  repathInterval: 0.4
 --- !u!114 &7691642563939369976
 MonoBehaviour:
   m_ObjectHideFlags: 0

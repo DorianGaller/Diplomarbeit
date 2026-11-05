@@ -18,6 +18,7 @@ public class PlayerEquipmentOrbit : MonoBehaviour
     private SpriteRenderer[] icons;
     private Camera cam;
     private Vector2 lastAimDir = Vector2.right;
+    public Vector2 AimDirection => lastAimDir;
 
     private Vector3 iconBaseScale = Vector3.one;
     private EquipmentSOLibary equipmentSOLibary;

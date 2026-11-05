@@ -15,9 +15,8 @@ MonoBehaviour:
   items:
   - itemName: CY-K-47
     itemSprite: {fileID: -157389755114902959, guid: 14902e4a36c0b3f43a1eeb419df18c85, type: 3}
-    itemDescription: 'Super Duper AK
-
-'
+    itemDescription: A classic rifle design, reborn with neon circuitry and a smart
+      magazine. Loud, fast and never subtle.
     itemType: 6
     maxStackSize: 1
     weaponExpValue: 0
@@ -48,7 +47,8 @@ MonoBehaviour:
     weaponSO: {fileID: 0}
   - itemName: Pistol
     itemSprite: {fileID: -4979552915664131744, guid: 5b416e84ecb354de3a0b464332404861, type: 3}
-    itemDescription: bla bla
+    itemDescription: Standard-issue security sidearm, modified with a custom power
+      cell. Not the strongest, but it never lets you down.
     itemType: 6
     maxStackSize: 1
     weaponExpValue: 0

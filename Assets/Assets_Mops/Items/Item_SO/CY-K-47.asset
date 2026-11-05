@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemName: CY-K-47
   itemSprite: {fileID: -157389755114902959, guid: 14902e4a36c0b3f43a1eeb419df18c85, type: 3}
-  itemDescription: Geile AK
+  itemDescription: A classic rifle design, reborn with neon circuitry and a smart
+    magazine. Loud, fast and never subtle.
   statToChange: 0
   amountToChangeStat: 0
   attributeToChange: 1

@@ -65,6 +65,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8113823348523320301, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
+      propertyPath: bodyRadius
+      value: 0.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113823348523320301, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
       propertyPath: shootRange
       value: 2
       objectReference: {fileID: 0}
@@ -72,13 +76,17 @@ PrefabInstance:
       propertyPath: stopOffset
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8113823348523320301, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
+      propertyPath: obstacleLayer.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
     - target: {fileID: 8611026727772676909, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.64
+      value: 25.423134
       objectReference: {fileID: 0}
     - target: {fileID: 8611026727772676909, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15.09
+      value: 4.3592973
       objectReference: {fileID: 0}
     - target: {fileID: 8611026727772676909, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -204,6 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eedef0c6c7c2d094dad99a2e8c2f193c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimator
-  follow: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  movementThreshold: 0.05
   stateChangeDelay: 0.1
+  shootClipName: Robot_Shooting

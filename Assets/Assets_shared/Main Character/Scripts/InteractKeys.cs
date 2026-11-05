@@ -28,12 +28,20 @@ public class InteractKeys : MonoBehaviour
     // 🔹 Referenz auf WeaponHolder (selbes GameObject)
     private WeaponHolder weaponHolder;
 
+    private PlayerEquipmentOrbit orbit;
+
+    [Header("Nahschuss")]
+    [Tooltip("Dicke der Pruefung zwischen Spieler und Muendung")]
+    public float pointBlankRadius = 0.25f;
+
     void Awake()
     {
         gunshotAction = new InputAction("Gunshot", InputActionType.Button, "<Mouse>/leftButton");
         interactAction = new InputAction("Interact", InputActionType.Button, "<Keyboard>/f");
 
         weaponHolder = GetComponent<WeaponHolder>();
+
+        orbit = GetComponent<PlayerEquipmentOrbit>();
 
         CacheTilemaps();
     }
@@ -121,7 +129,7 @@ public class InteractKeys : MonoBehaviour
         if (Time.time < nextFireTime) return;
         nextFireTime = Time.time + weapon.fireRate;
 
-        Vector2 baseDir = shootPoint.right;
+        Vector2 baseDir = orbit != null ? orbit.AimDirection : (Vector2)shootPoint.right;
 
         // 🔹 Mehrere Bullets (Shotgun etc.) mit optionalem Spread
         for (int i = 0; i < weapon.bulletsPerShot; i++)
@@ -139,16 +147,45 @@ public class InteractKeys : MonoBehaviour
                 shootDir = Quaternion.Euler(0, 0, angle) * baseDir;
             }
 
+            if (HandlePointBlank(shootDir, weaponHolder.CurrentDamage))
+                continue;
+
             GameObject shot = Instantiate(weapon.bulletPrefab, shootPoint.position, Quaternion.identity);
 
             GunshotEffect effect = shot.GetComponent<GunshotEffect>();
-             if (effect != null)
+            if (effect != null)
             {
                 effect.damage = weaponHolder.CurrentDamage;
                 effect.fromPlayer = true;
                 effect.Init(shootDir);
             }
         }
+    }
+
+    private bool HandlePointBlank(Vector2 dir, int damage)
+    {
+        Vector2 origin = transform.position;
+        float distance = Vector2.Distance(origin, shootPoint.position);
+        if (distance <= 0.01f) return false;
+
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(origin, pointBlankRadius, dir, distance);
+        System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
+
+        foreach (RaycastHit2D hit in hits)
+        {
+            Collider2D col = hit.collider;
+            if (col == null || col.transform.IsChildOf(transform)) continue;   // eigener Spieler
+
+            EnemyLife enemy = col.GetComponent<EnemyLife>();
+            if (enemy != null) { enemy.TakeDamage(damage); return true; }
+
+            BossLife boss = col.GetComponent<BossLife>();
+            if (boss != null) { boss.TakeDamage(damage); return true; }
+
+            // Feste Wand direkt vor der Muendung (Trigger-Zonen und Kugeln werden ignoriert)
+            if (!col.isTrigger && col.GetComponent<GunshotEffect>() == null) return true;
+        }
+        return false;
     }
 
     private void OnInteract()
