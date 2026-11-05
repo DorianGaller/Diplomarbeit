@@ -1712,6 +1712,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 660844b55b3b5454b8b841e9004f57bd, type: 2}
   - {fileID: 11400000, guid: e7b265b1aacd1614bab18b574b26504b, type: 2}
   - {fileID: 11400000, guid: 5a9279c77f2fd4742ae991dc3a2a31f6, type: 2}
+  - {fileID: 11400000, guid: d5c5a349db0fb704a93a19db21698aaa, type: 2}
   chestPanel: {fileID: 4952699836058817185}
   inventoryDescription: {fileID: 2317773029957226909}
   menuTabs: {fileID: 564730114639772748}
@@ -2019,8 +2020,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -905.3431, y: 632.94}
-  m_SizeDelta: {x: 516.5077, y: 40.942}
+  m_AnchoredPosition: {x: -995, y: 632.94}
+  m_SizeDelta: {x: 388.9, y: 40.942}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4297964190610506400
 CanvasRenderer:
@@ -2237,6 +2238,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5321238270560225996}
+  - component: {fileID: 8649558871321339817}
+  - component: {fileID: 3074383077719781053}
   m_Layer: 8
   m_Name: LevelUI
   m_TagString: Untagged
@@ -2267,6 +2270,36 @@ RectTransform:
   m_AnchoredPosition: {x: 89, y: -61}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &8649558871321339817
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103377507235374327}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &3074383077719781053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103377507235374327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037fbededc1a08747ac983bef9cc5387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HudAutoHide
+  fadeInTime: 0.15
+  holdTime: 2.5
+  fadeOutTime: 0.6
+  keepVisibleWhileActive:
+  - {fileID: 8331279771868072837}
+  - {fileID: 7798550123524886173}
 --- !u!1 &1164982301245275128
 GameObject:
   m_ObjectHideFlags: 0
@@ -4058,6 +4091,7 @@ MonoBehaviour:
   xpBar: {fileID: 4467264713225187696}
   currentXPText: {fileID: 7970588256194440168}
   levelText: {fileID: 3962857957983281837}
+  xpHud: {fileID: 3074383077719781053}
 --- !u!114 &3200699827105705918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4865,7 +4899,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 37.5, y: -125}
-  m_SizeDelta: {x: 75, y: 75}
+  m_SizeDelta: {x: 75.05, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2534263704585601408
 GameObject:
@@ -6145,8 +6179,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -904.4109, y: 631.27}
-  m_SizeDelta: {x: 450, y: 55}
+  m_AnchoredPosition: {x: -992, y: 631.27}
+  m_SizeDelta: {x: 343.7, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2176359873422960924
 CanvasRenderer:
@@ -10358,7 +10392,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -12570,7 +12604,7 @@ GameObject:
   - component: {fileID: 2220168080896937070}
   - component: {fileID: 1432890039829036029}
   m_Layer: 5
-  m_Name: EquipmentPanel
+  m_Name: EquipmentMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14382,6 +14416,7 @@ MonoBehaviour:
   selectedItemStats: {fileID: 6103792627362624470}
   selcteedItemImage: {fileID: 8796954075895264867}
   playerLife: {fileID: 3075491398782624749}
+  coinsHud: {fileID: 1872572494660146458}
   playerMovement: {fileID: 7797527906175133109}
   speedPenaltyPerWeight: 0.005
   maxSpeedPenalty: 0.3
@@ -14566,7 +14601,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -14639,7 +14674,9 @@ GameObject:
   - component: {fileID: 4557591769546744075}
   - component: {fileID: 1092515113382560469}
   - component: {fileID: 5592108993740313217}
+  - component: {fileID: 1872572494660146458}
   - component: {fileID: 2441054755374358494}
+  - component: {fileID: 7058241345420235533}
   m_Layer: 5
   m_Name: Coins
   m_TagString: Untagged
@@ -14707,6 +14744,24 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1872572494660146458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9207866025958210673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037fbededc1a08747ac983bef9cc5387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HudAutoHide
+  fadeInTime: 0.15
+  holdTime: 2.5
+  fadeOutTime: 0.6
+  keepVisibleWhileActive:
+  - {fileID: 8331279771868072837}
+  - {fileID: 7798550123524886173}
 --- !u!114 &2441054755374358494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14733,6 +14788,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!225 &7058241345420235533
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9207866025958210673}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &92352835540910242
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -16,6 +16,8 @@ public class SaveData
 
     // Spieler
     public int coins;
+    public int baseMaxHP = -1;   // -1 = noch nie gespeichert (neues Spiel / alter Spielstand)
+    public int currentHP = -1;
     public List<SlotSave> items = new List<SlotSave>();
     public List<SlotSave> equipment = new List<SlotSave>();
     public List<SlotSave> equipped = new List<SlotSave>();

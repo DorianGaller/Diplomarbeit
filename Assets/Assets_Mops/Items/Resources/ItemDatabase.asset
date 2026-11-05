@@ -13,20 +13,6 @@ MonoBehaviour:
   m_Name: ItemDatabase
   m_EditorClassIdentifier: Assembly-CSharp::ItemDatabase
   items:
-  - itemName: Steel
-    itemSprite: {fileID: 6298086538089013102, guid: 3c4a03a27e31f42248776a8e6bcc924d, type: 3}
-    itemDescription: bla bla
-    itemType: 10
-    maxStackSize: 99
-    weaponExpValue: 25
-    weaponSO: {fileID: 0}
-  - itemName: Pistol
-    itemSprite: {fileID: -4979552915664131744, guid: 5b416e84ecb354de3a0b464332404861, type: 3}
-    itemDescription: bla bla
-    itemType: 6
-    maxStackSize: 1
-    weaponExpValue: 0
-    weaponSO: {fileID: 11400000, guid: 9ecdab447c5d6824ca043f0bdd317648, type: 2}
   - itemName: CY-K-47
     itemSprite: {fileID: -157389755114902959, guid: 14902e4a36c0b3f43a1eeb419df18c85, type: 3}
     itemDescription: 'Super Duper AK
@@ -36,3 +22,58 @@ MonoBehaviour:
     maxStackSize: 1
     weaponExpValue: 0
     weaponSO: {fileID: 11400000, guid: 0723e1ab00b5a524fb0a0b81738448fa, type: 2}
+  - itemName: Key
+    itemSprite: {fileID: -4458500022245972414, guid: fa5224f2394c94544a4afda1ff46789e, type: 3}
+    itemDescription: "A scratched access card with a faded staff photo. The lab\u2019s
+      doors still remember its owner."
+    itemType: 6
+    maxStackSize: 1
+    weaponExpValue: 0
+    weaponSO: {fileID: 0}
+  - itemName: Leg exoskeleton
+    itemSprite: {fileID: 21300000, guid: c1e63fb4bb06a20459f895e599745aa7, type: 3}
+    itemDescription: "A lightweight leg exoskeleton that mechanically enhances muscle
+      power and increases movement speed \u2013 at the cost of some additional weight."
+    itemType: 5
+    maxStackSize: 1
+    weaponExpValue: 0
+    weaponSO: {fileID: 0}
+  - itemName: Nano-Stim
+    itemSprite: {fileID: 21300000, guid: 0fdbffc054ad0da4d947bf719f9c6276, type: 3}
+    itemDescription: Injects a swarm of repair nanobots that seal wounds and restore
+      vital functions.
+    itemType: 1
+    maxStackSize: 99
+    weaponExpValue: 0
+    weaponSO: {fileID: 0}
+  - itemName: Pistol
+    itemSprite: {fileID: -4979552915664131744, guid: 5b416e84ecb354de3a0b464332404861, type: 3}
+    itemDescription: bla bla
+    itemType: 6
+    maxStackSize: 1
+    weaponExpValue: 0
+    weaponSO: {fileID: 11400000, guid: 9ecdab447c5d6824ca043f0bdd317648, type: 2}
+  - itemName: Scissors
+    itemSprite: {fileID: -794509159284225636, guid: b034807b4a62d424ea9a840f9405f636, type: 3}
+    itemDescription: "Insulated wire cutters with a worn rubber grip. Somebody left
+      them behind in a hurry, and some cables won\u2019t cut themselves."
+    itemType: 6
+    maxStackSize: 1
+    weaponExpValue: 0
+    weaponSO: {fileID: 0}
+  - itemName: Steel
+    itemSprite: {fileID: 6298086538089013102, guid: 3c4a03a27e31f42248776a8e6bcc924d, type: 3}
+    itemDescription: "Standard-grade steel from the facility\u2019s supply depots.
+      Not glamorous, but every good weapon starts with it."
+    itemType: 10
+    maxStackSize: 99
+    weaponExpValue: 25
+    weaponSO: {fileID: 0}
+  - itemName: Vital-Core
+    itemSprite: {fileID: 21300000, guid: 6a37580bc9cc4804c948ebee34cb7337, type: 3}
+    itemDescription: A miniature fusion core that reinforces your vital systems.
+      Permanently increases max HP by 10.
+    itemType: 1
+    maxStackSize: 99
+    weaponExpValue: 0
+    weaponSO: {fileID: 0}

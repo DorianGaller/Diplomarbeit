@@ -61,6 +61,14 @@ public class PlayerLife : MonoBehaviour
         UpdateHealthBar();
     }
 
+    public void IncreaseMaxHP(int amount)
+    {
+        baseMaxHP += amount;
+        maxHP = Mathf.Max(1, baseMaxHP + bonusHP);
+        currentHP = Mathf.Clamp(currentHP + amount, 0, maxHP);
+        UpdateHealthBar();
+    }
+
     public void SetBonusHP(int newBonus)
     {
         bonusHP = newBonus;
@@ -80,6 +88,18 @@ public class PlayerLife : MonoBehaviour
         }
 
         UpdateHealthBar();
+    }
+
+    public int CurrentHP => currentHP;
+
+    /// <summary>Vom SaveSystem beim Laden: Basis-Max-HP und aktuelle HP setzen.</summary>
+    public void LoadHealth(int savedBaseMaxHP, int savedCurrentHP)
+    {
+        baseMaxHP = Mathf.Max(1, savedBaseMaxHP);
+        maxHP = Mathf.Max(1, baseMaxHP + bonusHP);
+        currentHP = Mathf.Clamp(savedCurrentHP, 1, maxHP);
+        initialized = true;
+        UpdateHealthBar(true);
     }
 
     public void TakeDamage(int damage)
@@ -163,9 +183,12 @@ public class PlayerLife : MonoBehaviour
     {
         Time.timeScale = 0f;
 
-        yield return new WaitForSecondsRealtime(4f);
+        yield return new WaitForSecondsRealtime(1f);
 
         Time.timeScale = 1f;
+
+        currentHP = maxHP;
+        UpdateHealthBar(true);
 
         DoorTransition.nextSpawnID = "1";   // NEU – Spawn ID 1 in der BaseScene
 

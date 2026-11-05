@@ -181,6 +181,13 @@ public class SaveSystem : MonoBehaviour
         PlayerStats stats = FindStats();
         if (stats != null)
             data.coins = stats.coins;
+        
+        PlayerLife life = FindPlayerLife();
+        if (life != null)
+        {
+            data.baseMaxHP = life.baseMaxHP;
+            data.currentHP = life.CurrentHP;
+        }
     }
 
     private static List<SlotSave> CaptureSlots(IDraggableSlot[] slots)
@@ -243,6 +250,10 @@ public class SaveSystem : MonoBehaviour
             stats.UpdateCoinsDisplay();
         }
 
+        PlayerLife life = FindPlayerLife();
+        if (life != null && data.baseMaxHP > 0 && data.currentHP > 0)
+            life.LoadHealth(data.baseMaxHP, data.currentHP);
+
         inv.DeselectAllSlots();
     }
 
@@ -291,8 +302,15 @@ public class SaveSystem : MonoBehaviour
 
     private static PlayerStats FindStats()
     {
+        
         GameObject statManager = GameObject.Find("StatManager");
         return statManager != null ? statManager.GetComponent<PlayerStats>() : null;
+    }
+
+    private static PlayerLife FindPlayerLife()
+    {
+        GameObject player = GameObject.FindWithTag("Player");
+        return player != null ? player.GetComponent<PlayerLife>() : null;
     }
 
     // ── Kisten ────────────────────────────────────────────

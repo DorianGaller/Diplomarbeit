@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemName: Scissors
   itemSprite: {fileID: -794509159284225636, guid: b034807b4a62d424ea9a840f9405f636, type: 3}
-  itemDescription: 
+  itemDescription: "Insulated wire cutters with a worn rubber grip. Somebody left
+    them behind in a hurry, and some cables won\u2019t cut themselves."
   statToChange: 0
   amountToChangeStat: 0
   attributeToChange: 1

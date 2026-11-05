@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemName: Pistol
   itemSprite: {fileID: -4979552915664131744, guid: 5b416e84ecb354de3a0b464332404861, type: 3}
-  itemDescription: Geile Schusswaffe
+  itemDescription: Standard-issue security sidearm, modified with a custom power
+    cell. Not the strongest, but it never lets you down.
   statToChange: 0
   amountToChangeStat: 0
   attributeToChange: 1

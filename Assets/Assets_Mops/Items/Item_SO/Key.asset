@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemName: Key
   itemSprite: {fileID: -4458500022245972414, guid: fa5224f2394c94544a4afda1ff46789e, type: 3}
-  itemDescription: A Key that could fit a door
+  itemDescription: "A scratched access card with a faded staff photo. The lab\u2019s
+    doors still remember its owner."
   statToChange: 0
   amountToChangeStat: 0
   attributeToChange: 0

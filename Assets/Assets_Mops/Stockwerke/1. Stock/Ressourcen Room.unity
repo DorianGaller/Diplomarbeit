@@ -2230,7 +2230,7 @@ PrefabInstance:
       objectReference: {fileID: 760995832}
     - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: chestItems.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: chestItems.Array.data[0].itemSO
@@ -2240,6 +2240,10 @@ PrefabInstance:
       propertyPath: chestItems.Array.data[1].itemSO
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[2].itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: d5c5a349db0fb704a93a19db21698aaa, type: 2}
     - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: chestItems.Array.data[0].itemName
       value: Steel
@@ -2265,8 +2269,24 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[2].itemName
+      value: Vital-Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[2].itemType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[2].quantity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: chestItems.Array.data[1].isCredits
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[2].isCredits
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: chestItems.Array.data[0].itemSprite
@@ -2276,6 +2296,10 @@ PrefabInstance:
       propertyPath: chestItems.Array.data[1].itemSprite
       value: 
       objectReference: {fileID: -1041301941664765792, guid: 0d193d1eb91fd6349866262d15160dd3, type: 3}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[2].itemSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6a37580bc9cc4804c948ebee34cb7337, type: 3}
     - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: chestItems.Array.data[0].itemDescription
       value: Steel as hard as my ...
