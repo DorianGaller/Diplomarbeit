@@ -19,6 +19,8 @@ public class DoorInteraction : MonoBehaviour
     [SerializeField] private GameObject interactionHint;
     [Tooltip("Erscheint in der Naehe, solange die Tuer gesperrt ist (z.B. 'Keycard ausruesten + Tuer anklicken')")]
     [SerializeField] private GameObject unlockHint;
+    [Tooltip("Erscheint in der Naehe, solange gesperrt und KEINE Keycard in der Main Hand (z.B. 'Du brauchst eine Keycard')")]
+    [SerializeField] private GameObject noKeyHint;
 
     [Header("Optional: Tuer-Sprites (gesperrt / entsperrt)")]
     [SerializeField] private SpriteRenderer doorRenderer;
@@ -74,6 +76,7 @@ public class DoorInteraction : MonoBehaviour
 
         if (interactionHint != null) interactionHint.SetActive(false);
         if (unlockHint != null) unlockHint.SetActive(false);
+        if (noKeyHint != null) noKeyHint.SetActive(false);
     }
 
     private void Update()
@@ -85,8 +88,12 @@ public class DoorInteraction : MonoBehaviour
 
         UpdateDoorSprite(unlocked);
 
+                bool hasKey = !unlocked && HasRequiredItem();
+
+        // 1. gesperrt ohne Keycard -> 2. gesperrt mit Keycard -> 3. offen
+        if (noKeyHint != null) noKeyHint.SetActive(playerInRange && !unlocked && !hasKey);
+        if (unlockHint != null) unlockHint.SetActive(playerInRange && !unlocked && hasKey);
         if (interactionHint != null) interactionHint.SetActive(playerInRange && unlocked);
-        if (unlockHint != null) unlockHint.SetActive(playerInRange && !unlocked);
 
         if (!playerInRange) return;
 

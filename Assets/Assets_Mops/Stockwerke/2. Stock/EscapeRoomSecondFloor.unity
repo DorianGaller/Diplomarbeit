@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: interactionHint
       value: 
       objectReference: {fileID: 70837335}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[0].quantity
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 9172255874949554188, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: m_Name
       value: Chest (2)
@@ -1701,28 +1705,56 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 893662904}
     - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: chestItems.Array.data[0].itemSO
       value: 
-      objectReference: {fileID: 11400000, guid: 660844b55b3b5454b8b841e9004f57bd, type: 2}
+      objectReference: {fileID: 11400000, guid: d5c5a349db0fb704a93a19db21698aaa, type: 2}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[1].itemSO
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: chestItems.Array.data[0].itemName
-      value: Steel
+      value: Vital-Core
       objectReference: {fileID: 0}
     - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: chestItems.Array.data[0].itemType
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: chestItems.Array.data[0].quantity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[1].itemName
+      value: ESCredits
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[1].itemType
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[1].quantity
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[1].isCredits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: chestItems.Array.data[0].itemSprite
       value: 
-      objectReference: {fileID: 6298086538089013102, guid: 3c4a03a27e31f42248776a8e6bcc924d, type: 3}
+      objectReference: {fileID: 21300000, guid: 6a37580bc9cc4804c948ebee34cb7337, type: 3}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[1].itemSprite
+      value: 
+      objectReference: {fileID: -1041301941664765792, guid: 0d193d1eb91fd6349866262d15160dd3, type: 3}
     - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: chestItems.Array.data[0].itemDescription
-      value: geilo
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9172255874949554188, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: m_Name
@@ -2363,6 +2395,34 @@ PrefabInstance:
       propertyPath: interactionHint
       value: 
       objectReference: {fileID: 1383300426}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[0].itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: e7b265b1aacd1614bab18b574b26504b, type: 2}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[0].itemName
+      value: CY-K-47
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[0].itemType
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[0].quantity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[0].itemSprite
+      value: 
+      objectReference: {fileID: -157389755114902959, guid: 14902e4a36c0b3f43a1eeb419df18c85, type: 3}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[0].itemDescription
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 9172255874949554188, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: m_Name
       value: Chest (1)
@@ -2405,6 +2465,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 116732251420215038, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 116732251420215038, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 116732251420215038, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 116732251420215038, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 116732251420215038, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 116732251420215038, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 149642156331640609, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -3093,6 +3177,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6159487084080160058, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7075374032751573239, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -3183,6 +3271,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8331279771868072837, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8541300781848755313, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8541300781848755313, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8541300781848755313, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8541300781848755313, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8541300781848755313, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8541300781848755313, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8762631501640532226, guid: 28d3ca600f5e37840a22277d04e4ee80, type: 3}
@@ -32027,6 +32139,58 @@ PrefabInstance:
       propertyPath: interactionHint
       value: 
       objectReference: {fileID: 1808089934}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[0].itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 660844b55b3b5454b8b841e9004f57bd, type: 2}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[1].itemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 660844b55b3b5454b8b841e9004f57bd, type: 2}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[0].itemName
+      value: Steel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[0].itemType
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[0].quantity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[1].itemName
+      value: ESCredits
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[1].itemType
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[1].quantity
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[1].isCredits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[0].itemSprite
+      value: 
+      objectReference: {fileID: 6298086538089013102, guid: 3c4a03a27e31f42248776a8e6bcc924d, type: 3}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[1].itemSprite
+      value: 
+      objectReference: {fileID: -1041301941664765792, guid: 0d193d1eb91fd6349866262d15160dd3, type: 3}
+    - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
+      propertyPath: chestItems.Array.data[0].itemDescription
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 9172255874949554188, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: m_Name
       value: Chest (3)
@@ -32781,7 +32945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53bba941afafd1d438b18e577d3d9ccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TouchSceneTransition
-  targetSceneName: EscapeScene
+  targetSceneName: RessourcenRoomSecondFloor
   targetSpawnID: 
   requiredItemName: 
   mainHandSlot: {fileID: 0}

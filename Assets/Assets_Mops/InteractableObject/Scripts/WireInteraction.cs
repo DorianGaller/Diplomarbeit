@@ -11,6 +11,8 @@ public class WireInteraction : MonoBehaviour
     [SerializeField] private EquippedSlot mainHandSlot;
     [Tooltip("Erscheint, sobald der Spieler in der Naehe ist (z.B. 'Schere ausruesten + Linksklick')")]
     [SerializeField] private GameObject interactionHint;
+    [Tooltip("Erscheint in der Naehe, wenn die Schere NICHT in der Main Hand ist (z.B. 'Du brauchst eine Schere')")]
+    [SerializeField] private GameObject noToolHint;
 
     private Transform player;
     private Camera cam;
@@ -59,6 +61,9 @@ public class WireInteraction : MonoBehaviour
 
         if (interactionHint != null)
             interactionHint.SetActive(false);
+        
+        if (noToolHint != null)
+            noToolHint.SetActive(false);
     }
 
     private void Update()
@@ -68,10 +73,15 @@ public class WireInteraction : MonoBehaviour
         bool playerInRange = Vector2.Distance(transform.position, player.position) <= interactionRange;
 
         // Hinweis immer, wenn der Spieler in der Naehe ist
-        if (interactionHint != null)
-            interactionHint.SetActive(playerInRange);
+               bool hasTool = HasRequiredItem();
 
-        if (playerInRange && Input.GetMouseButtonDown(0) && IsMouseOver() && HasRequiredItem())
+        // Mit Schere: Klick-Hinweis, ohne Schere: Hinweis, dass man eine braucht
+        if (interactionHint != null)
+            interactionHint.SetActive(playerInRange && hasTool);
+        if (noToolHint != null)
+            noToolHint.SetActive(playerInRange && !hasTool);
+
+        if (playerInRange && hasTool && Input.GetMouseButtonDown(0) && IsMouseOver())
             RemoveWire();
     }
 

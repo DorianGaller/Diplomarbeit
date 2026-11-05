@@ -30,8 +30,14 @@ EditorBuildSettings:
     path: Assets/Assets_Doggy/Base/BaseScene.unity
     guid: ebe3b1b2bc0b54365bf1188a8cd0614a
   - enabled: 1
-    path: Assets/Assets_Mops/Stockwerke/2. Stock/EscapeRoom.unity
+    path: Assets/Assets_Mops/Stockwerke/2. Stock/EscapeRoomSecondFloor.unity
     guid: 0ad2b10efd5084afe8e4e9e886956264
+  - enabled: 1
+    path: Assets/Assets_Mops/Stockwerke/2. Stock/FightRoomSecondFloor.unity
+    guid: 9eb51199799c569479a01063fc3bcdd5
+  - enabled: 1
+    path: Assets/Assets_Mops/Stockwerke/2. Stock/RessourcenRoomSecondFloor.unity
+    guid: fba0b10c6be643f4c8d24b65f3132987
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: c316465bbc005c14fa8dac270a9c61a4, type: 2}

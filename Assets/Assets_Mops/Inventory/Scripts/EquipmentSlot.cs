@@ -139,8 +139,23 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHand
     public void OnRightClick()
     {
         if (inventoryManager.chestOpen) return;
-
         if (quantity <= 0) return;
+
+        // Shift + Rechtsklick = Item fallen lassen (wie bisher der normale Rechtsklick)
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        {
+            DropItem();
+            return;
+        }
+
+        // Rechtsklick = Beschreibung anzeigen
+        if (ItemTooltip.Instance != null)
+            ItemTooltip.Instance.Show(itemName, itemDescription, Input.mousePosition);
+    }
+
+    private void DropItem()
+    {
+        if (ItemTooltip.Instance != null) ItemTooltip.Instance.Hide();
 
         GameObject itemToDrop = new GameObject(itemName);
         Item newItem = itemToDrop.AddComponent<Item>();
