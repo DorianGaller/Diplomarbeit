@@ -17,6 +17,9 @@ public class EnemyFollow : MonoBehaviour
     [Tooltip("Raster fuer die Wegsuche um Hindernisse (halbe Tilemap-Zelle)")]
     public Vector2 pathCellSize = new Vector2(0.75f, 0.75f);
     public float repathInterval = 0.4f;
+    [Header("Blickrichtung")]
+    [Tooltip("Steht der Gegner still (z.B. beim Schiessen), schaut er zum Spieler")]
+    public bool facePlayerWhenIdle = true;
 
     private List<Vector2> path = new List<Vector2>();
     private int pathIndex;
@@ -37,7 +40,12 @@ public class EnemyFollow : MonoBehaviour
 
         float distance = Vector2.Distance(transform.position, player.position);
         float stopDistance = shootRange - stopOffset;
-        if (distance <= stopDistance) return;
+        if (distance <= stopDistance)
+        {
+            if (facePlayerWhenIdle)
+                FaceDirection(player.position - transform.position);
+            return;
+        }
 
         Vector2 target = player.position;
 
@@ -67,6 +75,18 @@ public class EnemyFollow : MonoBehaviour
 
         Vector2 dir = (target - (Vector2)transform.position).normalized;
         Move(dir * speed * Time.deltaTime);
+        FaceDirection(dir);
+    }
+
+    // Wie bei EnemyPatrol/EnemyChase: nach rechts = positive Scale, nach links = negative
+    void FaceDirection(Vector2 dir)
+    {
+        if (Mathf.Abs(dir.x) > 0.05f)
+        {
+            Vector3 scale = transform.localScale;
+            scale.x = Mathf.Abs(scale.x) * (dir.x < 0 ? -1 : 1);
+            transform.localScale = scale;
+        }
     }
 
     bool HasLineOfSight()

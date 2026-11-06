@@ -12,9 +12,18 @@ public class DragDropManager : MonoBehaviour
 
     void Awake()
     {
+        // Beim Szenenwechsel entsteht kurz ein Player-Duplikat (DontDestroy loescht es gleich wieder).
+        // Das darf die echte Instanz nicht ueberschreiben, sonst zeigt Instance auf ein geloeschtes Objekt.
+        if (Instance != null && Instance != this) return;
+
         Instance = this;
         if (dragIcon != null)
             dragIcon.gameObject.SetActive(false);
+    }
+
+    void OnDestroy()
+    {
+        if (Instance == this) Instance = null;
     }
 
     public void BeginDrag(MonoBehaviour source, Sprite sprite)
