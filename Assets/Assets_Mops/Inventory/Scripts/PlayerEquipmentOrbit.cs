@@ -9,6 +9,7 @@ public class PlayerEquipmentOrbit : MonoBehaviour
 
     [Header("Orbit Settings")]
     public float orbitRadius = 1.5f;
+    public float minMuzzleRadius = 0.3f;
     public GameObject iconPrefab;
 
     [Header("Waffen-Icon")]
@@ -136,7 +137,7 @@ public class PlayerEquipmentOrbit : MonoBehaviour
         return count;
     }
 
-    void PositionWeaponIcon(Transform iconTransform, SpriteRenderer iconRenderer)
+        void PositionWeaponIcon(Transform iconTransform, SpriteRenderer iconRenderer)
     {
         if (cam == null) return;
 
@@ -145,8 +146,6 @@ public class PlayerEquipmentOrbit : MonoBehaviour
 
         Vector2 rawOffset = mouseWorldPos - transform.position;
 
-        // NEU: nur bei EXAKT Null (extrem seltener Randfall) die letzte Richtung nehmen,
-        // ansonsten IMMER live der Maus folgen — auch bei sehr kleinem Abstand
         Vector2 dir = rawOffset.sqrMagnitude > 0.0001f
             ? rawOffset.normalized
             : lastAimDir;
@@ -157,13 +156,15 @@ public class PlayerEquipmentOrbit : MonoBehaviour
         if (weaponHolder != null && weaponHolder.CurrentWeapon != null)
             muzzleOffset = weaponHolder.CurrentWeapon.muzzleOffset;
 
-        // Maus zwischen Muendung und Spieler -> Gun dreht sich zum Spieler
-        bool pointAtPlayer = rawOffset.magnitude < orbitRadius + muzzleOffset;
-        Vector2 facing = pointAtPlayer ? -dir : dir;
+        // Muendung sitzt auf der Maus, aber hoechstens dort, wo sie auf dem Orbit waere
+        float muzzleDistance = Mathf.Clamp(rawOffset.magnitude, minMuzzleRadius, orbitRadius + muzzleOffset);
 
-        float angle = Mathf.Atan2(facing.y, facing.x) * Mathf.Rad2Deg;
+        // Waffe haengt muzzleOffset hinter der Muendung (nie hinter den Spieler)
+        float weaponDistance = Mathf.Max(0f, muzzleDistance - muzzleOffset);
 
-        iconTransform.position = transform.position + (Vector3)(dir * orbitRadius);
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+        iconTransform.position = transform.position + (Vector3)(dir * weaponDistance);
 
         if (rotateWeaponIcon)
             iconTransform.rotation = Quaternion.Euler(0, 0, angle);
@@ -173,8 +174,7 @@ public class PlayerEquipmentOrbit : MonoBehaviour
 
         if (shootPoint != null)
         {
-            Vector3 muzzlePos = iconTransform.position + (Vector3)(facing * muzzleOffset);
-            shootPoint.position = muzzlePos;
+            shootPoint.position = transform.position + (Vector3)(dir * muzzleDistance);
             shootPoint.rotation = iconTransform.rotation;
         }
     }

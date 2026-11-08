@@ -33,6 +33,26 @@ public class PlayerLife : MonoBehaviour
 
     public float incomingDamageMultiplier = 1f;
 
+     [Header("Defense")]
+    [Tooltip("Bei so viel Defense wird der Schaden halbiert. Hoeher = Defense schwaecher, niedriger = staerker")]
+    public float defenseScaling = 33f;
+
+    private int defense;            // kommt von PlayerStats (Equipment)
+    private float damageRemainder;  // Kommarest, damit kleine Defense-Werte nicht weggerundet werden
+
+    /// <summary>Von PlayerStats: aktuelle Defense aus dem Equipment.</summary>
+    public void SetDefense(int value)
+    {
+        defense = Mathf.Max(0, value);
+    }
+
+    /// <summary>Anteil, um den der Schaden sinkt (0 bis unter 1). Wie Brotato: am Anfang viel, dann immer weniger pro Punkt.</summary>
+    public float DamageReduction(int defenseValue)
+    {
+        if (defenseValue <= 0) return 0f;
+        return defenseValue / (defenseValue + defenseScaling);
+    }
+
     void Start()
     {
         maxHP = baseMaxHP;
@@ -102,9 +122,16 @@ public class PlayerLife : MonoBehaviour
         UpdateHealthBar(true);
     }
 
-    public void TakeDamage(int damage)
+        public void TakeDamage(int damage)
     {
-        int finalDamage = Mathf.RoundToInt(damage * incomingDamageMultiplier);
+        // erst Modifier (z.B. Hard Hitting Enemies), dann Defense
+        float reduced = damage * incomingDamageMultiplier * (1f - DamageReduction(defense));
+
+        // Kommarest vom letzten Treffer dazu, ganze Punkte abziehen, Rest merken
+        reduced += damageRemainder;
+        int finalDamage = Mathf.FloorToInt(reduced);
+        damageRemainder = reduced - finalDamage;
+
         currentHP -= finalDamage;
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
 
@@ -115,6 +142,7 @@ public class PlayerLife : MonoBehaviour
 
         if (currentHP <= 0)
         {
+            damageRemainder = 0f;
             Die();
         }
     }

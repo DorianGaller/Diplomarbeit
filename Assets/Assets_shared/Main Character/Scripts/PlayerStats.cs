@@ -56,7 +56,16 @@ public class PlayerStats : MonoBehaviour
     public void UpdateEquipmentStats()
     {
         attackText.text = attack.ToString();
-        defenseText.text = defense.ToString();
+        if (playerLife != null)
+        {
+            playerLife.SetDefense(defense);
+            int percent = Mathf.RoundToInt(playerLife.DamageReduction(defense) * 100f);
+            defenseText.text = defense > 0 ? $"{defense} (-{percent}%)" : defense.ToString();
+        }
+        else
+        {
+            defenseText.text = defense.ToString();
+        }
         agilityText.text = agility.ToString();
 
         if (weightText != null)

@@ -3960,6 +3960,7 @@ GameObject:
   - component: {fileID: 4641014561794985219}
   - component: {fileID: 686484034938725106}
   - component: {fileID: 6587053573283332218}
+  - component: {fileID: 401492811874438411}
   m_Layer: 8
   m_Name: Main Character
   m_TagString: Player
@@ -4156,6 +4157,7 @@ MonoBehaviour:
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 0.15
   incomingDamageMultiplier: 1
+  defenseScaling: 33
 --- !u!114 &231275581467408925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4297,9 +4299,31 @@ MonoBehaviour:
   shootPoint: {fileID: 4242395614401709344}
   weaponHolder: {fileID: 7904715388076677859}
   orbitRadius: 2.1
+  minMuzzleRadius: 0.3
   iconPrefab: {fileID: 2366079715241341377, guid: e718bf1af69dfcf4dad8e7139e25f0e3, type: 3}
   rotateWeaponIcon: 1
   defaultMuzzleOffset: 0.3
+--- !u!114 &401492811874438411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043248121099713614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28ebb0fbab5828f47ba60a60abc97af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerControlHack
+  hackHud: {fileID: 0}
+  hackText: {fileID: 0}
+  verticalText: 'SYSTEM HACKED!
+
+    W / S swapped'
+  horizontalText: 'SYSTEM HACKED!
+
+    A / D swapped'
+  hackDurationMultiplier: 1
 --- !u!1 &2264981067851229319
 GameObject:
   m_ObjectHideFlags: 0
