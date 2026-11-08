@@ -5,6 +5,7 @@ using TMPro;
 /// <summary>
 /// Profil-Auswahl im Hauptmenue.
 /// Leerer Slot -> neues Spiel, belegter Slot -> Spielstand laden.
+/// Loeschen nur nach Bestaetigung.
 /// </summary>
 public class ProfileMenu : MonoBehaviour
 {
@@ -23,6 +24,14 @@ public class ProfileMenu : MonoBehaviour
     [SerializeField] private string newGameScene = "Escape Room";
     [SerializeField] private string newGameSpawnId = "";
 
+    [Header("Loeschen bestaetigen")]
+    [SerializeField] private GameObject confirmPanel;
+    [SerializeField] private TMP_Text confirmText;
+    [SerializeField] private Button confirmYesButton;
+    [SerializeField] private Button confirmNoButton;
+
+    private int pendingDeleteSlot = -1;
+
     private void Start()
     {
         for (int i = 0; i < slots.Length; i++)
@@ -33,9 +42,13 @@ public class ProfileMenu : MonoBehaviour
                 slots[i].playButton.onClick.AddListener(() => Play(index));
 
             if (slots[i].deleteButton != null)
-                slots[i].deleteButton.onClick.AddListener(() => Delete(index));
+                slots[i].deleteButton.onClick.AddListener(() => AskDelete(index));
         }
 
+        if (confirmYesButton != null) confirmYesButton.onClick.AddListener(ConfirmDelete);
+        if (confirmNoButton != null) confirmNoButton.onClick.AddListener(CloseConfirm);
+
+        CloseConfirm();
         Refresh();
     }
 
@@ -67,9 +80,38 @@ public class ProfileMenu : MonoBehaviour
         SaveSystem.StartNewGame(slot, newGameScene, newGameSpawnId);
     }
 
-    private void Delete(int slot)
+    private void AskDelete(int slot)
     {
-        SaveSystem.DeleteProfile(slot);
-        Refresh();
+        if (confirmPanel == null)
+        {
+            Debug.LogError("ProfileMenu: Kein Confirm Panel zugewiesen, Profil wird nicht geloescht.");
+            return;
+        }
+
+        pendingDeleteSlot = slot;
+
+        if (confirmText != null)
+            confirmText.text = $"Are you sure you want to delete Profile {slot + 1}?\nThis cannot be undone.";
+
+        confirmPanel.SetActive(true);
+    }
+
+    private void ConfirmDelete()
+    {
+        if (pendingDeleteSlot >= 0)
+        {
+            SaveSystem.DeleteProfile(pendingDeleteSlot);
+            Refresh();
+        }
+
+        CloseConfirm();
+    }
+
+    private void CloseConfirm()
+    {
+        pendingDeleteSlot = -1;
+
+        if (confirmPanel != null)
+            confirmPanel.SetActive(false);
     }
 }
