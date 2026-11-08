@@ -21,9 +21,13 @@ public class ItemTooltip : MonoBehaviour
 
     private Canvas canvas;
 
-    void Awake()
+     void Awake()
     {
+        // Player-Duplikat beim Szenenwechsel ignorieren (siehe DragDropManager)
+        if (Instance != null && Instance != this) return;
+
         Instance = this;
+
         canvas = GetComponentInParent<Canvas>();
         if (panel != null) panel.gameObject.SetActive(false);
     }

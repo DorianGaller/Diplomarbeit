@@ -52,18 +52,24 @@ public class GunshotEffect : MonoBehaviour
     {
         if (hasHit) return;
 
+            
         EnemyLife enemy = collision.GetComponent<EnemyLife>();
         if (enemy != null)
         {
+            // Kein Friendly Fire: Gegner-/Boss-Kugeln fliegen durch Gegner durch
+            if (!fromPlayer) return;
+
             enemy.TakeDamage(damage);
             hasHit = true;
             Destroy(gameObject);
             return;
         }
 
-        BossLife boss = collision.GetComponent<BossLife>();   // NEU
+        BossLife boss = collision.GetComponent<BossLife>();
         if (boss != null)
         {
+            if (!fromPlayer) return;
+
             boss.TakeDamage(damage);
             hasHit = true;
             Destroy(gameObject);
