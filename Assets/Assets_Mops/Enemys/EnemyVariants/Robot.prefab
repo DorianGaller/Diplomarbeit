@@ -122,6 +122,7 @@ MonoBehaviour:
   bodyRadius: 0.89
   pathCellSize: {x: 0.75, y: 0.75}
   repathInterval: 0.4
+  facePlayerWhenIdle: 1
 --- !u!114 &7691642563939369976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,7 +142,7 @@ MonoBehaviour:
   shootInterval: 2
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
 --- !u!114 &5359680669108917281
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -29,6 +29,11 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private TMP_Text incomingText;
     [SerializeField] private KeyCode answerKey = KeyCode.Space;
 
+
+    [Header("Ablauf")]
+    [Tooltip("Aus = startet nicht von selbst (z.B. im Fight Room, dort steuern die EnemyIntroRoom-Trigger den Call)")]
+    [SerializeField] private bool playOnStart = true;
+
     [Header("Nachrichten")]
     [Tooltip("Bereich fuer die Nachrichten, Pivot oben")]
     [SerializeField] private RectTransform messageArea;
@@ -104,7 +109,9 @@ public class TutorialManager : MonoBehaviour
     private void Start()
     {
         if (incomingPanel != null) incomingPanel.SetActive(false);
-        if (messageTemplate != null) messageTemplate.gameObject.SetActive(false);
+                if (messageTemplate != null) messageTemplate.gameObject.SetActive(false);
+
+        if (!playOnStart) return;
 
         // Nur bis das Level einmal geschafft ist (Boss besiegt)
         if (hasShown || SaveSystem.IsLevelCompleted(SaveSystem.GetLevelId(gameObject.scene.path))) return;
@@ -117,58 +124,71 @@ public class TutorialManager : MonoBehaviour
         // Wartet einen Frame, damit DontDestroy-Duplikate bereinigt sind
         yield return null;
 
-        if (lines == null || lines.Length == 0 || incomingPanel == null || messageArea == null
-            || messageTemplate == null || messageTemplate.bodyText == null)
+        if (lines == null || lines.Length == 0)
         {
-            Debug.LogWarning("TutorialManager: Incoming Panel, Message Area, Vorlage (mit Body Text) oder Dialog fehlen!");
+            Debug.LogWarning("TutorialManager: Kein Dialog eingetragen!");
             yield break;
         }
 
-        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-        if (playerObj != null)
-        {
-            playerMovement = playerObj.GetComponent<PlayerMovement>();
-            interactKeys = playerObj.GetComponent<InteractKeys>();
+        hasShown = true;
+        yield return PlayPart(lines, true, true, false);
+    }
 
-            Rigidbody2D rb = playerObj.GetComponent<Rigidbody2D>();
-            if (rb != null)
-                rb.linearVelocity = Vector2.zero;
+    /// <summary>
+    /// Spielt einen Teil eines Gespraechs ab (wird auch von EnemyIntroRoom benutzt).
+    /// ring: erst "Incoming Call" + Annehmen. hangUp: am Ende Auflege-Sound.
+    /// lockWholeTime: Spieler bleibt gesperrt bis der Teil fertig ist (sonst nur bis zum Annehmen).
+    /// </summary>
+    public IEnumerator PlayPart(CallLine[] partLines, bool ring, bool hangUp, bool lockWholeTime)
+    {
+        if (partLines == null || partLines.Length == 0) yield break;
+
+        if (messageArea == null || messageTemplate == null || messageTemplate.bodyText == null
+            || (ring && incomingPanel == null))
+        {
+            Debug.LogWarning("TutorialManager: Incoming Panel, Message Area oder Vorlage (mit Body Text) fehlen!");
+            yield break;
         }
 
-        hasShown = true;
-        IsRunning = true;
+        ResolvePlayer();
         callActive = true;
+        IsRunning = true;
         SetPlayerLocked(true);
 
         // Falls das Canvas im Editor ausgeschaltet wurde, mit einschalten
-        Canvas canvas = incomingPanel.GetComponentInParent<Canvas>(true);
+        Canvas canvas = messageArea.GetComponentInParent<Canvas>(true);
         if (canvas != null)
             canvas.gameObject.SetActive(true);
-        CenterRing(incomingRing, incomingBadge);
-
-
 
         // ── 1. Anruf kommt rein ──
-        if (incomingText != null)
-            incomingText.text = "INCOMING CALL\n<b>" + callerName + "</b>\n<size=60%>[" + KeyName(answerKey) + "] answer</size>";
-
-        incomingPanel.SetActive(true);
-        PlayLoop(ringClip);
-
-        while (!Input.GetKeyDown(answerKey))
+        if (ring)
         {
-            AnimateIncoming();
-            yield return null;
+            CenterRing(incomingRing, incomingBadge);
+
+            if (incomingText != null)
+                incomingText.text = "INCOMING CALL\n<b>" + callerName + "</b>\n<size=60%>[" + KeyName(answerKey) + "] answer</size>";
+
+            incomingPanel.SetActive(true);
+            PlayLoop(ringClip);
+
+            while (!Input.GetKeyDown(answerKey))
+            {
+                AnimateIncoming();
+                yield return null;
+            }
+
+            StopLoop();
+            incomingPanel.SetActive(false);
         }
 
-        StopLoop();
-        incomingPanel.SetActive(false);
-
-        IsRunning = false;
-        SetPlayerLocked(false);
+        if (!lockWholeTime)
+        {
+            IsRunning = false;
+            SetPlayerLocked(false);
+        }
 
         // ── 2. Gespraech ──
-        foreach (CallLine line in lines)
+        foreach (CallLine line in partLines)
         {
             if (line == null || string.IsNullOrEmpty(line.text)) continue;
 
@@ -177,13 +197,26 @@ public class TutorialManager : MonoBehaviour
             yield return new WaitForSeconds(pauseBase + pausePerChar * line.text.Length);
         }
 
-        // ── 3. Auflegen ──
+        // ── 3. Teil zu Ende, Nachrichten verschwinden (bei hangUp: auflegen) ──
         yield return new WaitForSeconds(endDelay);
 
-        if (audioSource != null && hangUpClip != null)
+        if (hangUp && audioSource != null && hangUpClip != null)
             audioSource.PlayOneShot(hangUpClip);
 
         EndTutorial();
+    }
+
+    private void ResolvePlayer()
+    {
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj == null) return;
+
+        playerMovement = playerObj.GetComponent<PlayerMovement>();
+        interactKeys = playerObj.GetComponent<InteractKeys>();
+
+        Rigidbody2D rb = playerObj.GetComponent<Rigidbody2D>();
+        if (rb != null)
+            rb.linearVelocity = Vector2.zero;
     }
 
     private void Update()

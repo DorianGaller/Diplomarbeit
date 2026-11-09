@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21c716abea2032541a8bd9e1bcd6e520, type: 3}
+  m_Name: S-N1-P3R
+  m_EditorClassIdentifier: Assembly-CSharp::ItemSO
+  itemName: S-N1-P3R
+  itemSprite: {fileID: 2057480523805394857, guid: d1eebf9afdb894a0fbdf147769a6269d, type: 3}
+  itemDescription: A long-range rail rifle that punches clean through armor, chrome
+    and whoever stands behind it. Line them up and let one shot do the work.
+  statToChange: 0
+  amountToChangeStat: 0
+  attributeToChange: 0
+  amountToChangeAttribute: 0
+  itemType: 6

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GunshotEffect : MonoBehaviour
 {
@@ -8,6 +9,13 @@ public class GunshotEffect : MonoBehaviour
 
     [Header("Damage")]
     public int damage = 25;
+
+
+    [Header("Piercing")]
+    [Tooltip("Wie viele Gegner diese Kugel treffen kann (1 = normal, 2 = geht durch den ersten Gegner durch)")]
+    [Min(1)] public int maxTargets = 1;
+
+    private readonly HashSet<GameObject> hitTargets = new HashSet<GameObject>();
 
     [HideInInspector]
     public bool fromPlayer = false;
@@ -53,15 +61,13 @@ public class GunshotEffect : MonoBehaviour
         if (hasHit) return;
 
             
-        EnemyLife enemy = collision.GetComponent<EnemyLife>();
+                EnemyLife enemy = collision.GetComponent<EnemyLife>();
         if (enemy != null)
         {
             // Kein Friendly Fire: Gegner-/Boss-Kugeln fliegen durch Gegner durch
             if (!fromPlayer) return;
 
-            enemy.TakeDamage(damage);
-            hasHit = true;
-            Destroy(gameObject);
+            HitTarget(enemy.gameObject, () => enemy.TakeDamage(damage));
             return;
         }
 
@@ -70,9 +76,7 @@ public class GunshotEffect : MonoBehaviour
         {
             if (!fromPlayer) return;
 
-            boss.TakeDamage(damage);
-            hasHit = true;
-            Destroy(gameObject);
+            HitTarget(boss.gameObject, () => boss.TakeDamage(damage));
             return;
         }
 
@@ -91,6 +95,21 @@ public class GunshotEffect : MonoBehaviour
         // Feste Collider (Wände, Tische, Kisten, Deko ...) stoppen jede Kugel.
         // Trigger-Zonen (FightRoomTrigger, Interaktions-Bereiche ...) lassen sie durch.
         if (!collision.isTrigger)
+        {
+            hasHit = true;
+            Destroy(gameObject);
+        }
+    }
+
+
+    // Schaden einmal pro Ziel. Kugel verschwindet erst, wenn maxTargets erreicht sind.
+    private void HitTarget(GameObject target, System.Action applyDamage)
+    {
+        if (!hitTargets.Add(target)) return;   // diesen Gegner hat die Kugel schon getroffen
+
+        applyDamage();
+
+        if (hitTargets.Count >= maxTargets)
         {
             hasHit = true;
             Destroy(gameObject);

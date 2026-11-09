@@ -77,3 +77,11 @@ MonoBehaviour:
     maxStackSize: 99
     weaponExpValue: 0
     weaponSO: {fileID: 0}
+  - itemName: S-N1-P3R
+    itemSprite: {fileID: 2057480523805394857, guid: d1eebf9afdb894a0fbdf147769a6269d, type: 3}
+    itemDescription: A long-range rail rifle that punches clean through armor, chrome
+      and whoever stands behind it. Line them up and let one shot do the work.
+    itemType: 6
+    maxStackSize: 1
+    weaponExpValue: 0
+    weaponSO: {fileID: 11400000, guid: fcc76495bedab4da8b5ac05f1972d39d, type: 2}
