@@ -81,7 +81,7 @@ public class TutorialManager : MonoBehaviour
     private CallLine[] lines =
     {
         new CallLine { fromPlayer = false, text = "Choom, you awake? Good. Listen up, this lab is locked down tight." },
-        new CallLine { fromPlayer = true,  text = "Rayn? Where the hell am I?" },
+        new CallLine { fromPlayer = true,  text = "Ryan? Where the hell am I?" },
         new CallLine { fromPlayer = false, text = "Corpo lab. No time for a tour. See those tables? Press G to grab one, G again to drop it." },
         new CallLine { fromPlayer = true,  text = "Moving furniture. Real glamorous." },
         new CallLine { fromPlayer = false, text = "Climb a table to reach the vents. T to get up, T again to get down." },

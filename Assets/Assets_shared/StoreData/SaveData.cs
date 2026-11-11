@@ -31,6 +31,7 @@ public class SaveData
     // Story
     public List<string> completedLevels = new List<string>();
     public bool storyCompleted;
+    public List<string> unlockedFloors = new List<string>();   // per Boss-Exit freigeschaltete Stockwerke
 }
 
 [System.Serializable]

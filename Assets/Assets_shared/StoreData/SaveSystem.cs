@@ -376,6 +376,16 @@ public class SaveSystem : MonoBehaviour
     public static bool IsLevelCompleted(string levelId) =>
         !string.IsNullOrEmpty(levelId) && data.completedLevels.Contains(levelId);
 
+        public static bool IsFloorUnlocked(string floorId) =>
+        !string.IsNullOrEmpty(floorId) && data.unlockedFloors.Contains(floorId);
+
+    /// <summary>Wird beim Betreten eines Boss-Exits aufgerufen (TouchSceneTransition).</summary>
+    public static void UnlockFloor(string floorId)
+    {
+        if (string.IsNullOrEmpty(floorId) || data.unlockedFloors.Contains(floorId)) return;
+        data.unlockedFloors.Add(floorId);
+    }
+
     /// <summary>Wird vom Boss beim Tod aufgerufen.</summary>
     public static void MarkBossDefeated(GameObject boss, bool isFinalBoss)
     {

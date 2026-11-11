@@ -143,6 +143,7 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 2048
+  stopWhileShooting: 0
 --- !u!114 &5359680669108917281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +277,7 @@ MonoBehaviour:
   movementThreshold: 0.05
   stateChangeDelay: 0.1
   shootClipName: Robot_Shooting
+  shootAnimationSpeed: 2
 --- !u!1 &7690289282217472659
 GameObject:
   m_ObjectHideFlags: 0

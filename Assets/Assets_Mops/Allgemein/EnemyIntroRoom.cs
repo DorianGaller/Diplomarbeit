@@ -3,19 +3,19 @@ using System.Collections;
 
 /// <summary>
 /// Gegner-Tutorial im Fight Room. Haengt am SpawnPoint eines EnemyIntroduction-Raums (statt FightRoomTrigger).
-/// Ablauf: Spieler kommt an -> Rayn erklaert den Gegner (Spieler gesperrt, Vorfuehr-Gegner unverwundbar)
+/// Ablauf: Spieler kommt an -> Ryan erklaert den Gegner (Spieler gesperrt, Vorfuehr-Gegner unverwundbar)
 /// -> Vorfuehr-Gegner steht als Zielscheibe da -> abgeschossen -> Tutorial-Welle startet.
 /// Alle drei Raeume sind EIN Gespraech: Melee klingelt, Dash geht weiter, nach Robot wird aufgelegt.
 /// </summary>
 [RequireComponent(typeof(Collider2D))]
 public class EnemyIntroRoom : MonoBehaviour
 {
-    public enum IntroKind { Melee, Dash, Robot }
+    public enum IntroKind { Melee, Dash, Robot, Hacker }
 
     [Header("Raum")]
     [SerializeField] private IntroKind kind = IntroKind.Melee;
     [SerializeField] private EnemySpawn enemySpawn;
-    [Tooltip("Gegner im Raum, den Rayn vorstellt (Prefab-Instanz reinziehen). Steht still, bis man ihn abschiesst.")]
+    [Tooltip("Gegner im Raum, den Ryan vorstellt (Prefab-Instanz reinziehen). Steht still, bis man ihn abschiesst.")]
     [SerializeField] private GameObject showcaseEnemy;
 
     [Header("Gespraech")]
@@ -51,13 +51,16 @@ public class EnemyIntroRoom : MonoBehaviour
 
     private IEnumerator Run()
     {
-        // 1. Rayn erklaert (Spieler bleibt die ganze Zeit gesperrt)
+        // 1. Ryan erklaert (Spieler bleibt die ganze Zeit gesperrt)
         TutorialManager.CallLine[] part = GetLines();
         if (phoneCall != null && part.Length > 0)
         {
-            bool ring = kind == IntroKind.Melee || !callStarted;
-            bool hangUp = kind == IntroKind.Robot;
-            callStarted = !hangUp;
+                        // Hacker = eigener Anruf (klingelt + legt auf), unabhaengig vom Gespraech im 1. Stock
+            bool standalone = kind == IntroKind.Hacker;
+            bool ring = standalone || kind == IntroKind.Melee || !callStarted;
+            bool hangUp = standalone || kind == IntroKind.Robot;
+            if (!standalone)
+                callStarted = !hangUp;
 
             yield return phoneCall.PlayPart(part, ring, hangUp, true);
         }
@@ -109,41 +112,57 @@ public class EnemyIntroRoom : MonoBehaviour
             case IntroKind.Melee:
                 return new[]
                 {
-                    Rayn("Choom, you're on the testing floor. Corpo security trains here."),
+                    Ryan("Choom, you're on the testing floor. Corpo security trains here."),
                     You("Trains? Trains with what?"),
-                    Rayn("See that tin can? Melee Robot. Dumb, but it hits like a truck."),
-                    Rayn("It walks right at you and swings once it's close."),
+                    Ryan("See that tin can? Melee Robot. Dumb, but it hits like a truck."),
+                    Ryan("It walks right at you and swings once it's close."),
                     You("So I don't let it get close."),
-                    Rayn("Preem. It's slower than you. Back off and keep shooting."),
-                    Rayn("Go on, scrap it. Then the real drill starts.")
+                    Ryan("Preem. It's slower than you. Back off and keep shooting."),
+                    Ryan("Go on, scrap it. Then the real drill starts.")
                 };
 
             case IntroKind.Dash:
                 return new[]
                 {
-                    Rayn("Nice work. Next one's nastier. Dash Robot."),
+                    Ryan("Nice work. Next one's nastier. Dash Robot."),
                     You("Let me guess. It dashes."),
-                    Rayn("Straight at you, faster than you can blink. Then it waits a bit."),
-                    Rayn("Don't stand still. Move and hit SPACE to dash out of the way."),
+                    Ryan("Straight at you, faster than you can blink. Then it waits a bit."),
+                    Ryan("Don't stand still. Move and hit SPACE to dash out of the way."),
                     You("Dodge first, shoot after. Got it."),
-                    Rayn("Hit it while it's recharging. Show it who's boss.")
+                    Ryan("Hit it while it's recharging. Show it who's boss.")
                 };
+
+                 case IntroKind.Hacker:
+                return new[]
+                {
+                    Ryan("Choom, new floor, new problem. See the one hunched over that deck?"),
+                    You("Another robot?"),
+                    Ryan("Hacker unit. It doesn't fight you. It fights your controls."),
+                    Ryan("When it sits down and starts typing, you've got two seconds."),
+                    Ryan("Hit it while it types and the hack fails."),
+                    Ryan("Too slow and W/S or A/D get swapped for a few seconds."),
+                    You("So my own legs stop listening to me."),
+                    Ryan("Just for a bit. It also runs when you get close. Corner it."),
+                    Ryan("Scrap this one, then deal with the rest. Ryan out.")
+                };
+
+
 
             default:
                 return new[]
                 {
-                    Rayn("Last one. Standard security bot. This one shoots back."),
+                    Ryan("Last one. Standard security bot. This one shoots back."),
                     You("Of course it does."),
-                    Rayn("It fires every couple seconds, but its shots stop at walls."),
-                    Rayn("Use cover, peek out, return fire. Never stand in the open."),
+                    Ryan("It fires every couple seconds, but its shots stop at walls."),
+                    Ryan("Use cover, peek out, return fire. Never stand in the open."),
                     You("And after that?"),
-                    Rayn("After that you're ready for the real fight. Don't flatline, rookie."),
-                    Rayn("Rayn out.")
+                    Ryan("After that you're ready for the real fight. Don't flatline, rookie."),
+                    Ryan("Ryan out.")
                 };
         }
     }
 
-    private static TutorialManager.CallLine Rayn(string text) =>
+    private static TutorialManager.CallLine Ryan(string text) =>
         new TutorialManager.CallLine { fromPlayer = false, text = text };
 
     private static TutorialManager.CallLine You(string text) =>

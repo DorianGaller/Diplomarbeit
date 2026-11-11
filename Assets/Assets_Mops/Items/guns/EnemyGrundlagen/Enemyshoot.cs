@@ -15,6 +15,11 @@ public class EnemyShoot : MonoBehaviour
     [Tooltip("Layer für Wände/Server-Racks, die den Schuss blockieren")]
     public LayerMask obstacleLayer;
 
+
+    [Header("Bewegung")]
+    [Tooltip("Aus = Gegner laeuft beim Schiessen weiter")]
+    public bool stopWhileShooting = false;
+
     private EnemyAnimator enemyAnimator;
     private EnemyFollow enemyFollow;
     private EnemyPatrol enemyPatrol;   // NEU, optional
@@ -75,16 +80,17 @@ public class EnemyShoot : MonoBehaviour
         }
     }
 
-    IEnumerator ShootSequence(float delay)
+        IEnumerator ShootSequence(float delay)
     {
-        if (enemyFollow != null)
+        bool stopped = stopWhileShooting && enemyFollow != null && enemyFollow.enabled;
+        if (stopped)
             enemyFollow.enabled = false;
 
         yield return new WaitForSeconds(delay);
 
         FireBullet();
 
-        if (enemyFollow != null)
+        if (stopped)
             enemyFollow.enabled = true;
     }
 

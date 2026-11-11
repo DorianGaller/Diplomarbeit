@@ -32946,7 +32946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TouchSceneTransition
   targetSceneName: RessourcenRoomSecondFloor
-  targetSpawnID: 
+  targetSpawnID: 1
   requiredItemName: 
   mainHandSlot: {fileID: 0}
   isFloorEntrance: 0
