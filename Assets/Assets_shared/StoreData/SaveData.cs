@@ -32,6 +32,8 @@ public class SaveData
     public List<string> completedLevels = new List<string>();
     public bool storyCompleted;
     public List<string> unlockedFloors = new List<string>();   // per Boss-Exit freigeschaltete Stockwerke
+
+        public List<string> collectedLogs = new List<string>();     // aufgesammelte USB-Chips / Audio-Logs
 }
 
 [System.Serializable]

@@ -386,6 +386,16 @@ public class SaveSystem : MonoBehaviour
         data.unlockedFloors.Add(floorId);
     }
 
+        public static bool HasLog(string logId) =>
+        !string.IsNullOrEmpty(logId) && data.collectedLogs.Contains(logId);
+
+    /// <summary>Wird vom USB-Chip beim Aufsammeln aufgerufen.</summary>
+    public static void CollectLog(string logId)
+    {
+        if (string.IsNullOrEmpty(logId) || data.collectedLogs.Contains(logId)) return;
+        data.collectedLogs.Add(logId);
+    }
+
     /// <summary>Wird vom Boss beim Tod aufgerufen.</summary>
     public static void MarkBossDefeated(GameObject boss, bool isFinalBoss)
     {
