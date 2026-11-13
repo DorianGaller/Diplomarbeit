@@ -24807,22 +24807,22 @@ MonoBehaviour:
   - sceneButton: {fileID: 1108106185}
     sceneName: 
   - sceneButton: {fileID: 313621213}
-    sceneName: 
+    sceneName: FightRoomSecondFloor
   - sceneButton: {fileID: 1122123297}
-    sceneName: 
+    sceneName: Escape Room
   - sceneButton: {fileID: 1332032533}
     sceneName: 
   informationEntries:
   - informationButton: {fileID: 969189960}
-    informationText: 
+    informationText: Endless Fight Room
   - informationButton: {fileID: 1285364128}
-    informationText: 
+    informationText: Finale Escape
   - informationButton: {fileID: 1136091253}
     informationText: 
   - informationButton: {fileID: 1941382102}
-    informationText: 'Floor 2 asdojobhasdobasu bgiasugb uasdgb '
+    informationText: Crawl throu a vent get your first Gun...
   - informationButton: {fileID: 1061706024}
-    informationText: 
+    informationText: Prolog
 --- !u!1 &1997109844
 GameObject:
   m_ObjectHideFlags: 0
