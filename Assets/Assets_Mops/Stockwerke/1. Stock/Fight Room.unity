@@ -115048,6 +115048,10 @@ MonoBehaviour:
   showcaseEnemy: {fileID: 1298592934}
   phoneCall: {fileID: 1947426254}
   customLines: []
+  ryanVoice:
+  - {fileID: 8300000, guid: 440bf6c8bbe1f6c49abb9e40f624d7b3, type: 3}
+  - {fileID: 8300000, guid: 2fab884d5ea97044ba46dfecdbe74b50, type: 3}
+  - {fileID: 8300000, guid: 1171c2116718bce4c80e4fd3356751c0, type: 3}
 --- !u!1 &889303026
 GameObject:
   m_ObjectHideFlags: 0
@@ -115481,6 +115485,12 @@ MonoBehaviour:
   showcaseEnemy: {fileID: 1751092515}
   phoneCall: {fileID: 1947426254}
   customLines: []
+  ryanVoice:
+  - {fileID: 8300000, guid: efe733ef80e97ce4cbe82002a9283a8d, type: 3}
+  - {fileID: 8300000, guid: d81bfc66cc13cd74c82b36f78b07ee3b, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 5fb797199e03d8246950e7ff6510698e, type: 3}
+  - {fileID: 8300000, guid: d97ba19c892d9d641a53076684bcf1e8, type: 3}
 --- !u!1 &1057173210
 GameObject:
   m_ObjectHideFlags: 0
@@ -118884,6 +118894,9 @@ MonoBehaviour:
   ringClip: {fileID: 0}
   typeClip: {fileID: 0}
   hangUpClip: {fileID: 0}
+  voiceSource: {fileID: 0}
+  voiceVolume: 1
+  voiceGap: 0.4
   lines: []
 --- !u!4 &1947426255
 Transform:
@@ -119001,6 +119014,11 @@ MonoBehaviour:
   showcaseEnemy: {fileID: 2016374964}
   phoneCall: {fileID: 1947426254}
   customLines: []
+  ryanVoice:
+  - {fileID: 8300000, guid: 9e19d283eb4acc34ea60c502237bc648, type: 3}
+  - {fileID: 8300000, guid: 83550f088427cc245ba9632ed13dbf08, type: 3}
+  - {fileID: 8300000, guid: 937ee2b5ed4086443918f1d198cd45be, type: 3}
+  - {fileID: 8300000, guid: 29ff0806c7d487246aff57dc90af7766, type: 3}
 --- !u!1 &1999724636
 GameObject:
   m_ObjectHideFlags: 0

@@ -18753,29 +18753,42 @@ MonoBehaviour:
   ringClip: {fileID: 0}
   typeClip: {fileID: 0}
   hangUpClip: {fileID: 0}
+  voiceSource: {fileID: 0}
+  voiceVolume: 1
+  voiceGap: 0.4
   lines:
   - fromPlayer: 0
     text: Choom, you awake? Good. Listen up, this lab is locked down tight.
+    voice: {fileID: 8300000, guid: 15bcd85a51bedda42ac5618a2f678b4f, type: 3}
   - fromPlayer: 1
     text: Rayn? Where the hell am I?
+    voice: {fileID: 0}
   - fromPlayer: 0
     text: Corpo lab. No time for a tour. See those tables? Press G to grab one, G
       again to drop it.
+    voice: {fileID: 8300000, guid: 158c8437f953ea04abc1975dd9775d55, type: 3}
   - fromPlayer: 1
     text: Moving furniture. Real glamorous.
+    voice: {fileID: 0}
   - fromPlayer: 0
     text: Climb a table to reach the vents. T to get up, T again to get down.
+    voice: {fileID: 8300000, guid: d18d55af709b9974e9fde78fccf616bf, type: 3}
   - fromPlayer: 0
     text: Up there, hit F to pop the vent open. F again and you're crawling.
+    voice: {fileID: 8300000, guid: 89627bb2f7d66a04a98ac8487b4e1438, type: 3}
   - fromPlayer: 1
     text: And the locked door?
+    voice: {fileID: 0}
   - fromPlayer: 0
     text: Keycard lock. Find the card, hold it in your main hand and click the door.
       Then F to walk through.
+    voice: {fileID: 8300000, guid: 3ab6b73d97af8e34498feac82c82e00c, type: 3}
   - fromPlayer: 1
     text: Got it.
+    voice: {fileID: 0}
   - fromPlayer: 0
     text: Don't flatline on me, rookie. Bad for business.
+    voice: {fileID: 0}
 --- !u!4 &616691835
 Transform:
   m_ObjectHideFlags: 0

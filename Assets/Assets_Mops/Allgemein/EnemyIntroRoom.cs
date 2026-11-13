@@ -23,6 +23,9 @@ public class EnemyIntroRoom : MonoBehaviour
     [Tooltip("Leer lassen = Standard-Dialog fuer diesen Gegner")]
     [SerializeField] private TutorialManager.CallLine[] customLines;
 
+    [Tooltip("Ryans Aufnahmen in der Reihenfolge SEINER Zeilen (Spieler-Zeilen ueberspringen). Leeres Feld = diese Zeile ohne Ton")]
+    [SerializeField] private AudioClip[] ryanVoice;
+
     // Gespraech laeuft schon (ueberlebt das Neuladen der Szene zwischen den Raeumen)
     private static bool callStarted;
 
@@ -53,9 +56,10 @@ public class EnemyIntroRoom : MonoBehaviour
     {
         // 1. Ryan erklaert (Spieler bleibt die ganze Zeit gesperrt)
         TutorialManager.CallLine[] part = GetLines();
+        AttachVoices(part);
         if (phoneCall != null && part.Length > 0)
         {
-                        // Hacker = eigener Anruf (klingelt + legt auf), unabhaengig vom Gespraech im 1. Stock
+            // Hacker = eigener Anruf (klingelt + legt auf), unabhaengig vom Gespraech im 1. Stock
             bool standalone = kind == IntroKind.Hacker;
             bool ring = standalone || kind == IntroKind.Melee || !callStarted;
             bool hangUp = standalone || kind == IntroKind.Robot;
@@ -107,7 +111,7 @@ public class EnemyIntroRoom : MonoBehaviour
         if (customLines != null && customLines.Length > 0)
             return customLines;
 
-                switch (kind)
+        switch (kind)
         {
             case IntroKind.Melee:
                 return new[]
@@ -132,7 +136,7 @@ public class EnemyIntroRoom : MonoBehaviour
                     Ryan("Hit it while it's recharging. Show it who's boss.")
                 };
 
-                 case IntroKind.Hacker:
+            case IntroKind.Hacker:
                 return new[]
                 {
                     Ryan("Choom, new floor, new problem. See the one hunched over that deck?"),
@@ -159,6 +163,23 @@ public class EnemyIntroRoom : MonoBehaviour
                     Ryan("After that you're ready for the real fight. Don't flatline, rookie."),
                     Ryan("Ryan out.")
                 };
+        }
+    }
+
+        // Haengt die Aufnahmen der Reihe nach an Ryans Zeilen
+    private void AttachVoices(TutorialManager.CallLine[] part)
+    {
+        if (ryanVoice == null || ryanVoice.Length == 0) return;
+
+        int v = 0;
+        foreach (TutorialManager.CallLine line in part)
+        {
+            if (line == null || line.fromPlayer) continue;
+            if (v >= ryanVoice.Length) break;
+
+            if (line.voice == null)
+                line.voice = ryanVoice[v];
+            v++;
         }
     }
 
