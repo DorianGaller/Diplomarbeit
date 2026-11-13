@@ -20,6 +20,8 @@ public class TutorialManager : MonoBehaviour
         [Tooltip("Haken = Spieler (gruen, rechts). Ohne Haken = Anrufer (rot, links)")]
         public bool fromPlayer;
         [TextArea(2, 4)] public string text;
+        [Tooltip("Sprachaufnahme fuer diese Zeile (optional). Leer = nur Text mit Tipp-Geraeusch")]
+        public AudioClip voice;
     }
 
     [Header("Incoming Call")]
@@ -76,6 +78,13 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private AudioClip typeClip;
     [SerializeField] private AudioClip hangUpClip;
 
+    [Header("Sprachaufnahmen")]
+    [Tooltip("Eigene AudioSource fuer die Stimme. Leer = wird automatisch angelegt")]
+    [SerializeField] private AudioSource voiceSource;
+    [Range(0f, 1f)][SerializeField] private float voiceVolume = 1f;
+    [Tooltip("Pause, nachdem die Aufnahme zu Ende ist")]
+    [SerializeField] private float voiceGap = 0.4f;
+
     [Header("Dialog")]
     [SerializeField]
     private CallLine[] lines =
@@ -109,7 +118,7 @@ public class TutorialManager : MonoBehaviour
     private void Start()
     {
         if (incomingPanel != null) incomingPanel.SetActive(false);
-                if (messageTemplate != null) messageTemplate.gameObject.SetActive(false);
+        if (messageTemplate != null) messageTemplate.gameObject.SetActive(false);
 
         if (!playOnStart) return;
 
@@ -193,17 +202,21 @@ public class TutorialManager : MonoBehaviour
             if (line == null || string.IsNullOrEmpty(line.text)) continue;
 
             CallMessageView view = SpawnRow(line);
-            yield return TypeText(view.bodyText);
-            yield return new WaitForSeconds(pauseBase + pausePerChar * line.text.Length);
+            PlayVoice(line.voice);
+            yield return TypeText(view.bodyText, line.voice);
+
+            if (line.voice != null)
+            {
+                // warten, bis Ryan ausgeredet hat, dann kurze Pause
+                while (voiceSource != null && voiceSource.isPlaying)
+                    yield return null;
+                yield return new WaitForSeconds(voiceGap);
+            }
+            else
+            {
+                yield return new WaitForSeconds(pauseBase + pausePerChar * line.text.Length);
+            }
         }
-
-        // ── 3. Teil zu Ende, Nachrichten verschwinden (bei hangUp: auflegen) ──
-        yield return new WaitForSeconds(endDelay);
-
-        if (hangUp && audioSource != null && hangUpClip != null)
-            audioSource.PlayOneShot(hangUpClip);
-
-        EndTutorial();
     }
 
     private void ResolvePlayer()
@@ -402,19 +415,26 @@ public class TutorialManager : MonoBehaviour
     }
 
     // Schreibmaschinen-Effekt
-    private IEnumerator TypeText(TMP_Text text)
+    // Schreibmaschinen-Effekt
+    private IEnumerator TypeText(TMP_Text text, AudioClip voice = null)
     {
         text.ForceMeshUpdate();
         int total = text.textInfo.characterCount;
         float shown = 0f;
         int lastSound = 0;
 
+        // Mit Aufnahme: Text ist fertig, wenn ~85 % der Aufnahme gelaufen sind
+        float speed = charsPerSecond;
+        if (voice != null && voice.length > 0.1f)
+            speed = Mathf.Max(8f, total / (voice.length * 0.85f));
+
         while (text.maxVisibleCharacters < total)
         {
-            shown += charsPerSecond * Time.deltaTime;
+            shown += speed * Time.deltaTime;
             text.maxVisibleCharacters = Mathf.Min(total, Mathf.FloorToInt(shown));
 
-            if (audioSource != null && typeClip != null && text.maxVisibleCharacters - lastSound >= 2)
+            // Tipp-Geraeusch nur, wenn niemand spricht
+            if (voice == null && audioSource != null && typeClip != null && text.maxVisibleCharacters - lastSound >= 2)
             {
                 lastSound = text.maxVisibleCharacters;
                 audioSource.PlayOneShot(typeClip, 0.4f);
@@ -435,9 +455,13 @@ public class TutorialManager : MonoBehaviour
         rows.Clear();
 
         StopLoop();
+        if (voiceSource != null) voiceSource.Stop();
         if (incomingPanel != null) incomingPanel.SetActive(false);
 
-        
+
+
+
+
 
         SetPlayerLocked(false);
     }
@@ -469,6 +493,24 @@ public class TutorialManager : MonoBehaviour
         audioSource.Stop();
         audioSource.loop = false;
         audioSource.clip = null;
+    }
+
+
+    private void PlayVoice(AudioClip clip)
+    {
+        if (clip == null) return;
+
+        if (voiceSource == null)
+        {
+            voiceSource = gameObject.AddComponent<AudioSource>();
+            voiceSource.playOnAwake = false;
+        }
+
+        voiceSource.Stop();
+        voiceSource.clip = clip;
+        voiceSource.loop = false;
+        voiceSource.volume = voiceVolume;
+        voiceSource.Play();
     }
 
     private static string KeyName(KeyCode key) =>

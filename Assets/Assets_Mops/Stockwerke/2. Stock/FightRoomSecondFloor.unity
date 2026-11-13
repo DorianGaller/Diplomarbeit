@@ -11422,6 +11422,9 @@ MonoBehaviour:
   ringClip: {fileID: 0}
   typeClip: {fileID: 0}
   hangUpClip: {fileID: 0}
+  voiceSource: {fileID: 0}
+  voiceVolume: 1
+  voiceGap: 0.4
   lines: []
 --- !u!4 &372061457
 Transform:
@@ -17245,6 +17248,14 @@ MonoBehaviour:
   showcaseEnemy: {fileID: 1656671643}
   phoneCall: {fileID: 372061456}
   customLines: []
+  ryanVoice:
+  - {fileID: 8300000, guid: 2c8422a36395d5246aeaf6d3b0229590, type: 3}
+  - {fileID: 8300000, guid: 77c3c740a296e4647ae3f42b2b627ffb, type: 3}
+  - {fileID: 8300000, guid: 224b9b76971419441b2b44850658001c, type: 3}
+  - {fileID: 8300000, guid: 99ea4a619f21e5241845a5b0ab3e1d4c, type: 3}
+  - {fileID: 8300000, guid: 71ddfa300591de34ab817fd80d744a1f, type: 3}
+  - {fileID: 8300000, guid: 131a9b52261cb174f8f2536b96a6f712, type: 3}
+  - {fileID: 8300000, guid: 11368514ed17c1b48b1615e24db6144a, type: 3}
 --- !u!58 &1894470019
 CircleCollider2D:
   m_ObjectHideFlags: 0
