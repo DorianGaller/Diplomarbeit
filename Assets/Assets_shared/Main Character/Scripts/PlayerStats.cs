@@ -29,6 +29,9 @@ public class PlayerStats : MonoBehaviour
     [SerializeField]
     private PlayerLife playerLife;
 
+    [SerializeField]
+    private HudAutoHide coinsHud;   // blendet die ESCredits beim Aufsammeln kurz ein
+
     [Header("Weight Penalty")]
     [SerializeField] private PlayerMovement playerMovement;
     [Range(0f, 0.05f)]
@@ -53,7 +56,16 @@ public class PlayerStats : MonoBehaviour
     public void UpdateEquipmentStats()
     {
         attackText.text = attack.ToString();
-        defenseText.text = defense.ToString();
+        if (playerLife != null)
+        {
+            playerLife.SetDefense(defense);
+            int percent = Mathf.RoundToInt(playerLife.DamageReduction(defense) * 100f);
+            defenseText.text = defense > 0 ? $"{defense} (-{percent}%)" : defense.ToString();
+        }
+        else
+        {
+            defenseText.text = defense.ToString();
+        }
         agilityText.text = agility.ToString();
 
         if (weightText != null)
@@ -96,11 +108,13 @@ public class PlayerStats : MonoBehaviour
             coinsText.text = coins.ToString();
     }
 
-    public void AddCoins(int amount)
+     public void AddCoins(int amount)
     {
         coins += amount;
         UpdateCoinsDisplay();
+        if (coinsHud != null) coinsHud.Show();
     }
+
 
     public bool SpendCoins(int amount)
     {

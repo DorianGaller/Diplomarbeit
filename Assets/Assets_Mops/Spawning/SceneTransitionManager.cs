@@ -39,8 +39,11 @@ public class SceneTransitionManager : MonoBehaviour
             fadePanel.anchoredPosition = new Vector2(-panelWidth, 0);   // Start: komplett links außerhalb, Bildschirm frei
     }
 
-    public void TransitionToScene(string sceneName)
+        public void TransitionToScene(string sceneName)
     {
+        // Raum wird verlassen -> Fortschritt speichern
+        SaveSystem.SaveOnRoomExit(sceneName, DoorTransition.nextSpawnID);
+
         StartCoroutine(DoTransition(sceneName));
     }
 

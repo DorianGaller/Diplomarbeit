@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b769b737f42169d4f8f53e82cd92d3c8, type: 3}
+  m_Name: S-N1-P3R
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponSO
+  weaponName: S-N1-P3R
+  weaponSprite: {fileID: 2057480523805394857, guid: d1eebf9afdb894a0fbdf147769a6269d, type: 3}
+  baseDamage: 80
+  growthPerLevel: 0.15
+  firingMode: 0
+  bulletPrefab: {fileID: 8388209518827460252, guid: 182637d260c684afbaafd50647ae460b, type: 3}
+  fireRate: 1.1
+  bulletsPerShot: 1
+  spreadAngle: 0
+  muzzleOffset: 2.2

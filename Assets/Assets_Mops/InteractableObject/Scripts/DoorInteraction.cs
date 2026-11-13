@@ -5,34 +5,47 @@ using System.Collections;
 public class DoorInteraction : MonoBehaviour
 {
     [Header("Settings")]
-    [Tooltip("Name der Scene die geladen werden soll")]
     [SerializeField] private string targetSceneName = "EscapeScene";
-    [Tooltip("ID des SpawnPoints in der Zielszene, an dem der Spieler ankommen soll")]
     [SerializeField] private string targetSpawnID = "";
-
-    [Tooltip("Maximale Distanz zur Tür damit F gedrückt werden kann")]
     [SerializeField] private float interactionRange = 2f;
 
     [Header("Optional: Required Item")]
-    [Tooltip("Leer lassen wenn kein Item benötigt wird")]
+    [Tooltip("Leer lassen wenn kein Item benoetigt wird")]
     [SerializeField] private string requiredItemName = "";
-
-    [Tooltip("Der MainHand EquippedSlot – nur nötig wenn requiredItemName gesetzt ist")]
     [SerializeField] private EquippedSlot mainHandSlot;
 
-    [Header("References")]
-    [Tooltip("Optionaler Hinweis (z.B. 'F - Tür öffnen')")]
+    [Header("Hinweise")]
+    [Tooltip("Erscheint in der Naehe, wenn die Tuer offen ist (z.B. 'F - Durchgehen')")]
     [SerializeField] private GameObject interactionHint;
+    [Tooltip("Erscheint in der Naehe, solange die Tuer gesperrt ist (z.B. 'Keycard ausruesten + Tuer anklicken')")]
+    [SerializeField] private GameObject unlockHint;
+    [Tooltip("Erscheint in der Naehe, solange gesperrt und KEINE Keycard in der Main Hand (z.B. 'Du brauchst eine Keycard')")]
+    [SerializeField] private GameObject noKeyHint;
+
+    [Header("Optional: Tuer-Sprites (gesperrt / entsperrt)")]
+    [SerializeField] private SpriteRenderer doorRenderer;
+    [SerializeField] private Sprite lockedSprite;
+    [SerializeField] private Sprite unlockedSprite;
 
     private Transform player;
+    private Camera cam;
+    private Collider2D[] clickColliders;
+    private string saveId;
+
+    private bool NeedsItem => requiredItemName != "";
+    private bool IsUnlocked => !NeedsItem || SaveSystem.IsCleared(saveId);
 
     private void Start()
     {
-        StartCoroutine(ResolveReferencesNextFrame());   // NEU
+        if (doorRenderer == null)
+            doorRenderer = GetComponent<SpriteRenderer>();
+
+        clickColliders = GetComponentsInChildren<Collider2D>(true);
+        saveId = SaveSystem.GetObjectId(gameObject);
+
+        StartCoroutine(ResolveReferencesNextFrame());
     }
 
-    // NEU: wartet einen Frame, damit DontDestroy-Duplikate bereinigt sind,
-    // löst dann Player und MainHand-Slot dynamisch neu auf
     private IEnumerator ResolveReferencesNextFrame()
     {
         yield return null;
@@ -43,13 +56,10 @@ public class DoorInteraction : MonoBehaviour
         else
             Debug.LogError("DoorInteraction: Kein GameObject mit Tag 'Player' gefunden!");
 
-        if (requiredItemName != "" && mainHandSlot == null)
+        if (NeedsItem && mainHandSlot == null)
         {
-            // NEU: FindObjectsInactive.Include, damit auch der (noch geschlossene) Equipment-Slot gefunden wird
             EquippedSlot[] allSlots = FindObjectsByType<EquippedSlot>(
-                FindObjectsInactive.Include,
-                FindObjectsSortMode.None
-            );
+                FindObjectsInactive.Include, FindObjectsSortMode.None);
 
             foreach (EquippedSlot slot in allSlots)
             {
@@ -61,30 +71,86 @@ public class DoorInteraction : MonoBehaviour
             }
 
             if (mainHandSlot == null)
-                Debug.LogError("DoorInteraction: MainHand EquippedSlot nicht gefunden! " +
-                               "Bitte im Inspector manuell zuweisen oder requiredItemName leer lassen.");
+                Debug.LogError("DoorInteraction: MainHand EquippedSlot nicht gefunden!");
         }
 
-        if (interactionHint != null)
-            interactionHint.SetActive(false);
+        if (interactionHint != null) interactionHint.SetActive(false);
+        if (unlockHint != null) unlockHint.SetActive(false);
+        if (noKeyHint != null) noKeyHint.SetActive(false);
     }
 
     private void Update()
     {
         if (player == null) return;
 
-        float distance = Vector2.Distance(transform.position, player.position);
-        bool playerInRange = distance <= interactionRange;
+        bool playerInRange = Vector2.Distance(transform.position, player.position) <= interactionRange;
+        bool unlocked = IsUnlocked;
 
-        bool hasRequiredItem = requiredItemName == "" || HasRequiredItem();
+        UpdateDoorSprite(unlocked);
 
-        if (interactionHint != null)
-            interactionHint.SetActive(playerInRange && hasRequiredItem);
+                bool hasKey = !unlocked && HasRequiredItem();
 
-        if (playerInRange && hasRequiredItem && Input.GetKeyDown(KeyCode.F))
+        // 1. gesperrt ohne Keycard -> 2. gesperrt mit Keycard -> 3. offen
+        if (noKeyHint != null) noKeyHint.SetActive(playerInRange && !unlocked && !hasKey);
+        if (unlockHint != null) unlockHint.SetActive(playerInRange && !unlocked && hasKey);
+        if (interactionHint != null) interactionHint.SetActive(playerInRange && unlocked);
+
+        if (!playerInRange) return;
+
+        // 1. Gesperrt: mit der Keycard in der Main Hand auf die Tuer klicken
+        if (!unlocked)
         {
-            OpenDoor();
+            if (Input.GetMouseButtonDown(0) && IsMouseOver() && HasRequiredItem())
+                Unlock();
+            return;
         }
+
+        // 2. Offen: mit F durchgehen
+        if (Input.GetKeyDown(KeyCode.F))
+            GoThrough();
+    }
+
+    private void Unlock()
+    {
+        if (mainHandSlot != null)
+            mainHandSlot.ClearEquippedItem();   // Keycard wird verbraucht
+
+        SaveSystem.MarkCleared(saveId);          // Tuer bleibt dauerhaft offen
+        UpdateDoorSprite(true);
+    }
+
+    private void GoThrough()
+    {
+        DoorTransition.nextSpawnID = targetSpawnID;
+
+        if (SceneTransitionManager.Instance != null)
+            SceneTransitionManager.Instance.TransitionToScene(targetSceneName);
+        else
+            SceneManager.LoadScene(targetSceneName);
+    }
+
+    private void UpdateDoorSprite(bool unlocked)
+    {
+        if (doorRenderer == null) return;
+
+        Sprite target = unlocked ? unlockedSprite : lockedSprite;
+        if (target != null && doorRenderer.sprite != target)
+            doorRenderer.sprite = target;
+    }
+
+    private bool IsMouseOver()
+    {
+        if (cam == null) cam = Camera.main;
+        if (cam == null) return false;
+
+        Vector2 mouse = cam.ScreenToWorldPoint(Input.mousePosition);
+
+        foreach (Collider2D col in clickColliders)
+            if (col != null && col.enabled && col.OverlapPoint(mouse))
+                return true;
+
+        return doorRenderer != null &&
+               doorRenderer.bounds.Contains(new Vector3(mouse.x, mouse.y, doorRenderer.bounds.center.z));
     }
 
     private bool HasRequiredItem()
@@ -93,30 +159,9 @@ public class DoorInteraction : MonoBehaviour
 
         var field = typeof(EquippedSlot).GetField(
             "itemName",
-            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance
-        );
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
 
-        if (field == null)
-        {
-            Debug.LogError("DoorInteraction: Feld 'itemName' in EquippedSlot nicht gefunden!");
-            return false;
-        }
-
-        string equippedName = field.GetValue(mainHandSlot) as string;
-        return equippedName == requiredItemName;
-    }
-
-    private void OpenDoor()
-    {
-        if (requiredItemName != "" && mainHandSlot != null)
-            mainHandSlot.ClearEquippedItem();
-
-        DoorTransition.nextSpawnID = targetSpawnID;
-
-        if (SceneTransitionManager.Instance != null)
-            SceneTransitionManager.Instance.TransitionToScene(targetSceneName);
-        else
-            SceneManager.LoadScene(targetSceneName);
+        return field != null && (field.GetValue(mainHandSlot) as string) == requiredItemName;
     }
 
     private void OnDrawGizmosSelected()

@@ -26,6 +26,8 @@ public class EnemyLife : MonoBehaviour
 
     public Action OnDeath;
 
+    public Action<int> OnDamaged;
+
     void Start()
     {
         currentHP = maxHP;
@@ -37,6 +39,7 @@ public class EnemyLife : MonoBehaviour
         Debug.Log("Treffer! Schaden: " + damage);
         currentHP -= damage;
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+        OnDamaged?.Invoke(damage);
 
         UpdateHealthBar();
 

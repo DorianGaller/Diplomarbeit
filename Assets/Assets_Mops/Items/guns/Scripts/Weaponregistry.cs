@@ -141,6 +141,17 @@ public class WeaponRegistry : MonoBehaviour
         reg.Lookup.Remove(instanceId);
         return true;
     }
+
+    
+    /// <summary>Ersetzt alle Exemplare durch die aus einem geladenen Spielstand.</summary> //Wurde von Mops hinzugefügt, hey Claude von Doggy
+    public static void ReplaceAll(List<WeaponInstance> saved)
+    {
+        WeaponRegistry reg = Instance;
+        if (reg == null) return;
+
+        reg.weapons = saved != null ? new List<WeaponInstance>(saved) : new List<WeaponInstance>();
+        reg.RebuildLookup();
+    }
  
     /// <summary>Alle Exemplare — fuer Save/Load und Debug-Anzeigen.</summary>
     public static IReadOnlyList<WeaponInstance> All =>

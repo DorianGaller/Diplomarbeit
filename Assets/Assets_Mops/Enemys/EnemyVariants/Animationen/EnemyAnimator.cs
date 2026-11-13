@@ -15,6 +15,9 @@ public class EnemyAnimator : MonoBehaviour
 
     [Header("Shoot Animation")]
     [SerializeField] private string shootClipName = "Robot_Shooting";
+
+        [Tooltip("Tempo der Schuss-Animation (2 = doppelt so schnell). Braucht im Animator den Float-Parameter 'ShootSpeed' als Multiplier am Schuss-State.")]
+    [SerializeField] private float shootAnimationSpeed = 1f;
     private float shootAnimationDuration = 0.5f;
 
     private Animator animator;
@@ -52,6 +55,23 @@ public class EnemyAnimator : MonoBehaviour
                 break;
             }
         }
+
+        // Schnellere Animation -> Kugel kommt entsprechend frueher
+        float speed = Mathf.Max(0.01f, shootAnimationSpeed);
+        shootAnimationDuration /= speed;
+
+        if (HasParameter("ShootSpeed", AnimatorControllerParameterType.Float))
+            animator.SetFloat("ShootSpeed", speed);
+        else if (!Mathf.Approximately(speed, 1f))
+            Debug.LogWarning($"[EnemyAnimator] ({name}) Shoot Animation Speed ist {speed}, aber der Animator hat keinen Float-Parameter 'ShootSpeed'. Die Animation laeuft normal schnell, die Kugel kommt trotzdem frueher.");
+    }
+
+    bool HasParameter(string paramName, AnimatorControllerParameterType type)
+    {
+        foreach (AnimatorControllerParameter p in animator.parameters)
+            if (p.name == paramName && p.type == type)
+                return true;
+        return false;
     }
 
     void Update()

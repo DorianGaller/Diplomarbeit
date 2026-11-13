@@ -66,6 +66,12 @@ public class InventoryManager : MonoBehaviour
 
     public void ShowItemPreview(string itemName, string itemDescription, Sprite itemSprite)
     {
+        // Beschreibung immer aus der ItemDatabase.
+        // Nur wenn dort (noch) keine steht, wird die alte aus dem Slot angezeigt.
+        string dbDescription = ItemDatabase.GetDescription(itemName);
+        if (!string.IsNullOrEmpty(dbDescription))
+            itemDescription = dbDescription;
+
         if (descriptionNameText != null) descriptionNameText.text = itemName;
         if (descriptionText != null) descriptionText.text = itemDescription;
         if (descriptionImage != null) descriptionImage.sprite = itemSprite != null ? itemSprite : emptyPreviewSprite;

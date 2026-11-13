@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GunshotEffect : MonoBehaviour
 {
@@ -9,6 +10,16 @@ public class GunshotEffect : MonoBehaviour
     [Header("Damage")]
     public int damage = 25;
 
+
+    [Header("Piercing")]
+    [Tooltip("Wie viele Gegner diese Kugel treffen kann (1 = normal, 2 = geht durch den ersten Gegner durch)")]
+    [Min(1)] public int maxTargets = 1;
+
+    private readonly HashSet<GameObject> hitTargets = new HashSet<GameObject>();
+
+    [HideInInspector]
+    public bool fromPlayer = false;
+
     [Header("Lifetime & Fade")]
     public float lifeTime = 0.25f;
     public float fadeSpeed = 6f;
@@ -17,12 +28,16 @@ public class GunshotEffect : MonoBehaviour
     private SpriteRenderer sr;
     private bool hasHit = false;
 
-    public void Init(Vector2 dir)
+        public void Init(Vector2 dir)
     {
         if (dir == Vector2.zero)
             dir = Vector2.up;
 
         direction = dir.normalized;
+
+        // Sprite zeigt bei Rotation 0,0,0 nach oben -> 90° abziehen
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 
     void Awake()
@@ -45,28 +60,57 @@ public class GunshotEffect : MonoBehaviour
     {
         if (hasHit) return;
 
-        EnemyLife enemy = collision.GetComponent<EnemyLife>();
+            
+                EnemyLife enemy = collision.GetComponent<EnemyLife>();
         if (enemy != null)
         {
-            enemy.TakeDamage(damage);
-            hasHit = true;
-            Destroy(gameObject);
+            // Kein Friendly Fire: Gegner-/Boss-Kugeln fliegen durch Gegner durch
+            if (!fromPlayer) return;
+
+            HitTarget(enemy.gameObject, () => enemy.TakeDamage(damage));
             return;
         }
 
-        BossLife boss = collision.GetComponent<BossLife>();   // NEU
+        BossLife boss = collision.GetComponent<BossLife>();
         if (boss != null)
         {
-            boss.TakeDamage(damage);
+            if (!fromPlayer) return;
+
+            HitTarget(boss.gameObject, () => boss.TakeDamage(damage));
+            return;
+        }
+
+                PlayerLife player = collision.GetComponent<PlayerLife>();
+        if (player != null)
+        {
+            // Eigene Kugeln fliegen durch den Spieler durch
+            if (fromPlayer) return;
+
+            player.TakeDamage(damage);
             hasHit = true;
             Destroy(gameObject);
             return;
         }
 
-        PlayerLife player = collision.GetComponent<PlayerLife>();
-        if (player != null)
+        // Feste Collider (Wände, Tische, Kisten, Deko ...) stoppen jede Kugel.
+        // Trigger-Zonen (FightRoomTrigger, Interaktions-Bereiche ...) lassen sie durch.
+        if (!collision.isTrigger)
         {
-            player.TakeDamage(damage);
+            hasHit = true;
+            Destroy(gameObject);
+        }
+    }
+
+
+    // Schaden einmal pro Ziel. Kugel verschwindet erst, wenn maxTargets erreicht sind.
+    private void HitTarget(GameObject target, System.Action applyDamage)
+    {
+        if (!hitTargets.Add(target)) return;   // diesen Gegner hat die Kugel schon getroffen
+
+        applyDamage();
+
+        if (hitTargets.Count >= maxTargets)
+        {
             hasHit = true;
             Destroy(gameObject);
         }

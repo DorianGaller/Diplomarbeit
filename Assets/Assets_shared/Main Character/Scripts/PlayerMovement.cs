@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private bool isDashing = false;
     private bool movementInputLocked;
+    private PlayerControlHack controlHack;   // Hacker vertauscht W/S oder A/D
 
     public Vector2 Direction => direction;
 
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
         currentSpeed = movementSpeed;
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0f;
+        controlHack = GetComponent<PlayerControlHack>();
     }
 
     void Update()
@@ -33,6 +35,13 @@ public class PlayerMovement : MonoBehaviour
 
         float inputX = Input.GetAxisRaw("Horizontal");
         float inputY = Input.GetAxisRaw("Vertical");
+
+        
+        if (controlHack != null)
+        {
+            if (controlHack.InvertX) inputX = -inputX;
+            if (controlHack.InvertY) inputY = -inputY;
+        }
 
         direction = new Vector2(inputX, inputY).normalized;
         if (inputX == 0 && inputY == 0)

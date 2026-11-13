@@ -9,6 +9,7 @@ public class PlayerEquipmentOrbit : MonoBehaviour
 
     [Header("Orbit Settings")]
     public float orbitRadius = 1.5f;
+    public float minMuzzleRadius = 0.3f;
     public GameObject iconPrefab;
 
     [Header("Waffen-Icon")]
@@ -18,6 +19,10 @@ public class PlayerEquipmentOrbit : MonoBehaviour
     private SpriteRenderer[] icons;
     private Camera cam;
     private Vector2 lastAimDir = Vector2.right;
+    public Vector2 AimDirection => lastAimDir;
+
+    private Vector3 iconBaseScale = Vector3.one;
+    private EquipmentSOLibary equipmentSOLibary;
 
     void Start()
     {
@@ -26,14 +31,14 @@ public class PlayerEquipmentOrbit : MonoBehaviour
         if (weaponHolder == null)
             weaponHolder = GetComponent<WeaponHolder>();
 
+        if (iconPrefab != null)
+            iconBaseScale = iconPrefab.transform.localScale;
+
+
         icons = new SpriteRenderer[equippedSlots.Length];
 
         for (int i = 0; i < equippedSlots.Length; i++)
-        {
-            GameObject icon = Instantiate(iconPrefab);
-            icons[i] = icon.GetComponent<SpriteRenderer>();
-            icon.SetActive(false);
-        }
+            icons[i] = CreateIcon();
     }
 
     void Update()
@@ -46,7 +51,11 @@ public class PlayerEquipmentOrbit : MonoBehaviour
         for (int i = 0; i < equippedSlots.Length; i++)
         {
             EquippedSlot slot = equippedSlots[i];
-            if (slot == null || icons[i] == null) continue;
+             if (slot == null) continue;
+
+            // Sicherheitsnetz: falls ein Icon doch zerstört wurde, neu erzeugen
+            if (icons[i] == null)
+                icons[i] = CreateIcon();
 
             bool hasItem = slot.HasItem();
             icons[i].gameObject.SetActive(hasItem);
@@ -57,16 +66,64 @@ public class PlayerEquipmentOrbit : MonoBehaviour
 
             if (slot.GetItemType() == ItemType.mainHand)
             {
+                icons[i].transform.localScale = iconBaseScale * GetHeldScale(slot.GetItemName());
                 PositionWeaponIcon(icons[i].transform, icons[i]);
             }
             else
             {
+                icons[i].transform.localScale = iconBaseScale;
+
                 float angle = staticIndex * (360f / Mathf.Max(1, staticCount)) * Mathf.Deg2Rad;
                 Vector3 offset = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * orbitRadius;
                 icons[i].transform.position = transform.position + offset;
                 staticIndex++;
             }
         }
+    }
+
+    SpriteRenderer CreateIcon()
+    {
+        GameObject icon = Instantiate(iconPrefab);
+        DontDestroyOnLoad(icon);
+        icon.SetActive(false);
+        return icon.GetComponent<SpriteRenderer>();
+    }
+
+    // Wenn dieser Player zerstört wird (z.B. das Duplikat aus der neuen Szene),
+    // seine Icons mit aufräumen, damit keine verwaisten Icons übrig bleiben
+    void OnDestroy()
+    {
+        if (icons == null) return;
+
+        foreach (SpriteRenderer icon in icons)
+        {
+            if (icon != null)
+                Destroy(icon.gameObject);
+        }
+    }
+
+    // Holt heldScale aus dem EquipmentSO mit gleichem itemName (1 wenn keins gefunden).
+    // Absichtlich jedes Frame, damit man den Wert im Play-Mode live anpassen kann.
+    float GetHeldScale(string itemName)
+    {
+        if (string.IsNullOrEmpty(itemName)) return 1f;
+
+        if (equipmentSOLibary == null)
+        {
+            GameObject canvas = GameObject.Find("InventoryCanvas");
+            if (canvas != null)
+                equipmentSOLibary = canvas.GetComponent<EquipmentSOLibary>();
+        }
+
+        if (equipmentSOLibary == null || equipmentSOLibary.equipmentSO == null) return 1f;
+
+        foreach (EquipmentSO so in equipmentSOLibary.equipmentSO)
+        {
+            if (so != null && so.itemName == itemName)
+                return so.heldScale;
+        }
+
+        return 1f;
     }
 
     int CountNonWeaponSlots()
@@ -80,7 +137,7 @@ public class PlayerEquipmentOrbit : MonoBehaviour
         return count;
     }
 
-    void PositionWeaponIcon(Transform iconTransform, SpriteRenderer iconRenderer)
+        void PositionWeaponIcon(Transform iconTransform, SpriteRenderer iconRenderer)
     {
         if (cam == null) return;
 
@@ -89,17 +146,25 @@ public class PlayerEquipmentOrbit : MonoBehaviour
 
         Vector2 rawOffset = mouseWorldPos - transform.position;
 
-        // NEU: nur bei EXAKT Null (extrem seltener Randfall) die letzte Richtung nehmen,
-        // ansonsten IMMER live der Maus folgen — auch bei sehr kleinem Abstand
         Vector2 dir = rawOffset.sqrMagnitude > 0.0001f
             ? rawOffset.normalized
             : lastAimDir;
 
         lastAimDir = dir;
 
+        float muzzleOffset = defaultMuzzleOffset;
+        if (weaponHolder != null && weaponHolder.CurrentWeapon != null)
+            muzzleOffset = weaponHolder.CurrentWeapon.muzzleOffset;
+
+        // Muendung sitzt auf der Maus, aber hoechstens dort, wo sie auf dem Orbit waere
+        float muzzleDistance = Mathf.Clamp(rawOffset.magnitude, minMuzzleRadius, orbitRadius + muzzleOffset);
+
+        // Waffe haengt muzzleOffset hinter der Muendung (nie hinter den Spieler)
+        float weaponDistance = Mathf.Max(0f, muzzleDistance - muzzleOffset);
+
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-        iconTransform.position = transform.position + (Vector3)(dir * orbitRadius);
+        iconTransform.position = transform.position + (Vector3)(dir * weaponDistance);
 
         if (rotateWeaponIcon)
             iconTransform.rotation = Quaternion.Euler(0, 0, angle);
@@ -109,12 +174,7 @@ public class PlayerEquipmentOrbit : MonoBehaviour
 
         if (shootPoint != null)
         {
-            float muzzleOffset = defaultMuzzleOffset;
-            if (weaponHolder != null && weaponHolder.CurrentWeapon != null)
-                muzzleOffset = weaponHolder.CurrentWeapon.muzzleOffset;
-
-            Vector3 muzzlePos = iconTransform.position + (Vector3)(dir * muzzleOffset);
-            shootPoint.position = muzzlePos;
+            shootPoint.position = transform.position + (Vector3)(dir * muzzleDistance);
             shootPoint.rotation = iconTransform.rotation;
         }
     }

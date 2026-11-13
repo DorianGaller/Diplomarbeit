@@ -20,6 +20,15 @@ public static class FightRoomProgress
         return elevatorVisitsPerFloor.TryGetValue(floorID, out int count) ? count : 0;
     }
 
+        /// <summary>Alle Besuchszaehler, fuer den Spielstand.</summary>
+    public static IReadOnlyDictionary<string, int> All => elevatorVisitsPerFloor;
+
+    /// <summary>Setzt einen Zaehler beim Laden eines Spielstands.</summary>
+    public static void SetVisitCount(string floorID, int count)
+    {
+        elevatorVisitsPerFloor[floorID] = count;
+    }
+
     public static void ResetAll()
     {
         elevatorVisitsPerFloor.Clear();

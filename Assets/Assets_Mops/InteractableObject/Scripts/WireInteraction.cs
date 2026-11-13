@@ -4,19 +4,26 @@ using System.Collections;
 public class WireInteraction : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private string requiredItemName = "Stahlschere";
+    [SerializeField] private string requiredItemName = "Scissors";
     [SerializeField] private float interactionRange = 2f;
 
     [Header("References")]
     [SerializeField] private EquippedSlot mainHandSlot;
+    [Tooltip("Erscheint, sobald der Spieler in der Naehe ist (z.B. 'Schere ausruesten + Linksklick')")]
     [SerializeField] private GameObject interactionHint;
+    [Tooltip("Erscheint in der Naehe, wenn die Schere NICHT in der Main Hand ist (z.B. 'Du brauchst eine Schere')")]
+    [SerializeField] private GameObject noToolHint;
 
     private Transform player;
-    private bool playerInRange = false;
+    private Camera cam;
+    private Collider2D[] clickColliders;
+    private Renderer[] renderers;
 
     private void Start()
     {
-        StartCoroutine(InitNextFrame());   // NEU
+        clickColliders = GetComponentsInChildren<Collider2D>(true);
+        renderers = GetComponentsInChildren<Renderer>(true);
+        StartCoroutine(InitNextFrame());
     }
 
     private IEnumerator InitNextFrame()
@@ -31,72 +38,81 @@ public class WireInteraction : MonoBehaviour
 
         if (mainHandSlot == null)
         {
-            // NEU: FindObjectsInactive.Include, damit auch der (noch geschlossene) Equipment-Slot gefunden wird
             EquippedSlot[] allSlots = FindObjectsByType<EquippedSlot>(
-                FindObjectsInactive.Include,
-                FindObjectsSortMode.None
-            );
+                FindObjectsInactive.Include, FindObjectsSortMode.None);
 
             var itemTypeField = typeof(EquippedSlot).GetField(
                 "itemType",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance
-            );
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
 
             foreach (EquippedSlot slot in allSlots)
             {
-                if (itemTypeField != null)
+                if (itemTypeField != null &&
+                    itemTypeField.GetValue(slot) is ItemType type && type == ItemType.mainHand)
                 {
-                    object value = itemTypeField.GetValue(slot);
-                    if (value is ItemType type && type == ItemType.mainHand)
-                    {
-                        mainHandSlot = slot;
-                        break;
-                    }
+                    mainHandSlot = slot;
+                    break;
                 }
             }
 
             if (mainHandSlot == null)
-                Debug.LogError("WireInteraction: MainHand EquippedSlot nicht gefunden! " +
-                               "Bitte im Inspector manuell zuweisen.");
+                Debug.LogError("WireInteraction: MainHand EquippedSlot nicht gefunden! Bitte im Inspector zuweisen.");
         }
 
         if (interactionHint != null)
             interactionHint.SetActive(false);
+        
+        if (noToolHint != null)
+            noToolHint.SetActive(false);
     }
 
     private void Update()
     {
-        if (player == null || mainHandSlot == null) return;
+        if (player == null) return;
 
-        float distance = Vector2.Distance(transform.position, player.position);
-        playerInRange = distance <= interactionRange;
+        bool playerInRange = Vector2.Distance(transform.position, player.position) <= interactionRange;
 
-        bool hasSchere = HasRequiredItem();
+        // Hinweis immer, wenn der Spieler in der Naehe ist
+               bool hasTool = HasRequiredItem();
 
+        // Mit Schere: Klick-Hinweis, ohne Schere: Hinweis, dass man eine braucht
         if (interactionHint != null)
-            interactionHint.SetActive(playerInRange && hasSchere);
+            interactionHint.SetActive(playerInRange && hasTool);
+        if (noToolHint != null)
+            noToolHint.SetActive(playerInRange && !hasTool);
 
-        if (playerInRange && hasSchere && Input.GetKeyDown(KeyCode.F))
-        {
+        if (playerInRange && hasTool && Input.GetMouseButtonDown(0) && IsMouseOver())
             RemoveWire();
-        }
+    }
+
+    private bool IsMouseOver()
+    {
+        if (cam == null) cam = Camera.main;
+        if (cam == null) return false;
+
+        Vector2 mouse = cam.ScreenToWorldPoint(Input.mousePosition);
+
+        foreach (Collider2D col in clickColliders)
+            if (col != null && col.enabled && col.OverlapPoint(mouse))
+                return true;
+
+        // Kein Collider getroffen -> Sprite-Flaeche als Klickbereich
+        foreach (Renderer r in renderers)
+            if (r != null && r.bounds.Contains(new Vector3(mouse.x, mouse.y, r.bounds.center.z)))
+                return true;
+
+        return false;
     }
 
     private bool HasRequiredItem()
     {
+        if (mainHandSlot == null) return false;
+
         var field = typeof(EquippedSlot).GetField(
             "itemName",
-            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance
-        );
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
 
-        if (field == null)
-        {
-            Debug.LogError("WireInteraction: Feld 'itemName' in EquippedSlot nicht gefunden!");
-            return false;
-        }
-
-        string equippedName = field.GetValue(mainHandSlot) as string;
-        return equippedName == requiredItemName;
+        return field != null && (field.GetValue(mainHandSlot) as string) == requiredItemName;
     }
 
     private void RemoveWire()

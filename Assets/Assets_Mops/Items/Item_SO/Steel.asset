@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemSO
   itemName: Steel
   itemSprite: {fileID: 6298086538089013102, guid: 3c4a03a27e31f42248776a8e6bcc924d, type: 3}
-  itemDescription: Steel as hard as my ...
+  itemDescription: "Standard-grade steel from the facility\u2019s supply depots.
+    Not glamorous, but every good weapon starts with it."
   statToChange: 0
   amountToChangeStat: 0
   attributeToChange: 0

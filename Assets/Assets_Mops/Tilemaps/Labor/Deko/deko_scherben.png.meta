@@ -1,0 +1,650 @@
+fileFormatVersion: 2
+guid: 0ba0fd1e8c45abb45be2e560e21eeeb8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3194785968348614885
+    second: deko_scherben_0
+  - first:
+      213: 1945169075356733456
+    second: deko_scherben_1
+  - first:
+      213: 1574825477769331403
+    second: deko_scherben_2
+  - first:
+      213: 6177412658791129196
+    second: deko_scherben_3
+  - first:
+      213: 4625165816626456396
+    second: deko_scherben_4
+  - first:
+      213: 5508811430759719438
+    second: deko_scherben_5
+  - first:
+      213: -8375860849913340334
+    second: deko_scherben_6
+  - first:
+      213: 6671806206212294890
+    second: deko_scherben_7
+  - first:
+      213: 744814067860310345
+    second: deko_scherben_8
+  - first:
+      213: -7876384659937004603
+    second: deko_scherben_9
+  - first:
+      213: 3335523111547345131
+    second: deko_scherben_10
+  - first:
+      213: -5411327060895630465
+    second: deko_scherben_11
+  - first:
+      213: -7320020463041671118
+    second: deko_scherben_12
+  - first:
+      213: -3507582108044682533
+    second: deko_scherben_13
+  - first:
+      213: -7133477087115282998
+    second: deko_scherben_14
+  - first:
+      213: 8045950375323671482
+    second: deko_scherben_15
+  - first:
+      213: 3977029224365738657
+    second: deko_scherben_16
+  - first:
+      213: -5717997278613549170
+    second: deko_scherben_17
+  - first:
+      213: 9139659548188229375
+    second: deko_scherben_18
+  - first:
+      213: -7512262191578206401
+    second: deko_scherben_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: deko_scherben_0
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 109
+        width: 27
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1fad27a617d9a3d0800000000000000
+      internalID: -3194785968348614885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deko_scherben_1
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 124
+        width: 27
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01096b4d7f0aefa10800000000000000
+      internalID: 1945169075356733456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deko_scherben_2
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 89
+        width: 27
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc20da1ad67ead510800000000000000
+      internalID: 1574825477769331403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deko_scherben_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 129
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c602f3675149ab550800000000000000
+      internalID: 6177412658791129196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deko_scherben_4
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 104
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c47ac471ec3ef2040800000000000000
+      internalID: 4625165816626456396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deko_scherben_5
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 109
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e026b013fca337c40800000000000000
+      internalID: 5508811430759719438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deko_scherben_6
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 94
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25e50d82fe6f2cb80800000000000000
+      internalID: -8375860849913340334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deko_scherben_7
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 74
+        width: 32
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae8c7835564079c50800000000000000
+      internalID: 6671806206212294890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deko_scherben_8
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 94
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9490782d27c165a00800000000000000
+      internalID: 744814067860310345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deko_scherben_9
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 69
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c37e16f1e571b290800000000000000
+      internalID: -7876384659937004603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deko_scherben_10
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 64
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be892ebf8982a4e20800000000000000
+      internalID: 3335523111547345131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deko_scherben_11
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 54
+        width: 27
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7b7bd365ba17e4b0800000000000000
+      internalID: -5411327060895630465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deko_scherben_12
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 29
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2309fc70c201a6a90800000000000000
+      internalID: -7320020463041671118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deko_scherben_13
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 54
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bda1b7d18a0925fc0800000000000000
+      internalID: -3507582108044682533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deko_scherben_14
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 14
+        width: 57
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac5fa11526cc00d90800000000000000
+      internalID: -7133477087115282998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deko_scherben_15
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 44
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abb9691bc35f8af60800000000000000
+      internalID: 8045950375323671482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deko_scherben_16
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 9
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1aacaa3220f313730800000000000000
+      internalID: 3977029224365738657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deko_scherben_17
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 4
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8fc69535c795a0b0800000000000000
+      internalID: -5717997278613549170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deko_scherben_18
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 14
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffe34c16fe796de70800000000000000
+      internalID: 9139659548188229375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deko_scherben_19
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 4
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3f2263a6551fb790800000000000000
+      internalID: -7512262191578206401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      deko_scherben_0: -3194785968348614885
+      deko_scherben_1: 1945169075356733456
+      deko_scherben_10: 3335523111547345131
+      deko_scherben_11: -5411327060895630465
+      deko_scherben_12: -7320020463041671118
+      deko_scherben_13: -3507582108044682533
+      deko_scherben_14: -7133477087115282998
+      deko_scherben_15: 8045950375323671482
+      deko_scherben_16: 3977029224365738657
+      deko_scherben_17: -5717997278613549170
+      deko_scherben_18: 9139659548188229375
+      deko_scherben_19: -7512262191578206401
+      deko_scherben_2: 1574825477769331403
+      deko_scherben_3: 6177412658791129196
+      deko_scherben_4: 4625165816626456396
+      deko_scherben_5: 5508811430759719438
+      deko_scherben_6: -8375860849913340334
+      deko_scherben_7: 6671806206212294890
+      deko_scherben_8: 744814067860310345
+      deko_scherben_9: -7876384659937004603
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

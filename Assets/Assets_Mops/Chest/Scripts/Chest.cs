@@ -12,6 +12,8 @@ public class Chest : MonoBehaviour, IInteractable
         [TextArea] public string itemDescription;
         public ItemSO itemSO;
         public ItemType itemType;
+        [Tooltip("An = geht beim Nehmen direkt aufs Konto (Coins), nicht ins Inventar")]
+        public bool isCredits;
     }
 
     [Header("Items manuell befüllen")]
@@ -24,13 +26,14 @@ public class Chest : MonoBehaviour, IInteractable
     [Header("Chest UI (wird automatisch gefunden, falls leer)")]
     public ChestUI chestUI;
 
-    private bool isOpen = false;
+    protected bool isOpen = false;
+    private InventoryManager inventoryManager;
 
     [Header("Interaction Hint")]
     [SerializeField] private GameObject interactionHint;
     [SerializeField] private float hintRange = 2f;
 
-    private Transform player;
+    protected Transform player;
 
     private void Awake()
     {
@@ -46,13 +49,13 @@ public class Chest : MonoBehaviour, IInteractable
 
                 chestItems[i] = new ChestItem
                 {
-                    itemName        = so != null ? so.itemName : itemObjects[i].name,
-                    quantity        = (itemObjectQuantities != null && i < itemObjectQuantities.Length)
+                    itemName = so != null ? so.itemName : itemObjects[i].name,
+                    quantity = (itemObjectQuantities != null && i < itemObjectQuantities.Length)
                                       ? itemObjectQuantities[i] : 1,
-                    itemSprite      = so != null ? so.itemSprite : null,
+                    itemSprite = so != null ? so.itemSprite : null,
                     itemDescription = so != null ? so.itemDescription : "",
-                    itemSO          = so,
-                    itemType        = so != null ? so.itemType : default
+                    itemSO = so,
+                    itemType = so != null ? so.itemType : default
                 };
             }
         }
@@ -90,8 +93,12 @@ public class Chest : MonoBehaviour, IInteractable
             interactionHint.SetActive(false);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
+        // Wurde die Ansicht woanders geschlossen (z.B. mit Escape), Zustand nachziehen
+        if (isOpen && !IsChestViewOpen())
+            isOpen = false;
+
         if (player == null || interactionHint == null) return;
 
         if (isOpen)
@@ -106,6 +113,10 @@ public class Chest : MonoBehaviour, IInteractable
 
     public void Interact(GameObject player)
     {
+        // Sicherheitsnetz, falls Update in diesem Frame noch nicht gelaufen ist
+        if (isOpen && !IsChestViewOpen())
+            isOpen = false;
+
         if (isOpen)
             CloseChest();
         else
@@ -127,14 +138,33 @@ public class Chest : MonoBehaviour, IInteractable
     public void CloseChest()
     {
         isOpen = false;
-        GameObject.Find("InventoryCanvas")
-            .GetComponent<InventoryManager>()
-            .CloseChestView();
+
+        InventoryManager manager = GetInventoryManager();
+        if (manager != null)
+            manager.CloseChestView();
     }
 
     public void RemoveItem(int index)
     {
         if (index < 0 || index >= chestItems.Length) return;
         chestItems[index].quantity = 0;
+    }
+
+    private bool IsChestViewOpen()
+    {
+        InventoryManager manager = GetInventoryManager();
+        return manager != null && manager.chestOpen;
+    }
+
+    // Einmal suchen und merken statt jedes Mal GameObject.Find
+    private InventoryManager GetInventoryManager()
+    {
+        if (inventoryManager == null)
+        {
+            GameObject canvas = GameObject.Find("InventoryCanvas");
+            if (canvas != null)
+                inventoryManager = canvas.GetComponent<InventoryManager>();
+        }
+        return inventoryManager;
     }
 }

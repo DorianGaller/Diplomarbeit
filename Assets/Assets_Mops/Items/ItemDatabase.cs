@@ -215,6 +215,11 @@ public class ItemDatabase : ScriptableObject
                 Debug.LogWarning($"[ItemDatabase] '{def.itemName}' hat kein Sprite."); problems++;
             }
 
+            if (string.IsNullOrEmpty(def.itemDescription))
+            {
+                Debug.LogWarning($"[ItemDatabase] '{def.itemName}' hat keine Beschreibung."); problems++;
+            }
+
             if (def.weaponSO != null && def.itemType != ItemType.mainHand)
             {
                 Debug.LogWarning($"[ItemDatabase] '{def.itemName}' hat ein WeaponSO, " +

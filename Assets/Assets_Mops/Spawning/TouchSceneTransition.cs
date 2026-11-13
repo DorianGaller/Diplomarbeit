@@ -28,6 +28,11 @@ public class TouchSceneTransition : MonoBehaviour
     [Tooltip("Muss mit der Floor ID der RoomModifierManager auf diesem Stockwerk übereinstimmen")]
     [SerializeField] private string floorID = "";
 
+
+    [Header("Boss-Exit: Stockwerk im Elevator freischalten")]
+    [Tooltip("Z.B. \"2. Stock\". Leer lassen, wenn dieser Übergang nichts freischaltet.")]
+    [SerializeField] private string unlockFloorOnEnter = "";
+
     private bool triggered = false;
 
     private void Start()
@@ -93,6 +98,11 @@ public class TouchSceneTransition : MonoBehaviour
         }
 
         DoorTransition.nextSpawnID = targetSpawnID;
+
+                // Vor TransitionToScene, weil dort sofort gespeichert wird
+        if (!string.IsNullOrEmpty(unlockFloorOnEnter))
+            SaveSystem.UnlockFloor(unlockFloorOnEnter);
+
 
         if (SceneTransitionManager.Instance != null)
             SceneTransitionManager.Instance.TransitionToScene(targetSceneName);

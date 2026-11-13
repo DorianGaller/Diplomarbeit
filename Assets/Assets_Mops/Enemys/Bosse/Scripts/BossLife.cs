@@ -36,6 +36,11 @@ public class BossLife : MonoBehaviour
     public int exitWidth = 3;
     public int exitHeight = 2;
 
+
+    [Header("Spielstand")]
+    [Tooltip("Haken beim letzten Boss der Story. Danach kann man Level per Elevator replayen.")]
+    public bool isFinalBoss = false;
+
     public Action OnDeath;
     public Action OnPhaseTransitionStart;
     public Action OnPhaseTransitionEnd;
@@ -43,6 +48,13 @@ public class BossLife : MonoBehaviour
     void Start()
     {
         currentHP = maxHP;
+
+        // Laut Spielstand schon besiegt -> Boss weg, Ausgang offen
+        if (SaveSystem.IsCleared(SaveSystem.GetObjectId(gameObject)))
+        {
+            OpenExit();
+            Destroy(gameObject);
+        }
     }
 
     public void ShowHealthBar()
@@ -94,6 +106,8 @@ public class BossLife : MonoBehaviour
 
         DropLoot();
         OpenExit();
+
+        SaveSystem.MarkBossDefeated(gameObject, isFinalBoss);
 
         OnDeath?.Invoke();
         Destroy(gameObject);

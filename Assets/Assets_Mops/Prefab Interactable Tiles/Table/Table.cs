@@ -1,30 +1,23 @@
 using UnityEngine;
 
-public class Table : MonoBehaviour, IInteractable
+/// <summary>
+/// Tisch mit eigenem Inventar. Kann alles, was eine Chest kann
+/// (Items im Inspector, mit F oeffnen, Interaction Hint).
+/// Zusaetzlich: schliesst automatisch, wenn der Spieler zu weit weg ist.
+/// </summary>
+public class Table : Chest
 {
-    [SerializeField] private GameObject tableUI;
-    [SerializeField] private float closeRange = 3f;   // NEU
+    [Header("Table")]
+    [SerializeField] private float closeRange = 3f;
 
-    private Transform player;   // NEU
-
-    private void Start()   // NEU
+    protected override void Update()
     {
-        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-        if (playerObj != null)
-            player = playerObj.transform;
-    }
+        base.Update();
 
-    private void Update()   // NEU
-    {
-        if (player == null || tableUI == null || !tableUI.activeSelf) return;
+        if (player == null || !isOpen) return;
 
         float distance = Vector2.Distance(transform.position, player.position);
         if (distance > closeRange)
-            tableUI.SetActive(false);
-    }
-
-    public void Interact(GameObject player)
-    {
-        tableUI.SetActive(true);
+            CloseChest();
     }
 }
