@@ -17102,27 +17102,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawn
   waveConfigs:
   - enemyCounts:
-    - enemyPrefab: {fileID: 3502307798667565941, guid: 40956fd26092f0e49bd05a201a3244f3, type: 3}
-      count: 4
     - enemyPrefab: {fileID: 7381866628350399518, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
       count: 3
-  - enemyCounts:
-    - enemyPrefab: {fileID: 7381866628350399518, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
-      count: 5
     - enemyPrefab: {fileID: 3502307798667565941, guid: f1b43995d3526d542b383a3996dbd7da, type: 3}
+      count: 2
+    - enemyPrefab: {fileID: 3502307798667565941, guid: 40956fd26092f0e49bd05a201a3244f3, type: 3}
       count: 2
   - enemyCounts:
     - enemyPrefab: {fileID: 3502307798667565941, guid: f1b43995d3526d542b383a3996dbd7da, type: 3}
-      count: 4
+      count: 2
     - enemyPrefab: {fileID: 3502307798667565941, guid: 40956fd26092f0e49bd05a201a3244f3, type: 3}
       count: 4
+    - enemyPrefab: {fileID: 7381866628350399518, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
+      count: 2
   - enemyCounts:
+    - enemyPrefab: {fileID: 3502307798667565941, guid: 40956fd26092f0e49bd05a201a3244f3, type: 3}
+      count: 3
+    - enemyPrefab: {fileID: 7381866628350399518, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
+      count: 3
     - enemyPrefab: {fileID: 3502307798667565941, guid: f1b43995d3526d542b383a3996dbd7da, type: 3}
       count: 3
+  - enemyCounts:
     - enemyPrefab: {fileID: 3502307798667565941, guid: 40956fd26092f0e49bd05a201a3244f3, type: 3}
       count: 4
     - enemyPrefab: {fileID: 7381866628350399518, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
       count: 4
+    - enemyPrefab: {fileID: 3502307798667565941, guid: f1b43995d3526d542b383a3996dbd7da, type: 3}
+      count: 3
   maxEnemiesAlive: 6
   spawnDelay: 1
   timeBetweenWaves: 4

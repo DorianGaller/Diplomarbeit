@@ -1653,7 +1653,7 @@ MonoBehaviour:
   timeBetweenWaves: 4
   minDistanceFromPlayer: 3
   spawnAreaSize: {x: 42.4, y: 21.7, z: 0}
-  maxWaves: 5
+  maxWaves: 4
   endlessWaves: 0
   enemyCountMultiplier: 1
   exitTilemap: {fileID: 1327484261}

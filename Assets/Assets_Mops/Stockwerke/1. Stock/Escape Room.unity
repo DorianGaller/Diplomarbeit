@@ -18761,7 +18761,7 @@ MonoBehaviour:
     text: Choom, you awake? Good. Listen up, this lab is locked down tight.
     voice: {fileID: 8300000, guid: 15bcd85a51bedda42ac5618a2f678b4f, type: 3}
   - fromPlayer: 1
-    text: Rayn? Where the hell am I?
+    text: Ryan? Where the hell am I?
     voice: {fileID: 0}
   - fromPlayer: 0
     text: Corpo lab. No time for a tour. See those tables? Press G to grab one, G
