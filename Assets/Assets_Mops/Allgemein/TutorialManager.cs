@@ -212,12 +212,20 @@ public class TutorialManager : MonoBehaviour
                     yield return null;
                 yield return new WaitForSeconds(voiceGap);
             }
-            else
+                        else
             {
                 yield return new WaitForSeconds(pauseBase + pausePerChar * line.text.Length);
             }
-        }
-    }
+        }   // ← Ende der foreach-Schleife
+
+        // ── 3. Teil zu Ende, Nachrichten verschwinden (bei hangUp: auflegen) ──
+        yield return new WaitForSeconds(endDelay);
+
+        if (hangUp && audioSource != null && hangUpClip != null)
+            audioSource.PlayOneShot(hangUpClip);
+
+        EndTutorial();
+    }   // ← Ende von PlayPart
 
     private void ResolvePlayer()
     {

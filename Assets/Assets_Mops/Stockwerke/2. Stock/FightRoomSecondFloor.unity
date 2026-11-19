@@ -10401,10 +10401,10 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 5759726149640862409, guid: 5b620c06cfe553c4c9d89b38b50ae165, type: 3}
       count: 1
   - enemyCounts:
-    - enemyPrefab: {fileID: 1656671643}
+    - enemyPrefab: {fileID: 5759726149640862409, guid: 5b620c06cfe553c4c9d89b38b50ae165, type: 3}
       count: 2
   - enemyCounts:
-    - enemyPrefab: {fileID: 1656671643}
+    - enemyPrefab: {fileID: 5759726149640862409, guid: 5b620c06cfe553c4c9d89b38b50ae165, type: 3}
       count: 3
   maxEnemiesAlive: 3
   spawnDelay: 1.2
