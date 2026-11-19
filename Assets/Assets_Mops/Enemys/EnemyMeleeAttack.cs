@@ -10,6 +10,11 @@ public class EnemyMeleeAttack : MonoBehaviour
     public float attackInterval = 1f;  // Zeit zwischen zwei Treffern
     private float attackTimer;
 
+
+    [Header("Sound")]
+    public AudioClip attackSound;
+    [Range(0f, 1f)] public float attackVolume = 0.7f;
+
     void Start()
     {
         if (player == null)
@@ -36,6 +41,7 @@ public class EnemyMeleeAttack : MonoBehaviour
 
     private void Attack()
     {
+                EnemySound.Play(this, attackSound, attackVolume);
         PlayerLife playerLife = player.GetComponent<PlayerLife>();
         if (playerLife != null)
             playerLife.TakeDamage(damage);

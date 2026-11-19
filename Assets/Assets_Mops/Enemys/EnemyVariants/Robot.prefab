@@ -122,6 +122,7 @@ MonoBehaviour:
   bodyRadius: 0.89
   pathCellSize: {x: 0.75, y: 0.75}
   repathInterval: 0.4
+  pathClearance: 0.85
   facePlayerWhenIdle: 1
 --- !u!114 &7691642563939369976
 MonoBehaviour:
@@ -143,7 +144,10 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 2048
+  bulletRadius: 0.15
   stopWhileShooting: 0
+  shootSound: {fileID: 8300000, guid: 64f188b18c36ef04da1cfe1572696ef1, type: 3}
+  shootVolume: 0.5
 --- !u!114 &5359680669108917281
 MonoBehaviour:
   m_ObjectHideFlags: 0

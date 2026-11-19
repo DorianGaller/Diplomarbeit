@@ -10398,7 +10398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawn
   waveConfigs:
   - enemyCounts:
-    - enemyPrefab: {fileID: 1656671643}
+    - enemyPrefab: {fileID: 5759726149640862409, guid: 5b620c06cfe553c4c9d89b38b50ae165, type: 3}
       count: 1
   - enemyCounts:
     - enemyPrefab: {fileID: 1656671643}
@@ -10420,8 +10420,11 @@ MonoBehaviour:
   exitHeight: 3
   cameraPanDuration: 2
   exitZoomSize: 6
+  cameraHoldTime: 1.5
   returnCameraAfterPan: 1
   cameraPanTarget: {fileID: 0}
+  clearedSound: {fileID: 0}
+  clearedVolume: 0.8
   hudRoot: {fileID: 0}
 --- !u!1 &170458826
 GameObject:
@@ -17143,8 +17146,11 @@ MonoBehaviour:
   exitHeight: 2
   cameraPanDuration: 2
   exitZoomSize: 1
+  cameraHoldTime: 1.5
   returnCameraAfterPan: 1
   cameraPanTarget: {fileID: 1761885259}
+  clearedSound: {fileID: 8300000, guid: 566da8d80eb647842a7c5caec2740b16, type: 3}
+  clearedVolume: 0.8
   hudRoot: {fileID: 2002089409}
 --- !u!4 &1863458617
 Transform:

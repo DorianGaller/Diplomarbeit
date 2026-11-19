@@ -159,6 +159,8 @@ MonoBehaviour:
   attackRange: 2
   damage: 15
   attackInterval: 1
+  attackSound: {fileID: 8300000, guid: 0b7739f00e7d7b846a5efa84e1f7febe, type: 3}
+  attackVolume: 0.7
 --- !u!114 &7874242885505332412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,6 +179,8 @@ MonoBehaviour:
   dashTriggerRange: 10
   minDashRange: 1.5
   dashGhostPrefab: {fileID: 7260098115818715127, guid: 061e8cb799738954e890f6fedf23207a, type: 3}
+  dashSound: {fileID: 8300000, guid: 2a85d709922aba444b12584a3dd81ba3, type: 3}
+  dashVolume: 0.7
   ghostSpawnRate: 0.05
 --- !u!95 &-291090119318729190
 Animator:
@@ -216,3 +220,4 @@ MonoBehaviour:
   movementThreshold: 0.05
   stateChangeDelay: 0.1
   shootClipName: Robot_Shooting
+  shootAnimationSpeed: 1

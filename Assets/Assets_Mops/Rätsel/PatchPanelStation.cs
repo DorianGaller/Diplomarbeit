@@ -191,23 +191,34 @@ public class PatchPanelStation : PuzzleStation
 
         for (int p = 0; p < count; p++)
         {
-            Vector2 pos = new Vector2(-340f, top - p * step);
-            Image box = NewImage("Port " + (p + 1), content, ColPanelDark, new Vector2(240, step - 20), pos);
+            Vector2 pos = new Vector2(-440f, top - p * step);
+            Image box = NewImage("Port " + (p + 1), content, ColPanelDark, new Vector2(180, step - 20), pos);
             portRects[p] = box.rectTransform;
-            NewText("Label", box.transform, "PORT " + (p + 1), 32, ColText, new Vector2(170, step - 20), new Vector2(-25, 0));
-            NewImage("Jack", box.transform, CableColors[p], new Vector2(28, 28), new Vector2(98, 0));
-            portPins[p] = pos + new Vector2(98, 0);
+            NewText("Label", box.transform, "PORT " + (p + 1), 30, ColText, new Vector2(130, step - 20), new Vector2(-20, 0));
+            NewImage("Jack", box.transform, CableColors[p], new Vector2(28, 28), new Vector2(68, 0));
+            portPins[p] = pos + new Vector2(68, 0);
         }
 
         for (int t = 0; t < count; t++)
         {
-            Vector2 pos = new Vector2(340f, top - targetRow[t] * step);
-            Image box = NewImage("Target " + targetNames[t], content, ColPanelDark, new Vector2(260, step - 20), pos);
+            Vector2 pos = new Vector2(-10f, top - targetRow[t] * step);
+            Image box = NewImage("Target " + targetNames[t], content, ColPanelDark, new Vector2(220, step - 20), pos);
             targetRects[t] = box.rectTransform;
-            NewText("Label", box.transform, targetNames[t], 30, ColText, new Vector2(200, step - 20), new Vector2(25, 0));
-            NewImage("Socket", box.transform, ColLine, new Vector2(28, 28), new Vector2(-108, 0));
-            targetPins[t] = pos + new Vector2(-108, 0);
+            NewText("Label", box.transform, targetNames[t], 28, ColText, new Vector2(160, step - 20), new Vector2(22, 0));
+            NewImage("Socket", box.transform, ColLine, new Vector2(28, 28), new Vector2(-88, 0));
+            targetPins[t] = pos + new Vector2(-88, 0);
         }
+
+        string yellow = ColorUtility.ToHtmlStringRGB(ColYellow);
+        string red = ColorUtility.ToHtmlStringRGB(ColRed);
+        AddInfoPanel("HOW IT WORKS",
+            "Connect every PORT to the\nright system.\n\n" +
+            "- Drag a cable from a PORT\n  plug to a system\n" +
+            "- Click a PORT again to unplug it\n" +
+            "- Which port goes where is\n  NOT shown here. Find the\n" +
+            "  <color=#" + yellow + ">labels</color> in this room,\n  e.g. PORT 3 -> CORE\n" +
+            "- When all ports are plugged,\n  wrong cables flash <color=#" + red + ">red</color>\n  and pop out",
+            ColPink);
     }
 
     private void RefreshCables()

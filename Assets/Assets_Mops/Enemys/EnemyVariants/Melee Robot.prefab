@@ -143,3 +143,5 @@ MonoBehaviour:
   attackRange: 2.5
   damage: 10
   attackInterval: 1
+  attackSound: {fileID: 8300000, guid: 0b7739f00e7d7b846a5efa84e1f7febe, type: 3}
+  attackVolume: 0.7

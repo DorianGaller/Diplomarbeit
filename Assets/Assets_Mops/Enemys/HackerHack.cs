@@ -36,6 +36,11 @@ public class HackerHack : MonoBehaviour
     public Animator animator;
     [SerializeField] private string hackingBool = "IsHacking";
 
+    [Header("Sound")]
+    public AudioClip typingSound;
+    public AudioClip hackSound;
+    [Range(0f, 1f)] public float soundVolume = 0.7f;
+
     private Transform player;
     private PlayerControlHack playerHack;
     private HackerMovement movement;
@@ -116,6 +121,8 @@ public class HackerHack : MonoBehaviour
             yield return null;
         }
 
+        if (!interrupted) EnemySound.Play(this, typingSound, soundVolume, 0f);
+
         // 2. tippen = Warnphase, Symbol blinkt immer schneller
         t = 0f;
         while (t < typingTime && !interrupted)
@@ -129,10 +136,14 @@ public class HackerHack : MonoBehaviour
             yield return null;
         }
         if (warningIcon != null) warningIcon.SetActive(false);
+        if (interrupted) EnemySound.GetSource(this).Stop();
 
-        // 3. nicht unterbrochen -> zufaellig W/S oder A/D vertauschen
+                // 3. nicht unterbrochen -> zufaellig W/S oder A/D vertauschen
         if (!interrupted && playerHack != null)
+        {
             playerHack.ApplyHack(Random.value < 0.5f, hackDuration, this);
+            EnemySound.Play(this, hackSound, soundVolume, 0f);
+        }
 
         // 4. aufstehen
         SetHackingAnim(false);

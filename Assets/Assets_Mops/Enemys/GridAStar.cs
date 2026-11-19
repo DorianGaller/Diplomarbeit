@@ -12,13 +12,15 @@ public static class GridAStar
         public float fCost => gCost + hCost;
     }
 
-    public static List<Vector2> FindPath(Vector2 startWorld, Vector2 targetWorld, Vector2 cellSize, LayerMask obstacleLayer, int maxSearchCells = 400)
+    /// <param name="clearance">Abstand, den der Weg zu Hindernissen haelt (Radius). 0 = alte Pruefung pro Zelle</param>
+    public static List<Vector2> FindPath(Vector2 startWorld, Vector2 targetWorld, Vector2 cellSize, LayerMask obstacleLayer,
+                                         int maxSearchCells = 400, float clearance = 0f)
     {
         Vector2Int start = WorldToCell(startWorld, cellSize);
         Vector2Int target = WorldToCell(targetWorld, cellSize);
 
-        if (IsBlocked(target, cellSize, obstacleLayer))
-            target = FindNearestFreeCell(target, cellSize, obstacleLayer);
+        if (IsBlocked(target, cellSize, obstacleLayer, clearance))
+            target = FindNearestFreeCell(target, cellSize, obstacleLayer, clearance);
 
         var openSet = new List<Node>();
         var closedSet = new HashSet<Vector2Int>();
@@ -57,7 +59,7 @@ public static class GridAStar
                 Vector2Int neighborCell = current.cell + offset;
 
                 if (closedSet.Contains(neighborCell)) continue;
-                if (IsBlocked(neighborCell, cellSize, obstacleLayer)) continue;
+                if (IsBlocked(neighborCell, cellSize, obstacleLayer, clearance)) continue;
 
                 float newCost = current.gCost + 1f;
 
@@ -97,13 +99,18 @@ public static class GridAStar
         return path;
     }
 
-    private static bool IsBlocked(Vector2Int cell, Vector2 cellSize, LayerMask obstacleLayer)
+    private static bool IsBlocked(Vector2Int cell, Vector2 cellSize, LayerMask obstacleLayer, float clearance = 0f)
     {
         Vector2 worldPos = CellToWorld(cell, cellSize);
+
+        // Breite Gegner: Kreis mit ihrem Radius muss frei sein
+        if (clearance > 0f)
+            return Physics2D.OverlapCircle(worldPos, clearance, obstacleLayer) != null;
+
         return Physics2D.OverlapBox(worldPos, cellSize * 0.8f, 0f, obstacleLayer) != null;
     }
 
-    private static Vector2Int FindNearestFreeCell(Vector2Int cell, Vector2 cellSize, LayerMask obstacleLayer)
+    private static Vector2Int FindNearestFreeCell(Vector2Int cell, Vector2 cellSize, LayerMask obstacleLayer, float clearance = 0f)
     {
         for (int radius = 1; radius <= 5; radius++)
         {
@@ -112,7 +119,7 @@ public static class GridAStar
                 for (int y = -radius; y <= radius; y++)
                 {
                     Vector2Int check = cell + new Vector2Int(x, y);
-                    if (!IsBlocked(check, cellSize, obstacleLayer))
+                    if (!IsBlocked(check, cellSize, obstacleLayer, clearance))
                         return check;
                 }
             }

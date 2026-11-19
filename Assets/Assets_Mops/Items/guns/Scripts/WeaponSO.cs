@@ -34,4 +34,8 @@ public class WeaponSO : ScriptableObject
     [Header("Visual")]   // NEU
     [Tooltip("Abstand von der Waffen-Icon-Mitte bis zur Laufspitze — kurze Waffen kleiner, lange Waffen größer")]
     public float muzzleOffset = 0.3f;   // NEU
+
+    [Header("Sound")]
+    public AudioClip shootSound;
+    [Range(0f, 1f)] public float shootVolume = 0.6f;
 }

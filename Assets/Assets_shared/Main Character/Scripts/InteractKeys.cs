@@ -129,6 +129,8 @@ public class InteractKeys : MonoBehaviour
         if (Time.time < nextFireTime) return;
         nextFireTime = Time.time + weapon.fireRate;
 
+        PlayShotSound(weapon);
+
         Vector2 baseDir = orbit != null ? orbit.AimDirection : (Vector2)shootPoint.right;
 
         // 🔹 Mehrere Bullets (Shotgun etc.) mit optionalem Spread
@@ -160,6 +162,23 @@ public class InteractKeys : MonoBehaviour
                 effect.Init(shootDir);
             }
         }
+    }
+
+    private AudioSource shotSource;
+
+    private void PlayShotSound(WeaponSO weapon)
+    {
+        if (weapon.shootSound == null) return;
+
+        if (shotSource == null)
+        {
+            shotSource = gameObject.AddComponent<AudioSource>();
+            shotSource.playOnAwake = false;
+            shotSource.spatialBlend = 0f;
+        }
+
+        shotSource.pitch = Random.Range(0.95f, 1.05f);
+        shotSource.PlayOneShot(weapon.shootSound, weapon.shootVolume);
     }
 
     private bool HandlePointBlank(Vector2 dir, int damage)

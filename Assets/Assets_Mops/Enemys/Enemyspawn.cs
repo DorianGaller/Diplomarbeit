@@ -48,11 +48,20 @@ public class EnemySpawn : MonoBehaviour
     public int exitWidth = 3;
     public int exitHeight = 2;
 
-    [Header("Exit Camera Pan")]
-    public float cameraPanDuration = 2f;
-    public float exitZoomSize = 4f;
+        [Header("Exit Camera Pan")]
+    [Tooltip("Dauer der Fahrt hin bzw. zurueck (Sekunden)")]
+    public float cameraPanDuration = 1f;
+    [Tooltip("Zoom beim Ausgang (Orthographic Size, Spiel-Kamera hat 8). 0 = nicht zoomen")]
+    public float exitZoomSize = 6f;
+    [Tooltip("So lange bleibt die Kamera beim Ausgang")]
+    public float cameraHoldTime = 1.5f;
     public bool returnCameraAfterPan = true;
     public Transform cameraPanTarget;
+
+        [Header("Sound")]
+    [Tooltip("Kurzer Jingle, wenn alle Wellen geschafft sind (leer = kein Sound)")]
+    public AudioClip clearedSound;
+    [Range(0f, 1f)] public float clearedVolume = 0.8f;
 
     [Header("HUD")]
     public Transform hudRoot;
@@ -108,7 +117,6 @@ public class EnemySpawn : MonoBehaviour
         else
             Debug.LogWarning("HUD Root nicht gesetzt!");
 
-        OnAllWavesCompleted += RemoveExitTile;
         OnAllWavesCompleted += StartExitCameraPan;
         OnAllWavesCompleted += MarkRoomCleared;
 
@@ -310,11 +318,17 @@ public class EnemySpawn : MonoBehaviour
         exitOpened = true;
     }
 
-    void StartExitCameraPan()
+        void StartExitCameraPan()
     {
+                if (clearedSound != null)
+            EnemySound.GetSource(this).PlayOneShot(clearedSound, clearedVolume);
+
+        if (mainCamera == null) mainCamera = Camera.main;
+
+        // Ohne Kamera oder Ausgang: Ausgang trotzdem oeffnen, nur ohne Fahrt
         if (mainCamera == null || exitWorldPosition == null)
         {
-            Debug.LogWarning("Kamera oder ExitWorldPosition nicht gesetzt!");
+            RemoveExitTile();
             return;
         }
 
@@ -323,55 +337,62 @@ public class EnemySpawn : MonoBehaviour
 
     IEnumerator PanCameraToExit()
     {
-        if (uiRoot != null)
-            uiRoot.SetActive(false);
+        if (uiRoot != null) uiRoot.SetActive(false);
+        SetPlayerLocked(true);
 
-        if (playerMovement != null)
-            playerMovement.enabled = false;
-
-        Transform camTransform = mainCamera.transform;
-
-        Vector3 startPos = camTransform.position;
+        Transform camT = mainCamera.transform;
+        Vector3 localStart = camT.localPosition;   // Kamera haengt am Spieler
+        float startSize = mainCamera.orthographicSize;
         Transform target = cameraPanTarget != null ? cameraPanTarget : exitWorldPosition;
 
-        Vector3 targetPos = new Vector3(
-            target.position.x,
-            target.position.y,
-            camTransform.position.z
-        );
+        // Hin
+        Vector3 from = camT.position;
+        Vector3 to = new Vector3(target.position.x, target.position.y, from.z);
+        float zoom = exitZoomSize > 0f ? exitZoomSize : startSize;
+        yield return MoveCamera(from, to, startSize, zoom);
 
-        float startSize = mainCamera.orthographicSize;
+        // Erst jetzt geht der Ausgang auf, waehrend die Kamera hinschaut
+        RemoveExitTile();
+        yield return new WaitForSeconds(cameraHoldTime);
 
-        float t = 0f;
-        while (t < 1f)
+        // Zurueck zum Spieler
+        if (returnCameraAfterPan)
         {
-            t += Time.deltaTime / cameraPanDuration;
+            Vector3 back = camT.parent != null ? camT.parent.TransformPoint(localStart) : from;
+            yield return MoveCamera(camT.position, back, mainCamera.orthographicSize, startSize);
+            camT.localPosition = localStart;
+            mainCamera.orthographicSize = startSize;
+        }
 
-            camTransform.position = Vector3.Lerp(startPos, targetPos, t);
+        SetPlayerLocked(false);
+        if (uiRoot != null) uiRoot.SetActive(true);
+    }
 
-            if (mainCamera.orthographic)
-                mainCamera.orthographicSize = Mathf.Lerp(startSize, exitZoomSize, t);
-
+    IEnumerator MoveCamera(Vector3 from, Vector3 to, float sizeFrom, float sizeTo)
+    {
+        float duration = Mathf.Max(0.01f, cameraPanDuration);
+        for (float t = 0f; t < 1f; t += Time.deltaTime / duration)
+        {
+            float e = Mathf.SmoothStep(0f, 1f, t);
+            mainCamera.transform.position = Vector3.Lerp(from, to, e);
+            if (mainCamera.orthographic) mainCamera.orthographicSize = Mathf.Lerp(sizeFrom, sizeTo, e);
             yield return null;
         }
 
-        yield return new WaitForSeconds(1f);
+        mainCamera.transform.position = to;
+        if (mainCamera.orthographic) mainCamera.orthographicSize = sizeTo;
+    }
 
-        if (returnCameraAfterPan)
-        {
-            camTransform.position = startPos;
+    void SetPlayerLocked(bool locked)
+    {
+        GameObject p = GameObject.FindGameObjectWithTag("Player");
+        if (p == null) return;
 
-            if (mainCamera.orthographic)
-                mainCamera.orthographicSize = startSize;
-        }
+        PlayerMovement movement = p.GetComponentInChildren<PlayerMovement>();
+        if (movement != null) movement.SetMovementInputLocked(locked);
 
-        yield return new WaitForSeconds(1f);
-
-        if (uiRoot != null)
-            uiRoot.SetActive(true);
-
-        if (playerMovement != null)
-            playerMovement.enabled = true;
+        InteractKeys keys = p.GetComponentInChildren<InteractKeys>();
+        if (keys != null) keys.EnableShooting(!locked);
     }
 
     void UpdateHUD()

@@ -16,6 +16,11 @@ public class EnemyDash : MonoBehaviour
 
     [Header("Ghost Trail")]
     public GameObject dashGhostPrefab;
+
+    [Header("Sound")]
+    public AudioClip dashSound;
+    [Range(0f, 1f)] public float dashVolume = 0.7f;
+
     public float ghostSpawnRate = 0.05f;
 
     private bool isDashing = false;
@@ -63,6 +68,8 @@ public class EnemyDash : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
+
+        EnemySound.Play(this, dashSound, dashVolume);
 
         if (follow != null)
             follow.enabled = false;   // normales Verfolgen pausieren, damit sich beide Bewegungen nicht überschneiden

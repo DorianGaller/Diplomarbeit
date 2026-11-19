@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;  
 
 /// <summary>
 /// Station 3 – Kabel kappen.
@@ -75,7 +76,7 @@ public class WireCutStation : PuzzleStation
         BuildPanel();
 
         if (HasTool())
-            SetStatus("Cut ONE wire. Read the manual first.", ColMuted);
+                        SetStatus("Follow the manual. Cut ONE wire - wrong cut = ALARM!", ColMuted);
         else
             SetStatus("You need " + requiredItemName.ToUpper() + " in your main hand.", ColYellow);
     }
@@ -196,15 +197,19 @@ public class WireCutStation : PuzzleStation
 
     // ── Anzeige ───────────────────────────────────────────
 
-    private void BuildPanel()
+        private void BuildPanel()
     {
         wireRects = new RectTransform[WireCount];
         leftHalf = new Image[WireCount];
         rightHalf = new Image[WireCount];
 
-        NewImage("Backplate", content, ColPanelDark, new Vector2(900, 520), Vector2.zero);
-        NewImage("TerminalLeft", content, ColLine, new Vector2(40, 480), new Vector2(-420, 0));
-        NewImage("TerminalRight", content, ColLine, new Vector2(40, 480), new Vector2(420, 0));
+        // ── Links: die Kabel ──
+        const float cx = -215f;    // Mitte der Kabel
+        const float half = 240f;   // halbe Kabellaenge
+
+        NewImage("Backplate", content, ColPanelDark, new Vector2(620, 520), new Vector2(cx, 0));
+        NewImage("TerminalLeft", content, ColLine, new Vector2(36, 480), new Vector2(cx - half - 20, 0));
+        NewImage("TerminalRight", content, ColLine, new Vector2(36, 480), new Vector2(cx + half + 20, 0));
 
         float step = 90f;
         float top = (WireCount - 1) * step / 2f;
@@ -214,20 +219,43 @@ public class WireCutStation : PuzzleStation
             float y = top - i * step;
             Color32 col = WireColors[(int)wires[i]];
 
-            // Klickflaeche ueber die ganze Breite
-            RectTransform hit = NewRect("Wire " + (i + 1), content, new Vector2(800, 60), new Vector2(0, y));
+            // Klickflaeche ueber die ganze Kabellaenge
+            RectTransform hit = NewRect("Wire " + (i + 1), content, new Vector2(half * 2f, 60), new Vector2(cx, y));
             wireRects[i] = hit;
 
             // Schwarzes Kabel bekommt einen hellen Rand, damit man es sieht
             if (wires[i] == WireColor.Black)
-                NewImage("Outline", content, ColOff, new Vector2(804, 30), new Vector2(0, y));
+                NewImage("Outline", content, ColOff, new Vector2(half * 2f + 4, 30), new Vector2(cx, y));
 
-            leftHalf[i] = NewImage("Left", content, col, new Vector2(400, 22), new Vector2(-200, y));
-            rightHalf[i] = NewImage("Right", content, col, new Vector2(400, 22), new Vector2(200, y));
+            leftHalf[i] = NewImage("Left", content, col, new Vector2(half, 22), new Vector2(cx - half / 2f, y));
+            rightHalf[i] = NewImage("Right", content, col, new Vector2(half, 22), new Vector2(cx + half / 2f, y));
 
-            NewImage("ScrewL", content, ColMuted, new Vector2(26, 26), new Vector2(-410, y));
-            NewImage("ScrewR", content, ColMuted, new Vector2(26, 26), new Vector2(410, y));
-            NewText("Nr", content, (i + 1).ToString(), 26, ColMuted, new Vector2(40, 40), new Vector2(-470, y));
+            NewImage("ScrewL", content, ColMuted, new Vector2(26, 26), new Vector2(cx - half - 10, y));
+            NewImage("ScrewR", content, ColMuted, new Vector2(26, 26), new Vector2(cx + half + 10, y));
+            NewText("Nr", content, (i + 1).ToString(), 26, ColMuted, new Vector2(40, 40), new Vector2(cx - half - 70, y));
         }
+
+        // ── Rechts: das Handbuch ──
+        Vector2 m = new Vector2(315, 0);
+        NewImage("ManualFrame", content, ColYellow, new Vector2(424, 524), m);
+        NewImage("ManualPaper", content, ColPanelDark, new Vector2(416, 516), m);
+        NewImage("ManualHeader", content, ColYellow, new Vector2(416, 52), m + new Vector2(0, 232));
+        NewText("ManualTitle", content, "SAFETY MANUAL", 30, ColPanelDark, new Vector2(400, 50), m + new Vector2(0, 232));
+        NewText("ManualText", content, ColorizeManual(), 22, ColText, new Vector2(380, 440), m + new Vector2(0, -26), TextAlignmentOptions.TopLeft);
+    }
+
+    /// <summary>Handbuch ohne erste Zeile (steht schon im Kopf), Farbwoerter in ihrer Kabelfarbe.</summary>
+    private static string ColorizeManual()
+    {
+        string text = Manual.Substring(Manual.IndexOf('\n') + 1);
+        string[] names = { "red", "blue", "yellow", "white", "black" };   // gleiche Reihenfolge wie WireColor
+
+        for (int c = 0; c < names.Length; c++)
+        {
+            string hex = ColorUtility.ToHtmlStringRGB(WireColors[c]);
+            text = System.Text.RegularExpressions.Regex.Replace(
+                text, @"\b" + names[c] + @"\b", "<color=#" + hex + ">" + names[c] + "</color>");
+        }
+        return text;
     }
 }

@@ -22,3 +22,5 @@ MonoBehaviour:
   bulletsPerShot: 1
   spreadAngle: 4
   muzzleOffset: 1.7
+  shootSound: {fileID: 8300000, guid: 12267e98cdc92a34c9c9b26e38b4f240, type: 3}
+  shootVolume: 0.6

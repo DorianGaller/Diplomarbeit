@@ -14,9 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponSO
   weaponName: Pistol
   weaponSprite: {fileID: -4979552915664131744, guid: 5b416e84ecb354de3a0b464332404861, type: 3}
+  baseDamage: 25
+  growthPerLevel: 0.2
   firingMode: 0
   bulletPrefab: {fileID: 8388209518827460252, guid: bd78c33b5bc7b56438281d0eab6e9958, type: 3}
   fireRate: 0.2
   bulletsPerShot: 1
   spreadAngle: 0
   muzzleOffset: 1.2
+  shootSound: {fileID: 8300000, guid: d572e6e71c1573747a702efe0d7f0410, type: 3}
+  shootVolume: 0.6

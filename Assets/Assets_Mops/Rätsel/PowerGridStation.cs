@@ -217,16 +217,18 @@ public class PowerGridStation : PuzzleStation
 
     private void BuildBoard()
     {
-        float cell = Mathf.Min(520f / rows, 760f / columns);
+                // Links das Raster (mit GEN und OUT), rechts der Erklaer-Kasten
+        Vector2 center = new Vector2(-212f, 0f);
+        float cell = Mathf.Min(520f / rows, 620f / (columns + 3.3f));
         float thick = cell * 0.2f;
-        Vector2 origin = new Vector2(-(columns - 1) * cell / 2f, (rows - 1) * cell / 2f);
+        Vector2 origin = center + new Vector2(-(columns - 1) * cell / 2f, (rows - 1) * cell / 2f);
 
         int n = columns * rows;
         cellRects = new RectTransform[n];
         arms = new Image[n, 4];
         hubs = new Image[n];
 
-        NewImage("Board", content, ColLine, new Vector2(columns * cell + 12, rows * cell + 12), Vector2.zero);
+                NewImage("Board", content, ColLine, new Vector2(columns * cell + 12, rows * cell + 12), center);
 
         for (int i = 0; i < n; i++)
         {
@@ -261,6 +263,19 @@ public class PowerGridStation : PuzzleStation
         outLine = NewImage("OutLine", content, ColOff, new Vector2(cell * 0.9f, thick), endPos + new Vector2(cell * 0.95f, 0));
         outBox = NewImage("Out", content, ColOff, new Vector2(cell * 1.1f, cell * 0.8f), endPos + new Vector2(cell * 1.6f, 0));
         NewText("OutText", outBox.transform, "OUT", cell * 0.3f, ColPanelDark, new Vector2(cell, cell), Vector2.zero);
+
+                string cyan = ColorUtility.ToHtmlStringRGB(ColCyan);
+        string red = ColorUtility.ToHtmlStringRGB(ColRed);
+        AddInfoPanel("HOW IT WORKS",
+            "Bring power from <color=#" + cyan + ">GEN</color> to <color=#" + cyan + ">OUT</color>.\n\n" +
+            "- Left click: turn a tile\n" +
+            "- Right click: turn it back\n" +
+            "- Powered lines glow <color=#" + cyan + ">cyan</color>\n" +
+            "- <color=#" + red + ">X</color> tiles are fried and\n" +
+            "  can't be turned.\n" +
+            "  Build around them!\n\n" +
+            "Every grid can be solved.",
+            ColCyan);
     }
 
     private void Refresh()

@@ -11959,6 +11959,12 @@ Tilemap:
   - serializedVersion: 2
     m_RefCount: 8
     m_Data: {fileID: 11400000, guid: 70e4141c3378149459b107c8944913fc, type: 2}
+  - serializedVersion: 2
+    m_RefCount: 0
+    m_Data: {fileID: 11400000, guid: 4cb026dc0eadb4d448744e88f6ac3d1a, type: 2}
+  - serializedVersion: 2
+    m_RefCount: 0
+    m_Data: {fileID: 11400000, guid: dcc55363ad09cb741ba2622f1f075e5d, type: 2}
   m_TileSpriteArray:
   - serializedVersion: 2
     m_RefCount: 49
@@ -11974,7 +11980,7 @@ Tilemap:
     m_Data: {fileID: 6252679873470270074, guid: 5118a5d8f1ea749f49e1884440fd30ed, type: 3}
   - serializedVersion: 2
     m_RefCount: 0
-    m_Data: {fileID: 6369125951879856186, guid: 5118a5d8f1ea749f49e1884440fd30ed, type: 3}
+    m_Data: {fileID: 4885863192047368792, guid: 6772cf47575724f6ebc5a91de41a1308, type: 3}
   - serializedVersion: 2
     m_RefCount: 13
     m_Data: {fileID: -3405840351521365349, guid: 5118a5d8f1ea749f49e1884440fd30ed, type: 3}
@@ -11995,7 +12001,7 @@ Tilemap:
     m_Data: {fileID: 8830534372315989159, guid: 5118a5d8f1ea749f49e1884440fd30ed, type: 3}
   - serializedVersion: 2
     m_RefCount: 0
-    m_Data: {fileID: 1232202451162397574, guid: 29be5d2129810b3824c2771116e58928, type: 3}
+    m_Data: {fileID: 21300000, guid: c59fd02b7442f4f5695d6fae8a389846, type: 3}
   - serializedVersion: 2
     m_RefCount: 13
     m_Data: {fileID: -4885697743227530137, guid: 29be5d2129810b3824c2771116e58928, type: 3}
@@ -12151,7 +12157,7 @@ Tilemap:
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -26, y: -22, z: 0}
-  m_Size: {x: 51, y: 41, z: 1}
+  m_Size: {x: 154, y: 44, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -32173,7 +32179,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: chestItems.Array.data[1].quantity
-      value: 100
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3076959631185486184, guid: 5b93739556a904b469f49776f3ff5288, type: 3}
       propertyPath: chestItems.Array.data[1].isCredits
@@ -32951,6 +32957,7 @@ MonoBehaviour:
   mainHandSlot: {fileID: 0}
   isFloorEntrance: 0
   floorID: 
+  unlockFloorOnEnter: 
 --- !u!61 &2099999238
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -677,7 +677,7 @@ GameObject:
   - component: {fileID: 354426028}
   - component: {fileID: 354426027}
   - component: {fileID: 354426026}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Deko Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1583,7 +1583,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &430507641
 Transform:
   m_ObjectHideFlags: 0
@@ -1660,10 +1660,13 @@ MonoBehaviour:
   exitWorldPosition: {fileID: 533392363}
   exitWidth: 3
   exitHeight: 2
-  cameraPanDuration: 2
+  cameraPanDuration: 1
   exitZoomSize: 6
+  cameraHoldTime: 1.5
   returnCameraAfterPan: 1
   cameraPanTarget: {fileID: 533392363}
+  clearedSound: {fileID: 8300000, guid: 566da8d80eb647842a7c5caec2740b16, type: 3}
+  clearedVolume: 0.8
   hudRoot: {fileID: 300097181}
 --- !u!4 &436433688
 Transform:
@@ -2957,8 +2960,11 @@ MonoBehaviour:
   exitHeight: 1
   cameraPanDuration: 2
   exitZoomSize: 6
+  cameraHoldTime: 1.5
   returnCameraAfterPan: 1
   cameraPanTarget: {fileID: 0}
+  clearedSound: {fileID: 0}
+  clearedVolume: 0.8
   hudRoot: {fileID: 300097181}
 --- !u!1 &665653644
 GameObject:
@@ -114466,6 +114472,10 @@ PrefabInstance:
       value: -0.44
       objectReference: {fileID: 0}
     - target: {fileID: 7030621381076966751, guid: cb8d3aa1d2980e24b8d122bcc8f4c55b, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030621381076966751, guid: cb8d3aa1d2980e24b8d122bcc8f4c55b, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -114897,10 +114907,13 @@ MonoBehaviour:
   exitWorldPosition: {fileID: 861051862}
   exitWidth: 2
   exitHeight: 2
-  cameraPanDuration: 2
+  cameraPanDuration: 1
   exitZoomSize: 6
+  cameraHoldTime: 1.5
   returnCameraAfterPan: 1
-  cameraPanTarget: {fileID: 0}
+  cameraPanTarget: {fileID: 861051862}
+  clearedSound: {fileID: 0}
+  clearedVolume: 0.8
   hudRoot: {fileID: 300097181}
 --- !u!4 &856600788
 Transform:
@@ -116978,8 +116991,11 @@ MonoBehaviour:
   exitHeight: 4
   cameraPanDuration: 2
   exitZoomSize: 6
+  cameraHoldTime: 1.5
   returnCameraAfterPan: 1
   cameraPanTarget: {fileID: 1100780362}
+  clearedSound: {fileID: 8300000, guid: 566da8d80eb647842a7c5caec2740b16, type: 3}
+  clearedVolume: 0.8
   hudRoot: {fileID: 300097181}
 --- !u!4 &1366673888
 Transform:
@@ -117225,8 +117241,11 @@ MonoBehaviour:
   exitHeight: 2
   cameraPanDuration: 2
   exitZoomSize: 6
+  cameraHoldTime: 1.5
   returnCameraAfterPan: 1
   cameraPanTarget: {fileID: 0}
+  clearedSound: {fileID: 0}
+  clearedVolume: 0.8
   hudRoot: {fileID: 300097181}
 --- !u!1 &1555492321
 GameObject:
@@ -118222,8 +118241,11 @@ MonoBehaviour:
   exitHeight: 1
   cameraPanDuration: 2
   exitZoomSize: 6
+  cameraHoldTime: 1.5
   returnCameraAfterPan: 1
   cameraPanTarget: {fileID: 0}
+  clearedSound: {fileID: 0}
+  clearedVolume: 0.8
   hudRoot: {fileID: 300097181}
 --- !u!1 &1736973534
 GameObject:

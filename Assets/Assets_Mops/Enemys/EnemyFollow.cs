@@ -17,6 +17,8 @@ public class EnemyFollow : MonoBehaviour
     [Tooltip("Raster fuer die Wegsuche um Hindernisse (halbe Tilemap-Zelle)")]
     public Vector2 pathCellSize = new Vector2(0.75f, 0.75f);
     public float repathInterval = 0.4f;
+    [Tooltip("Abstand, den der Weg zu Waenden haelt (etwa Koerper-Radius). 0 = wie frueher")]
+    public float pathClearance = 0.7f;
     [Header("Blickrichtung")]
     [Tooltip("Steht der Gegner still (z.B. beim Schiessen), schaut er zum Spieler")]
     public bool facePlayerWhenIdle = true;
@@ -24,6 +26,7 @@ public class EnemyFollow : MonoBehaviour
     private List<Vector2> path = new List<Vector2>();
     private int pathIndex;
     private float repathTimer = 999f;
+    private EnemyShoot shooter;
 
     void Start()
     {
@@ -32,6 +35,7 @@ public class EnemyFollow : MonoBehaviour
             GameObject p = GameObject.FindGameObjectWithTag("Player");
             if (p != null) player = p.transform;
         }
+        shooter = GetComponent<EnemyShoot>();
     }
 
     void Update()
@@ -40,7 +44,8 @@ public class EnemyFollow : MonoBehaviour
 
         float distance = Vector2.Distance(transform.position, player.position);
         float stopDistance = shootRange - stopOffset;
-        if (distance <= stopDistance)
+        // Nur stehen bleiben, wenn er von hier auch wirklich treffen kann
+        if (distance <= stopDistance && HasClearShot())
         {
             if (facePlayerWhenIdle)
                 FaceDirection(player.position - transform.position);
@@ -62,11 +67,13 @@ public class EnemyFollow : MonoBehaviour
             if (repathTimer >= repathInterval || pathIndex >= path.Count)
             {
                 repathTimer = 0f;
-                path = GridAStar.FindPath(transform.position, player.position, pathCellSize, obstacleLayer, 1500);
+                path = GridAStar.FindPath(transform.position, player.position, pathCellSize, obstacleLayer, 1500, pathClearance);
+                if (path.Count == 0 && pathClearance > 0f)   // zu eng fuer den Abstand -> ohne nochmal versuchen
+                    path = GridAStar.FindPath(transform.position, player.position, pathCellSize, obstacleLayer, 1500);
                 pathIndex = 0;
             }
 
-            while (pathIndex < path.Count && Vector2.Distance(transform.position, path[pathIndex]) < 0.1f)
+            while (pathIndex < path.Count && Vector2.Distance(transform.position, path[pathIndex]) < 0.3f)
                 pathIndex++;
 
             if (pathIndex < path.Count)
@@ -100,6 +107,9 @@ public class EnemyFollow : MonoBehaviour
 
         return !Physics2D.CircleCast(from, bodyRadius, (to - from) / dist, dist, obstacleLayer);
     }
+
+    // Freie Schussbahn laut EnemyShoot, sonst die eigene Sichtpruefung
+    bool HasClearShot() => shooter != null ? shooter.HasClearShot() : HasLineOfSight();
 
     // Bewegt den Gegner, gleitet aber an Waenden entlang statt hindurchzulaufen
     void Move(Vector2 delta)

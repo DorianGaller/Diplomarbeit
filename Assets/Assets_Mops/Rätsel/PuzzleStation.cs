@@ -331,6 +331,18 @@ public abstract class PuzzleStation : InteractableBase
         rt.offsetMin = rt.offsetMax = Vector2.zero;
     }
 
+        /// <summary>Erklaer-Kasten rechts im Fenster (gleiche Groesse wie das Handbuch im Kabelschacht).</summary>
+    protected void AddInfoPanel(string title, string body, Color accent)
+    {
+        Vector2 m = new Vector2(315, 0);
+        NewImage("InfoFrame", content, accent, new Vector2(424, 524), m);
+        NewImage("InfoPaper", content, ColPanelDark, new Vector2(416, 516), m);
+        NewImage("InfoHeader", content, accent, new Vector2(416, 52), m + new Vector2(0, 232));
+        NewText("InfoTitle", content, title, 30, ColPanelDark, new Vector2(400, 50), m + new Vector2(0, 232));
+        NewText("InfoText", content, body, 22, ColText, new Vector2(380, 440), m + new Vector2(0, -26),
+                TextAlignmentOptions.TopLeft);
+    }
+
     /// <summary>Linie von a nach b (beide im Koordinatensystem von 'content').</summary>
     protected static void SetLine(RectTransform line, Vector2 a, Vector2 b, float thickness)
     {

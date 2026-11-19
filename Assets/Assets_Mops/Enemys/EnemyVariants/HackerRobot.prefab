@@ -471,6 +471,9 @@ MonoBehaviour:
   warningIcon: {fileID: 987891143757138650}
   animator: {fileID: 7528476484797222324}
   hackingBool: IsHacking
+  typingSound: {fileID: 8300000, guid: 48e126ed48c2965449ccd9273687a7a9, type: 3}
+  hackSound: {fileID: 8300000, guid: 1f1ba61cc5cdbc74ea758d9cf7f91af2, type: 3}
+  soundVolume: 0.7
 --- !u!114 &816780590495021444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -487,6 +490,7 @@ MonoBehaviour:
   speed: 2.5
   fleeSpeedMultiplier: 1.3
   fleeDistance: 6
+  fleeExtraDistance: 2
   approachDistance: 7
   obstacleLayer:
     serializedVersion: 2
@@ -533,3 +537,4 @@ MonoBehaviour:
   movementThreshold: 0.05
   stateChangeDelay: 0.1
   shootClipName: HackerRobotHacking
+  shootAnimationSpeed: 1
