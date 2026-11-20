@@ -1843,13 +1843,17 @@ MonoBehaviour:
   - {fileID: 2260209111522418304}
   - {fileID: 6918810235891012841}
   itemSOs:
-  - {fileID: 11400000, guid: eddd477e0893dcd4384a394341de6989, type: 2}
-  - {fileID: 11400000, guid: b3d5e8e95bed94bbebb3cb29c76ab7d3, type: 2}
-  - {fileID: 11400000, guid: 2af8db872787e86478df5b365ba24c84, type: 2}
-  - {fileID: 11400000, guid: a5448b0494b39ef42b1dd94862889356, type: 2}
-  - {fileID: 11400000, guid: 660844b55b3b5454b8b841e9004f57bd, type: 2}
   - {fileID: 11400000, guid: e7b265b1aacd1614bab18b574b26504b, type: 2}
+  - {fileID: 11400000, guid: e462f500b7f5487c84d39cb7944e5743, type: 2}
+  - {fileID: 11400000, guid: 2d53b4f4f3644e2191244e80dbd8e079, type: 2}
+  - {fileID: 11400000, guid: 2af8db872787e86478df5b365ba24c84, type: 2}
   - {fileID: 11400000, guid: 5a9279c77f2fd4742ae991dc3a2a31f6, type: 2}
+  - {fileID: 11400000, guid: a5448b0494b39ef42b1dd94862889356, type: 2}
+  - {fileID: 11400000, guid: b3d5e8e95bed94bbebb3cb29c76ab7d3, type: 2}
+  - {fileID: 11400000, guid: 6c3ed95fad05c4e8c909a672369736eb, type: 2}
+  - {fileID: 11400000, guid: eddd477e0893dcd4384a394341de6989, type: 2}
+  - {fileID: 11400000, guid: bd99f914509c47718504b56f2b8c93c4, type: 2}
+  - {fileID: 11400000, guid: 660844b55b3b5454b8b841e9004f57bd, type: 2}
   - {fileID: 11400000, guid: d5c5a349db0fb704a93a19db21698aaa, type: 2}
   chestPanel: {fileID: 4952699836058817185}
   inventoryDescription: {fileID: 2317773029957226909}
@@ -1907,11 +1911,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EquipmentSOLibary
   equipmentSO:
-  - {fileID: 11400000, guid: 990d72a24d4813048be97bb86cf1dc41, type: 2}
-  - {fileID: 11400000, guid: f0eab660bd57a834d8f9196db3433023, type: 2}
+  - {fileID: 11400000, guid: 857920e5e2ac1fd42bad96099936ce19, type: 2}
+  - {fileID: 11400000, guid: 7fbb4b16bae4499b93e6ffd7be8b13a0, type: 2}
+  - {fileID: 11400000, guid: 73f95a4b936448afa62a88e709e21b47, type: 2}
   - {fileID: 11400000, guid: 9764731ef6bae074d887c55904adbfb2, type: 2}
   - {fileID: 11400000, guid: cbe2d1b1e1f866f4b95319a4630c7ee0, type: 2}
-  - {fileID: 11400000, guid: 857920e5e2ac1fd42bad96099936ce19, type: 2}
+  - {fileID: 11400000, guid: f0eab660bd57a834d8f9196db3433023, type: 2}
+  - {fileID: 11400000, guid: 04fbcb4a1f7c643b9bf6ca3222318c5a, type: 2}
+  - {fileID: 11400000, guid: 990d72a24d4813048be97bb86cf1dc41, type: 2}
+  - {fileID: 11400000, guid: 2b5494858f1844a79c85b686f695e99b, type: 2}
 --- !u!1 &824154627553074484
 GameObject:
   m_ObjectHideFlags: 0
@@ -4212,6 +4220,7 @@ MonoBehaviour:
   weapons:
   - {fileID: 11400000, guid: 9ecdab447c5d6824ca043f0bdd317648, type: 2}
   - {fileID: 11400000, guid: 0723e1ab00b5a524fb0a0b81738448fa, type: 2}
+  - {fileID: 11400000, guid: fcc76495bedab4da8b5ac05f1972d39d, type: 2}
   showDebugLog: 0
 --- !u!114 &8849326908181201497
 MonoBehaviour:

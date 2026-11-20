@@ -181,7 +181,7 @@ public class SaveSystem : MonoBehaviour
         PlayerStats stats = FindStats();
         if (stats != null)
             data.coins = stats.coins;
-        
+
         PlayerLife life = FindPlayerLife();
         if (life != null)
         {
@@ -302,7 +302,7 @@ public class SaveSystem : MonoBehaviour
 
     private static PlayerStats FindStats()
     {
-        
+
         GameObject statManager = GameObject.Find("StatManager");
         return statManager != null ? statManager.GetComponent<PlayerStats>() : null;
     }
@@ -373,11 +373,14 @@ public class SaveSystem : MonoBehaviour
             data.clearedObjects.Add(id);
     }
 
+    /// <summary>Gegenteil von MarkCleared, z.B. Fight Room beim Verlassen wieder zu.</summary>
+    public static void Unclear(string id) => data.clearedObjects.Remove(id);
+
     public static bool IsLevelCompleted(string levelId) =>
         !string.IsNullOrEmpty(levelId) && data.completedLevels.Contains(levelId);
 
-        public static bool IsFloorUnlocked(string floorId) =>
-        !string.IsNullOrEmpty(floorId) && data.unlockedFloors.Contains(floorId);
+    public static bool IsFloorUnlocked(string floorId) =>
+    !string.IsNullOrEmpty(floorId) && data.unlockedFloors.Contains(floorId);
 
     /// <summary>Wird beim Betreten eines Boss-Exits aufgerufen (TouchSceneTransition).</summary>
     public static void UnlockFloor(string floorId)
@@ -386,8 +389,8 @@ public class SaveSystem : MonoBehaviour
         data.unlockedFloors.Add(floorId);
     }
 
-        public static bool HasLog(string logId) =>
-        !string.IsNullOrEmpty(logId) && data.collectedLogs.Contains(logId);
+    public static bool HasLog(string logId) =>
+    !string.IsNullOrEmpty(logId) && data.collectedLogs.Contains(logId);
 
     /// <summary>Wird vom USB-Chip beim Aufsammeln aufgerufen.</summary>
     public static void CollectLog(string logId)

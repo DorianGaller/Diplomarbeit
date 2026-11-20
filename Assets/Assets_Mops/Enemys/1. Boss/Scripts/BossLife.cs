@@ -14,6 +14,7 @@ public class BossLife : MonoBehaviour
 
     public int CurrentPhase { get; private set; } = 1;
     public bool IsInvulnerable { get; private set; } = false;
+    [HideInInspector] public bool externalShield;
 
     [Header("UI")]
     public BossHealthBarUI healthBarUI;
@@ -41,6 +42,13 @@ public class BossLife : MonoBehaviour
     [Tooltip("Haken beim letzten Boss der Story. Danach kann man Level per Elevator replayen.")]
     public bool isFinalBoss = false;
 
+    [Header("Sound")]
+    [Tooltip("Sieg-Fanfare, wenn der Boss stirbt (leer = kein Sound)")]
+    public AudioClip victorySound;
+    [Range(0f, 1f)] public float victoryVolume = 0.9f;
+    [Tooltip("Boss-Musik, startet mit der Lebensleiste (leer = Raum-Musik laeuft weiter)")]
+    public AudioClip bossMusic;
+
     public Action OnDeath;
     public Action OnPhaseTransitionStart;
     public Action OnPhaseTransitionEnd;
@@ -59,6 +67,7 @@ public class BossLife : MonoBehaviour
 
     public void ShowHealthBar()
     {
+        if (bossMusic != null) MusicManager.Get().Play(bossMusic, 1f);
         if (healthBarUI != null)
         {
             healthBarUI.ShowBossBar(true);
@@ -68,7 +77,7 @@ public class BossLife : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (IsInvulnerable || currentHP <= 0) return;
+        if (IsInvulnerable || externalShield || currentHP <= 0) return;
 
         currentHP -= damage;
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
@@ -109,8 +118,29 @@ public class BossLife : MonoBehaviour
 
         SaveSystem.MarkBossDefeated(gameObject, isFinalBoss);
 
+        // Boss-Musik aus, Sieg-Fanfare, danach wieder die Musik des Raums
+        if (bossMusic != null)
+        {
+            MusicManager.Get().Stop(0.3f);
+            MusicManager.Get().ResumeSceneMusic(victorySound != null ? victorySound.length + 0.5f : 1f);
+        }
+
+        PlayVictorySound();
+
         OnDeath?.Invoke();
         Destroy(gameObject);
+    }
+
+    void PlayVictorySound()
+    {
+        if (victorySound == null) return;
+
+        // Eigenes Objekt, weil der Boss direkt danach geloescht wird
+        GameObject go = new GameObject("BossVictorySound");
+        AudioSource src = go.AddComponent<AudioSource>();
+        src.spatialBlend = 0f;
+        src.PlayOneShot(victorySound, victoryVolume);
+        Destroy(go, victorySound.length + 0.1f);
     }
 
     void DropLoot()

@@ -78,6 +78,9 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private AudioClip typeClip;
     [SerializeField] private AudioClip hangUpClip;
 
+    [Tooltip("Kurzer Ton beim Abheben (nach dem Klingeln)")]
+    [SerializeField] private AudioClip answerClip;
+
     [Header("Sprachaufnahmen")]
     [Tooltip("Eigene AudioSource fuer die Stimme. Leer = wird automatisch angelegt")]
     [SerializeField] private AudioSource voiceSource;
@@ -117,6 +120,12 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
+            audioSource.spatialBlend = 0f;
+        }
         if (incomingPanel != null) incomingPanel.SetActive(false);
         if (messageTemplate != null) messageTemplate.gameObject.SetActive(false);
 
@@ -162,6 +171,7 @@ public class TutorialManager : MonoBehaviour
         ResolvePlayer();
         callActive = true;
         IsRunning = true;
+        MusicManager.Get().SetDucked(true);
         SetPlayerLocked(true);
 
         // Falls das Canvas im Editor ausgeschaltet wurde, mit einschalten
@@ -187,6 +197,8 @@ public class TutorialManager : MonoBehaviour
             }
 
             StopLoop();
+            if (audioSource != null && answerClip != null)
+                audioSource.PlayOneShot(answerClip);
             incomingPanel.SetActive(false);
         }
 
@@ -212,7 +224,7 @@ public class TutorialManager : MonoBehaviour
                     yield return null;
                 yield return new WaitForSeconds(voiceGap);
             }
-                        else
+            else
             {
                 yield return new WaitForSeconds(pauseBase + pausePerChar * line.text.Length);
             }
@@ -457,6 +469,7 @@ public class TutorialManager : MonoBehaviour
     {
         IsRunning = false;
         callActive = false;
+        if (MusicManager.Instance != null) MusicManager.Instance.SetDucked(false);
 
         foreach (CallMessageView row in rows)
             if (row != null) Destroy(row.gameObject);
@@ -495,9 +508,11 @@ public class TutorialManager : MonoBehaviour
         audioSource.Play();
     }
 
-    private void StopLoop()
+     private void StopLoop()
     {
-        if (audioSource == null) return;
+        // Nur stoppen, wenn gerade wirklich etwas klingelt.
+        // Sonst wuerde Stop() auch den Auflege-Sound sofort abschneiden.
+        if (audioSource == null || audioSource.clip == null) return;
         audioSource.Stop();
         audioSource.loop = false;
         audioSource.clip = null;
@@ -526,6 +541,7 @@ public class TutorialManager : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (callActive && MusicManager.Instance != null) MusicManager.Instance.SetDucked(false);
         // Falls die Szene mitten im Call gewechselt wird
         if (IsRunning)
         {

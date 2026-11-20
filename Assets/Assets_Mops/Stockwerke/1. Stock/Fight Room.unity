@@ -1583,7 +1583,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &430507641
 Transform:
   m_ObjectHideFlags: 0
@@ -3053,6 +3053,7 @@ MonoBehaviour:
   isFloorEntrance: 0
   floorID: 
   unlockFloorOnEnter: 
+  closeRoomOnExit: {fileID: 0}
 --- !u!61 &673384604
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -115257,6 +115258,7 @@ MonoBehaviour:
   isFloorEntrance: 0
   floorID: 
   unlockFloorOnEnter: 
+  closeRoomOnExit: {fileID: 0}
 --- !u!61 &919910177
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -115601,6 +115603,54 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.00000047683716, y: 0}
   m_Radius: 0.7707
+--- !u!1 &1088957895
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1088957897}
+  - component: {fileID: 1088957896}
+  m_Layer: 0
+  m_Name: SceneMusic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1088957896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088957895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e88a68bcf51bcea4aa68b85e7954f686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneMusic
+  music: {fileID: 8300000, guid: 3296559208424f719bea6b2613c0936b, type: 3}
+  volume: 1
+  fadeTime: 1.5
+  pauseAfterTrack: 4
+--- !u!4 &1088957897
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088957895}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.26296, y: -5.62242, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1097151767
 GameObject:
   m_ObjectHideFlags: 0
@@ -116503,6 +116553,7 @@ MonoBehaviour:
   isFloorEntrance: 0
   floorID: 
   unlockFloorOnEnter: 2. Stock
+  closeRoomOnExit: {fileID: 0}
 --- !u!61 &1272706833
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -116831,6 +116882,7 @@ MonoBehaviour:
   isFloorEntrance: 0
   floorID: 
   unlockFloorOnEnter: 
+  closeRoomOnExit: {fileID: 0}
 --- !u!61 &1320916425
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -117552,6 +117604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossLife
   maxHP: 750
   phase2ThresholdPercent: 45
+  externalShield: 0
   healthBarUI: {fileID: 809152615}
   xpPrefab: {fileID: 4771013033056852365, guid: 1abfe0644d009474ea4a4aabff66f260, type: 3}
   xpAmount: 200
@@ -117565,6 +117618,9 @@ MonoBehaviour:
   exitWidth: 1
   exitHeight: 3
   isFinalBoss: 0
+  victorySound: {fileID: 8300000, guid: 447a76abee1e4e83a63fa51266289404, type: 3}
+  victoryVolume: 0.9
+  bossMusic: {fileID: 8300000, guid: 2567daabf908418887bab0c73e442df0, type: 3}
 --- !u!50 &1658236988
 Rigidbody2D:
   serializedVersion: 5
@@ -118442,6 +118498,7 @@ MonoBehaviour:
   isFloorEntrance: 0
   floorID: 
   unlockFloorOnEnter: 
+  closeRoomOnExit: {fileID: 0}
 --- !u!61 &1831883269
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -118913,9 +118970,10 @@ MonoBehaviour:
   endDelay: 1.5
   ringSpeed: 220
   audioSource: {fileID: 0}
-  ringClip: {fileID: 0}
-  typeClip: {fileID: 0}
-  hangUpClip: {fileID: 0}
+  ringClip: {fileID: 8300000, guid: c5c450aa3e47e3c449c5922546532eec, type: 3}
+  typeClip: {fileID: 8300000, guid: 556605e16a9082b46960824e5229b2f9, type: 3}
+  hangUpClip: {fileID: 8300000, guid: d341677e9c69b65438f1115d4fc208ed, type: 3}
+  answerClip: {fileID: 8300000, guid: 782befa5519f31a4a8c3e9063ff352e2, type: 3}
   voiceSource: {fileID: 0}
   voiceVolume: 1
   voiceGap: 0.4
@@ -120893,3 +120951,4 @@ SceneRoots:
   - {fileID: 1161298426}
   - {fileID: 2090076567}
   - {fileID: 1947426255}
+  - {fileID: 1088957897}

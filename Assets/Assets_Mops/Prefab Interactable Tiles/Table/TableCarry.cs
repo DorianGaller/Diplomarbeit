@@ -23,6 +23,12 @@ public class TableCarry : MonoBehaviour
     [Tooltip("Abstand nach aussen zum Equipment-Orbit, damit der Tisch nicht ueber der Waffe haengt")]
     [SerializeField] private float gapToOrbit = 0.8f;
 
+    [Header("Abstellen (nicht in Waende / ausserhalb der Map)")]
+    [Tooltip("An = nur Tilemap-Collider blockieren (Waende, Deko-Hitbox). Aus = jeder feste Collider")]
+    [SerializeField] private bool onlyTilemapsBlock = true;
+    [Tooltip("So weit (Grad) darf die Richtung abweichen, wenn direkt vor dir eine Wand ist")]
+    [SerializeField] private float dropAngleTolerance = 45f;
+
     [Header("Klettern (gleiche Werte wie bei StandOnTable)")]
     [SerializeField] private Transform tablePosition;
     [SerializeField] private Transform groundPosition;
@@ -52,6 +58,9 @@ public class TableCarry : MonoBehaviour
     private Vector2 lastDir = Vector2.right;
     private bool isCarried;
     private bool isClimbing;
+
+    private Vector2 footprintSize = Vector2.one;
+    private Vector2 footprintOffset;
 
     private void Start()
     {
@@ -144,7 +153,10 @@ public class TableCarry : MonoBehaviour
         isCarried = true;
         carriedTable = this;
 
+        CacheFootprint();
         transform.localScale = normalScale * carryScale;
+
+        CacheFootprint();
 
         // Collider aus, damit der Tisch beim Tragen nirgends haengen bleibt
         for (int i = 0; i < colliders.Length; i++)
@@ -158,7 +170,11 @@ public class TableCarry : MonoBehaviour
 
     private void Drop()
     {
-        Vector3 dropPos = player.position + (Vector3)(lastDir * Mathf.Max(dropDistance, CurrentCarryDistance()));
+        if (!FindDropPosition(Mathf.Max(dropDistance, CurrentCarryDistance()), out Vector3 dropPos))
+        {
+            StartCoroutine(FlashBlocked());   // kein Platz -> Tisch bleibt in der Hand
+            return;
+        }
         dropPos.z = transform.position.z;
         transform.position = dropPos;
 
@@ -169,6 +185,84 @@ public class TableCarry : MonoBehaviour
 
         isCarried = false;
         carriedTable = null;
+    }
+
+    // Groesse des Tisches (feste Collider, volle Groesse) merken
+    private void CacheFootprint()
+    {
+        bool has = false;
+        Bounds b = new Bounds(transform.position, Vector3.zero);
+        foreach (Collider2D c in colliders)
+        {
+            if (c == null || !c.enabled || c.isTrigger) continue;
+            if (!has) { b = c.bounds; has = true; }
+            else b.Encapsulate(c.bounds);
+        }
+        footprintSize = has ? (Vector2)b.size : Vector2.one;
+        footprintOffset = has ? (Vector2)(b.center - transform.position) : Vector2.zero;
+    }
+
+    // Sucht einen freien Platz: erst geradeaus, dann abwechselnd links/rechts in 15-Grad-Schritten
+    private bool FindDropPosition(float dist, out Vector3 pos)
+    {
+        for (float a = 0f; a <= dropAngleTolerance + 0.01f; a += 15f)
+        {
+            for (int s = a == 0f ? 1 : -1; s <= 1; s += 2)
+            {
+                Vector2 dir = Rotate(lastDir, a * s);
+                Vector3 p = player.position + (Vector3)(dir * dist);
+                if (IsFree(p)) { pos = p; return true; }
+            }
+        }
+        pos = Vector3.zero;
+        return false;
+    }
+
+    private bool IsFree(Vector3 tablePos)
+    {
+        Vector2 center = (Vector2)tablePos + footprintOffset;
+
+        // Platz fuer den Tisch frei?
+        foreach (Collider2D c in Physics2D.OverlapBoxAll(center, footprintSize * 0.95f, 0f))
+            if (Blocks(c)) return false;
+
+        // Keine Wand zwischen Spieler und Tisch (sonst landet er auf der anderen Seite / ausserhalb)
+        foreach (RaycastHit2D hit in Physics2D.LinecastAll(player.position, center))
+            if (Blocks(hit.collider)) return false;
+
+        return true;
+    }
+
+    private bool Blocks(Collider2D c)
+    {
+        if (c == null || c.isTrigger) return false;
+        if (c.transform.IsChildOf(transform) || c.transform.IsChildOf(player)) return false;
+        if (!onlyTilemapsBlock) return true;
+
+        // TilemapCollider2D oder z.B. ein CompositeCollider2D auf einer Tilemap
+        return c is UnityEngine.Tilemaps.TilemapCollider2D
+            || c.GetComponent<UnityEngine.Tilemaps.Tilemap>() != null;
+    }
+
+    private static Vector2 Rotate(Vector2 v, float deg)
+    {
+        float r = deg * Mathf.Deg2Rad, cs = Mathf.Cos(r), sn = Mathf.Sin(r);
+        return new Vector2(v.x * cs - v.y * sn, v.x * sn + v.y * cs);
+    }
+
+    // Kurz rot aufblitzen, wenn der Tisch hier nicht hin kann
+    private IEnumerator FlashBlocked()
+    {
+        SpriteRenderer[] srs = GetComponentsInChildren<SpriteRenderer>();
+        Color[] old = new Color[srs.Length];
+        for (int i = 0; i < srs.Length; i++)
+        {
+            old[i] = srs[i].color;
+            srs[i].color = new Color(1f, 0.35f, 0.35f, old[i].a);
+        }
+        yield return new WaitForSeconds(0.15f);
+        for (int i = 0; i < srs.Length; i++)
+            if (srs[i] != null) srs[i].color = old[i];
     }
 
     private void FollowPlayer()

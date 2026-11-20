@@ -33,6 +33,10 @@ public class TouchSceneTransition : MonoBehaviour
     [Tooltip("Z.B. \"2. Stock\". Leer lassen, wenn dieser Übergang nichts freischaltet.")]
     [SerializeField] private string unlockFloorOnEnter = "";
 
+    [Header("Fight Room: Tuer hinter dir wieder zu")]
+    [Tooltip("Spawner dieses Raums. Beim Durchgehen geht die Tuer wieder zu und der Raum gilt als nicht geschafft. Leer = nichts (z.B. Escape Rooms)")]
+    [SerializeField] private EnemySpawn closeRoomOnExit;
+
     private bool triggered = false;
 
     private void Start()
@@ -99,9 +103,13 @@ public class TouchSceneTransition : MonoBehaviour
 
         DoorTransition.nextSpawnID = targetSpawnID;
 
-                // Vor TransitionToScene, weil dort sofort gespeichert wird
+        // Vor TransitionToScene, weil dort sofort gespeichert wird
         if (!string.IsNullOrEmpty(unlockFloorOnEnter))
             SaveSystem.UnlockFloor(unlockFloorOnEnter);
+
+        // Vor TransitionToScene, weil dort sofort gespeichert wird
+        if (closeRoomOnExit != null)
+            closeRoomOnExit.CloseRoom();
 
 
         if (SceneTransitionManager.Instance != null)

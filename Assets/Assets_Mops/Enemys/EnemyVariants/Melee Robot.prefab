@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7464398803952498146, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
+      propertyPath: m_SortingOrder
+      value: 99
+      objectReference: {fileID: 0}
     - target: {fileID: 7973060751879412430, guid: 1897dfddc46967b49b47f31061039db5, type: 3}
       propertyPath: spriteRenderer
       value: 

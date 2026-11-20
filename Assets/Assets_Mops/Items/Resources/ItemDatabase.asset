@@ -85,3 +85,24 @@ MonoBehaviour:
     maxStackSize: 1
     weaponExpValue: 0
     weaponSO: {fileID: 11400000, guid: fcc76495bedab4da8b5ac05f1972d39d, type: 2}
+  - itemName: Faraday Vest
+    itemSprite: {fileID: 21300000, guid: c78393aa3df54fe98cf1478603f2b397, type: 3}
+    itemDescription: "A tactical vest lined with a copper-mesh Faraday cage. It soaks up shrapnel and stray voltage alike – heavy, but it keeps you standing."
+    itemType: 4
+    maxStackSize: 1
+    weaponExpValue: 0
+    weaponSO: {fileID: 0}
+  - itemName: Firewall Module
+    itemSprite: {fileID: 21300000, guid: afc36f4b9b61487bb3eafbcdf4577280, type: 3}
+    itemDescription: "A hardened security chip that sits on your off-hand rig. When a hacker gets into your system, it fights back and cuts the hack time in half."
+    itemType: 7
+    maxStackSize: 1
+    weaponExpValue: 0
+    weaponSO: {fileID: 0}
+  - itemName: Shield Emitter
+    itemSprite: {fileID: 21300000, guid: 088de46220234e468cee59afbb6614d5, type: 3}
+    itemDescription: "A wrist-mounted projector that throws a hexagonal energy barrier in front of you. Bullets and blades hit the field before they hit you."
+    itemType: 7
+    maxStackSize: 1
+    weaponExpValue: 0
+    weaponSO: {fileID: 0}

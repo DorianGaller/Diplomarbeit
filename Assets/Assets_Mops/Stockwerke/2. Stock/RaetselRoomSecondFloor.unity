@@ -211,6 +211,53 @@ Transform:
   - {fileID: 2041797716}
   m_Father: {fileID: 726051785}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &69956077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 69956079}
+  - component: {fileID: 69956078}
+  m_Layer: 0
+  m_Name: SceneMusic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &69956078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69956077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e88a68bcf51bcea4aa68b85e7954f686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneMusic
+  music: {fileID: 8300000, guid: 2631c4a518d6470b8b615f687c5f4a96, type: 3}
+  volume: 1
+  fadeTime: 1.5
+--- !u!4 &69956079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69956077}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.26296, y: -5.62242, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &152881348
 GameObject:
   m_ObjectHideFlags: 0
@@ -13963,6 +14010,7 @@ MonoBehaviour:
   isFloorEntrance: 0
   floorID: 
   unlockFloorOnEnter: 
+  closeRoomOnExit: {fileID: 0}
 --- !u!61 &1614215036
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15979,3 +16027,4 @@ SceneRoots:
   - {fileID: 1654527591}
   - {fileID: 726051785}
   - {fileID: 616441359}
+  - {fileID: 69956079}

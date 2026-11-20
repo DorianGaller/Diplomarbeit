@@ -48,7 +48,7 @@ public class EnemySpawn : MonoBehaviour
     public int exitWidth = 3;
     public int exitHeight = 2;
 
-        [Header("Exit Camera Pan")]
+    [Header("Exit Camera Pan")]
     [Tooltip("Dauer der Fahrt hin bzw. zurueck (Sekunden)")]
     public float cameraPanDuration = 1f;
     [Tooltip("Zoom beim Ausgang (Orthographic Size, Spiel-Kamera hat 8). 0 = nicht zoomen")]
@@ -58,7 +58,7 @@ public class EnemySpawn : MonoBehaviour
     public bool returnCameraAfterPan = true;
     public Transform cameraPanTarget;
 
-        [Header("Sound")]
+    [Header("Sound")]
     [Tooltip("Kurzer Jingle, wenn alle Wellen geschafft sind (leer = kein Sound)")]
     public AudioClip clearedSound;
     [Range(0f, 1f)] public float clearedVolume = 0.8f;
@@ -80,7 +80,7 @@ public class EnemySpawn : MonoBehaviour
     private List<GameObject> spawnQueue = new List<GameObject>();
 
     private bool roomActive = false;
-    
+
     public bool IsCleared { get; private set; }   // NEU – Raum startet nicht mehr automatisch
 
     public System.Action OnAllWavesCompleted;
@@ -137,7 +137,7 @@ public class EnemySpawn : MonoBehaviour
     }
 
     // NEU: wird vom FightRoomTrigger aufgerufen, sobald der Spieler den Raum betritt
-        public void StartRoom()
+    public void StartRoom()
     {
         if (roomActive) return;
         roomActive = true;
@@ -282,7 +282,10 @@ public class EnemySpawn : MonoBehaviour
 
     private bool exitOpened = false;
 
-        void MarkRoomCleared()
+    // Merkt sich die entfernten Exit-Tiles, damit die Tuer wieder zugehen kann
+    private readonly List<(Vector3Int cell, TileBase tile)> removedExitTiles = new List<(Vector3Int, TileBase)>();
+
+    void MarkRoomCleared()
     {
         IsCleared = true;
         SaveSystem.MarkCleared(SaveSystem.GetObjectId(gameObject));
@@ -311,6 +314,7 @@ public class EnemySpawn : MonoBehaviour
                     centerCell.z
                 );
 
+                removedExitTiles.Add((cellPos, exitTilemap.GetTile(cellPos)));
                 exitTilemap.SetTile(cellPos, null);
             }
         }
@@ -318,9 +322,25 @@ public class EnemySpawn : MonoBehaviour
         exitOpened = true;
     }
 
-        void StartExitCameraPan()
+    /// <summary>
+    /// Tuer wieder zu und Raum gilt als nicht geschafft (z.B. beim Verlassen durch den Exit).
+    /// Kommt der Spieler zurueck (Tod, Elevator), muss er den Raum neu kaempfen.
+    /// </summary>
+    public void CloseRoom()
     {
-                if (clearedSound != null)
+        IsCleared = false;   // DoorTilemapVisual schaltet dadurch das rote Tor wieder an
+        SaveSystem.Unclear(SaveSystem.GetObjectId(gameObject));
+
+        if (exitTilemap != null)
+            foreach (var t in removedExitTiles)
+                exitTilemap.SetTile(t.cell, t.tile);
+        removedExitTiles.Clear();
+        exitOpened = false;
+    }
+
+    void StartExitCameraPan()
+    {
+        if (clearedSound != null)
             EnemySound.GetSource(this).PlayOneShot(clearedSound, clearedVolume);
 
         if (mainCamera == null) mainCamera = Camera.main;
