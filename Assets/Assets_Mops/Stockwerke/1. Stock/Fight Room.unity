@@ -116882,7 +116882,7 @@ MonoBehaviour:
   isFloorEntrance: 0
   floorID: 
   unlockFloorOnEnter: 
-  closeRoomOnExit: {fileID: 0}
+  closeRoomOnExit: {fileID: 436433687}
 --- !u!61 &1320916425
 BoxCollider2D:
   m_ObjectHideFlags: 0

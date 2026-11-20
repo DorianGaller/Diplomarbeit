@@ -60,6 +60,8 @@ public abstract class PuzzleStation : InteractableBase
     private TMP_Text statusText;
     private string basePrompt;
     private bool wasInRange;
+    private TMP_Text sharedPrompt;   // "InteractText" im Player-UI
+    private bool promptShown;        // nur ausblenden, was diese Station selbst eingeblendet hat
     private bool controlsLocked;
     private bool prevCursorVisible;
     private CursorLockMode prevCursorLock;
@@ -101,13 +103,15 @@ public abstract class PuzzleStation : InteractableBase
         if (playerInRange != wasInRange)
         {
             wasInRange = playerInRange;
-            RefreshPrompt();
+            UpdatePrompt();
         }
     }
 
     protected virtual void OnDisable()
     {
         if (IsOpen) Close();
+        if (promptShown && sharedPrompt != null) sharedPrompt.gameObject.SetActive(false);
+        promptShown = false;
     }
 
     protected override bool ShouldShowPrompt() => !IsOpen;
@@ -186,7 +190,7 @@ public abstract class PuzzleStation : InteractableBase
         backdrop = null;
         LockPlayer(false);
         UpdateVisuals();
-        RefreshPrompt();
+        UpdatePrompt();
     }
 
     // ── Fenster ───────────────────────────────────────────
@@ -220,7 +224,7 @@ public abstract class PuzzleStation : InteractableBase
 
         content = NewRect("Content", frame.transform, new Vector2(1060, 600), new Vector2(0, -6));
 
-        if (PlayerInteractPrompt.Instance != null) PlayerInteractPrompt.Instance.Hide();
+        UpdatePrompt();   // Fenster offen -> Hinweis weg
         LockPlayer(true);
         OnOpen();
     }
@@ -270,7 +274,7 @@ public abstract class PuzzleStation : InteractableBase
         }
     }
 
-    private void UpdateVisuals()
+        private void UpdateVisuals()
     {
         if (stationRenderer != null)
         {
@@ -284,7 +288,39 @@ public abstract class PuzzleStation : InteractableBase
 
         if (basePrompt == null) basePrompt = promptText;
         SetPromptText(IsSolved ? solvedText : HasPower ? basePrompt : noPowerText);
-        RefreshPrompt();
+        UpdatePrompt();
+    }
+
+    // Hinweis selbst anzeigen (ohne Doggys Prompt-System): in der Naehe und Fenster zu -> an
+    private void UpdatePrompt()
+    {
+        if (sharedPrompt == null) sharedPrompt = FindPromptText();
+        if (sharedPrompt == null) return;
+
+        if (playerInRange && !IsOpen)
+        {
+            sharedPrompt.text = promptText;
+            sharedPrompt.gameObject.SetActive(true);
+            promptShown = true;
+        }
+        else if (promptShown)
+        {
+            sharedPrompt.gameObject.SetActive(false);
+            promptShown = false;
+        }
+    }
+
+    // Sucht "InteractText" im Spieler (Player UI/InfoTextPlayer/InteractText), auch wenn es gerade aus ist
+    private TMP_Text FindPromptText()
+    {
+        GameObject p = player != null ? player.gameObject : GameObject.FindGameObjectWithTag(playerTag);
+        if (p == null) return null;
+
+        foreach (TMP_Text t in p.GetComponentsInChildren<TMP_Text>(true))
+            if (t.name == "InteractText") return t;
+
+        Debug.LogWarning("[PuzzleStation] 'InteractText' im Player-UI nicht gefunden.");
+        return null;
     }
 
     // ── UI-Helfer (alles mittig verankert) ────────────────
@@ -331,7 +367,7 @@ public abstract class PuzzleStation : InteractableBase
         rt.offsetMin = rt.offsetMax = Vector2.zero;
     }
 
-        /// <summary>Erklaer-Kasten rechts im Fenster (gleiche Groesse wie das Handbuch im Kabelschacht).</summary>
+    /// <summary>Erklaer-Kasten rechts im Fenster (gleiche Groesse wie das Handbuch im Kabelschacht).</summary>
     protected void AddInfoPanel(string title, string body, Color accent)
     {
         Vector2 m = new Vector2(315, 0);

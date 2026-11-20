@@ -12060,9 +12060,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e88a68bcf51bcea4aa68b85e7954f686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneMusic
-  music: {fileID: 8300000, guid: b9bf3ad754244e3d9c3fe4c6ed6dfaf3, type: 3}
+  music: {fileID: 8300000, guid: 996f5f00d37f43c39d00400ed36f686f, type: 3}
   volume: 0.5
   fadeTime: 1.5
+  pauseAfterTrack: 4
 --- !u!4 &1154469061
 Transform:
   m_ObjectHideFlags: 0
