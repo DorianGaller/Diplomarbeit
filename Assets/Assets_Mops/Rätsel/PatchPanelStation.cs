@@ -63,15 +63,24 @@ public class PatchPanelStation : PuzzleStation
 
     // ── Oeffnen ───────────────────────────────────────────
 
-    protected override void OnOpen()
+        protected override void OnOpen()
     {
-        conn = new int[count];
-        for (int i = 0; i < count; i++) conn[i] = -1;
+        // Nur beim ersten Oeffnen leeren -> gesteckte Kabel bleiben nach ESC erhalten
+        if (conn == null)
+        {
+            conn = new int[count];
+            for (int i = 0; i < count; i++) conn[i] = -1;
+        }
         dragging = -1;
         checking = false;
 
         BuildPanel();
+        RefreshCables();   // gemerkte Kabel wieder einzeichnen
         SetStatus("Drag a cable from each PORT to its target. The labels are somewhere in this room.", ColMuted);
+
+        // Fenster wurde waehrend der Pruefung geschlossen -> Pruefung jetzt nachholen
+        if (AllConnected())
+            StartCoroutine(Check());
     }
 
     protected override void OnClose()
